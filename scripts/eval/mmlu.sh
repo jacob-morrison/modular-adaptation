@@ -112,3 +112,15 @@ python -m eval.mmlu.run_eval \
     --openai_engine "gpt-4-0314" \
     --n_instances 100 \
     --eval_batch_size 20
+
+# Evaluating no robots model using 0 shot
+python -m eval.mmlu.run_eval \
+    --ntrain 0 \
+    --data_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/eval_data/mmlu \
+    --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/no_robots/mmlu/tulu-7B-0shot \
+    --model_name_or_path /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots_7B/ \
+    --tokenizer_name_or_path /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots_7B/ \
+    --eval_batch_size 4 \
+    --load_in_8bit \
+    --use_chat_format \
+    --chat_formatting_function eval.templates.create_prompt_with_tulu_chat_format
