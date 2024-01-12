@@ -7,6 +7,8 @@ TOTAL_BATCH_SIZE=128
 GRADIENT_ACC_STEPS=$(($TOTAL_BATCH_SIZE/$NUM_GPUS/$BATCH_SIZE_PER_GPU))
 echo "Training llama model ${MODEL_SIZE} using $NUM_GPUS GPUs, $BATCH_SIZE_PER_GPU batch size per GPU, $GRADIENT_ACC_STEPS gradient accumulation steps"
 
+for DATASET in no_robots no_robots-Brainstorm no_robots-Classify no_robots-Coding no_robots-expert_0 no_robots-expert_1 no_robots-expert_2 no_robots-Extract no_robots-Rewrite no_robots-Chat "no_robots-Closed QA" no_robots-Generation "no_robots-Open QA" no_robots-Summarize
+do
 accelerate launch \
     --mixed_precision bf16 \
     --num_machines 1 \
@@ -18,7 +20,7 @@ accelerate launch \
     --use_flash_attn \
     --tokenizer_name /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/${MODEL_SIZE} \
     --use_slow_tokenizer \
-    --train_file training_data/no_robots.jsonl \
+    --train_file training_data/${DATASET}.jsonl \
     --max_seq_length 2048 \
     --preprocessing_num_workers 16 \
     --per_device_train_batch_size $BATCH_SIZE_PER_GPU \
@@ -28,7 +30,8 @@ accelerate launch \
     --warmup_ratio 0.03 \
     --weight_decay 0. \
     --num_train_epochs 2 \
-    --output_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots_${MODEL_SIZE}/ \
+    --output_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/${DATASET}_${MODEL_SIZE}/ \
     --with_tracking \
     --report_to tensorboard \
     --logging_steps 1
+done
