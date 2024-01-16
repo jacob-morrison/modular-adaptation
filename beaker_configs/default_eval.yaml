@@ -31,15 +31,15 @@ tasks:
         value: false
       - name: WANDB_DISABLED
         value: true
-      - name: OPENAI_API_KEY
-        secret: openai_api_key
+      # - name: OPENAI_API_KEY
+      #   secret: openai_api_key
     datasets:
       - mountPath: /data/
         source:
           beaker: Yizhongw03/open_instruct_eval_data
-      - mountPath: /model
-        source:
-          beaker: 01GVYXDGJC6DV0JW9JZ16YM07G
+      # - mountPath: /model
+        # source:
+          # beaker: default-image-dataset
       - mountPath: /net/nfs.cirrascale
         source:
           hostPath: /net/nfs.cirrascale

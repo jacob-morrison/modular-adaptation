@@ -53,9 +53,9 @@ tasks:
       - mountPath: /mmlu
         source:
           beaker: Yizhongw03/mmlu
-      - mountPath: /hf_llama_models
-        source:
-          beaker: Yizhongw03/hf_llama_model_7B
+      # - mountPath: /hf_llama_models
+      #   source:
+      #     beaker: Yizhongw03/hf_llama_model_7B
     result:
       path: /output
     resources:

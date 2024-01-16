@@ -1,0 +1,13 @@
+name: torch-env
+channels:
+- pytorch
+dependencies:
+- python=3.9
+- cudatoolkit=11.6
+- pytorch==1.13.0  # make sure this matches the version in requirements.txt
+- datasets
+- transformers
+- sentencepiece
+- protobuf
+# - faiss-gpu
+# - nomkl

@@ -7,7 +7,8 @@ TOTAL_BATCH_SIZE=128
 GRADIENT_ACC_STEPS=$(($TOTAL_BATCH_SIZE/$NUM_GPUS/$BATCH_SIZE_PER_GPU))
 echo "Training llama model ${MODEL_SIZE} using $NUM_GPUS GPUs, $BATCH_SIZE_PER_GPU batch size per GPU, $GRADIENT_ACC_STEPS gradient accumulation steps"
 
-for DATASET in no_robots no_robots-Brainstorm no_robots-Classify no_robots-Coding no_robots-expert_0 no_robots-expert_1 no_robots-expert_2 no_robots-Extract no_robots-Rewrite no_robots-Chat "no_robots-Closed QA" no_robots-Generation "no_robots-Open QA" no_robots-Summarize
+# for DATASET in no_robots no_robots-Brainstorm no_robots-Classify no_robots-Coding no_robots-expert_0 no_robots-expert_1 no_robots-expert_2 no_robots-Extract no_robots-Rewrite no_robots-Chat "no_robots-Closed QA" no_robots-Generation "no_robots-Open QA" no_robots-Summarize
+for DATASET in no_robots-Closed_QA no_robots-Open_QA
 do
 accelerate launch \
     --mixed_precision bf16 \

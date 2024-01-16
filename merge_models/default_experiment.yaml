@@ -1,0 +1,36 @@
+version: v2
+description: model interpolations
+tasks:
+  - name: instruct
+    image:
+      beaker: ai2/pytorch1.13.0-cuda11.6-python3.9
+    command: [
+      # what to do
+      "merge_models/merge_models.py", 
+      # model
+      "--base_model", "google/t5-large-lm-adapt", 
+      "--lora", False,
+    ]
+    envVars:
+      - name: CUDA_DEVICE_ORDER
+        value: PCI_BUS_ID
+      - name: TRANSFORMERS_CACHE
+        value: ./cache/
+    datasets:
+      - mountPath: /data
+        source:
+          beaker: jacobm/not-a-real-dataset
+          # beaker: jacobm/snli-vs-mnli
+      - mountPath: /robustness-data
+        source:
+          beaker: jacobm/robustness-6-prompts
+    result:
+      # Beaker will capture anything that's written to this location and store it in the results
+      # dataset.
+      path: /output
+    resources:
+      gpuCount: 1
+    context:
+      # cluster: ai2/allennlp-elanding-a100-40g
+      cluster: ai2/allennlp-cirrascale
+      priority: high

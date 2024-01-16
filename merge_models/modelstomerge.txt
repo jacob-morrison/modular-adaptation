@@ -1,0 +1,55 @@
+# full data
+full-squad-training-curve-t5-small	checkpoint-150000
+full-squad-training-curve-t5-base	checkpoint-150000
+train-t5-large-full-squad	checkpoint-37500
+full-squad-training-curve-t5-xl	checkpoint-18750
+t5-small-mnli	checkpoint-75000
+t5-base-mnli	checkpoint-75000
+t5-large-mnli	checkpoint-37500
+t5-xl-mnli	checkpoint-37500
+train-t5-on-sentiment-analysis-small	checkpoint-140000
+train-t5-on-sentiment-analysis-base	checkpoint-70000
+train-t5-on-sentiment-analysis-large	checkpoint-35000
+train-t5-on-sentiment-analysis-xl	checkpoint-17500
+
+
+
+
+
+# low data
+t5-small-squad-low-data-full-finetuning	checkpoint-5000
+t5-base-squad-low-data-full-finetuning	checkpoint-5000
+t5-large-squad-low-data-full-finetuning	checkpoint-5000
+t5-xl-squad-low-data-full-finetuning	checkpoint-5000
+t5-small-mnli-low-data-full-finetuning	checkpoint-5000
+t5-base-mnli-low-data-full-finetuning	checkpoint-5000
+t5-large-mnli-low-data-full-finetuning	checkpoint-5000
+t5-xl-mnli-low-data-full-finetuning	checkpoint-5000
+train-sentiment-analysis-low-data-full-finetuning-t5-small	checkpoint-5000
+train-sentiment-analysis-low-data-full-finetuning-t5-base	checkpoint-5000
+train-sentiment-analysis-low-data-full-finetuning-t5-large	checkpoint-5000
+train-sentiment-analysis-low-data-full-finetuning-t5-xl	checkpoint-5000
+
+
+        '/t5-model/target-weight-0.1_base-weight-0.9/',
+        '/t5-model/target-weight-0.2_base-weight-0.8/',
+
+        # '/t5-model/target-weight-0.3_base-weight-0.7/',
+        # '/t5-model/target-weight-0.4_base-weight-0.6/',
+        
+        # '/t5-model/target-weight-0.5_base-weight-0.5/',
+        # '/t5-model/target-weight-0.6_base-weight-0.4/',
+        
+        # '/t5-model/target-weight-0.7_base-weight-0.3/',
+        # '/t5-model/target-weight-0.8_base-weight-0.2/',
+        
+        # '/t5-model/target-weight-0.9_base-weight-0.1/',
+        # '/t5-model/target-weight-1.0_base-weight-0.0/',
+
+
+gantry run --beaker-image 'ai2/pytorch1.13.0-cuda11.6-python3.9' --workspace ai2/robustness-interpolations --cluster ai2/general-cirrascale-a100-80g-ib \
+    --conda environment.yml --gpus 1 --priority preemptible \
+    --dataset 'merge-t5-xl-eqa-high:target-weight-0.9_base-weight-0.1:/t5-model/target-weight-0.9_base-weight-0.1/' \
+    --dataset 'merge-t5-xl-eqa-high:target-weight-1.0_base-weight-0.0:/t5-model/target-weight-1.0_base-weight-0.0/' \
+    --dataset 'robustness-3-domains:/robustness-data' \
+    -- python -u main.py
