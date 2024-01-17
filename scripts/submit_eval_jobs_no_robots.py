@@ -64,7 +64,8 @@ datasets = [
     # 'no_robots-Closed_QA_7B',
 
     ### merges
-    'test-merge'
+    'merge-3-experts',
+    'merge-all-subsets',
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
