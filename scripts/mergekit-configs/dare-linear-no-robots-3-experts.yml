@@ -8,5 +8,5 @@ models:
   - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-expert_2_7B/
     parameters:
       weight: 1.0
-merge_method: dare-linear
+merge_method: dare_linear
 dtype: float16
