@@ -27,16 +27,15 @@ merge_models = False
 
 # modify here for different set of experiments
 experiment_groups = [
-    # "mmlu_0shot",
-    # "mmlu_5shot",
-    # "gsm_direct",
-    # "gsm_cot",
-    # "bbh_direct",
-    # "bbh_cot",
-    # "tydiqa_goldp_1shot",
-    # "tydiqa_no_context_1shot",
-    # "toxigen",
-
+    "mmlu_0shot",
+    "mmlu_5shot",
+    "gsm_direct",
+    "gsm_cot",
+    "bbh_direct",
+    "bbh_cot",
+    "tydiqa_goldp_1shot",
+    "tydiqa_no_context_1shot",
+    "toxigen",
     "codex_eval_temp_0.1",
     "codex_eval_temp_0.8",
 
@@ -50,23 +49,26 @@ lora = False
 datasets = [
     ### individual datasets
     # 'no_robots_7B',
-    'no_robots-Chat_7B',
-    'no_robots-Coding_7B',
-    'no_robots-expert_1_7B',
-    'no_robots-Extract_7B',
-    'no_robots-Rewrite_7B',
-    'no_robots-Brainstorm_7B',  
-    'no_robots-Classify_7B',
-    'no_robots-expert_0_7B',
-    'no_robots-expert_2_7B',
-    'no_robots-Generation_7B',
-    'no_robots-Summarize_7B',
-    'no_robots-Open_QA_7B',
-    'no_robots-Closed_QA_7B',
+    # 'no_robots-Chat_7B',
+    # 'no_robots-Coding_7B',
+    # 'no_robots-expert_1_7B',
+    # 'no_robots-Extract_7B',
+    # 'no_robots-Rewrite_7B',
+    # 'no_robots-Brainstorm_7B',  
+    # 'no_robots-Classify_7B',
+    # 'no_robots-expert_0_7B',
+    # 'no_robots-expert_2_7B',
+    # 'no_robots-Generation_7B',
+    # 'no_robots-Summarize_7B',
+    # 'no_robots-Open_QA_7B',
+    # 'no_robots-Closed_QA_7B',
 
     ### merges
-    'merge-3-experts',
-    'merge-all-subsets',
+    # 'merge-3-experts',
+    # 'merge-all-subsets',
+    'merge-all-subsets-weighted',
+    'merge-top-4-subsets',
+    'merge-top-4-subsets-weighted',
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
@@ -435,7 +437,7 @@ if not merge_models:
         yaml.dump(d, file, default_flow_style=True)
         file.close()
 
-        cmd = "beaker experiment create {} --workspace ai2/lora-instruct".format(fn)
+        cmd = "beaker experiment create {} --workspace ai2/modular_adaptation".format(fn)
         subprocess.Popen(cmd, shell=True)
 
 # merge and eval models
