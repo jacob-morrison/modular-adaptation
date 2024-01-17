@@ -1,0 +1,33 @@
+models:
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Generation_7B/
+    parameters:
+      weight: 4560
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Open_QA_7B/
+    parameters:
+      weight: 1240
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Brainstorm_7B/
+    parameters:
+      weight: 1120
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Chat_7B/
+    parameters:
+      weight: 850
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Rewrite_7B/
+    parameters:
+      weight: 660
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Summarize_7B/
+    parameters:
+      weight: 420
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Coding_7B/
+    parameters:
+      weight: 350
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Classify_7B/
+    parameters:
+      weight: 350
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Closed_QA_7B/
+    parameters:
+      weight: 260
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-Extract_7B/
+    parameters:
+      weight: 190
+merge_method: linear
+dtype: float16
