@@ -9,4 +9,5 @@ models:
     parameters:
       weight: 1.0
 merge_method: dare_linear
+base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
 dtype: float16
