@@ -28,14 +28,14 @@ merge_models = False
 # modify here for different set of experiments
 experiment_groups = [
     "mmlu_0shot",
-    "mmlu_5shot",
-    "gsm_direct",
-    "gsm_cot",
-    "bbh_direct",
-    "bbh_cot",
-    "tydiqa_goldp_1shot",
-    "tydiqa_no_context_1shot",
-    "toxigen",
+    # "mmlu_5shot",
+    # "gsm_direct",
+    # "gsm_cot",
+    # "bbh_direct",
+    # "bbh_cot",
+    # "tydiqa_goldp_1shot",
+    # "tydiqa_no_context_1shot",
+    # "toxigen",
 
     ### Need an OpenAI API Key
     # "codex_eval_temp_0.1",
@@ -47,20 +47,24 @@ experiment_groups = [
 lora = False
 
 datasets = [
-    'no_robots_7B',
-    'no_robots-Chat_7B',
-    'no_robots-Coding_7B',
-    'no_robots-expert_1_7B',
-    'no_robots-Extract_7B',
-    'no_robots-Rewrite_7B',
-    'no_robots-Brainstorm_7B',  
-    'no_robots-Classify_7B',
-    'no_robots-expert_0_7B',
-    'no_robots-expert_2_7B',
-    'no_robots-Generation_7B',
-    'no_robots-Summarize_7B',
-    'no_robots-Open_QA_7B',
-    'no_robots-Closed_QA_7B',
+    ### individual datasets
+    # 'no_robots_7B',
+    # 'no_robots-Chat_7B',
+    # 'no_robots-Coding_7B',
+    # 'no_robots-expert_1_7B',
+    # 'no_robots-Extract_7B',
+    # 'no_robots-Rewrite_7B',
+    # 'no_robots-Brainstorm_7B',  
+    # 'no_robots-Classify_7B',
+    # 'no_robots-expert_0_7B',
+    # 'no_robots-expert_2_7B',
+    # 'no_robots-Generation_7B',
+    # 'no_robots-Summarize_7B',
+    # 'no_robots-Open_QA_7B',
+    # 'no_robots-Closed_QA_7B',
+
+    ### merges
+    'test-merge'
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
