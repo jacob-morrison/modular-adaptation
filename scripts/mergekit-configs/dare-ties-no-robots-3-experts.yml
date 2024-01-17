@@ -1,0 +1,12 @@
+models:
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-expert_0_7B/
+    parameters:
+      weight: 1.0
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-expert_1_7B/
+    parameters:
+      weight: 1.0
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/no_robots-expert_2_7B/
+    parameters:
+      weight: 1.0
+merge_method: dare-ties
+dtype: float16
