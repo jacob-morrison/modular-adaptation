@@ -27,7 +27,7 @@ merge_models = False
 
 # modify here for different set of experiments
 experiment_groups = [
-    # "mmlu_0shot",
+    "mmlu_0shot",
     "mmlu_5shot",
     "gsm_direct",
     "gsm_cot",
@@ -59,6 +59,8 @@ datasets = [
     'no_robots-expert_2_7B',
     'no_robots-Generation_7B',
     'no_robots-Summarize_7B',
+    'no_robots-Open_QA_7B',
+    'no_robots-Closed_QA_7B',
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
