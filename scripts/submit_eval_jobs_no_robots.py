@@ -65,27 +65,30 @@ datasets = [
 
     ### merges
     # 'merge-3-experts',
-    # 'merge-3-experts-ties',
-    # 'merge-3-experts-dare-linear',
-    # 'merge-3-experts-dare-ties',
-
     # 'merge-all-subsets',
     # 'merge-all-subsets-weighted',
-    # 'merge-all-subsets-ties',
-    # 'merge-all-subsets-ties-weighted',
-    # 'merge-all-subsets-dare-ties',
-    'merge-all-subsets-dare-ties-weighted',
-    # 'merge-all-subsets-dare-linear',
-    # 'merge-all-subsets-dare-linear-weighted',
 
-    # 'merge-top-4-subsets',
-    # 'merge-top-4-subsets-weighted',
-    # 'merge-top-4-subsets-ties',
-    # 'merge-top-4-subsets-ties-weighted',
-    # 'merge-top-4-subsets-dare-ties',
+    # Need to re-merge and evaluate these
+
+    'merge-3-experts-ties',
+    'merge-3-experts-dare-linear',
+    'merge-3-experts-dare-ties',
+
+    'merge-all-subsets-ties',
+    'merge-all-subsets-ties-weighted',
+    'merge-all-subsets-dare-ties',
+    'merge-all-subsets-dare-ties-weighted',
+    'merge-all-subsets-dare-linear',
+    'merge-all-subsets-dare-linear-weighted',
+
+    'merge-top-4-subsets',
+    'merge-top-4-subsets-weighted',
+    'merge-top-4-subsets-ties',
+    'merge-top-4-subsets-ties-weighted',
+    'merge-top-4-subsets-dare-ties',
     'merge-top-4-subsets-dare-ties-weighted',
-    # 'merge-top-4-subsets-dare-linear',
-    # 'merge-top-4-subsets-dare-linear-weighted',
+    'merge-top-4-subsets-dare-linear',
+    'merge-top-4-subsets-dare-linear-weighted',
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
