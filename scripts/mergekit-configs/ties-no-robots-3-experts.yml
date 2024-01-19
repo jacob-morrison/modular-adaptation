@@ -12,5 +12,5 @@ models:
       density: 1.0
       weight: 1.0
 merge_method: ties
-base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+base_model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/base_llama_2_7b_resized/
 dtype: float16
