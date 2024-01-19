@@ -380,7 +380,8 @@ def main():
     if len(tokenizer) > embedding_size:
         model.resize_token_embeddings(len(tokenizer))
 
-    model.save_pretrained('/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/base_llama_2_7b_resized/')
+    # model.save_pretrained('/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/base_llama_2_7b_resized/')
+    tokenizer.save_pretrained('/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/base_llama_2_7b_resized/')
     quit()
 
     if args.use_lora:
