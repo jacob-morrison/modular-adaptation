@@ -65,10 +65,13 @@ datasets = [
 
     ### merges
     # 'merge-3-experts',
+    'merge-3-experts-ties',
+    'merge-3-experts-dare-linear',
+    'merge-3-experts-dare-ties',
     # 'merge-all-subsets',
-    'merge-all-subsets-weighted',
-    'merge-top-4-subsets',
-    'merge-top-4-subsets-weighted',
+    # 'merge-all-subsets-weighted',
+    # 'merge-top-4-subsets',
+    # 'merge-top-4-subsets-weighted',
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
