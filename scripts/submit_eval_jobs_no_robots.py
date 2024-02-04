@@ -40,7 +40,7 @@ experiment_groups = [
     "codex_eval_temp_0.8",
 
     ### Need an OpenAI API Key
-    # "trutufulqa",
+    # "truthfulqa",
     # "alpaca_farm",
 ]
 
@@ -70,25 +70,26 @@ datasets = [
     # 'merged-models/merge-top-4-subsets',
     # 'merged-models/merge-top-4-subsets-weighted',
 
-    # Need to re-merge and evaluate these
+    # 'merged-models/merge-3-experts-ties',
+    # 'merged-models/merge-3-experts-dare-linear',
+    # 'merged-models/merge-3-experts-dare-ties',
 
-    'merged-models/merge-3-experts-ties',
-    'merged-models/merge-3-experts-dare-linear',
-    'merged-models/merge-3-experts-dare-ties',
 
-    'merged-models/merge-all-subsets-ties',
-    'merged-models/merge-all-subsets-ties-weighted',
-    'merged-models/merge-all-subsets-dare-ties',
-    'merged-models/merge-all-subsets-dare-ties-weighted',
-    'merged-models/merge-all-subsets-dare-linear',
-    'merged-models/merge-all-subsets-dare-linear-weighted',
+    # 'merged-models/merge-all-subsets-ties',
+    # 'merged-models/merge-all-subsets-ties-weighted',
+    # 'merged-models/merge-all-subsets-dare-ties',
 
-    'merged-models/merge-top-4-subsets-ties',
-    'merged-models/merge-top-4-subsets-ties-weighted',
-    'merged-models/merge-top-4-subsets-dare-ties',
-    'merged-models/merge-top-4-subsets-dare-ties-weighted',
-    'merged-models/merge-top-4-subsets-dare-linear',
-    'merged-models/merge-top-4-subsets-dare-linear-weighted',
+    # 'merged-models/merge-all-subsets-dare-ties-weighted',
+    # 'merged-models/merge-all-subsets-dare-linear',
+    # 'merged-models/merge-all-subsets-dare-linear-weighted',
+
+    # 'merged-models/merge-top-4-subsets-ties',
+    # 'merged-models/merge-top-4-subsets-ties-weighted',
+    # 'merged-models/merge-top-4-subsets-dare-ties',
+
+    # 'merged-models/merge-top-4-subsets-dare-ties-weighted',
+    # 'merged-models/merge-top-4-subsets-dare-linear',
+    # 'merged-models/merge-top-4-subsets-dare-linear-weighted',
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
@@ -337,7 +338,7 @@ if not merge_models:
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path}
             '''
-        elif experiment_group == "trutufulqa":
+        elif experiment_group == "truthfulqa":
             d['tasks'][0]['arguments'][0] = f'''
             python -m eval.truthfulqa.run_eval \
                 --data_dir /data/truthfulqa \
