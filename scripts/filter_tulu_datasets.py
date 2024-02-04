@@ -24,6 +24,6 @@ with open(f'{base_path}tulu_v2_filtered_minus_wizardlm_and_code_alpaca.jsonl', '
     for dataset in datasets:
         with open(f'{base_path}{dataset}') as f_in:
             for line in f_in.readlines():
-                f_out.write(line + '\n')
+                f_out.write(line)
 
 
