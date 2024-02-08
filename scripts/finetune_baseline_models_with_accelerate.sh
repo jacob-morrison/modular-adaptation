@@ -147,7 +147,7 @@ accelerate launch \
     --use_flash_attn \
     --tokenizer_name ${BASE_MODEL_PATH} \
     --use_slow_tokenizer \
-    --train_file ${TRAINING_DATA_DIR}code_alpaca_filtered.jsonl \
+    --train_file ${TRAINING_DATA_DIR}code_alpaca_filtered_data.jsonl \
     --max_seq_length 2048 \
     --preprocessing_num_workers 16 \
     --per_device_train_batch_size $BATCH_SIZE_PER_GPU \
@@ -172,7 +172,7 @@ accelerate launch \
     --use_flash_attn \
     --tokenizer_name ${BASE_MODEL_PATH} \
     --use_slow_tokenizer \
-    --train_file ${TRAINING_DATA_DIR}wizardlm_filtered.jsonl \
+    --train_file ${TRAINING_DATA_DIR}wizardlm_filtered_data.jsonl \
     --max_seq_length 2048 \
     --preprocessing_num_workers 16 \
     --per_device_train_batch_size $BATCH_SIZE_PER_GPU \
