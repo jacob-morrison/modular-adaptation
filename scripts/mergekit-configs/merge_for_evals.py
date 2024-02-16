@@ -43,7 +43,7 @@ for yaml_file in yaml_files:
         file.close()
 
         cmd = "beaker experiment create {} --workspace ai2/modular_adaptation".format(fn)
-        cmd = (f"mergekit-yaml {name}.yaml "
+        cmd = (f"mergekit-yaml scripts/mergekit-configs/auto_created/{name}.yaml "
                 f"{output_dir}/llama_2_7b-{scienceWeight}-tulu_none_science_200_eval_no-{tuluWeight}-tulu_no_science"
                 "--cuda")
         subprocess.Popen(cmd, shell=True)
