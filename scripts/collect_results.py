@@ -120,4 +120,4 @@ pprint(full_data)
 
 with open(domain_adaptation_path + "collected/results.json", "w") as f_out:
     for blob in full_data:
-        f_out.write(json.dumps(blob))
+        f_out.write(json.dumps(blob) + '\n')
