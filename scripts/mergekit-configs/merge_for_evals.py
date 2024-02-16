@@ -46,7 +46,8 @@ for yaml_file in yaml_files:
         cmd = (f"mergekit-yaml scripts/mergekit-configs/auto_created/{name}.yaml "
                 f"{output_dir}/llama_2_7b-{scienceWeight}-tulu_none_science_200_eval_no-{tuluWeight}-tulu_no_science"
                 "--cuda")
-        subprocess.Popen(cmd, shell=True)
+        print(cmd)
+        # subprocess.Popen(cmd, shell=True)
 
         # tulu evals
 

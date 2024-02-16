@@ -1,23 +1,22 @@
-# mergekit-yaml linear-no-robots-3-experts.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-3-experts --cuda
-# mergekit-yaml linear-no-robots-all-subsets.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-all-subsets --cuda
-# mergekit-yaml linear-no-robots-all-subsets-weighted.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-all-subsets-weighted --cuda
-# mergekit-yaml linear-no-robots-top-4-subsets.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-top-4-subsets --cuda
-# mergekit-yaml linear-no-robots-top-4-subsets-weighted.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-top-4-subsets-weighted --cuda
-
-mergekit-yaml ties-no-robots-3-experts.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-3-experts-ties --cuda
-mergekit-yaml dare-linear-no-robots-3-experts.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-3-experts-dare-linear --cuda
-mergekit-yaml dare-ties-no-robots-3-experts.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-3-experts-dare-ties --cuda
-
-mergekit-yaml ties-no-robots-all-subsets.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-all-subsets-ties --cuda
-mergekit-yaml ties-no-robots-all-subsets-weighted.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-all-subsets-ties-weighted --cuda
-mergekit-yaml dare-ties-no-robots-all-subsets.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-all-subsets-dare-ties --cuda
-mergekit-yaml dare-ties-no-robots-all-subsets-weighted.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-all-subsets-dare-ties-weighted --cuda
-mergekit-yaml dare-linear-no-robots-all-subsets.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-all-subsets-dare-linear --cuda
-mergekit-yaml dare-linear-no-robots-all-subsets-weighted.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-all-subsets-dare-linear-weighted --cuda
-
-mergekit-yaml ties-no-robots-top-4-subsets.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-top-4-subsets-ties --cuda
-mergekit-yaml ties-no-robots-top-4-subsets-weighted.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-top-4-subsets-ties-weighted --cuda
-mergekit-yaml dare-ties-no-robots-top-4-subsets.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-top-4-subsets-dare-ties --cuda
-mergekit-yaml dare-ties-no-robots-top-4-subsets-weighted.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-top-4-subsets-dare-ties-weighted --cuda
-mergekit-yaml dare-linear-no-robots-top-4-subsets.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-top-4-subsets-dare-linear --cuda
-mergekit-yaml dare-linear-no-robots-top-4-subsets-weighted.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/merged-models/merge-top-4-subsets-dare-linear-weighted --cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-1.0-science-0.0.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.0-tulu_none_science_200_eval_no-1.0-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.9-science-0.1.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.1-tulu_none_science_200_eval_no-0.9-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.8-science-0.2.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.2-tulu_none_science_200_eval_no-0.8-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.7-science-0.3.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.3-tulu_none_science_200_eval_no-0.7-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.6-science-0.4.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.4-tulu_none_science_200_eval_no-0.6-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.5-science-0.5.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.5-tulu_none_science_200_eval_no-0.5-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.4-science-0.6.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.6-tulu_none_science_200_eval_no-0.4-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.3-science-0.7.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.7-tulu_none_science_200_eval_no-0.3-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.2-science-0.8.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.8-tulu_none_science_200_eval_no-0.2-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.1-science-0.9.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.9-tulu_none_science_200_eval_no-0.1-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.0-science-1.0.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-1.0-tulu_none_science_200_eval_no-0.0-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-1.0-science-0.0.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.0-tulu_none_science_200_eval_no-1.0-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.9-science-0.1.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.1-tulu_none_science_200_eval_no-0.9-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.8-science-0.2.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.2-tulu_none_science_200_eval_no-0.8-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.7-science-0.3.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.3-tulu_none_science_200_eval_no-0.7-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.6-science-0.4.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.4-tulu_none_science_200_eval_no-0.6-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.5-science-0.5.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.5-tulu_none_science_200_eval_no-0.5-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.4-science-0.6.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.6-tulu_none_science_200_eval_no-0.4-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.3-science-0.7.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.7-tulu_none_science_200_eval_no-0.3-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.2-science-0.8.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.8-tulu_none_science_200_eval_no-0.2-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.1-science-0.9.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-0.9-tulu_none_science_200_eval_no-0.1-tulu_no_science--cuda
+mergekit-yaml scripts/mergekit-configs/auto_created/merge-tulu-0.0-science-1.0.yaml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models/llama_2_7b-1.0-tulu_none_science_200_eval_no-0.0-tulu_no_science--cuda
