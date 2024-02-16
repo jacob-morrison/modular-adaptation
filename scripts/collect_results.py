@@ -56,13 +56,19 @@ for model in tulu_evals:
             tulu_model_weight = float(model[60:63])
     else:
         if '200' in model or '1000' in model:
-            tulu_model = "N/A"
-            tulu_model_weight = 0.0
-            science_model_weight = 1.0
-            if '200' in model:
-                science_model = "tulu_none_science_200_eval_no"
+            if 'tulu_all' in model:
+                tulu_model = model.replace('llama_2_7b-', '')
+                tulu_model_weight = 1.0
+                science_model_weight = 0.0
+                science_model = "N/A"
             else:
-                science_model = "tulu_none_science_1000_eval_no"
+                tulu_model = "N/A"
+                tulu_model_weight = 0.0
+                science_model_weight = 1.0
+                if '200' in model:
+                    science_model = "tulu_none_science_200_eval_no"
+                else:
+                    science_model = "tulu_none_science_1000_eval_no"
         else:
             tulu_model = "tulu_no_science"
             tulu_model_weight = 1.0
