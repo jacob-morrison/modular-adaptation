@@ -118,6 +118,6 @@ for model in tulu_evals:
 from pprint import pprint
 pprint(full_data)
 
-with open(domain_adaptation_path + "collected", "w") as f_out:
+with open(domain_adaptation_path + "collected/results.json", "w") as f_out:
     for blob in full_data:
         f_out.write(json.dumps(blob))
