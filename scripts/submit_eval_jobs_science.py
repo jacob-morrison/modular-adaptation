@@ -28,17 +28,17 @@ merge_models = False
 
 # modify here for different set of experiments
 experiment_groups = [
-    # "mmlu_0shot",
-    # "mmlu_5shot",
-    # "gsm_direct",
+    "mmlu_0shot",
+    "mmlu_5shot",
+    "gsm_direct",
     "gsm_cot",
-    # "bbh_direct",
-    # "bbh_cot",
-    # "tydiqa_goldp_1shot",
-    # "tydiqa_no_context_1shot",
-    # "toxigen",
-    # "codex_eval_temp_0.1",
-    # "codex_eval_temp_0.8",
+    "bbh_direct",
+    "bbh_cot",
+    "tydiqa_goldp_1shot",
+    "tydiqa_no_context_1shot",
+    "toxigen",
+    "codex_eval_temp_0.1",
+    "codex_eval_temp_0.8",
 
     ### Need an OpenAI API Key
     # "truthfulqa",
@@ -49,7 +49,7 @@ lora = False
 
 datasets = [
     # Science models
-    "llama_2_7b-tulu_none_science_200_eval_no",
+    # "llama_2_7b-tulu_none_science_200_eval_no",
     # "llama_2_7b-tulu_none_science_1000_eval_no",
     # "merged_models/llama_2_7b-0.0-tulu_none_science_200_eval_no-1.0-tulu_no_science",
     # "merged_models/llama_2_7b-0.4-tulu_none_science_200_eval_no-0.6-tulu_no_science",
@@ -62,6 +62,18 @@ datasets = [
     # "merged_models/llama_2_7b-1.0-tulu_none_science_200_eval_no-0.0-tulu_no_science",
     # "merged_models/llama_2_7b-0.3-tulu_none_science_200_eval_no-0.7-tulu_no_science",
     # "merged_models/llama_2_7b-0.7-tulu_none_science_200_eval_no-0.3-tulu_no_science",
+
+    # "merged_models/llama_2_7b-0.0-tulu_none_science_1000_eval_no-1.0-tulu_no_science",
+    # "merged_models/llama_2_7b-0.4-tulu_none_science_1000_eval_no-0.6-tulu_no_science",
+    # "merged_models/llama_2_7b-0.8-tulu_none_science_1000_eval_no-0.2-tulu_no_science",
+    # "merged_models/llama_2_7b-0.1-tulu_none_science_1000_eval_no-0.9-tulu_no_science",
+    # "merged_models/llama_2_7b-0.5-tulu_none_science_1000_eval_no-0.5-tulu_no_science",
+    # "merged_models/llama_2_7b-0.9-tulu_none_science_1000_eval_no-0.1-tulu_no_science",
+    # "merged_models/llama_2_7b-0.2-tulu_none_science_1000_eval_no-0.8-tulu_no_science",
+    # "merged_models/llama_2_7b-0.6-tulu_none_science_1000_eval_no-0.4-tulu_no_science",
+    # "merged_models/llama_2_7b-1.0-tulu_none_science_1000_eval_no-0.0-tulu_no_science",
+    # "merged_models/llama_2_7b-0.3-tulu_none_science_1000_eval_no-0.7-tulu_no_science",
+    # "merged_models/llama_2_7b-0.7-tulu_none_science_1000_eval_no-0.3-tulu_no_science",
 
     ### individual datasets
     # 'no_robots_7B',
@@ -126,7 +138,7 @@ if not merge_models:
     # for dataset, model_info, experiment_group in itertools.product(pairwise_trained_datasets, models, experiment_groups):
     for dataset, model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
         model_path = f'/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/{dataset}/'
-        print(f"Submitting {experiment_group} for model: {dataset}")
+        # print(f"Submitting {experiment_group} for model: {dataset}")
         d = copy.deepcopy(d1)
 
         model_name = model_info[0] + f"_{model_info[2]}" if model_info[2] is not None else model_info[0]
@@ -134,8 +146,10 @@ if not merge_models:
             name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}_{today}".replace('/', '-')
         else:
             name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}_{today}".replace('/', '-')
+            short_name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}".replace('/', '-')
+            shorter_name = short_name.replace('llama_2_7b', '')
         d['description'] = name
-        d['tasks'][0]['name'] = name
+        d['tasks'][0]['name'] = shorter_name
 
         if experiment_group == "mmlu_0shot":
             d['tasks'][0]['arguments'][0] = f'''
