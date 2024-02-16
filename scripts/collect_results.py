@@ -5,6 +5,7 @@ domain_adaptation_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation
 tulu_evals = os.listdir(domain_adaptation_path)
 tulu_evals.remove("gsm_cot")
 tulu_evals.remove("science")
+tulu_evals.remove("collected")
 
 tulu_metrics = [
     "bbh_cot",
@@ -116,3 +117,7 @@ for model in tulu_evals:
 
 from pprint import pprint
 pprint(full_data)
+
+with open(domain_adaptation_path + "collected", "w") as f_out:
+    for blob in full_data:
+        f_out.write(json.dumps(blob))
