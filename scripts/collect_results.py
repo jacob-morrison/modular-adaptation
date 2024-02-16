@@ -46,18 +46,28 @@ for model in tulu_evals:
     model_path = domain_adaptation_path + model
     if "merged_models" in model:
         tulu_model = "tulu_no_science"
-        tulu_model_weight = float(model[25:28])
+        # I accidentally swapped the science and tulu weights in the merged model directories, handle this here
+        science_model_weight = float(model[25:28])
         if "200" in model:
             science_model = "tulu_none_science_200_eval_no"
-            science_model_weight = float(model[59:62])
+            tulu_model_weight = float(model[59:62])
         else:
             science_model = "tulu_none_science_1000_eval_no"
-            science_model_weight = float(model[60:63])
+            tulu_model_weight = float(model[60:63])
     else:
-        tulu_model = "tulu_no_science"
-        tulu_model_weight = 1.0
-        science_model = "N/A"
-        science_model_weight = 0.0
+        if '200' in model or '1000' in model:
+            tulu_model = "N/A"
+            tulu_model_weight = 0.0
+            science_model_weight = 1.0
+            if '200' in model:
+                science_model = "tulu_none_science_200_eval_no"
+            else:
+                science_model = "tulu_none_science_1000_eval_no"
+        else:
+            tulu_model = "tulu_no_science"
+            tulu_model_weight = 1.0
+            science_model = "N/A"
+            science_model_weight = 0.0
 
     model_data = {
         "base_model": "llama-2-7b",

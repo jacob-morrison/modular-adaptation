@@ -48,6 +48,11 @@ experiment_groups = [
 lora = False
 
 datasets = [
+    # Baselines
+    "llama_2_7b-tulu_no_science",
+    "llama_2_7b-tulu_all_science_200_eval_no",
+    # "llama_2_7b-tulu_all_science_1000_eval_no",
+
     # Science models
     # "llama_2_7b-tulu_none_science_200_eval_no",
     # "llama_2_7b-tulu_none_science_1000_eval_no",
