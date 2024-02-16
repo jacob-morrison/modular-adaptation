@@ -25,6 +25,10 @@ yaml_files = [
 output_dir = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/merged_models"
 
 for yaml_file in yaml_files:
+    if '200' in yaml_file:
+        num_science = '200'
+    else:
+        num_science = '1000'
     with open(yaml_file, 'r') as f:
         default_yaml = f.read()
     d1 = yaml.load(default_yaml, Loader=yaml.FullLoader)
@@ -36,7 +40,7 @@ for yaml_file in yaml_files:
         d["models"][1]["parameters"]["weight"] = tuluWeight
 
         # merge models
-        name = f"merge-tulu-{tuluWeight}-science-{scienceWeight}"
+        name = f"merge-tulu-{tuluWeight}-science-{num_science}-{scienceWeight}"
         fn = f"scripts/mergekit-configs/auto_created/{name}.yaml"
         file = open(fn, "w")
         yaml.dump(d, file, default_flow_style=True)
@@ -44,7 +48,7 @@ for yaml_file in yaml_files:
 
         cmd = "beaker experiment create {} --workspace ai2/modular_adaptation".format(fn)
         cmd = (f"mergekit-yaml scripts/mergekit-configs/auto_created/{name}.yaml "
-                f"{output_dir}/llama_2_7b-{scienceWeight}-tulu_none_science_200_eval_no-{tuluWeight}-tulu_no_science "
+                f"{output_dir}/llama_2_7b-{scienceWeight}-tulu_none_science_{num_science}_eval_no-{tuluWeight}-tulu_no_science "
                 "--cuda")
         print(cmd)
         # subprocess.Popen(cmd, shell=True)

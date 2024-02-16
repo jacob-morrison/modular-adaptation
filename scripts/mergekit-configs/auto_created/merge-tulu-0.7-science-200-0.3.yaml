@@ -1,0 +1,3 @@
+{dtype: float16, merge_method: linear, models: [{model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_none_science_200_eval_no,
+      parameters: {weight: 0.3}}, {model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_no_science,
+      parameters: {weight: 0.7}}]}
