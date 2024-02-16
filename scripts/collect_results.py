@@ -20,7 +20,7 @@ tulu_metrics = [
     "tydiqa_no_context_1shot",
 ]
 
-data = []
+full_data = []
 example = {
     "base_model": "llama-2-7b",
     "tulu_model": "tulu_model_name",
@@ -112,7 +112,7 @@ for model in tulu_evals:
 
     # TODO: collect science metrics
 
-    data.append(model_data)
+    full_data.append(model_data)
 
 from pprint import pprint
-pprint(data)
+pprint(full_data)
