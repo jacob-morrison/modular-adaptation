@@ -7,7 +7,10 @@ TOTAL_BATCH_SIZE=128
 GRADIENT_ACC_STEPS=$(($TOTAL_BATCH_SIZE/$NUM_GPUS/$BATCH_SIZE_PER_GPU))
 echo "Training llama model ${MODEL_SIZE} using $NUM_GPUS GPUs, $BATCH_SIZE_PER_GPU batch size per GPU, $GRADIENT_ACC_STEPS gradient accumulation steps"
 
-for DATASET in tulu_all_science_1000_eval_no
+# /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/training_data/science/full/
+# tulu_all_science_2500_eval_no  tulu_none_science_2500_eval_no
+
+for DATASET in tulu_none_science_2500_eval_no tulu_all_science_2500_eval_no 
 do
 accelerate launch \
     --mixed_precision bf16 \
@@ -20,7 +23,7 @@ accelerate launch \
     --use_flash_attn \
     --tokenizer_name /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/${MODEL_SIZE} \
     --use_slow_tokenizer \
-    --train_file /net/nfs.cirrascale/allennlp/davidw/proj/science-instruct/science-adapt/data/training_mixtures/4096/${DATASET}.jsonl \
+    --train_file /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/training_data/science/full/${DATASET}.jsonl \
     --max_seq_length 4096 \
     --preprocessing_num_workers 16 \
     --per_device_train_batch_size $BATCH_SIZE_PER_GPU \
