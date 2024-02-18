@@ -42,7 +42,7 @@ accelerate launch \
     --warmup_ratio 0.03 \
     --weight_decay 0. \
     --num_train_epochs 2 \
-    --output_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_all_science_none_eval_no/ \
+    --output_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_all_science_1000_eval_no/ \
     --with_tracking \
     --report_to tensorboard \
     --logging_steps 1
