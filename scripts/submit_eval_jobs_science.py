@@ -20,8 +20,8 @@ cluster = "ai2/s2-cirrascale-l40"
 # cluster = "ai2/prior-elanding"
 num_gpus = 1
 d1['tasks'][0]['context']['cluster'] = cluster
-d1['tasks'][0]['context']['priority'] = "high"
-# d1['tasks'][0]['context']['priority'] = "preemptible"
+# d1['tasks'][0]['context']['priority'] = "high"
+d1['tasks'][0]['context']['priority'] = "preemptible"
 d1['tasks'][0]['resources']['gpuCount'] = num_gpus
 
 merge_models = False
@@ -49,47 +49,44 @@ lora = False
 
 datasets = [
     # Baselines
-    # "llama_2_7b-tulu_no_science", # retraining
-    "llama_2_7b-tulu_all_science_200_eval_no",
+    "llama_2_7b-tulu_all_science_none_eval_no", # retraining
+    # "llama_2_7b-tulu_all_science_200_eval_no",
     # "llama_2_7b-tulu_all_science_1000_eval_no", # need to retrain
     # "llama_2_7b-tulu_all_science_2500_eval_no", # still training
 
     # Science models
-    "llama_2_7b-tulu_none_science_200_eval_no",
-    "llama_2_7b-tulu_none_science_1000_eval_no",
-    "llama_2_7b-tulu_none_science_2500_eval_no",
+    # "llama_2_7b-tulu_none_science_200_eval_no",
+    # "llama_2_7b-tulu_none_science_1000_eval_no",
+    # "llama_2_7b-tulu_none_science_2500_eval_no",
 
-    # Need to re-merge these and then evaluate
-    # "merged_models/llama_2_7b-0.1-tulu_none_science_200_eval_no-0.9-tulu_no_science",
-    # "merged_models/llama_2_7b-0.2-tulu_none_science_200_eval_no-0.8-tulu_no_science",
-    # "merged_models/llama_2_7b-0.3-tulu_none_science_200_eval_no-0.7-tulu_no_science",
-    # "merged_models/llama_2_7b-0.4-tulu_none_science_200_eval_no-0.6-tulu_no_science",
-    # "merged_models/llama_2_7b-0.5-tulu_none_science_200_eval_no-0.5-tulu_no_science",
-    # "merged_models/llama_2_7b-0.6-tulu_none_science_200_eval_no-0.4-tulu_no_science",
-    # "merged_models/llama_2_7b-0.7-tulu_none_science_200_eval_no-0.3-tulu_no_science",
-    # "merged_models/llama_2_7b-0.8-tulu_none_science_200_eval_no-0.2-tulu_no_science",
-    # "merged_models/llama_2_7b-0.9-tulu_none_science_200_eval_no-0.1-tulu_no_science",
+    "merged_models/llama_2_7b-0.1-tulu_only-0.9-science_200",
+    "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_200",
+    "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_200",
+    "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_200",
+    "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_200",
+    "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_200",
+    "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_200",
+    "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_200",
+    "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_200",
 
-    # "merged_models/llama_2_7b-0.1-tulu_none_science_1000_eval_no-0.9-tulu_no_science",
-    # "merged_models/llama_2_7b-0.2-tulu_none_science_1000_eval_no-0.8-tulu_no_science",
-    # "merged_models/llama_2_7b-0.3-tulu_none_science_1000_eval_no-0.7-tulu_no_science",
-    # "merged_models/llama_2_7b-0.4-tulu_none_science_1000_eval_no-0.6-tulu_no_science",
-    # "merged_models/llama_2_7b-0.5-tulu_none_science_1000_eval_no-0.5-tulu_no_science",
-    # "merged_models/llama_2_7b-0.6-tulu_none_science_1000_eval_no-0.4-tulu_no_science",
-    # "merged_models/llama_2_7b-0.7-tulu_none_science_1000_eval_no-0.3-tulu_no_science",
-    # "merged_models/llama_2_7b-0.8-tulu_none_science_1000_eval_no-0.2-tulu_no_science",
-    # "merged_models/llama_2_7b-0.9-tulu_none_science_1000_eval_no-0.1-tulu_no_science",
+    "merged_models/llama_2_7b-0.1-tulu_only-0.9-science_1000",
+    "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_1000",
+    "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_1000",
+    "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_1000",
+    "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_1000",
+    "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_1000",
+    "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_1000",
+    "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_1000",
+    "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_1000",
 
-    # "merged_models/llama_2_7b-0.1-tulu_none_science_2500_eval_no-0.9-tulu_no_science",
-    # "merged_models/llama_2_7b-0.2-tulu_none_science_2500_eval_no-0.8-tulu_no_science",
-    # "merged_models/llama_2_7b-0.3-tulu_none_science_2500_eval_no-0.7-tulu_no_science",
-    # "merged_models/llama_2_7b-0.4-tulu_none_science_2500_eval_no-0.6-tulu_no_science",
-    # "merged_models/llama_2_7b-0.5-tulu_none_science_2500_eval_no-0.5-tulu_no_science",
-    # "merged_models/llama_2_7b-0.6-tulu_none_science_2500_eval_no-0.4-tulu_no_science",
-    # "merged_models/llama_2_7b-0.7-tulu_none_science_2500_eval_no-0.3-tulu_no_science",
-    # "merged_models/llama_2_7b-0.8-tulu_none_science_2500_eval_no-0.2-tulu_no_science",
-    # "merged_models/llama_2_7b-0.9-tulu_none_science_2500_eval_no-0.1-tulu_no_science",
-    # "merged_models/llama_2_7b-1.0-tulu_none_science_2500_eval_no-0.0-tulu_no_science",
+    "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_2500",
+    "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_2500",
+    "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_2500",
+    "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_2500",
+    "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_2500",
+    "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_2500",
+    "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_2500",
+    "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_2500",
 
     ### individual datasets
     # 'no_robots_7B',
