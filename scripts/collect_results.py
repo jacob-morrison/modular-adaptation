@@ -2,7 +2,11 @@ import json
 import os
 
 domain_adaptation_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/"
-tulu_evals = os.listdir(domain_adaptation_path)
+tulu_evals_tmp = os.listdir(domain_adaptation_path)
+tulu_evals = []
+for string in tulu_evals_tmp:
+    if "tulu_none" not in string:
+        tulu_evals_tmp.append(string)
 tulu_evals.remove("llama_2_7b-tulu_no_science") # can't delete this for some reason
 tulu_evals.remove("science")
 tulu_evals.remove("collected")
