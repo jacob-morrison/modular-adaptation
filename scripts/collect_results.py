@@ -55,10 +55,10 @@ for model in tulu_evals:
         tulu_model_weight = float(model[25:28])
         if "200" in model:
             science_model = "tulu_none_science_200_eval_no"
-            science_model_weight = float(model[59:62])
+            science_model_weight = float(model[39:42])
         else:
             science_model = "tulu_none_science_1000_eval_no"
-            science_model_weight = float(model[60:63])
+            science_model_weight = float(model[39:42])
     else:
         if '200' in model or '1000' in model:
             if 'tulu_all' in model:
