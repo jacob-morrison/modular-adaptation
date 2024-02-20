@@ -6,7 +6,7 @@ tulu_evals_tmp = os.listdir(domain_adaptation_path)
 tulu_evals = []
 for string in tulu_evals_tmp:
     print(string)
-    if "tulu_none" not in string:
+    if "merged_models" not in string and "tulu_none" not in string:
         tulu_evals.append(string)
 tulu_evals.remove("llama_2_7b-tulu_no_science") # can't delete this for some reason
 tulu_evals.remove("science")
