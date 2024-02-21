@@ -1,5 +1,6 @@
 version: v2
 description: open-instruct-eval-default
+budget: ai2/allennlp
 tasks:
   - name: open-instruct-eval-default
     image:
@@ -37,9 +38,9 @@ tasks:
       - mountPath: /data/
         source:
           beaker: Yizhongw03/open_instruct_eval_data
-      # - mountPath: /model
-        # source:
-          # beaker: default-image-dataset
+      - mountPath: /model
+        source:
+          beaker: default-image-dataset
       - mountPath: /net/nfs.cirrascale
         source:
           hostPath: /net/nfs.cirrascale

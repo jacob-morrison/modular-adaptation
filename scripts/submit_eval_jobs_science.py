@@ -49,7 +49,7 @@ lora = False
 
 datasets = [
     # Baselines
-    "llama_2_7b-tulu_all_science_none_eval_no", # retraining
+    # "llama_2_7b-tulu_all_science_none_eval_no", # retraining
     # "llama_2_7b-tulu_all_science_200_eval_no",
     # "llama_2_7b-tulu_all_science_1000_eval_no", # need to retrain
     # "llama_2_7b-tulu_all_science_2500_eval_no", # still training
@@ -59,34 +59,34 @@ datasets = [
     # "llama_2_7b-tulu_none_science_1000_eval_no",
     # "llama_2_7b-tulu_none_science_2500_eval_no",
 
-    "merged_models/llama_2_7b-0.1-tulu_only-0.9-science_200",
-    "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_200",
-    "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_200",
-    "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_200",
-    "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_200",
-    "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_200",
-    "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_200",
-    "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_200",
-    "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_200",
+    # "merged_models/llama_2_7b-0.1-tulu_only-0.9-science_200",
+    # "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_200",
+    # "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_200",
+    # "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_200",
+    # "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_200",
+    # "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_200",
+    # "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_200",
+    # "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_200",
+    # "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_200",
 
-    "merged_models/llama_2_7b-0.1-tulu_only-0.9-science_1000",
-    "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_1000",
-    "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_1000",
-    "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_1000",
-    "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_1000",
-    "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_1000",
-    "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_1000",
-    "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_1000",
-    "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_1000",
+    # "merged_models/llama_2_7b-0.1-tulu_only-0.9-science_1000",
+    # "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_1000",
+    # "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_1000",
+    # "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_1000",
+    # "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_1000",
+    # "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_1000",
+    # "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_1000",
+    # "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_1000",
+    # "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_1000",
 
-    "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_2500",
-    "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_2500",
-    "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_2500",
-    "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_2500",
-    "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_2500",
-    "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_2500",
-    "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_2500",
-    "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_2500",
+    # "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_2500",
+    # "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_2500",
+    # "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_2500",
+    # "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_2500",
+    # "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_2500",
+    # "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_2500",
+    # "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_2500",
+    # "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_2500",
 
     ### individual datasets
     # 'no_robots_7B',
@@ -131,6 +131,8 @@ datasets = [
     # 'merged-models/merge-top-4-subsets-dare-ties-weighted',
     # 'merged-models/merge-top-4-subsets-dare-linear',
     # 'merged-models/merge-top-4-subsets-dare-linear-weighted',
+    
+    '/model' # for mounted datasets
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
@@ -150,7 +152,10 @@ if not merge_models:
     # for experiment_group, model_info in itertools.product(experiment_groups, models):
     # for dataset, model_info, experiment_group in itertools.product(pairwise_trained_datasets, models, experiment_groups):
     for dataset, model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
-        model_path = f'/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/{dataset}/'
+        if dataset != "/model":
+            model_path = f'/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/{dataset}/'
+        else:
+            model_path = "/model"
         # print(f"Submitting {experiment_group} for model: {dataset}")
         d = copy.deepcopy(d1)
 
@@ -161,15 +166,23 @@ if not merge_models:
             name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}_{today}".replace('/', '-')
             short_name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}".replace('/', '-')
             shorter_name = short_name.replace('llama_2_7b', '')
+
+        if dataset == "/model":
+            # need to update default_eval.yaml as well
+            d['tasks'][0]['datasets'][1]['source']['beaker'] = "01HKG46RNVAP3NSHNDH019R5KB" # model_info[1]
         d['description'] = name
         d['tasks'][0]['name'] = shorter_name
+
+        # save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace('/', '-')}/{experiment_group}/"
+        save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/with_daves_tulu_model/daves_tulu_model/{experiment_group}/"
+        # save_dir = "/output/"
 
         if experiment_group == "mmlu_0shot":
             d['tasks'][0]['arguments'][0] = f'''
                 python -m eval.mmlu.run_eval \
                 --ntrain 0 \
                 --data_dir /data/mmlu/ \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/mmlu_0shot/ \
+                --save_dir {save_dir} \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
                 --eval_batch_size 4 \
@@ -182,7 +195,7 @@ if not merge_models:
                 python -m eval.mmlu.run_eval \
                 --ntrain 5 \
                 --data_dir /data/mmlu/ \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/mmlu_5shot/ \
+                --save_dir {save_dir} \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
                 --eval_batch_size 4 \
@@ -194,7 +207,7 @@ if not merge_models:
             d['tasks'][0]['arguments'][0] = f'''
                 python -m eval.bbh.run_eval \
                 --data_dir /data/bbh \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/bbh_direct/ \
+                --save_dir {save_dir} \
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
@@ -207,7 +220,7 @@ if not merge_models:
             d['tasks'][0]['arguments'][0] = f'''
                 python -m eval.bbh.run_eval \
                 --data_dir /data/bbh \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/bbh_cot/ \
+                --save_dir {save_dir} \
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
@@ -220,7 +233,7 @@ if not merge_models:
                 python -m eval.gsm.run_eval \
                 --data_dir /data/gsm/ \
                 --max_num_examples 200 \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/gsm_direct/ \
+                --save_dir {save_dir} \
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
@@ -234,7 +247,7 @@ if not merge_models:
                 python -m eval.gsm.run_eval \
                 --data_dir /data/gsm/ \
                 --max_num_examples 200 \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/gsm_cot/ \
+                --save_dir {save_dir} \
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
@@ -249,7 +262,7 @@ if not merge_models:
                 --n_shot 1 \
                 --max_num_examples_per_lang 100 \
                 --max_context_length 512 \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/tydiqa_goldp_1shot/ \
+                --save_dir {save_dir} \
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
@@ -264,7 +277,7 @@ if not merge_models:
                 --n_shot 1 \
                 --max_num_examples_per_lang 100 \
                 --max_context_length 512 \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/tydiqa_no_context_1shot/ \
+                --save_dir {save_dir} \
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
@@ -278,7 +291,7 @@ if not merge_models:
                 --eval_pass_at_ks 1 5 10 20 \
                 --unbiased_sampling_size_n 20 \
                 --temperature 0.1 \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/codex_eval_temp_0.1/ \
+                --save_dir {save_dir} \
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path}
@@ -290,7 +303,7 @@ if not merge_models:
                 --eval_pass_at_ks 1 5 10 20 \
                 --unbiased_sampling_size_n 20 \
                 --temperature 0.8 \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/codex_eval_temp_0.8/ \
+                --save_dir {save_dir} \
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path}
@@ -299,7 +312,7 @@ if not merge_models:
             d['tasks'][0]['arguments'][0] = f'''
             python -m eval.truthfulqa.run_eval \
                 --data_dir /data/truthfulqa \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/truthfulqa/ \
+                --save_dir {save_dir} \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
                 --metrics judge info mc \
@@ -315,7 +328,7 @@ if not merge_models:
             d['tasks'][0]['arguments'][0] = f'''
             python -m eval.toxigen.run_eval \
                 --data_dir /data/toxigen/ \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/toxigen/ \
+                --save_dir {save_dir} \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
                 --eval_batch_size 32 \
@@ -329,7 +342,7 @@ if not merge_models:
                 --use_vllm \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
-                --save_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace("/", "-")}/alpaca_farm/ \
+                --save_dir {save_dir} \
                 --use_chat_format \
                 --chat_formatting_function eval.templates.create_prompt_with_tulu_chat_format
             '''
@@ -389,7 +402,7 @@ if not merge_models:
             d['tasks'][0]['arguments'] = [d['tasks'][0]['arguments'][0].replace("--model_name_or_path /model", "--model_name_or_path "+model_info[1])]
             d['tasks'][0]['arguments'] = [d['tasks'][0]['arguments'][0].replace("--tokenizer_name_or_path /model", "--model_name_or_path "+model_info[1])]
         # else:  # if it's a beaker model, mount the beaker dataset to `/model`
-            # d['tasks'][0]['datasets'][1]['source']['beaker'] = model_info[1]
+            # d['tasks'][0]['datasets'][1]['source']['beaker'] = 01HKG46RNVAP3NSHNDH019R5KB # model_info[1]
 
         if "llama2-chat" in model_info[0]:
             d['tasks'][0]['arguments'] = [d['tasks'][0]['arguments'][0].replace(

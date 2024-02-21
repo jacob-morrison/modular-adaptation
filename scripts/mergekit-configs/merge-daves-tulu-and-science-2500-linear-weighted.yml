@@ -1,0 +1,9 @@
+models:
+  - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_none_science_2500_eval_no
+    parameters:
+      weight: weight
+  - model: /daves-tulu-model
+    parameters:
+      weight: weight
+merge_method: linear
+dtype: float16
