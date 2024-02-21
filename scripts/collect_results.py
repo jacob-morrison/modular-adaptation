@@ -159,8 +159,8 @@ for model in os.listdir(domain_adaptation_path + "with_daves_tulu_model/"):
     if "daves_tulu_model" not in model:
         tulu_model = "daves_tulu_no_science"
         # TODO: fix characters
-        tulu_model_weight = float(model[11:13])
-        science_model_weight = float(model[25:27])
+        tulu_model_weight = float(model[11:14])
+        science_model_weight = float(model[25:28])
         if "200" in model:
             science_model = "tulu_none_science_200_eval_no"
         elif "1000" in model:
