@@ -22,6 +22,7 @@ for string in tulu_evals_tmp:
         tulu_evals.append(string)
 tulu_evals.remove("llama_2_7b-tulu_no_science") # can't delete this for some reason
 tulu_evals.remove("science")
+tulu_evals.remove("with_daves_tulu_model")
 tulu_evals.remove("collected")
 
 dave_model_paths = os.listdir(domain_adaptation_path + "with_daves_tulu_model/")
