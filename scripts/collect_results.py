@@ -24,6 +24,10 @@ tulu_evals.remove("llama_2_7b-tulu_no_science") # can't delete this for some rea
 tulu_evals.remove("science")
 tulu_evals.remove("collected")
 
+dave_model_paths = os.listdir(domain_adaptation_path + "with_daves_tulu_model/")
+for path in dave_model_paths:
+    tulu_evals.append(f"with_daves_tulu_model/{path}")
+
 tulu_metrics = [
     "bbh_cot",
     "bbh_direct",
@@ -61,8 +65,13 @@ example = {
 
 for model in tulu_evals:
     model_path = domain_adaptation_path + model
+    if "dave" in model:
+        model = model.split("/")[-1]
     if "merged_models" in model:
-        tulu_model = "tulu_no_science"
+        if "dave" in model_path:
+            tulu_model = "daves_tulu_no_science"
+        else:
+            tulu_model = "tulu_no_science"
         # TODO: fix characters
         tulu_model_weight = float(model[25:28])
         if "200" in model:
@@ -92,7 +101,10 @@ for model in tulu_evals:
                 elif "2500" in model:
                     science_model = "tulu_none_science_2500_eval_no"
         else:
-            tulu_model = "tulu_no_science"
+            if "daves" in model_path:
+                tulu_model = "daves_tulu_no_science"
+            else:
+                tulu_model = "tulu_no_science"
             tulu_model_weight = 1.0
             science_model = "N/A"
             science_model_weight = 0.0
