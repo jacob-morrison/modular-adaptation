@@ -38,9 +38,9 @@ tasks:
       - mountPath: /data/
         source:
           beaker: Yizhongw03/open_instruct_eval_data
-      - mountPath: /model
-        source:
-          beaker: default-image-dataset
+      # - mountPath: /model
+      #   source:
+      #     beaker: default-image-dataset
       - mountPath: /net/nfs.cirrascale
         source:
           hostPath: /net/nfs.cirrascale
@@ -51,5 +51,9 @@ tasks:
     resources:
       gpuCount: 1
     context:
-      cluster: ai2/general-cirrascale
       priority: high
+    constraints:
+      cluster:
+        - ai2/s2-cirrascale-l40
+        - ai2/allennlp-cirrascale
+        - ai2/general-cirrascale-a100-80g-ib

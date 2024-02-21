@@ -19,9 +19,9 @@ cluster = "ai2/s2-cirrascale-l40"
 # cluster = "ai2/general-cirrascale-a100-80g-ib"
 # cluster = "ai2/prior-elanding"
 num_gpus = 1
-d1['tasks'][0]['context']['cluster'] = cluster
+# d1['tasks'][0]['context']['cluster'] = cluster
 # d1['tasks'][0]['context']['priority'] = "high"
-d1['tasks'][0]['context']['priority'] = "preemptible"
+# d1['tasks'][0]['context']['priority'] = "preemptible"
 d1['tasks'][0]['resources']['gpuCount'] = num_gpus
 
 merge_models = False
@@ -48,6 +48,36 @@ experiment_groups = [
 lora = False
 
 datasets = [
+    # with dave's models
+    # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_200",
+    
+    "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_200",
+    "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_200",
+    "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_200",
+    "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_200",
+    "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_1000",
+    "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_1000",
+    "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_1000",
+    "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_1000",
+    "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_200",
+    "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_200",
+    "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_200",
+    "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_200",
+    "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_2500",
+
     # Baselines
     # "llama_2_7b-tulu_all_science_none_eval_no", # retraining
     # "llama_2_7b-tulu_all_science_200_eval_no",
@@ -132,7 +162,7 @@ datasets = [
     # 'merged-models/merge-top-4-subsets-dare-linear',
     # 'merged-models/merge-top-4-subsets-dare-linear-weighted',
     
-    '/model' # for mounted datasets
+    # '/model' # for mounted datasets
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
@@ -173,8 +203,11 @@ if not merge_models:
         d['description'] = name
         d['tasks'][0]['name'] = shorter_name
 
-        # save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace('/', '-')}/{experiment_group}/"
-        save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/with_daves_tulu_model/daves_tulu_model/{experiment_group}/"
+        if "dave" in dataset:
+            save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset}/{experiment_group}/"
+        else:
+            save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace('/', '-')}/{experiment_group}/"
+        # save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/with_daves_tulu_model/daves_tulu_model/{experiment_group}/"
         # save_dir = "/output/"
 
         if experiment_group == "mmlu_0shot":
