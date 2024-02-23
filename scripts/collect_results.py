@@ -71,7 +71,6 @@ def get_model_weights(filename):
         # tulu_model_weight = float(model[11:14])
         # science_model_weight = float(model[25:28])
     tokens = filename.split('-')
-    print(tokens)
     science_model_weight = float(tokens[-2])
     tulu_model_weight = float(tokens[-4])
     return tulu_model_weight, science_model_weight
