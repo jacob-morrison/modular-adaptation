@@ -16,7 +16,6 @@ science_model_weights = {
 }
 
 weights = [
-    # (0.0, 1.0),
     (0.1, 0.9),
     (0.2, 0.8),
     (0.3, 0.7),
@@ -26,13 +25,12 @@ weights = [
     (0.7, 0.3),
     (0.8, 0.2),
     (0.9, 0.1),
-    # (1.0, 0.0),
 ]
 
 yaml_files = [
-    "scripts/mergekit-configs/merge-daves-tulu-and-science-200-linear-weighted.yml",
-    "scripts/mergekit-configs/merge-daves-tulu-and-science-1000-linear-weighted.yml",
-    "scripts/mergekit-configs/merge-daves-tulu-and-science-2500-linear-weighted.yml"
+    # "scripts/mergekit-configs/slerp_merges/merge-daves-tulu-and-science-200-slerp-weighted.yml",
+    # "scripts/mergekit-configs/slerp_merges/merge-daves-tulu-and-science-1000-slerp-weighted.yml",
+    "scripts/mergekit-configs/slerp_merges/merge-daves-tulu-and-science-2500-slerp-weighted.yml"
 ]
 
 output_dir = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/with_daves_tulu_model"
@@ -54,19 +52,20 @@ for yaml_file in yaml_files:
         d = copy.deepcopy(d1)
 
         # create yaml
-        d["models"][0]["parameters"]["weight"] = scienceWeight
-        d["models"][1]["parameters"]["weight"] = tuluWeight
+        # d["models"][0]["parameters"]["weight"] = scienceWeight
+        # d["models"][1]["parameters"]["weight"] = tuluWeight
+        d["parameters"]["t"][0]["value"] = tuluWeight
 
         # merge models
-        name = f"merge-daves-tulu-{tuluWeight}-science-{num_science}-{scienceWeight}"
-        fn = f"scripts/mergekit-configs/auto_created/{name}.yaml"
+        name = f"slerp-daves-tulu-{tuluWeight}-science-{num_science}-{scienceWeight}"
+        fn = f"scripts/mergekit-configs/slerp_merges/auto_created/{name}.yaml"
         file = open(fn, "w")
         yaml.dump(d, file, default_flow_style=True)
         file.close()
 
         cmd = "beaker experiment create {} --workspace ai2/modular_adaptation".format(fn)
-        cmd = (f"mergekit-yaml scripts/mergekit-configs/auto_created/{name}.yaml "
-                f"{output_dir}/llama_2_7b-{tuluWeight}-tulu_only-{scienceWeight}-science_{num_science} "
+        cmd = (f"mergekit-yaml scripts/mergekit-configs/slerp_merges/auto_created/{name}.yaml "
+                f"{output_dir}/slerp-{tuluWeight}-tulu_only-{scienceWeight}-science_{num_science} "
                 "--cuda")
         print(cmd)
         # subprocess.Popen(cmd, shell=True)

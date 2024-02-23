@@ -49,8 +49,8 @@ lora = False
 
 datasets = [
     # start some slerp merges:
-    "",
-    "",
+    "with_daves_tulu_model/slerp-0.5-tulu_only-0.5-science_2500",
+    "with_daves_tulu_model/slerp-0.84-tulu_only-0.16-science_2500",
 
     # "another_tulu_only_model/llama_2_7b-0.975-tulu_only-0.025-science_200",
     # "another_tulu_only_model/llama_2_7b-0.84-tulu_only-0.16-science_2500",
