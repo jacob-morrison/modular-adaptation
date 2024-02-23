@@ -23,6 +23,7 @@ for string in tulu_evals_tmp:
 tulu_evals.remove("llama_2_7b-tulu_no_science") # can't delete this for some reason
 tulu_evals.remove("science")
 tulu_evals.remove("with_daves_tulu_model")
+tulu_evals.remove("another_tulu_only_model")
 tulu_evals.remove("collected")
 
 tulu_metrics = [
@@ -186,6 +187,98 @@ for model in os.listdir(domain_adaptation_path + "with_daves_tulu_model/"):
         #             science_model = "tulu_none_science_2500_eval_no"
         # else:
         tulu_model = "daves_tulu_no_science"
+        tulu_model_weight = 1.0
+        science_model = "N/A"
+        science_model_weight = 0.0
+
+    model_data = {
+        "base_model": "llama-2-7b",
+        "tulu_model": tulu_model,
+        "tulu_model_weight": tulu_model_weight,
+        "science_model": science_model,
+        "science_model_weight": science_model_weight,
+    }
+
+    with open(model_path + f"/bbh_cot/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["bbh_cot"] = data["average_exact_match"]
+
+    with open(model_path + f"/bbh_direct/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["bbh_direct"] = data["average_exact_match"]
+
+    with open(model_path + f"/codex_eval_temp_0.1/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["codex_eval_temp_0.1"] = data["pass@1"]
+
+    with open(model_path + f"/codex_eval_temp_0.8/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["codex_eval_temp_0.8"] = data["pass@10"]
+
+    with open(model_path + f"/gsm_cot/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["gsm_cot"] = data["exact_match"]
+
+    with open(model_path + f"/gsm_direct/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["gsm_direct"] = data["exact_match"]
+
+    with open(model_path + f"/mmlu_0shot/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["mmlu_0shot"] = data["average_acc"]
+
+    with open(model_path + f"/mmlu_5shot/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["mmlu_5shot"] = data["average_acc"]
+
+    with open(model_path + f"/toxigen/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["toxigen"] = data["overall"]
+
+    with open(model_path + f"/tydiqa_goldp_1shot/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["tydiqa_goldp_1shot"] = data["average"]["f1"]
+
+    with open(model_path + f"/tydiqa_no_context_1shot/metrics.json") as f_in:
+        data = json.loads(f_in.read())
+        model_data["tydiqa_no_context_1shot"] = data["average"]["f1"]
+
+    # TODO: collect science metrics
+
+    full_data.append(model_data)
+
+for model in os.listdir(domain_adaptation_path + "another_tulu_only_model/"):
+    model_path = domain_adaptation_path + "another_tulu_only_model/" + model
+    if "llama_2_7b-tulu_all_science_none_eval_no" not in model:
+        tulu_model = "another_tulu_all_science_none"
+        # TODO: fix characters
+        tulu_model_weight = float(model[11:14])
+        science_model_weight = float(model[25:28])
+        if "200" in model:
+            science_model = "tulu_none_science_200_eval_no"
+        elif "1000" in model:
+            science_model = "tulu_none_science_1000_eval_no"
+        elif "2500" in model:
+            science_model = "tulu_none_science_2500_eval_no"
+    else:
+        # if '200' in model or '1000' in model or "2500" in model:
+        #     if 'tulu_all' in model:
+        #         tulu_model = model.replace('llama_2_7b-', '')
+        #         tulu_model_weight = 1.0
+        #         science_model_weight = 0.0
+        #         science_model = "N/A"
+        #     else:
+        #         tulu_model = "N/A"
+        #         tulu_model_weight = 0.0
+        #         science_model_weight = 1.0
+        #         if '200' in model:
+        #             science_model = "tulu_none_science_200_eval_no"
+        #         elif "1000" in model:
+        #             science_model = "tulu_none_science_1000_eval_no"
+        #         elif "2500" in model:
+        #             science_model = "tulu_none_science_2500_eval_no"
+        # else:
+        tulu_model = "another_tulu_all_science_none"
         tulu_model_weight = 1.0
         science_model = "N/A"
         science_model_weight = 0.0
