@@ -51,7 +51,7 @@ tasks:
     resources:
       gpuCount: 1
     context:
-      priority: high
+      priority: preemptible
     constraints:
       cluster:
         - ai2/s2-cirrascale-l40

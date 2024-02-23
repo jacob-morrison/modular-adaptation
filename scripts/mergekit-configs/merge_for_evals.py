@@ -3,6 +3,18 @@ import os
 import subprocess
 import yaml
 
+# math for dataset-sized weighting:
+# Tulu-only: 318686
+# Science 200: 8193
+# Science 1000: 35357
+# Science 2500: 61349
+
+science_model_weights = {
+    '200': [(0.025, 0.975)],
+    '1000': [], # [(0.1, 0.9)], # unnecessary
+    '2500': [(0.16, 0.84)],
+}
+
 weights = [
     # (0.0, 1.0),
     (0.1, 0.9),
@@ -18,24 +30,27 @@ weights = [
 ]
 
 yaml_files = [
-    "scripts/mergekit-configs/merge-tulu-and-science-200-linear-weighted.yml",
-    "scripts/mergekit-configs/merge-tulu-and-science-1000-linear-weighted.yml",
-    "scripts/mergekit-configs/merge-tulu-and-science-2500-linear-weighted.yml"
+    "scripts/mergekit-configs/merge-daves-tulu-and-science-200-linear-weighted.yml",
+    "scripts/mergekit-configs/merge-daves-tulu-and-science-1000-linear-weighted.yml",
+    "scripts/mergekit-configs/merge-daves-tulu-and-science-2500-linear-weighted.yml"
 ]
 
-output_dir = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/another_tulu_only_model"
+output_dir = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/with_daves_tulu_model"
 
 for yaml_file in yaml_files:
     if '200' in yaml_file:
         num_science = '200'
+    elif '1000' in yaml_file:
+        num_science = '1000'
     elif '2500' in yaml_file:
         num_science = '2500'
     else:
-        num_science = '1000'
+        print('what')
+        quit()
     with open(yaml_file, 'r') as f:
         default_yaml = f.read()
     d1 = yaml.load(default_yaml, Loader=yaml.FullLoader)
-    for (scienceWeight, tuluWeight) in weights:
+    for (scienceWeight, tuluWeight) in weights + science_model_weights[num_science]:
         d = copy.deepcopy(d1)
 
         # create yaml
@@ -43,7 +58,7 @@ for yaml_file in yaml_files:
         d["models"][1]["parameters"]["weight"] = tuluWeight
 
         # merge models
-        name = f"merge-my-new-tulu-{tuluWeight}-science-{num_science}-{scienceWeight}"
+        name = f"merge-daves-tulu-{tuluWeight}-science-{num_science}-{scienceWeight}"
         fn = f"scripts/mergekit-configs/auto_created/{name}.yaml"
         file = open(fn, "w")
         yaml.dump(d, file, default_flow_style=True)

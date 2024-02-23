@@ -48,6 +48,38 @@ experiment_groups = [
 lora = False
 
 datasets = [
+    # my new tulu model:
+    # "another_tulu_only_model/llama_2_7b-tulu_all_science_none_eval_no",
+    # "another_tulu_only_model/llama_2_7b-0.1-tulu_only-0.9-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.3-tulu_only-0.7-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.5-tulu_only-0.5-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.7-tulu_only-0.3-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.9-tulu_only-0.1-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.1-tulu_only-0.9-science_200",
+    # "another_tulu_only_model/llama_2_7b-0.3-tulu_only-0.7-science_200",
+    # "another_tulu_only_model/llama_2_7b-0.5-tulu_only-0.5-science_200",
+
+    # "another_tulu_only_model/llama_2_7b-0.7-tulu_only-0.3-science_200",
+    # "another_tulu_only_model/llama_2_7b-0.9-tulu_only-0.1-science_200",
+    # "another_tulu_only_model/llama_2_7b-0.1-tulu_only-0.9-science_2500",
+    # "another_tulu_only_model/llama_2_7b-0.3-tulu_only-0.7-science_2500",
+    # "another_tulu_only_model/llama_2_7b-0.5-tulu_only-0.5-science_2500",
+    # "another_tulu_only_model/llama_2_7b-0.7-tulu_only-0.3-science_2500",
+
+    "another_tulu_only_model/llama_2_7b-0.9-tulu_only-0.1-science_2500",
+    "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_1000",
+    "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_1000",
+    "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_1000",
+    "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_1000",
+    "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_200",
+    "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_200",
+    "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_200",
+    "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_200",
+    "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_2500",
+    "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_2500",
+    "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_2500",
+    "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_2500",
+
     # with dave's models
     # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_1000",
     # "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_1000",
@@ -56,27 +88,27 @@ datasets = [
     # "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_1000",
     # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_200",
     
-    "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_200",
-    "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_200",
-    "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_200",
-    "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_200",
-    "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_2500",
-    "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_2500",
-    "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_2500",
-    "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_2500",
-    "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_2500",
-    "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_1000",
-    "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_1000",
-    "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_1000",
-    "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_1000",
-    "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_200",
-    "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_200",
-    "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_200",
-    "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_200",
-    "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_2500",
-    "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_2500",
-    "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_2500",
-    "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_200",
+    # "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_200",
+    # "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_200",
+    # "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_200",
+    # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_1000",
+    # "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_200",
+    # "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_200",
+    # "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_200",
+    # "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_200",
+    # "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_2500",
+    # "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_2500",
 
     # Baselines
     # "llama_2_7b-tulu_all_science_none_eval_no", # retraining
@@ -203,7 +235,7 @@ if not merge_models:
         d['description'] = name
         d['tasks'][0]['name'] = shorter_name
 
-        if "dave" in dataset:
+        if "dave" in dataset or "another" in dataset:
             save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset}/{experiment_group}/"
         else:
             save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace('/', '-')}/{experiment_group}/"
