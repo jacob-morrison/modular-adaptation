@@ -1,4 +1,4 @@
 {base_model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/daves-tulu-model/,
   dtype: bfloat16, merge_method: slerp, parameters: {t: [{value: 0.9}]}, slices: [
-    {sources: [{model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/daves-tulu-model/},
-        {model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_none_science_2500_eval_no}]}]}
+    {sources: [{layer_range: [0, 32], model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/daves-tulu-model/},
+        {layer_range: [0, 32], model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_none_science_2500_eval_no}]}]}
