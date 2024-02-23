@@ -61,21 +61,38 @@ example = {
     "tydiqa_no_context_1shot": -1,
 }
 
+def get_model_weights(filename):
+    if "merged_models" in model:
+        pass
+    # merged models:
+        # tulu_model_weight = float(model[25:28])
+        # science_model_weight = float(model[39:42])
+    # dave's & my new one:
+        # tulu_model_weight = float(model[11:14])
+        # science_model_weight = float(model[25:28])
+    tokens = filename.split('-')
+    print(tokens)
+    science_model_weight = float(tokens[-2])
+    tulu_model_weight = float(tokens[-4])
+    return tulu_model_weight, science_model_weight
+
+def collect_metrics(model_path):
+    pass
+
 for model in tulu_evals:
     model_path = domain_adaptation_path + model
     if "merged_models" in model:
         tulu_model = "tulu_no_science"
         # TODO: fix characters
-        tulu_model_weight = float(model[25:28])
+        # tulu_model_weight = float(model[25:28])
+        # science_model_weight = float(model[39:42])
+        tulu_model_weight, science_model_weight = get_model_weights(model)
         if "200" in model:
             science_model = "tulu_none_science_200_eval_no"
-            science_model_weight = float(model[39:42])
         elif "1000" in model:
             science_model = "tulu_none_science_1000_eval_no"
-            science_model_weight = float(model[39:42])
         elif "2500" in model:
             science_model = "tulu_none_science_2500_eval_no"
-            science_model_weight = float(model[39:42])
     else:
         if '200' in model or '1000' in model or "2500" in model:
             if 'tulu_all' in model:
@@ -160,8 +177,9 @@ for model in os.listdir(domain_adaptation_path + "with_daves_tulu_model/"):
     if "daves_tulu_model" not in model:
         tulu_model = "daves_tulu_no_science"
         # TODO: fix characters
-        tulu_model_weight = float(model[11:14])
-        science_model_weight = float(model[25:28])
+        # tulu_model_weight = float(model[11:14])
+        # science_model_weight = float(model[25:28])
+        tulu_model_weight, science_model_weight = get_model_weights(model)
         if "200" in model:
             science_model = "tulu_none_science_200_eval_no"
         elif "1000" in model:
@@ -252,8 +270,9 @@ for model in os.listdir(domain_adaptation_path + "another_tulu_only_model/"):
     if "llama_2_7b-tulu_all_science_none_eval_no" not in model:
         tulu_model = "another_tulu_all_science_none"
         # TODO: fix characters
-        tulu_model_weight = float(model[11:14])
-        science_model_weight = float(model[25:28])
+        tulu_model_weight, science_model_weight = get_model_weights(model)
+        # tulu_model_weight = float(model[11:14])
+        # science_model_weight = float(model[25:28])
         if "200" in model:
             science_model = "tulu_none_science_200_eval_no"
         elif "1000" in model:
