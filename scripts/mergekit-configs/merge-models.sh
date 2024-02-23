@@ -1,1 +1,1 @@
-mergekit-yaml scripts/mergekit-configs/slerp_merges/auto_created/slerp-daves-tulu-0.5-science-2500-0.5.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/with_daves_tulu_model/slerp-0.5-tulu_only-0.5-science_2500 --cuda
+mergekit-yaml scripts/mergekit-configs/slerp_merges/auto_created/slerp-daves-tulu-0.84-science-2500-0.16.yml /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/with_daves_tulu_model/slerp-0.84-tulu_only-0.16-science_2500 --cuda
