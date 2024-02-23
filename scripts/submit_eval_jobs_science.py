@@ -48,6 +48,13 @@ experiment_groups = [
 lora = False
 
 datasets = [
+    "another_tulu_only_model/llama_2_7b-0.975-tulu_only-0.025-science_200",
+    "another_tulu_only_model/llama_2_7b-0.84-tulu_only-0.16-science_2500",
+    "merged_models/llama_2_7b-0.975-tulu_only-0.025-science_200",
+    "merged_models/llama_2_7b-0.84-tulu_only-0.16-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.84-tulu_only-0.16-science_2500",
+    "with_daves_tulu_model/llama_2_7b-0.975-tulu_only-0.025-science_200",
+
     # my new tulu model:
     # "another_tulu_only_model/llama_2_7b-tulu_all_science_none_eval_no",
     # "another_tulu_only_model/llama_2_7b-0.1-tulu_only-0.9-science_1000",
@@ -66,19 +73,19 @@ datasets = [
     # "another_tulu_only_model/llama_2_7b-0.5-tulu_only-0.5-science_2500",
     # "another_tulu_only_model/llama_2_7b-0.7-tulu_only-0.3-science_2500",
 
-    "another_tulu_only_model/llama_2_7b-0.9-tulu_only-0.1-science_2500",
-    "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_1000",
-    "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_1000",
-    "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_1000",
-    "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_1000",
-    "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_200",
-    "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_200",
-    "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_200",
-    "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_200",
-    "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_2500",
-    "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_2500",
-    "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_2500",
-    "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_2500",
+    # "another_tulu_only_model/llama_2_7b-0.9-tulu_only-0.1-science_2500",
+    # "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_1000",
+    # "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_200",
+    # "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_200",
+    # "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_200",
+    # "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_200",
+    # "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_2500",
+    # "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_2500",
+    # "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_2500",
+    # "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_2500",
 
     # with dave's models
     # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_1000",
