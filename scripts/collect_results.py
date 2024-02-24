@@ -11,6 +11,11 @@ rejected_files = [
     "merged_models-llama_2_7b-0.7-tulu_none_science_200_eval_no-0.3-tulu_no_science",
     "merged_models-llama_2_7b-0.8-tulu_none_science_200_eval_no-0.2-tulu_no_science",
     "merged_models-llama_2_7b-0.9-tulu_none_science_200_eval_no-0.1-tulu_no_science",
+    "bbh_cot",
+    "bbh_direct",
+    "codex_eval_temp_0.1",
+    "codex_eval_temp_0.8",
+    "gsm_direct",
 ]
 
 domain_adaptation_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/"
