@@ -16,6 +16,7 @@ rejected_files = [
     "codex_eval_temp_0.1",
     "codex_eval_temp_0.8",
     "gsm_direct",
+    "toxigen",
 ]
 
 domain_adaptation_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/"
