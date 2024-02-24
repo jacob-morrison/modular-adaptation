@@ -185,6 +185,9 @@ for model in tulu_evals:
 
 for model in os.listdir(domain_adaptation_path + "with_daves_tulu_model/"):
     model_path = domain_adaptation_path + "with_daves_tulu_model/" + model
+    merge_method = model.split('-')[0]
+    if merge_method == "llama-2-7b":
+        merge_method = "linear_weighted"
     if "daves_tulu_model" not in model:
         tulu_model = "daves_tulu_no_science"
         # TODO: fix characters
@@ -226,6 +229,7 @@ for model in os.listdir(domain_adaptation_path + "with_daves_tulu_model/"):
         "tulu_model_weight": tulu_model_weight,
         "science_model": science_model,
         "science_model_weight": science_model_weight,
+        "merge_method": merge_method,
     }
 
     with open(model_path + f"/bbh_cot/metrics.json") as f_in:
@@ -277,6 +281,9 @@ for model in os.listdir(domain_adaptation_path + "with_daves_tulu_model/"):
     full_data.append(model_data)
 
 for model in os.listdir(domain_adaptation_path + "another_tulu_only_model/"):
+    merge_method = model.split('-')[0]
+    if merge_method == "llama-2-7b":
+        merge_method = "linear_weighted"
     model_path = domain_adaptation_path + "another_tulu_only_model/" + model
     if "llama_2_7b-tulu_all_science_none_eval_no" not in model:
         tulu_model = "another_tulu_all_science_none"
@@ -319,6 +326,7 @@ for model in os.listdir(domain_adaptation_path + "another_tulu_only_model/"):
         "tulu_model_weight": tulu_model_weight,
         "science_model": science_model,
         "science_model_weight": science_model_weight,
+        "merge_method": merge_method,
     }
 
     with open(model_path + f"/bbh_cot/metrics.json") as f_in:
