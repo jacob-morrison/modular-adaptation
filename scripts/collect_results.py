@@ -17,7 +17,7 @@ domain_adaptation_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation
 tulu_evals_tmp = os.listdir(domain_adaptation_path)
 tulu_evals = []
 for string in tulu_evals_tmp:
-    print(string)
+    # print(string)
     if string not in rejected_files:
         tulu_evals.append(string)
 tulu_evals.remove("llama_2_7b-tulu_no_science") # can't delete this for some reason
@@ -25,6 +25,8 @@ tulu_evals.remove("science")
 tulu_evals.remove("with_daves_tulu_model")
 tulu_evals.remove("another_tulu_only_model")
 tulu_evals.remove("collected")
+
+print(tulu_evals)
 
 tulu_metrics = [
     "bbh_cot",
