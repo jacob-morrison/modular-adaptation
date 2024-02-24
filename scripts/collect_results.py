@@ -89,7 +89,7 @@ def collect_metrics(model_path):
 for model in tulu_evals:
     model_path = domain_adaptation_path + model
     merge_method = model.split('-')[0]
-    if merge_method == "llama-2-7b":
+    if merge_method == "llama_2_7b":
         merge_method = "linear_weighted"
     if "merged_models" in model:
         tulu_model = "tulu_no_science"
@@ -186,7 +186,7 @@ for model in tulu_evals:
 for model in os.listdir(domain_adaptation_path + "with_daves_tulu_model/"):
     model_path = domain_adaptation_path + "with_daves_tulu_model/" + model
     merge_method = model.split('-')[0]
-    if merge_method == "llama-2-7b":
+    if merge_method == "llama_2_7b":
         merge_method = "linear_weighted"
     if "daves_tulu_model" not in model:
         tulu_model = "daves_tulu_no_science"
@@ -282,7 +282,7 @@ for model in os.listdir(domain_adaptation_path + "with_daves_tulu_model/"):
 
 for model in os.listdir(domain_adaptation_path + "another_tulu_only_model/"):
     merge_method = model.split('-')[0]
-    if merge_method == "llama-2-7b":
+    if merge_method == "llama_2_7b":
         merge_method = "linear_weighted"
     model_path = domain_adaptation_path + "another_tulu_only_model/" + model
     if "llama_2_7b-tulu_all_science_none_eval_no" not in model:
