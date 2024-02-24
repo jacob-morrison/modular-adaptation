@@ -31,7 +31,7 @@ yaml_files = [
     # "scripts/mergekit-configs/slerp_merges/merge-daves-tulu-and-science-200-slerp-weighted.yml",
     # "scripts/mergekit-configs/slerp_merges/merge-daves-tulu-and-science-1000-slerp-weighted.yml",
     # "scripts/mergekit-configs/slerp_merges/merge-daves-tulu-and-science-2500-slerp-weighted.yml"
-    "scripts/mergekit-configs/dare_linear/merge-daves-tulu-and-science-2500-dare_linear-weighted.yml"
+    "scripts/mergekit-configs/ties/merge-daves-tulu-and-science-2500-ties-weighted.yml"
 ]
 
 output_dir = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/with_daves_tulu_model"
@@ -60,15 +60,15 @@ for yaml_file in yaml_files:
         d["models"][2]["parameters"]["weight"] = scienceWeight
 
         # merge models
-        name = f"dare_linear-daves-tulu-{tuluWeight}-science-{num_science}-{scienceWeight}"
-        fn = f"scripts/mergekit-configs/dare_linear/auto_created/{name}.yaml"
+        name = f"ties-daves-tulu-{tuluWeight}-science-{num_science}-{scienceWeight}"
+        fn = f"scripts/mergekit-configs/ties/auto_created/{name}.yaml"
         file = open(fn, "w")
         yaml.dump(d, file, default_flow_style=True)
         file.close()
 
         cmd = "beaker experiment create {} --workspace ai2/modular_adaptation".format(fn)
-        cmd = (f"mergekit-yaml scripts/mergekit-configs/dare_linear/auto_created/{name}.yaml "
-                f"{output_dir}/dare_linear-{tuluWeight}-tulu_only-{scienceWeight}-science_{num_science} "
+        cmd = (f"mergekit-yaml scripts/mergekit-configs/ties/auto_created/{name}.yaml "
+                f"{output_dir}/ties-{tuluWeight}-tulu_only-{scienceWeight}-science_{num_science} "
                 "--cuda")
         print(cmd)
         # subprocess.Popen(cmd, shell=True)

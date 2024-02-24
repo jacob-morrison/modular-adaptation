@@ -1,5 +1,5 @@
 {base_model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/baselines/base_llama_2_7b_resized/,
-  dtype: float16, merge_method: ties, models: [{model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B},
+  dtype: float16, merge_method: ties, models: [{model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/baselines/base_llama_2_7b_resized/},
     {model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/daves-tulu-model,
       parameters: {density: 0.5, weight: 0.4}}, {model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_none_science_2500_eval_no,
       parameters: {density: 0.5, weight: 0.6}}]}
