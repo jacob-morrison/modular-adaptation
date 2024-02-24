@@ -48,10 +48,47 @@ experiment_groups = [
 lora = False
 
 datasets = [
-    # start some slerp merges:
-    "with_daves_tulu_model/slerp-0.5-tulu_only-0.5-science_2500",
-    "with_daves_tulu_model/slerp-0.84-tulu_only-0.16-science_2500",
+    # merges to do
+    "with_daves_tulu_model/dare_linear-0.1-tulu_only-0.9-science_2500",
+    "with_daves_tulu_model/dare_linear-0.2-tulu_only-0.8-science_2500",
+    "with_daves_tulu_model/dare_linear-0.3-tulu_only-0.7-science_2500",
+    "with_daves_tulu_model/dare_linear-0.4-tulu_only-0.6-science_2500",
+    "with_daves_tulu_model/dare_linear-0.5-tulu_only-0.5-science_2500",
+    "with_daves_tulu_model/dare_linear-0.6-tulu_only-0.4-science_2500",
+    "with_daves_tulu_model/dare_linear-0.7-tulu_only-0.3-science_2500",
+    "with_daves_tulu_model/dare_linear-0.8-tulu_only-0.2-science_2500",
+    "with_daves_tulu_model/dare_linear-0.84-tulu_only-0.16-science_2500",
+    "with_daves_tulu_model/dare_linear-0.9-tulu_only-0.1-science_2500",
 
+    # "with_daves_tulu_model/dare_ties-0.1-tulu_only-0.9-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.2-tulu_only-0.8-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.3-tulu_only-0.7-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.4-tulu_only-0.6-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.5-tulu_only-0.5-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.6-tulu_only-0.4-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.7-tulu_only-0.3-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.8-tulu_only-0.2-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.84-tulu_only-0.16-science_2500",
+    # "with_daves_tulu_model/dare_ties-0.9-tulu_only-0.1-science_2500",
+
+    # "with_daves_tulu_model/ties-0.1-tulu_only-0.9-science_2500",
+    # "with_daves_tulu_model/ties-0.2-tulu_only-0.8-science_2500",
+    # "with_daves_tulu_model/ties-0.3-tulu_only-0.7-science_2500",
+    # "with_daves_tulu_model/ties-0.4-tulu_only-0.6-science_2500",
+    # "with_daves_tulu_model/ties-0.5-tulu_only-0.5-science_2500",
+    # "with_daves_tulu_model/ties-0.6-tulu_only-0.4-science_2500",
+    # "with_daves_tulu_model/ties-0.7-tulu_only-0.3-science_2500",
+    # "with_daves_tulu_model/ties-0.8-tulu_only-0.2-science_2500",
+    # "with_daves_tulu_model/ties-0.84-tulu_only-0.16-science_2500",
+    # "with_daves_tulu_model/ties-0.9-tulu_only-0.1-science_2500",
+
+    # "with_daves_tulu_model/slerp-0.5-tulu_only-0.5-science_2500",
+    # "with_daves_tulu_model/slerp-0.84-tulu_only-0.16-science_2500",
+
+    # done
+
+
+    # old:
     # "another_tulu_only_model/llama_2_7b-0.975-tulu_only-0.025-science_200",
     # "another_tulu_only_model/llama_2_7b-0.84-tulu_only-0.16-science_2500",
     # "merged_models/llama_2_7b-0.975-tulu_only-0.025-science_200",
