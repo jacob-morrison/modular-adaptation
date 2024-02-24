@@ -80,6 +80,9 @@ def collect_metrics(model_path):
 
 for model in tulu_evals:
     model_path = domain_adaptation_path + model
+    merge_method = model.split('-')[0]
+    if merge_method == "llama-2-7b":
+        merge_method = "linear_weighted"
     if "merged_models" in model:
         tulu_model = "tulu_no_science"
         # TODO: fix characters
@@ -121,6 +124,7 @@ for model in tulu_evals:
         "tulu_model_weight": tulu_model_weight,
         "science_model": science_model,
         "science_model_weight": science_model_weight,
+        "merge_method": merge_method,
     }
 
     with open(model_path + f"/bbh_cot/metrics.json") as f_in:
