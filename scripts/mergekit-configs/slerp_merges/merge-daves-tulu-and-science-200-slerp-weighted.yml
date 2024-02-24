@@ -1,7 +1,9 @@
 slices:
   - sources:
       - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/daves-tulu-model/
+        layer_range: [0, 32]
       - model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/llama_2_7b-tulu_none_science_200_eval_no
+        layer_range: [0, 32]
 merge_method: slerp
 base_model: /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/daves-tulu-model/
 parameters:
