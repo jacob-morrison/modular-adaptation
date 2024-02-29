@@ -28,26 +28,31 @@ merge_models = False
 
 # modify here for different set of experiments
 experiment_groups = [
-    "mmlu_0shot",
-    "mmlu_5shot",
-    "gsm_direct",
-    "gsm_cot",
-    "bbh_direct",
-    "bbh_cot",
-    "tydiqa_goldp_1shot",
-    "tydiqa_no_context_1shot",
-    "toxigen",
-    "codex_eval_temp_0.1",
-    "codex_eval_temp_0.8",
+    # "mmlu_0shot",
+    # "mmlu_5shot",
+    # "gsm_direct",
+    # "gsm_cot",
+    # "bbh_direct",
+    # "bbh_cot",
+    # "tydiqa_goldp_1shot",
+    # "tydiqa_no_context_1shot",
+    # "toxigen",
+    # "codex_eval_temp_0.1",
+    # "codex_eval_temp_0.8",
+
+    "truthfulqa",
 
     ### Need an OpenAI API Key
-    # "truthfulqa",
     # "alpaca_farm",
 ]
 
 lora = False
 
 datasets = [
+    "daves-tulu-model"
+
+    # old:
+
     # merges to do
     # "with_daves_tulu_model/dare_linear-0.1-tulu_only-0.9-science_2500",
     # "with_daves_tulu_model/dare_linear-0.2-tulu_only-0.8-science_2500",
@@ -82,19 +87,18 @@ datasets = [
     # "with_daves_tulu_model/ties-0.84-tulu_only-0.16-science_2500",
     # "with_daves_tulu_model/ties-0.9-tulu_only-0.1-science_2500",
 
-    "with_daves_tulu_model/slerp-0.1-tulu_only-0.9-science_2500",
-    "with_daves_tulu_model/slerp-0.2-tulu_only-0.8-science_2500",
-    "with_daves_tulu_model/slerp-0.3-tulu_only-0.7-science_2500",
-    "with_daves_tulu_model/slerp-0.4-tulu_only-0.6-science_2500",
-    "with_daves_tulu_model/slerp-0.5-tulu_only-0.5-science_2500",
-    "with_daves_tulu_model/slerp-0.6-tulu_only-0.4-science_2500",
-    "with_daves_tulu_model/slerp-0.7-tulu_only-0.3-science_2500",
-    "with_daves_tulu_model/slerp-0.8-tulu_only-0.2-science_2500",
-    "with_daves_tulu_model/slerp-0.84-tulu_only-0.16-science_2500",
-    "with_daves_tulu_model/slerp-0.9-tulu_only-0.1-science_2500",
+    # "with_daves_tulu_model/slerp-0.1-tulu_only-0.9-science_2500",
+    # "with_daves_tulu_model/slerp-0.2-tulu_only-0.8-science_2500",
+    # "with_daves_tulu_model/slerp-0.3-tulu_only-0.7-science_2500",
+    # "with_daves_tulu_model/slerp-0.4-tulu_only-0.6-science_2500",
+    # "with_daves_tulu_model/slerp-0.5-tulu_only-0.5-science_2500",
+    # "with_daves_tulu_model/slerp-0.6-tulu_only-0.4-science_2500",
+    # "with_daves_tulu_model/slerp-0.7-tulu_only-0.3-science_2500",
+    # "with_daves_tulu_model/slerp-0.8-tulu_only-0.2-science_2500",
+    # "with_daves_tulu_model/slerp-0.84-tulu_only-0.16-science_2500",
+    # "with_daves_tulu_model/slerp-0.9-tulu_only-0.1-science_2500",
 
     # done
-
 
     # old:
     # "another_tulu_only_model/llama_2_7b-0.975-tulu_only-0.025-science_200",
@@ -436,10 +440,10 @@ if not merge_models:
                 --save_dir {save_dir} \
                 --model_name_or_path {model_path} \
                 --tokenizer_name_or_path {model_path} \
-                --metrics judge info mc \
+                --metrics truth info mc \
                 --preset qa \
-                --gpt_judge_model_name curie:ft-allennlp:gpt-judge-2023-07-26-09-37-48 \
-                --gpt_info_model_name curie:ft-allennlp:gpt-info-2023-07-26-11-38-18 \
+                --hf_truth_model_name_or_path allenai/truthfulqa-truth-judge-llama2-7B \
+                --hf_info_model_name_or_path allenai/truthfulqa-info-judge-llama2-7B \
                 --eval_batch_size 20 \
                 --load_in_8bit \
                 --use_chat_format \
