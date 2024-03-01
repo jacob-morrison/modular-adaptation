@@ -1,0 +1,11 @@
+task,bioasq,biored,discomat,evidence_inference,evidence_inference,evidence_inference,multicite,mup,qasper,scierc,scifact,scifact,scifact,mean,median
+metric,f1,f1,bleu,f1_exact,f1_overlap,f1_substring,f1,bleu,bleu,f1,f1_evidence_sent,f1_evidence_token,f1_label,null,null
+tulu_all_science_1000_eval_no,0.10,0.51,0.03,0.00,0.00,0.00,0.41,0.01,0.10,0.26,0.40,0.49,0.69,0.25,0.18
+tulu_all_science_200_eval_no,0.42,0.38,0.31,0.00,0.00,0.00,0.45,0.01,0.08,0.25,0.29,0.35,0.51,0.27,0.30
+tulu_all_science_2500_eval_no,0.46,0.51,0.47,0.00,0.01,0.00,0.51,0.02,0.09,0.30,0.34,0.37,0.47,0.32,0.40
+my_bad_tulu_all_science_none,0.27,0.12,0.03,0.00,0.00,0.00,0.33,0.02,0.04,0.00,0.15,0.29,0.55,0.15,0.08
+another_tulu_all_science_none,0.09,0.18,0.05,0.00,0.03,0.01,0.33,0.01,0.04,0.03,0.06,0.18,0.50,0.13,0.05
+tulu_none_science_1000_eval_no,0.39,0.37,0.01,0.00,0.00,0.00,0.38,0.01,0.11,0.32,0.05,0.07,0.08,0.17,0.10
+tulu_none_science_200_eval_no,0.41,0.26,0.38,0.00,0.00,0.00,0.42,0.01,0.08,0.19,0.02,0.02,0.03,0.18,0.14
+tulu_none_science_2500_eval_no,0.45,0.55,0.43,0.00,0.00,0.00,0.51,0.01,0.11,0.26,0.34,0.39,0.60,0.33,0.38
+daves_tulu_all_science_none,0.36,0.18,0.27,0.00,0.04,0.00,0.31,0.02,0.05,0.07,0.26,0.38,0.56,0.21,0.22
