@@ -28,28 +28,33 @@ merge_models = False
 
 # modify here for different set of experiments
 experiment_groups = [
-    # "mmlu_0shot",
-    # "mmlu_5shot",
-    # "gsm_direct",
-    # "gsm_cot",
-    # "bbh_direct",
-    # "bbh_cot",
-    # "tydiqa_goldp_1shot",
-    # "tydiqa_no_context_1shot",
-    # "toxigen",
-    # "codex_eval_temp_0.1",
-    # "codex_eval_temp_0.8",
-
-    # "truthfulqa",
-
-    ### Need an OpenAI API Key
+    "mmlu_0shot",
+    "mmlu_5shot",
+    "gsm_direct",
+    "gsm_cot",
+    "bbh_direct",
+    "bbh_cot",
+    "tydiqa_goldp_1shot",
+    "tydiqa_no_context_1shot",
+    "toxigen",
+    "codex_eval_temp_0.1",
+    "codex_eval_temp_0.8",
+    "truthfulqa",
     "alpaca_farm",
 ]
 
 lora = False
 
 datasets = [
-    "daves-tulu-model"
+    ("01HQVW2761BAF4JMD31YESTZWX", "llama_2_7b-tulu_none-science_100", "/model"),
+    ("01HQW32DZGYQTWPX7Q8XYJS4CB", "llama_2_7b-tulu_none-science_200", "/model"),
+    ("01HQW98WC34DAXR596V7WDZGTT", "llama_2_7b-tulu_none-science_500", "/model"),
+    ("01HQVZSGJRJTY2GQD6N7RMK5G4", "llama_2_7b-tulu_none-science_1000", "/model"),
+    ("01HQXNRAHA3Z08504TGNMP6VD5", "llama_2_7b-tulu_none-science_2500", "/model"),
+]
+
+# datasets = [
+    # "daves-tulu-model"
 
     # old:
 
@@ -255,7 +260,7 @@ datasets = [
     # 'merged-models/merge-top-4-subsets-dare-linear-weighted',
     
     # '/model' # for mounted datasets
-]
+# ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
 models = [    
@@ -273,34 +278,33 @@ models = [
 if not merge_models:
     # for experiment_group, model_info in itertools.product(experiment_groups, models):
     # for dataset, model_info, experiment_group in itertools.product(pairwise_trained_datasets, models, experiment_groups):
-    for dataset, model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
-        if dataset != "/model":
-            model_path = f'/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/{dataset}/'
-        else:
-            model_path = "/model"
+    for (beaker, model_name, model_path), model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
+        # if dataset != "/model":
+        #     model_path = f'/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/{dataset}/'
+        # else:
+        #     model_path = "/model"
         # print(f"Submitting {experiment_group} for model: {dataset}")
         d = copy.deepcopy(d1)
 
-        model_name = model_info[0] + f"_{model_info[2]}" if model_info[2] is not None else model_info[0]
-        if lora:
-            name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}_{today}".replace('/', '-')
-        else:
-            name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}_{today}".replace('/', '-')
-            short_name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}".replace('/', '-')
-            shorter_name = short_name.replace('llama_2_7b', '')
+        # model_name = model_info[0] + f"_{model_info[2]}" if model_info[2] is not None else model_info[0]
+        # if lora:
+            # name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}_{today}".replace('/', '-')
+        # else:
+        name = f"open_instruct_eval_{experiment_group}_{model_name}".replace('/', '-')
+        # shorter_name = name.replace('llama_2_7b-', '')
 
-        if dataset == "/model":
-            # need to update default_eval.yaml as well
-            d['tasks'][0]['datasets'][1]['source']['beaker'] = "01HKG46RNVAP3NSHNDH019R5KB" # model_info[1]
+        # if dataset == "/model":
+        d['tasks'][0]['datasets'][1]['source']['beaker'] = beaker
         d['description'] = name
-        d['tasks'][0]['name'] = shorter_name
+        d['tasks'][0]['name'] = name
 
-        if "dave" in dataset or "another" in dataset:
-            save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset}/{experiment_group}/"
-        else:
-            save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace('/', '-')}/{experiment_group}/"
+        # if "dave" in dataset or "another" in dataset:
+        #     save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset}/{experiment_group}/"
+        # else:
+        #     save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace('/', '-')}/{experiment_group}/"
         # save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/with_daves_tulu_model/daves_tulu_model/{experiment_group}/"
         # save_dir = "/output/"
+        save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/baselines/{model_name}/{experiment_group}/"
 
         if experiment_group == "mmlu_0shot":
             d['tasks'][0]['arguments'][0] = f'''

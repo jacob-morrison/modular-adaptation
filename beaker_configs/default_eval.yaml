@@ -39,9 +39,9 @@ tasks:
       - mountPath: /data/
         source:
           beaker: Yizhongw03/open_instruct_eval_data
-      # - mountPath: /model
-      #   source:
-      #     beaker: default-image-dataset
+      - mountPath: /model
+        source:
+          beaker: default-image-dataset
       - mountPath: /net/nfs.cirrascale
         source:
           hostPath: /net/nfs.cirrascale
