@@ -144,12 +144,12 @@ for model in os.listdir(baselines_path):
     print(f"Evaluating {model_path}")
     full_data.append(collect_metrics(model_path))
 
-print()
-print("Starting merged models")
-for model in os.listdir(merged_models_path):
-    model_path = merged_models_path + model
-    print(f"Evaluating {model_path}")
-    full_data.append(collect_metrics(model_path, merged=True))
+# print()
+# print("Starting merged models")
+# for model in os.listdir(merged_models_path):
+#     model_path = merged_models_path + model
+#     print(f"Evaluating {model_path}")
+#     full_data.append(collect_metrics(model_path, merged=True))
 
 # from pprint import pprint
 # pprint(full_data)
