@@ -35,7 +35,7 @@ accelerate launch \
     --warmup_ratio 0.03 \
     --weight_decay 0. \
     --num_train_epochs 2 \
-    --output_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/training_curves/tulu_all_science_none_eval_no_5/ \
+    --output_dir /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/training_curves/tulu_all_science_none_eval_no_5-2/ \
     --with_tracking \
     --report_to tensorboard \
     --logging_steps 1 \

@@ -40,10 +40,10 @@ experiment_groups = [
     # "codex_eval_temp_0.1",
     # "codex_eval_temp_0.8",
 
-    "truthfulqa",
+    # "truthfulqa",
 
     ### Need an OpenAI API Key
-    # "alpaca_farm",
+    "alpaca_farm",
 ]
 
 lora = False
