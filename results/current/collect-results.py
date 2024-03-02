@@ -76,6 +76,7 @@ def collect_metrics(model_path, merged=False):
             science_model_weight = 1.0
 
     model_data = {
+        "model_key": model_name,
         "base_model": base_model,
         "tulu_model": tulu_model,
         "tulu_model_weight": tulu_model_weight,
