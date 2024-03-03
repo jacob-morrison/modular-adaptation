@@ -29,24 +29,20 @@ merge_methods = [
 
 tulu_file = "/tulu_all"
 
-base_yaml = "scripts/merge_models/merge-linear-base.yaml"
-
-d1 = yaml.load(base_yaml, Loader=yaml.FullLoader)
-
 def print_and_run(cmd):
     print(cmd)
     subprocess.run(cmd, shell=True)
 
 for merge_method in merge_methods:
+    base_yaml = "scripts/merge_models/merge-linear-base.yaml"
+    with open(base_yaml, 'r') as f:
+        d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
     for (tuluWeight, scienceWeight) in weights:
         for science_amount in science_files:
             # Copy yaml
             d = copy.deepcopy(d1)
 
             # Set merge-specific parameters
-            print(d)
-            print(d["models"])
-            print(d["models"][0])
             d["models"][0]["model"] = tulu_file
             d["models"][0]["parameters"]["weight"] = tuluWeight
             d["models"][1]["model"] = science_files[science_amount]
