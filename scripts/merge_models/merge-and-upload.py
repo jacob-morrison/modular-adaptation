@@ -34,7 +34,7 @@ def print_and_run(cmd):
     subprocess.run(cmd, shell=True)
 
 for merge_method in merge_methods:
-    base_yaml = "scripts/merge_models/merge-linear-base.yaml"
+    base_yaml = "scripts/merge_models/merge-linear-base.yml"
     with open(base_yaml, 'r') as f:
         d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
     for (tuluWeight, scienceWeight) in weights:
