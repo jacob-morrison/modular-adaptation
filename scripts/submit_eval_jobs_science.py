@@ -46,238 +46,80 @@ experiment_groups = [
 lora = False
 
 datasets = [
-    # ("01HQVW2761BAF4JMD31YESTZWX", "llama_2_7b-tulu_none-science_100", "/model"),
-    # ("01HQW32DZGYQTWPX7Q8XYJS4CB", "llama_2_7b-tulu_none-science_200", "/model"),
-    # ("01HQW98WC34DAXR596V7WDZGTT", "llama_2_7b-tulu_none-science_500", "/model"),
-    # ("01HQVZSGJRJTY2GQD6N7RMK5G4", "llama_2_7b-tulu_none-science_1000", "/model"),
-    # ("01HQXNRAHA3Z08504TGNMP6VD5", "llama_2_7b-tulu_none-science_2500", "/model"),
+    # ("01HQVW2761BAF4JMD31YESTZWX", "llama_2_7b-tulu_none-science_100", "/model", "baselines"),
+    # ("01HQW32DZGYQTWPX7Q8XYJS4CB", "llama_2_7b-tulu_none-science_200", "/model", "baselines"),
+    # ("01HQW98WC34DAXR596V7WDZGTT", "llama_2_7b-tulu_none-science_500", "/model", "baselines"),
+    # ("01HQVZSGJRJTY2GQD6N7RMK5G4", "llama_2_7b-tulu_none-science_1000", "/model", "baselines"),
+    # ("01HQXNRAHA3Z08504TGNMP6VD5", "llama_2_7b-tulu_none-science_2500", "/model", "baselines"),
 
-    # ("01HR0C4NR36RF6YG3PTYK21H0X", "llama_2_7b-tulu_all-science_none-seed_42", "/model"),
-    # ("01HR0DJCFPX98BHS4RSD46MGDQ", "llama_2_7b-tulu_all-science_none-seed_123", "/model"),
-    # ("01HR0QTFF2QMFHB160MWJ8CFS9", "llama_2_7b-tulu_none-science_1000-seed_123", "/model"),
-    # ("01HR13H0FV4B77MKQJPW9CB7BD", "llama_2_7b-tulu_none-science_1000-seed_52830", "/model"),
+    # ("01HR0C4NR36RF6YG3PTYK21H0X", "llama_2_7b-tulu_all-science_none-seed_42", "/model", "baselines"),
+    # ("01HR0DJCFPX98BHS4RSD46MGDQ", "llama_2_7b-tulu_all-science_none-seed_123", "/model", "baselines"),
+    # ("01HR0QTFF2QMFHB160MWJ8CFS9", "llama_2_7b-tulu_none-science_1000-seed_123", "/model", "baselines"),
+    # ("01HR13H0FV4B77MKQJPW9CB7BD", "llama_2_7b-tulu_none-science_1000-seed_52830", "/model", "baselines"),
 
     # continued finetuning:
-    ("01HR1640TEQAHJMSWCQJW4FF6J", "tulu_2_7b_continued_ft-tulu_none-science_100", "/model")
-    ("01HR18P3ZY4EHHV5KEXSS5CFWV", "tulu_2_7b_continued_ft-tulu_none-science_200", "/model")
-    ("", "tulu_2_7b_continued_ft-tulu_none-science_500", "/model")
-    ("", "tulu_2_7b_continued_ft-tulu_none-science_1000", "/model")
-    ("", "tulu_2_7b_continued_ft-tulu_none-science_2500", "/model")
-    # ("", "tulu_2_7b_continued_ft-tulu_match-science_100", "/model")
-    # ("", "tulu_2_7b_continued_ft-tulu_match-science_200", "/model")
-    # ("", "tulu_2_7b_continued_ft-tulu_match-science_500", "/model")
-    # ("", "tulu_2_7b_continued_ft-tulu_match-science_1000", "/model")
-    # ("", "tulu_2_7b_continued_ft-tulu_match-science_2500", "/model")
+    ("01HR1640TEQAHJMSWCQJW4FF6J", "tulu_2_7b_continued_ft-tulu_none-science_100", "/model", "baselines"),
+    ("01HR18P3ZY4EHHV5KEXSS5CFWV", "tulu_2_7b_continued_ft-tulu_none-science_200", "/model", "baselines"),
+    ("01HR1EEPG578W05YHV6MRN1TMV", "tulu_2_7b_continued_ft-tulu_none-science_500", "/model", "baselines"),
+    ("", "tulu_2_7b_continued_ft-tulu_none-science_1000", "/model", "baselines"),
+    ("", "tulu_2_7b_continued_ft-tulu_none-science_2500", "/model", "baselines"),
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_100", "/model", "baselines"),
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_200", "/model", "baselines"),
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_500", "/model", "baselines"),
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_1000", "/model", "baselines"),
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_2500", "/model", "baselines"),
+
+    # Merged models:
+    # ("01HR1DXMHWC68VF29PVBKS5XHF", "linear_weighted-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
+    # ("01HR1FKFG7THD3W3NT7AN3CG7Z", "linear_weighted-llama_2_7b-tulu_all_0.2-science_100_0.8", "/model", "merged_models"),
+    # ("01HR1H98XMHCMWY14PSV9GSEPT", "linear_weighted-llama_2_7b-tulu_all_0.3-science_100_0.7", "/model", "merged_models"),
+    # ("01HR1JSMA5C4HT4RQ8N735SZDC", "linear_weighted-llama_2_7b-tulu_all_0.4-science_100_0.6", "/model", "merged_models"),
+    # ("01HR1MECQQGG3099GYEMBS0C2V", "linear_weighted-llama_2_7b-tulu_all_0.5-science_100_0.5", "/model", "merged_models"),
+    # ("01HR1P76BBM78HP3G90DHZ9BTM", "linear_weighted-llama_2_7b-tulu_all_0.6-science_100_0.4", "/model", "merged_models"),
+    # ("01HR1R0ZN268ZKJ92S3DN2HFCD", "linear_weighted-llama_2_7b-tulu_all_0.7-science_100_0.3", "/model", "merged_models"),
+    # ("01HR1SM405T0CFD93BXXKJZ801", "linear_weighted-llama_2_7b-tulu_all_0.8-science_100_0.2", "/model", "merged_models"),
+    # ("01HR1VA7WPNB5917CGWMCFQVQC", "linear_weighted-llama_2_7b-tulu_all_0.9-science_100_0.1", "/model", "merged_models"),
+
+    # ("01HR1E7WBFW1QFPD6R2D9VEXV1", "linear_weighted-llama_2_7b-tulu_all_0.1-science_200_0.9", "/model", "merged_models"),
+    # ("01HR1FY3ZBY2P8FMTVE1M90YSR", "linear_weighted-llama_2_7b-tulu_all_0.2-science_200_0.8", "/model", "merged_models"),
+    # ("01HR1HKNBZK07A94QS1ERNR3NC", "linear_weighted-llama_2_7b-tulu_all_0.3-science_200_0.7", "/model", "merged_models"),
+    # ("01HR1K48WJPCE1EJ9GDXQRPXRQ", "linear_weighted-llama_2_7b-tulu_all_0.4-science_200_0.6", "/model", "merged_models"),
+    # ("01HR1MS7CDTT3J2G35XSAGPK3Z", "linear_weighted-llama_2_7b-tulu_all_0.5-science_200_0.5", "/model", "merged_models"),
+    # ("01HR1PKYWBASRSPQQ132VDXQ4S", "linear_weighted-llama_2_7b-tulu_all_0.6-science_200_0.4", "/model", "merged_models"),
+    # ("01HR1RBJG2K6K7RPXZPY2ENDSS", "linear_weighted-llama_2_7b-tulu_all_0.7-science_200_0.3", "/model", "merged_models"),
+    # ("01HR1SYX83HK4FVX09G8BQ4KMV", "linear_weighted-llama_2_7b-tulu_all_0.8-science_200_0.2", "/model", "merged_models"),
+    # ("01HR1VME4FMFVAAWXZ93875DHN", "linear_weighted-llama_2_7b-tulu_all_0.9-science_200_0.1", "/model", "merged_models"),
+
+    # ("01HR1EJRGNFZNJTM597J4PW70C", "linear_weighted-llama_2_7b-tulu_all_0.1-science_500_0.9", "/model", "merged_models"),
+    # ("01HR1G8J9PANW5039P9BSWP0HM", "linear_weighted-llama_2_7b-tulu_all_0.2-science_500_0.8", "/model", "merged_models"),
+    # ("01HR1HYJK2P8BVZP18F629QDGQ", "linear_weighted-llama_2_7b-tulu_all_0.3-science_500_0.7", "/model", "merged_models"),
+    # ("01HR1KEV7ZM1Y3M95D01HW18WZ", "linear_weighted-llama_2_7b-tulu_all_0.4-science_500_0.6", "/model", "merged_models"),
+    # ("01HR1N404F41QV9Q2RK7WQ4GGR", "linear_weighted-llama_2_7b-tulu_all_0.5-science_500_0.5", "/model", "merged_models"),
+    # ("01HR1Q0WDERCYYNXFJ6TPDD12X", "linear_weighted-llama_2_7b-tulu_all_0.6-science_500_0.4", "/model", "merged_models"),
+    # ("01HR1RNDNJM9SQ6W4QX2RJGM2J", "linear_weighted-llama_2_7b-tulu_all_0.7-science_500_0.3", "/model", "merged_models"),
+    # ("01HR1T9E5JEEJDW3PJJA7HWKCC", "linear_weighted-llama_2_7b-tulu_all_0.8-science_500_0.2", "/model", "merged_models"),
+    # ("01HR1VZ8Z02SM8Q7FAV9Y75T1N", "linear_weighted-llama_2_7b-tulu_all_0.9-science_500_0.1", "/model", "merged_models"),
+
+    # ("01HR1EXQ4QYCFP2PWQMYKNGQ2Q", "linear_weighted-llama_2_7b-tulu_all_0.1-science_1000_0.9", "/model", "merged_models"),
+    # ("01HR1GK1DSWQZ1GXMKR774MR94", "linear_weighted-llama_2_7b-tulu_all_0.2-science_1000_0.8", "/model", "merged_models"),
+    # ("01HR1J93KY0X6NTSY9XSFWYNT3", "linear_weighted-llama_2_7b-tulu_all_0.3-science_1000_0.7", "/model", "merged_models"),
+    # ("01HR1KSJSN04VXSGY81F42QAPF", "linear_weighted-llama_2_7b-tulu_all_0.4-science_1000_0.6", "/model", "merged_models"),
+    # ("01HR1NF26VA6R88CBKJH2V9WTN", "linear_weighted-llama_2_7b-tulu_all_0.5-science_1000_0.5", "/model", "merged_models"),
+    # ("01HR1QBJZQPDQAKY6NBG7MJPWK", "linear_weighted-llama_2_7b-tulu_all_0.6-science_1000_0.4", "/model", "merged_models"),
+    # ("01HR1RZR4MM7EPX12YVZRX0J2B", "linear_weighted-llama_2_7b-tulu_all_0.7-science_1000_0.3", "/model", "merged_models"),
+    # ("01HR1TMEXWQYSE2M6T4TFEY4NQ", "linear_weighted-llama_2_7b-tulu_all_0.8-science_1000_0.2", "/model", "merged_models"),
+    # ("01HR1W9T40B11V0QYF2QR4WFJP", "linear_weighted-llama_2_7b-tulu_all_0.9-science_1000_0.1", "/model", "merged_models"),
+
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.1-science_2500_0.9", "/model", "merged_models"),
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.2-science_2500_0.8", "/model", "merged_models"),
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.3-science_2500_0.7", "/model", "merged_models"),
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.4-science_2500_0.6", "/model", "merged_models"),
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.5-science_2500_0.5", "/model", "merged_models"),
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.6-science_2500_0.4", "/model", "merged_models"),
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.7-science_2500_0.3", "/model", "merged_models"),
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.8-science_2500_0.2", "/model", "merged_models"),
+    # ("", "linear_weighted-llama_2_7b-tulu_all_0.9-science_2500_0.1", "/model", "merged_models"),
 ]
-
-# datasets = [
-    # "daves-tulu-model"
-
-    # old:
-
-    # merges to do
-    # "with_daves_tulu_model/dare_linear-0.1-tulu_only-0.9-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.2-tulu_only-0.8-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.3-tulu_only-0.7-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.4-tulu_only-0.6-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.5-tulu_only-0.5-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.6-tulu_only-0.4-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.7-tulu_only-0.3-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.8-tulu_only-0.2-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.84-tulu_only-0.16-science_2500",
-    # "with_daves_tulu_model/dare_linear-0.9-tulu_only-0.1-science_2500",
-
-    # "with_daves_tulu_model/dare_ties-0.1-tulu_only-0.9-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.2-tulu_only-0.8-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.3-tulu_only-0.7-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.4-tulu_only-0.6-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.5-tulu_only-0.5-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.6-tulu_only-0.4-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.7-tulu_only-0.3-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.8-tulu_only-0.2-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.84-tulu_only-0.16-science_2500",
-    # "with_daves_tulu_model/dare_ties-0.9-tulu_only-0.1-science_2500",
-
-    # "with_daves_tulu_model/ties-0.1-tulu_only-0.9-science_2500",
-    # "with_daves_tulu_model/ties-0.2-tulu_only-0.8-science_2500",
-    # "with_daves_tulu_model/ties-0.3-tulu_only-0.7-science_2500",
-    # "with_daves_tulu_model/ties-0.4-tulu_only-0.6-science_2500",
-    # "with_daves_tulu_model/ties-0.5-tulu_only-0.5-science_2500",
-    # "with_daves_tulu_model/ties-0.6-tulu_only-0.4-science_2500",
-    # "with_daves_tulu_model/ties-0.7-tulu_only-0.3-science_2500",
-    # "with_daves_tulu_model/ties-0.8-tulu_only-0.2-science_2500",
-    # "with_daves_tulu_model/ties-0.84-tulu_only-0.16-science_2500",
-    # "with_daves_tulu_model/ties-0.9-tulu_only-0.1-science_2500",
-
-    # "with_daves_tulu_model/slerp-0.1-tulu_only-0.9-science_2500",
-    # "with_daves_tulu_model/slerp-0.2-tulu_only-0.8-science_2500",
-    # "with_daves_tulu_model/slerp-0.3-tulu_only-0.7-science_2500",
-    # "with_daves_tulu_model/slerp-0.4-tulu_only-0.6-science_2500",
-    # "with_daves_tulu_model/slerp-0.5-tulu_only-0.5-science_2500",
-    # "with_daves_tulu_model/slerp-0.6-tulu_only-0.4-science_2500",
-    # "with_daves_tulu_model/slerp-0.7-tulu_only-0.3-science_2500",
-    # "with_daves_tulu_model/slerp-0.8-tulu_only-0.2-science_2500",
-    # "with_daves_tulu_model/slerp-0.84-tulu_only-0.16-science_2500",
-    # "with_daves_tulu_model/slerp-0.9-tulu_only-0.1-science_2500",
-
-    # done
-
-    # old:
-    # "another_tulu_only_model/llama_2_7b-0.975-tulu_only-0.025-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.84-tulu_only-0.16-science_2500",
-    # "merged_models/llama_2_7b-0.975-tulu_only-0.025-science_200",
-    # "merged_models/llama_2_7b-0.84-tulu_only-0.16-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.84-tulu_only-0.16-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.975-tulu_only-0.025-science_200",
-
-    # my new tulu model:
-    # "another_tulu_only_model/llama_2_7b-tulu_all_science_none_eval_no",
-    # "another_tulu_only_model/llama_2_7b-0.1-tulu_only-0.9-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.3-tulu_only-0.7-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.5-tulu_only-0.5-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.7-tulu_only-0.3-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.9-tulu_only-0.1-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.1-tulu_only-0.9-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.3-tulu_only-0.7-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.5-tulu_only-0.5-science_200",
-
-    # "another_tulu_only_model/llama_2_7b-0.7-tulu_only-0.3-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.9-tulu_only-0.1-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.1-tulu_only-0.9-science_2500",
-    # "another_tulu_only_model/llama_2_7b-0.3-tulu_only-0.7-science_2500",
-    # "another_tulu_only_model/llama_2_7b-0.5-tulu_only-0.5-science_2500",
-    # "another_tulu_only_model/llama_2_7b-0.7-tulu_only-0.3-science_2500",
-
-    # "another_tulu_only_model/llama_2_7b-0.9-tulu_only-0.1-science_2500",
-    # "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_1000",
-    # "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_200",
-    # "another_tulu_only_model/llama_2_7b-0.2-tulu_only-0.8-science_2500",
-    # "another_tulu_only_model/llama_2_7b-0.4-tulu_only-0.6-science_2500",
-    # "another_tulu_only_model/llama_2_7b-0.6-tulu_only-0.4-science_2500",
-    # "another_tulu_only_model/llama_2_7b-0.8-tulu_only-0.2-science_2500",
-
-    # with dave's models
-    # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_200",
-    
-    # "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_200",
-    # "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_200",
-    # "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_200",
-    # "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_200",
-    # "with_daves_tulu_model/llama_2_7b-0.1-tulu_only-0.9-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.3-tulu_only-0.7-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.5-tulu_only-0.5-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.7-tulu_only-0.3-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.9-tulu_only-0.1-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_1000",
-    # "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_200",
-    # "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_200",
-    # "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_200",
-    # "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_200",
-    # "with_daves_tulu_model/llama_2_7b-0.2-tulu_only-0.8-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.4-tulu_only-0.6-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.6-tulu_only-0.4-science_2500",
-    # "with_daves_tulu_model/llama_2_7b-0.8-tulu_only-0.2-science_2500",
-
-    # Baselines
-    # "llama_2_7b-tulu_all_science_none_eval_no", # retraining
-    # "llama_2_7b-tulu_all_science_200_eval_no",
-    # "llama_2_7b-tulu_all_science_1000_eval_no", # need to retrain
-    # "llama_2_7b-tulu_all_science_2500_eval_no", # still training
-
-    # Science models
-    # "llama_2_7b-tulu_none_science_200_eval_no",
-    # "llama_2_7b-tulu_none_science_1000_eval_no",
-    # "llama_2_7b-tulu_none_science_2500_eval_no",
-
-    # "merged_models/llama_2_7b-0.1-tulu_only-0.9-science_200",
-    # "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_200",
-    # "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_200",
-    # "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_200",
-    # "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_200",
-    # "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_200",
-    # "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_200",
-    # "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_200",
-    # "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_200",
-
-    # "merged_models/llama_2_7b-0.1-tulu_only-0.9-science_1000",
-    # "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_1000",
-    # "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_1000",
-    # "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_1000",
-    # "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_1000",
-    # "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_1000",
-    # "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_1000",
-    # "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_1000",
-    # "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_1000",
-
-    # "merged_models/llama_2_7b-0.2-tulu_only-0.8-science_2500",
-    # "merged_models/llama_2_7b-0.3-tulu_only-0.7-science_2500",
-    # "merged_models/llama_2_7b-0.4-tulu_only-0.6-science_2500",
-    # "merged_models/llama_2_7b-0.5-tulu_only-0.5-science_2500",
-    # "merged_models/llama_2_7b-0.6-tulu_only-0.4-science_2500",
-    # "merged_models/llama_2_7b-0.7-tulu_only-0.3-science_2500",
-    # "merged_models/llama_2_7b-0.8-tulu_only-0.2-science_2500",
-    # "merged_models/llama_2_7b-0.9-tulu_only-0.1-science_2500",
-
-    ### individual datasets
-    # 'no_robots_7B',
-    # 'no_robots-Chat_7B',
-    # 'no_robots-Coding_7B',
-    # 'no_robots-expert_1_7B',
-    # 'no_robots-Extract_7B',
-    # 'no_robots-Rewrite_7B',
-    # 'no_robots-Brainstorm_7B',  
-    # 'no_robots-Classify_7B',
-    # 'no_robots-expert_0_7B',
-    # 'no_robots-expert_2_7B',
-    # 'no_robots-Generation_7B',
-    # 'no_robots-Summarize_7B',
-    # 'no_robots-Open_QA_7B',
-    # 'no_robots-Closed_QA_7B',
-
-    ### merges
-    # 'merged-models/merge-3-experts',
-    # 'merged-models/merge-all-subsets',
-    # 'merged-models/merge-all-subsets-weighted',
-    # 'merged-models/merge-top-4-subsets',
-    # 'merged-models/merge-top-4-subsets-weighted',
-
-    # 'merged-models/merge-3-experts-ties',
-    # 'merged-models/merge-3-experts-dare-linear',
-    # 'merged-models/merge-3-experts-dare-ties',
-
-
-    # 'merged-models/merge-all-subsets-ties',
-    # 'merged-models/merge-all-subsets-ties-weighted',
-    # 'merged-models/merge-all-subsets-dare-ties',
-
-    # 'merged-models/merge-all-subsets-dare-ties-weighted',
-    # 'merged-models/merge-all-subsets-dare-linear',
-    # 'merged-models/merge-all-subsets-dare-linear-weighted',
-
-    # 'merged-models/merge-top-4-subsets-ties',
-    # 'merged-models/merge-top-4-subsets-ties-weighted',
-    # 'merged-models/merge-top-4-subsets-dare-ties',
-
-    # 'merged-models/merge-top-4-subsets-dare-ties-weighted',
-    # 'merged-models/merge-top-4-subsets-dare-linear',
-    # 'merged-models/merge-top-4-subsets-dare-linear-weighted',
-    
-    # '/model' # for mounted datasets
-# ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
 models = [    
@@ -295,7 +137,7 @@ models = [
 if not merge_models:
     # for experiment_group, model_info in itertools.product(experiment_groups, models):
     # for dataset, model_info, experiment_group in itertools.product(pairwise_trained_datasets, models, experiment_groups):
-    for (beaker, model_name, model_path), model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
+    for (beaker, model_name, model_path, save_subdir), model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
         # if dataset != "/model":
         #     model_path = f'/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/{dataset}/'
         # else:
@@ -307,7 +149,7 @@ if not merge_models:
         # if lora:
             # name = f"open_instruct_eval_{experiment_group}_{model_name}_{dataset}_{today}".replace('/', '-')
         # else:
-        name = f"open_instruct_eval_{experiment_group}_{model_name}".replace('/', '-')
+        name = f"oi_eval_{experiment_group}_{model_name}"
         # shorter_name = name.replace('llama_2_7b-', '')
 
         # if dataset == "/model":
@@ -321,7 +163,7 @@ if not merge_models:
         #     save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace('/', '-')}/{experiment_group}/"
         # save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/with_daves_tulu_model/daves_tulu_model/{experiment_group}/"
         # save_dir = "/output/"
-        save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/baselines/{model_name}/{experiment_group}/"
+        save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/{save_subdir}/{model_name}/{experiment_group}/"
 
         if experiment_group == "mmlu_0shot":
             d['tasks'][0]['arguments'][0] = f'''
