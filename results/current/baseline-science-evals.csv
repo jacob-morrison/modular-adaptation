@@ -1,7 +1,9 @@
 task,bioasq,biored,discomat,evidence_inference,evidence_inference,evidence_inference,multicite,mup,qasper,scierc,scifact,scifact,scifact,mean,median
 metric,f1,f1,bleu,f1_exact,f1_overlap,f1_substring,f1,bleu,bleu,f1,f1_evidence_sent,f1_evidence_token,f1_label,null,null
+llama_2_7b-tulu_all-science_none-seed_123,0.30,0.15,0.35,0.00,0.03,0.00,0.34,0.01,0.02,0.21,0.26,0.35,0.48,0.22,0.24
+llama_2_7b-tulu_all-science_none-seed_42,0.31,0.15,0.35,0.00,0.03,0.00,0.34,0.01,0.02,0.21,0.26,0.35,0.47,0.21,0.24
 llama_2_7b-tulu_none-science_100,0.31,0.50,0.56,0.00,0.02,0.01,0.37,0.00,0.02,0.29,0.20,0.25,0.37,0.26,0.30
-llama_2_7b-tulu_none-science_200,0.29,0.53,0.57,0.00,0.01,0.00,0.49,0.00,0.02,0.34,0.33,0.39,0.55,0.31,0.34
-llama_2_7b-tulu_none-science_500,0.36,0.59,0.52,0.00,0.01,0.01,0.48,0.01,0.15,0.38,0.39,0.46,0.59,0.35,0.39
 llama_2_7b-tulu_none-science_1000,0.34,0.62,0.56,0.00,0.00,0.00,0.54,0.01,0.06,0.36,0.42,0.48,0.57,0.35,0.39
+llama_2_7b-tulu_none-science_200,0.29,0.53,0.57,0.00,0.01,0.00,0.49,0.00,0.02,0.34,0.33,0.39,0.55,0.31,0.34
 llama_2_7b-tulu_none-science_2500,0.35,0.54,0.52,0.00,0.01,0.00,0.55,0.01,0.11,0.33,0.43,0.47,0.66,0.35,0.39
+llama_2_7b-tulu_none-science_500,0.36,0.59,0.52,0.00,0.01,0.01,0.48,0.01,0.15,0.38,0.39,0.46,0.59,0.35,0.39

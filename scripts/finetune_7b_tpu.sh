@@ -9,13 +9,13 @@
 
 # gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=ai2-tpu --worker=all --command="gsutil -m cp gs://jacobm-bucket/modular_adaptation/training_data/tulu-mixtures/tulu_all_science_0_eval_no.jsonl ."
 
-gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=ai2-tpu --worker=all --command="cd easylm; ls; export WANDB_MODE=disabled; export LIBTPU_INIT_ARGS='--xla_jf_spmd_threshold_for_windowed_einsum_mib=0 --xla_tpu_spmd_threshold_for_allgather_cse=10000 --xla_tpu_spmd_rewrite_einsum_with_reshape=true --xla_tpu_enable_latency_hiding_scheduler=true TPU_MEGACORE=MEGACORE_DENSE'; echo 'starting training?'; python3 -m EasyLM.models.llama.llama_train \
+gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=ai2-tpu --worker=all --command="cd easylm; export WANDB_MODE=disabled; export LIBTPU_INIT_ARGS='--xla_jf_spmd_threshold_for_windowed_einsum_mib=0 --xla_tpu_spmd_threshold_for_allgather_cse=10000 --xla_tpu_spmd_rewrite_einsum_with_reshape=true --xla_tpu_enable_latency_hiding_scheduler=true TPU_MEGACORE=MEGACORE_DENSE'; python3 -m EasyLM.models.llama.llama_train \
     --seed=52830 \
     --mesh_dim='1,-1,16' \
     --dtype='bf16' \
     --num_epochs=2 \
     --log_freq=50 \
-    --save_model_freq=0 \
+    --save_model_freq=100000 \
     --save_milestone_freq=0 \
     --load_llama_config='7b' \
     --update_llama_config='' \

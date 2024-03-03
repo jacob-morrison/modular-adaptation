@@ -53,8 +53,21 @@ datasets = [
     # ("01HQXNRAHA3Z08504TGNMP6VD5", "llama_2_7b-tulu_none-science_2500", "/model"),
 
     # ("01HR0C4NR36RF6YG3PTYK21H0X", "llama_2_7b-tulu_all-science_none-seed_42", "/model"),
-    ("01HR0DJCFPX98BHS4RSD46MGDQ", "llama_2_7b-tulu_all-science_none-seed_123", "/model"),
-    # ("", "llama_2_7b-tulu_all-science_none-seed_???", "/model"),
+    # ("01HR0DJCFPX98BHS4RSD46MGDQ", "llama_2_7b-tulu_all-science_none-seed_123", "/model"),
+    # ("01HR0QTFF2QMFHB160MWJ8CFS9", "llama_2_7b-tulu_none-science_1000-seed_123", "/model"),
+    # ("01HR13H0FV4B77MKQJPW9CB7BD", "llama_2_7b-tulu_none-science_1000-seed_52830", "/model"),
+
+    # continued finetuning:
+    ("01HR1640TEQAHJMSWCQJW4FF6J", "tulu_2_7b_continued_ft-tulu_none-science_100", "/model")
+    ("01HR18P3ZY4EHHV5KEXSS5CFWV", "tulu_2_7b_continued_ft-tulu_none-science_200", "/model")
+    ("", "tulu_2_7b_continued_ft-tulu_none-science_500", "/model")
+    ("", "tulu_2_7b_continued_ft-tulu_none-science_1000", "/model")
+    ("", "tulu_2_7b_continued_ft-tulu_none-science_2500", "/model")
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_100", "/model")
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_200", "/model")
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_500", "/model")
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_1000", "/model")
+    # ("", "tulu_2_7b_continued_ft-tulu_match-science_2500", "/model")
 ]
 
 # datasets = [
