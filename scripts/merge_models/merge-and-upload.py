@@ -44,6 +44,8 @@ for merge_method in merge_methods:
             d = copy.deepcopy(d1)
 
             # Set merge-specific parameters
+            print(d)
+            print(d["models"])
             print(d["models"][0])
             d["models"][0]["model"] = tulu_file
             d["models"][0]["parameters"]["weight"] = tuluWeight
