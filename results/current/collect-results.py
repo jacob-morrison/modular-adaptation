@@ -57,8 +57,8 @@ def collect_metrics(model_path, merged=False):
         tokens = model_name.split('-')
         merge_method = tokens[0]
         base_model = tokens[1]
-        tulu_model = tokens[2]
-        science_model = tokens[3]
+        tulu_model = tokens[2][:-4]
+        science_model = tokens[3][:-4]
         tulu_model_weight, science_model_weight = get_model_weights(model_name)
     else:
         merge_method = "N/A"
