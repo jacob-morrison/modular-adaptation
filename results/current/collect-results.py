@@ -2,7 +2,7 @@ import json
 import os
 
 baselines_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/baselines/"
-merged_models_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/baselines/"
+merged_models_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/merged_models/"
 science_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/baselines/"
 # tulu_evals = os.listdir(baselines_path) # + os.listdir(merged_models_path)
 
