@@ -47,8 +47,8 @@ example = {
 
 def get_model_weights(model_name):
     tokens = model_name.split('-')
-    science_model_weight = float(tokens[-2].split('_')[-1])
-    tulu_model_weight = float(tokens[-3].split('_')[-1])
+    science_model_weight = float(tokens[-1].split('_')[-1])
+    tulu_model_weight = float(tokens[-2].split('_')[-1])
     return tulu_model_weight, science_model_weight
 
 def collect_metrics(model_path, merged=False):
