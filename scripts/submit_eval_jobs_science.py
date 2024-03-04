@@ -110,15 +110,15 @@ datasets = [
     # ("01HR1TMEXWQYSE2M6T4TFEY4NQ", "linear_weighted-llama_2_7b-tulu_all_0.8-science_1000_0.2", "/model", "merged_models"),
     # ("01HR1W9T40B11V0QYF2QR4WFJP", "linear_weighted-llama_2_7b-tulu_all_0.9-science_1000_0.1", "/model", "merged_models"),
 
-    # ("", "linear_weighted-llama_2_7b-tulu_all_0.1-science_2500_0.9", "/model", "merged_models"),
-    # ("", "linear_weighted-llama_2_7b-tulu_all_0.2-science_2500_0.8", "/model", "merged_models"),
+    # ("01HR1F8DY7JBDWHA2YSSK0F3DJ", "linear_weighted-llama_2_7b-tulu_all_0.1-science_2500_0.9", "/model", "merged_models"),
+    # ("01HR1GY6Z341Y7JP2GK43MS211", "linear_weighted-llama_2_7b-tulu_all_0.2-science_2500_0.8", "/model", "merged_models"),
     # ("", "linear_weighted-llama_2_7b-tulu_all_0.3-science_2500_0.7", "/model", "merged_models"),
-    # ("", "linear_weighted-llama_2_7b-tulu_all_0.4-science_2500_0.6", "/model", "merged_models"),
-    # ("", "linear_weighted-llama_2_7b-tulu_all_0.5-science_2500_0.5", "/model", "merged_models"),
-    # ("", "linear_weighted-llama_2_7b-tulu_all_0.6-science_2500_0.4", "/model", "merged_models"),
-    # ("", "linear_weighted-llama_2_7b-tulu_all_0.7-science_2500_0.3", "/model", "merged_models"),
-    # ("", "linear_weighted-llama_2_7b-tulu_all_0.8-science_2500_0.2", "/model", "merged_models"),
-    # ("", "linear_weighted-llama_2_7b-tulu_all_0.9-science_2500_0.1", "/model", "merged_models"),
+    # ("01HR1M4AGE8SQN4PFWSJWE27A0", "linear_weighted-llama_2_7b-tulu_all_0.4-science_2500_0.6", "/model", "merged_models"),
+    # ("01HR1NV0VTR3GT3C4H38M0NKG6", "linear_weighted-llama_2_7b-tulu_all_0.5-science_2500_0.5", "/model", "merged_models"),
+    # ("01HR1QPAWMTXAW30EH5YGMSRGH", "linear_weighted-llama_2_7b-tulu_all_0.6-science_2500_0.4", "/model", "merged_models"),
+    # ("01HR1S9VTDDA4RE2MHEX091HMR", "linear_weighted-llama_2_7b-tulu_all_0.7-science_2500_0.3", "/model", "merged_models"),
+    # ("01HR1TZQ7M8DEW9J0QPZ1QE7NB", "linear_weighted-llama_2_7b-tulu_all_0.8-science_2500_0.2", "/model", "merged_models"),
+    # ("01HR1WNVCYM2YKVQMMXK8SEBBC", "linear_weighted-llama_2_7b-tulu_all_0.9-science_2500_0.1", "/model", "merged_models"),
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
