@@ -8,7 +8,7 @@ with open("/net/nfs.cirrascale/allennlp/davidw/proj/science-instruct/science-ada
         tulu_data.append(data)
 
 science_data = []
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/tulu_all_science_2500_eval_no.jsonl") as f_in:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/tulu_none_science_2500_eval_no.jsonl") as f_in:
     for line in f_in.readlines():
         data = json.loads(line)
         science_data.append(data)
