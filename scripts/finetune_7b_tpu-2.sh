@@ -20,7 +20,7 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project
     --load_llama_config='7b' \
     --update_llama_config='' \
     --load_dataset_state='' \
-    --load_checkpoint='params::gs://jacobm-bucket/modular_adaptation/checkpoints/llama_2_7b-tulu_all_science_none-seed_42/tulu-2-7b-tulu_all_science_none-seed_42/71f316cfe6af4ad4b24efd674ccac1a9/streaming_params_19906' \
+    --load_checkpoint='params::gs://hamishi-east1/easylm/llama2/7b' \
     --tokenizer.vocab_file='gs://hamishi-east1/easylm/llama/tokenizer.model' \
     --optimizer.type='adamw' \
     --optimizer.adamw_optimizer.weight_decay=0.0 \
@@ -35,7 +35,7 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project
     --train_dataset.json_torch_dataset.batch_size=32  \
     --checkpointer.save_optimizer_state=False \
     --logger.online=True --logger.entity='jacobmai2' --logger.project='train-big-llamas-on-tpus' \
-    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/tulu_2_7b_continued_ft-tulu_match-science_1000' &> all.log &"
+    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/llama_2_7b-tulu_match-science_1000' &> all.log &"
 
 # list processes:
 # gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project=ai2-tpu --worker=all --command="sudo lsof -w /dev/accel0"
