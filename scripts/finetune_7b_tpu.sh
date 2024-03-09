@@ -30,12 +30,12 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=a
     --optimizer.accumulate_gradient_steps=4 \
     --train_dataset.type='tulu_json_torch' \
     --train_dataset.text_processor.fields='[prompt],completion' \
-    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/tulu-mixtures/tulu_all_science_2500_eval_no.jsonl' \
+    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/tulu-mixtures/tulu_all_science_500_eval_no.jsonl' \
     --train_dataset.json_torch_dataset.seq_length=4096 \
     --train_dataset.json_torch_dataset.batch_size=32  \
     --checkpointer.save_optimizer_state=False \
     --logger.online=True --logger.entity='jacobmai2' --logger.project='train-big-llamas-on-tpus' \
-    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/llama_2_7b-tulu_all-science_2500' &> all.log &"
+    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/llama_2_7b-tulu_all-science_500' &> all.log &"
 
 # list processes:
 # gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=ai2-tpu --worker=all --command="sudo lsof -w /dev/accel0"

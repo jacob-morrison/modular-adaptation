@@ -5,41 +5,43 @@ import pandas as pd
 
 science_results = {}
 with open("results/current/science-evals.csv") as f_in:
-    # for baselines:
-    merge_method = "N/A"
-    i = 0
-    for line in f_in.readlines():
-        line = line.strip()
-        curr_results = {}
-        if i == 0: # task,bioasq,biored,discomat,evidence_inference,evidence_inference,evidence_inference,multicite,mup,qasper,scierc,scifact,scifact,scifact,mean,median
-            tasks = line.split(',')[1:]
-        elif i == 1: # metric,f1,f1,bleu,f1_exact,f1_overlap,f1_substring,f1,bleu,bleu,f1,f1_evidence_sent,f1_evidence_token,f1_label
-            metrics = line.split(',')[1:]
-        else:
-            curr_data = line.split(',')
-            model = curr_data[0]
-            model_tokens = model.split('-')
+    with open("results/current/manual-science-evals.csv") as f_in2:
+        # for baselines:
+        merge_method = "N/A"
+        i = 0
+        for line in f_in.readlines() + f_in2.readlines()[2:]:
+            line = line.strip()
+            curr_results = {}
+            if i == 0: # task,bioasq,biored,discomat,evidence_inference,evidence_inference,evidence_inference,multicite,mup,qasper,scierc,scifact,scifact,scifact,mean,median
+                tasks = line.split(',')[1:]
+            elif i == 1: # metric,f1,f1,bleu,f1_exact,f1_overlap,f1_substring,f1,bleu,bleu,f1,f1_evidence_sent,f1_evidence_token,f1_label
+                metrics = line.split(',')[1:]
+            else:
+                curr_data = line.split(',')
+                model = curr_data[0]
+                model_tokens = model.split('-')
 
-            for task, metric, value in zip(tasks, metrics, curr_data[1:]):
-                curr_results[task] = {
-                    "metric": metric,
-                    "value": float(value)
-                }
+                for task, metric, value in zip(tasks, metrics, curr_data[1:]):
+                    curr_results[task] = {
+                        "metric": metric,
+                        "value": float(value)
+                    }
 
-            science_results[model] = curr_results
-        i += 1
+                science_results[model] = curr_results
+            i += 1
 
 tulu_data = []
 with open("results/current/tulu-evals.jsonl") as f_in:
-    for line in f_in.readlines():
-        data = json.loads(line)
-        model_key = data["model_key"]
-        if model_key not in science_results:
-            print(f"key not found: {model_key}")
-        else:
-            for task in science_results[model_key]:
-                data[task] = science_results[model_key][task]["value"]
-        tulu_data.append(data)        
+    with open("results/current/manual-tulu-evals.jsonl") as f_in2:
+        for line in f_in.readlines() + f_in2.readlines():
+            data = json.loads(line)
+            model_key = data["model_key"]
+            if model_key not in science_results:
+                print(f"key not found: {model_key}")
+            else:
+                for task in science_results[model_key]:
+                    data[task] = science_results[model_key][task]["value"]
+            tulu_data.append(data)        
 
 df = pd.DataFrame(tulu_data)
 
@@ -51,6 +53,8 @@ def calculate_tulu_average(row, columns):
 
 def create_model_combo(row):
     model_dict = {
+        "llama_2_70b": "Llama 2 70B",
+        "tulu_2_70b_continued_ft": "Tulu 2 70B",
         "llama_2_7b": "Llama 2 7B",
         "tulu_2_7b_continued_ft": "Tulu 2 7B",
         "tulu_none": "Tulu None",
@@ -62,6 +66,7 @@ def create_model_combo(row):
         "science_500": "Science 500",
         "science_1000": "Science 1000",
         "science_2500": "Science 2500",
+        "science_upsample": "Science Upsample",
     }
 
     tokens = row["model_key"].split("-")
@@ -82,26 +87,44 @@ def create_model_combo(row):
         return f"{base_model} -> {tulu_model} merged with {science_model}, {row['merge_method']}"
 
 baseline_keys = {
-    "llama_2_7b-tulu_none-science_100",
-    "llama_2_7b-tulu_none-science_200",
-    "llama_2_7b-tulu_none-science_500",
-    "llama_2_7b-tulu_none-science_1000",
-    "llama_2_7b-tulu_none-science_2500",
-    "llama_2_7b-tulu_all-science_none-seed_42",
-    "llama_2_7b-tulu_match-science_100",
-    "llama_2_7b-tulu_match-science_200",
-    "tulu_2_7b_continued_ft-tulu_none-science_100",
-    "tulu_2_7b_continued_ft-tulu_none-science_200",
-    "tulu_2_7b_continued_ft-tulu_none-science_500",
-    "tulu_2_7b_continued_ft-tulu_none-science_1000",
-    "tulu_2_7b_continued_ft-tulu_match-science_100",
-    "tulu_2_7b_continued_ft-tulu_match-science_200",
-    "tulu_2_7b_continued_ft-tulu_match-science_2500",
+    # "llama_2_7b-tulu_none-science_100",
+    # "llama_2_7b-tulu_none-science_200",
+    # "llama_2_7b-tulu_none-science_500",
+    # "llama_2_7b-tulu_none-science_1000",
+    # "llama_2_7b-tulu_none-science_2500",
+    # "llama_2_7b-tulu_all-science_none-seed_42",
+
+    # "llama_2_7b-tulu_match-science_100",
+    # "llama_2_7b-tulu_match-science_200",
+    # "llama_2_7b-tulu_match-science_500",
+    # "llama_2_7b-tulu_match-science_1000",
+    # "llama_2_7b-tulu_match-science_2500",
+
+    "llama_2_7b-tulu_all-science_100",
+    "llama_2_7b-tulu_all-science_200",
+    "llama_2_7b-tulu_all-science_500",
+    "llama_2_7b-tulu_all-science_1000",
+    "llama_2_7b-tulu_all-science_2500",
+    "llama_2_7b-tulu_all-science_upsample",
+
+    # "tulu_2_7b_continued_ft-tulu_none-science_100",
+    # "tulu_2_7b_continued_ft-tulu_none-science_200",
+    # "tulu_2_7b_continued_ft-tulu_none-science_500",
+    # "tulu_2_7b_continued_ft-tulu_none-science_1000",
+    # "tulu_2_7b_continued_ft-tulu_none-science_2500",
 
     # "llama_2_7b-tulu_none-science_1000-seed_123",
     # "llama_2_7b-tulu_none-science_1000-seed_52830",
     # "llama_2_7b-tulu_all-science_none-seed_123",
     # "llama_2_7b-tulu_all-science_none-seed_52830",
+}
+
+continued_ft_keys = {
+    "tulu_2_7b_continued_ft-tulu_match-science_100",
+    "tulu_2_7b_continued_ft-tulu_match-science_200",
+    "tulu_2_7b_continued_ft-tulu_match-science_500",
+    "tulu_2_7b_continued_ft-tulu_match-science_1000",
+    "tulu_2_7b_continued_ft-tulu_match-science_2500",
 }
 
 tulu_columns_for_test_average = [
@@ -139,6 +162,7 @@ df['Combo'] = df.apply(lambda row: create_model_combo(row), axis=1)
 df["Order"] = df["tulu_model_weight"]
 
 df_baselines = df[df["model_key"].isin(baseline_keys)]
+df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
 df_lines = df[df["merge_method"] != "N/A"]
 
 df_lines.sort_values(by='Order', inplace=True)
@@ -150,6 +174,7 @@ df.to_csv("results/current/full_results.csv", index=False)
 sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
 
 sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100) #, palette=colors)
+sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="+") #, palette=colors)
 # palette=["red", "brown", "cyan"])
 
 # sns.scatterplot(data=filtered_df, x="Tulu Average", y="Science Average", hue="Combo", marker="*", s=250, legend=False)

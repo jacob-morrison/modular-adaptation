@@ -21,6 +21,10 @@ print(len(science_data))
 full_data = tulu_data + science_data
 random.shuffle(full_data)
 
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/tulu_all_science_upsample_eval_no.jsonl", "w") as f:
-    for x in full_data:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/tulu_none_science_upsample_eval_no.jsonl", "w") as f:
+    for x in science:
         print(json.dumps(x), file=f)
+
+# with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/tulu_all_science_upsample_eval_no.jsonl", "w") as f:
+#     for x in full_data:
+#         print(json.dumps(x), file=f)

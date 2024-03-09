@@ -14,13 +14,13 @@ d1 = yaml.load(default_yaml, Loader=yaml.FullLoader)
 
 # cluster = "ai2/general-cirrascale"
 # cluster = "ai2/allennlp-cirrascale"
-cluster = "ai2/s2-cirrascale-l40"
+# cluster = "ai2/s2-cirrascale-l40"
 # cluster = "ai2/mosaic-cirrascale-a100",
-# cluster = "ai2/general-cirrascale-a100-80g-ib"
+cluster = "ai2/general-cirrascale-a100-80g-ib"
 # cluster = "ai2/prior-elanding"
-num_gpus = 1
+num_gpus = 4
 # d1['tasks'][0]['context']['cluster'] = cluster
-# d1['tasks'][0]['context']['priority'] = "high"
+d1['tasks'][0]['context']['priority'] = "high"
 # d1['tasks'][0]['context']['priority'] = "preemptible"
 d1['tasks'][0]['resources']['gpuCount'] = num_gpus
 
@@ -46,6 +46,12 @@ experiment_groups = [
 lora = False
 
 datasets = [
+    # 70b
+    # ("01HR8E8SNZKVEKK46S650M4Q42", "llama_2_70b-tulu_all-science_none", "/model", "baselines"),
+    # ("01HRAKXBWVW1YYA9T56FFVFVTP", "tulu_2_70b_continued_ft-tulu_match-science_1000", "/model", "baselines"),
+    ("01HREEEJ5YRJEX16RGA9F5CZV9", "tulu_2_70b_continued_ft-tulu_none-science_1000", "/model", "baselines"),
+
+
     # ("01HQVW2761BAF4JMD31YESTZWX", "llama_2_7b-tulu_none-science_100", "/model", "baselines"),
     # ("01HQW32DZGYQTWPX7Q8XYJS4CB", "llama_2_7b-tulu_none-science_200", "/model", "baselines"),
     # ("01HQW98WC34DAXR596V7WDZGTT", "llama_2_7b-tulu_none-science_500", "/model", "baselines"),
@@ -63,11 +69,11 @@ datasets = [
     # ("01HR18P3ZY4EHHV5KEXSS5CFWV", "tulu_2_7b_continued_ft-tulu_none-science_200", "/model", "baselines"),
     # ("01HR1EEPG578W05YHV6MRN1TMV", "tulu_2_7b_continued_ft-tulu_none-science_500", "/model", "baselines"),
     # ("01HR2WRZ7FY8XBV7218XKR96PD", "tulu_2_7b_continued_ft-tulu_none-science_1000", "/model", "baselines"),
-    ("01HR3VZM057Z8HKBF9N9VC9K88", "tulu_2_7b_continued_ft-tulu_none-science_2500", "/model", "baselines"),
+    # ("01HR3VZM057Z8HKBF9N9VC9K88", "tulu_2_7b_continued_ft-tulu_none-science_2500", "/model", "baselines"),
     # ("01HR324VPMHA9BJGVXY0TW3XDT", "tulu_2_7b_continued_ft-tulu_match-science_100", "/model", "baselines"),
     # ("01HR343V9HQFH71XH4RHMJRQJ7", "tulu_2_7b_continued_ft-tulu_match-science_200", "/model", "baselines"),
-    ("01HR5C00ZNXQPDBY3T7GBCBFCA", "tulu_2_7b_continued_ft-tulu_match-science_500", "/model", "baselines"),
-    ("01HR609Z6CXES73B3C3VSKPE28", "tulu_2_7b_continued_ft-tulu_match-science_1000", "/model", "baselines"),
+    # ("01HR5C00ZNXQPDBY3T7GBCBFCA", "tulu_2_7b_continued_ft-tulu_match-science_500", "/model", "baselines"),
+    # ("01HR609Z6CXES73B3C3VSKPE28", "tulu_2_7b_continued_ft-tulu_match-science_1000", "/model", "baselines"),
     # ("01HR2Y2P2YBFJXPVRMDGNB2TH4", "tulu_2_7b_continued_ft-tulu_match-science_2500", "/model", "baselines"),
 
 
@@ -75,15 +81,15 @@ datasets = [
     # Sequential baselines
     # ("01HR318SEPKWWRTVR4WR16SP87", "llama_2_7b-tulu_match-science_100", "/model", "baselines"),
     # ("01HR353BWT0Q62NXQA6CCF7QF5", "llama_2_7b-tulu_match-science_200", "/model", "baselines"),
-    ("01HR69T26E9N17966FBM55R1N2", "llama_2_7b-tulu_match-science_500", "/model", "baselines"),
-    ("", "llama_2_7b-tulu_match-science_1000", "/model", "baselines"),
-    ("01HR43C2AA7VSE3573TH0SSP7Y", "llama_2_7b-tulu_match-science_2500", "/model", "baselines"),
-    ("", "llama_2_7b-tulu_all-science_100", "/model", "baselines"),
-    ("", "llama_2_7b-tulu_all-science_200", "/model", "baselines"),
-    ("", "llama_2_7b-tulu_all-science_500", "/model", "baselines"),
-    ("", "llama_2_7b-tulu_all-science_1000", "/model", "baselines"),
-    ("", "llama_2_7b-tulu_all-science_2500", "/model", "baselines"),
-    ("", "llama_2_7b-tulu_all-science_upsample", "/model", "baselines"),
+    # ("01HR69T26E9N17966FBM55R1N2", "llama_2_7b-tulu_match-science_500", "/model", "baselines"),
+    # ("01HR8NN6DZ6BCV0SN4QWJ5YEKA", "llama_2_7b-tulu_match-science_1000", "/model", "baselines"),
+    # ("01HR43C2AA7VSE3573TH0SSP7Y", "llama_2_7b-tulu_match-science_2500", "/model", "baselines"),
+    # ("01HRB0ZR866EGXB506YSS08MH2", "llama_2_7b-tulu_all-science_100", "/model", "baselines"),
+    # ("01HRCZ875RX615Z455QR9Z8480", "llama_2_7b-tulu_all-science_200", "/model", "baselines"), # need to run
+    # ("01HRDA7S6C1QP8B1A3WBFVWPJD", "llama_2_7b-tulu_all-science_500", "/model", "baselines"), # need to run
+    # ("01HRD0PSPQP1C2F458RS59X7TQ", "llama_2_7b-tulu_all-science_1000", "/model", "baselines"), # need to run
+    # ("01HR6M9TYWFXFKRX1NBJFT4YNH", "llama_2_7b-tulu_all-science_2500", "/model", "baselines"),
+    # ("01HRB2999DT5MKJKMS2FZ2SWY1", "llama_2_7b-tulu_all-science_upsample", "/model", "baselines"),
 
     # Merged models:
     # ("01HR1DXMHWC68VF29PVBKS5XHF", "linear_weighted-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
