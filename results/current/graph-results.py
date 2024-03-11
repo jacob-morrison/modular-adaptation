@@ -85,6 +85,17 @@ def create_model_combo(row):
         return f"{base_model} -> {tulu_model} & {science_model}"
     else:
         return f"{base_model} -> {tulu_model} merged with {science_model}, {row['merge_method']}"
+    
+merged_science_models = {
+    # "science_100",
+    # "science_200",
+
+    "science_500",
+    
+    "science_1000",
+    
+    "science_2500",
+}
 
 baseline_keys = {
     # "llama_2_7b-tulu_none-science_100",
@@ -92,6 +103,7 @@ baseline_keys = {
     # "llama_2_7b-tulu_none-science_500",
     # "llama_2_7b-tulu_none-science_1000",
     # "llama_2_7b-tulu_none-science_2500",
+    "llama_2_7b-tulu_none-science_upsample",
     # "llama_2_7b-tulu_all-science_none-seed_42",
 
     # "llama_2_7b-tulu_match-science_100",
@@ -112,6 +124,7 @@ baseline_keys = {
     # "tulu_2_7b_continued_ft-tulu_none-science_500",
     # "tulu_2_7b_continued_ft-tulu_none-science_1000",
     # "tulu_2_7b_continued_ft-tulu_none-science_2500",
+    # "tulu_2_7b_continued_ft-tulu_none-science_2500",
 
     # "llama_2_7b-tulu_none-science_1000-seed_123",
     # "llama_2_7b-tulu_none-science_1000-seed_52830",
@@ -120,11 +133,18 @@ baseline_keys = {
 }
 
 continued_ft_keys = {
-    "tulu_2_7b_continued_ft-tulu_match-science_100",
-    "tulu_2_7b_continued_ft-tulu_match-science_200",
-    "tulu_2_7b_continued_ft-tulu_match-science_500",
-    "tulu_2_7b_continued_ft-tulu_match-science_1000",
-    "tulu_2_7b_continued_ft-tulu_match-science_2500",
+    # "tulu_2_7b_continued_ft-tulu_match-science_100",
+    # "tulu_2_7b_continued_ft-tulu_match-science_200",
+    # "tulu_2_7b_continued_ft-tulu_match-science_500",
+    # "tulu_2_7b_continued_ft-tulu_match-science_1000",
+    # "tulu_2_7b_continued_ft-tulu_match-science_2500",
+
+    "tulu_2_7b_continued_ft-tulu_none-science_100",
+    "tulu_2_7b_continued_ft-tulu_none-science_200",
+    "tulu_2_7b_continued_ft-tulu_none-science_500",
+    "tulu_2_7b_continued_ft-tulu_none-science_1000",
+    "tulu_2_7b_continued_ft-tulu_none-science_2500",
+    "tulu_2_7b_continued_ft-tulu_none-science_upsample",
 }
 
 tulu_columns_for_test_average = [
@@ -164,6 +184,7 @@ df["Order"] = df["tulu_model_weight"]
 df_baselines = df[df["model_key"].isin(baseline_keys)]
 df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
 df_lines = df[df["merge_method"] != "N/A"]
+df_lines = df_lines[df_lines["science_model"].isin(merged_science_models)]
 
 df_lines.sort_values(by='Order', inplace=True)
 df_baselines.sort_values(by='Combo', inplace=True)

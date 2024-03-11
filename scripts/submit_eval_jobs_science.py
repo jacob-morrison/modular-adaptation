@@ -48,8 +48,10 @@ lora = False
 datasets = [
     # 70b
     # ("01HR8E8SNZKVEKK46S650M4Q42", "llama_2_70b-tulu_all-science_none", "/model", "baselines"),
+    ("01HRNSDNB34WY6NXJR80707V2Z", "llama_2_70b-tulu_none-science_100", "/model", "baselines"),
+    ("01HRNGGG1VJS6C52164ESYYJBY", "llama_2_70b-tulu_none-science_1000", "/model", "baselines"),
     # ("01HRAKXBWVW1YYA9T56FFVFVTP", "tulu_2_70b_continued_ft-tulu_match-science_1000", "/model", "baselines"),
-    ("01HREEEJ5YRJEX16RGA9F5CZV9", "tulu_2_70b_continued_ft-tulu_none-science_1000", "/model", "baselines"),
+    # ("01HREEEJ5YRJEX16RGA9F5CZV9", "tulu_2_70b_continued_ft-tulu_none-science_1000", "/model", "baselines"),
 
 
     # ("01HQVW2761BAF4JMD31YESTZWX", "llama_2_7b-tulu_none-science_100", "/model", "baselines"),
@@ -57,6 +59,7 @@ datasets = [
     # ("01HQW98WC34DAXR596V7WDZGTT", "llama_2_7b-tulu_none-science_500", "/model", "baselines"),
     # ("01HQVZSGJRJTY2GQD6N7RMK5G4", "llama_2_7b-tulu_none-science_1000", "/model", "baselines"),
     # ("01HQXNRAHA3Z08504TGNMP6VD5", "llama_2_7b-tulu_none-science_2500", "/model", "baselines"),
+    # ("01HRK8G8ZXN5YRTSGRFM18QF58", "llama_2_7b-tulu_none-science_upsample", "/model", "baselines"),
 
     # ("01HR0C4NR36RF6YG3PTYK21H0X", "llama_2_7b-tulu_all-science_none-seed_42", "/model", "baselines"),
     # ("01HR0DJCFPX98BHS4RSD46MGDQ", "llama_2_7b-tulu_all-science_none-seed_123", "/model", "baselines"),
@@ -70,6 +73,7 @@ datasets = [
     # ("01HR1EEPG578W05YHV6MRN1TMV", "tulu_2_7b_continued_ft-tulu_none-science_500", "/model", "baselines"),
     # ("01HR2WRZ7FY8XBV7218XKR96PD", "tulu_2_7b_continued_ft-tulu_none-science_1000", "/model", "baselines"),
     # ("01HR3VZM057Z8HKBF9N9VC9K88", "tulu_2_7b_continued_ft-tulu_none-science_2500", "/model", "baselines"),
+    # ("01HRQ7H1VDHWG7EAH5373G8Z18", "tulu_2_7b_continued_ft-tulu_none-science_upsample", "/model", "baselines"),
     # ("01HR324VPMHA9BJGVXY0TW3XDT", "tulu_2_7b_continued_ft-tulu_match-science_100", "/model", "baselines"),
     # ("01HR343V9HQFH71XH4RHMJRQJ7", "tulu_2_7b_continued_ft-tulu_match-science_200", "/model", "baselines"),
     # ("01HR5C00ZNXQPDBY3T7GBCBFCA", "tulu_2_7b_continued_ft-tulu_match-science_500", "/model", "baselines"),
@@ -92,6 +96,36 @@ datasets = [
     # ("01HRB2999DT5MKJKMS2FZ2SWY1", "llama_2_7b-tulu_all-science_upsample", "/model", "baselines"),
 
     # Merged models:
+    # ("01HRGFH0CTYWMCHEWF68JRJ8N5", "dare_linear-llama_2_7b-tulu_all_0.1-science_500_0.9", "/model", "merged_models"),
+    # ("01HRGGJ79E0CV0PA4JDNZAKGV8", "dare_linear-llama_2_7b-tulu_all_0.2-science_500_0.8", "/model", "merged_models"),
+    # ("01HRGHP5D6EXSMXFKMMCZD89CQ", "dare_linear-llama_2_7b-tulu_all_0.3-science_500_0.7", "/model", "merged_models"),
+    # ("01HRGJQX583F0YA501Q7DP5E2X", "dare_linear-llama_2_7b-tulu_all_0.4-science_500_0.6", "/model", "merged_models"),
+    # ("01HRGKRHWMQQB3FPRYKFHEQSC8", "dare_linear-llama_2_7b-tulu_all_0.5-science_500_0.5", "/model", "merged_models"),
+    # ("01HRGMSFYZS11CVJ1W17NP857H", "dare_linear-llama_2_7b-tulu_all_0.6-science_500_0.4", "/model", "merged_models"),
+    # ("01HRGNTP64XZZG14VTHH5DAG1Z", "dare_linear-llama_2_7b-tulu_all_0.7-science_500_0.3", "/model", "merged_models"),
+    # ("01HRGPXCN2SZE6HCP3PS14EW4F", "dare_linear-llama_2_7b-tulu_all_0.8-science_500_0.2", "/model", "merged_models"),
+    # ("01HRGQZ70ECVCG6P14GV341B31", "dare_linear-llama_2_7b-tulu_all_0.9-science_500_0.1", "/model", "merged_models"),
+
+    # ("01HRGFW40QP3HNCQ1YT3CVHQ9C", "dare_linear-llama_2_7b-tulu_all_0.1-science_1000_0.9", "/model", "merged_models"),
+    # ("01HRGGXGNQ732CVSYSEFRXE85S", "dare_linear-llama_2_7b-tulu_all_0.2-science_1000_0.8", "/model", "merged_models"),
+    # ("01HRGJ1F70NZKXT9XNV9FA0QFM", "dare_linear-llama_2_7b-tulu_all_0.3-science_1000_0.7", "/model", "merged_models"),
+    # ("01HRGK2BNQNG5HTQ0JWXDV7V3A", "dare_linear-llama_2_7b-tulu_all_0.4-science_1000_0.6", "/model", "merged_models"),
+    # ("01HRGM3HA1TMTVPJZDT0HF7BTN", "dare_linear-llama_2_7b-tulu_all_0.5-science_1000_0.5", "/model", "merged_models"),
+    # ("01HRGN4GFE3SREJ832VRD67YEV", "dare_linear-llama_2_7b-tulu_all_0.6-science_1000_0.4", "/model", "merged_models"),
+    # ("01HRGP5ZG92S6YQECB45AQTEJ5", "dare_linear-llama_2_7b-tulu_all_0.7-science_1000_0.3", "/model", "merged_models"),
+    # ("01HRGQ8KTKVCWZ9RFFBEVM86W1", "dare_linear-llama_2_7b-tulu_all_0.8-science_1000_0.2", "/model", "merged_models"),
+    # ("01HRGRBJ7MKH3WS1Z24HRZK6TJ", "dare_linear-llama_2_7b-tulu_all_0.9-science_1000_0.1", "/model", "merged_models"),
+
+    # ("01HRGG79MRWMG4396QRDT5H09X", "dare_linear-llama_2_7b-tulu_all_0.1-science_2500_0.9", "/model", "merged_models"),
+    # ("01HRGH97B43HYYCHW8APNYHZVH", "dare_linear-llama_2_7b-tulu_all_0.2-science_2500_0.8", "/model", "merged_models"),
+    # ("01HRGJCEE9PB6KB61WNP4A0BS0", "dare_linear-llama_2_7b-tulu_all_0.3-science_2500_0.7", "/model", "merged_models"),
+    # ("01HRGKE3MZSBHAFK2TF2D8E1X9", "dare_linear-llama_2_7b-tulu_all_0.4-science_2500_0.6", "/model", "merged_models"),
+    # ("01HRGMEK6TYGWBYAXS2E327KE8", "dare_linear-llama_2_7b-tulu_all_0.5-science_2500_0.5", "/model", "merged_models"),
+    # ("01HRGNFZMH8605NMQ5H89MGSVA", "dare_linear-llama_2_7b-tulu_all_0.6-science_2500_0.4", "/model", "merged_models"),
+    # ("01HRGPH0HPS2M291P87R50TSM4", "dare_linear-llama_2_7b-tulu_all_0.7-science_2500_0.3", "/model", "merged_models"),
+    # ("01HRGQM52YBS1PQ0Z7K2GRAPYE", "dare_linear-llama_2_7b-tulu_all_0.8-science_2500_0.2", "/model", "merged_models"),
+    # ("01HRGRPCBWPKW91RYV18P05A32", "dare_linear-llama_2_7b-tulu_all_0.9-science_2500_0.1", "/model", "merged_models"),
+
     # ("01HR1DXMHWC68VF29PVBKS5XHF", "linear_weighted-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
     # ("01HR1FKFG7THD3W3NT7AN3CG7Z", "linear_weighted-llama_2_7b-tulu_all_0.2-science_100_0.8", "/model", "merged_models"),
     # ("01HR1H98XMHCMWY14PSV9GSEPT", "linear_weighted-llama_2_7b-tulu_all_0.3-science_100_0.7", "/model", "merged_models"),
