@@ -4,9 +4,9 @@ import subprocess
 import yaml
 
 weights = [
-    (0.1, 0.9),
+    # (0.1, 0.9),
     (0.2, 0.8),
-    # (0.3, 0.7),
+    (0.3, 0.7),
     # (0.4, 0.6),
     # (0.5, 0.5),
     # (0.6, 0.4),
@@ -18,8 +18,8 @@ weights = [
 science_files = {
     # "100": "/science_100",
     # "200": "/science_200",
-    "500": "/science_500",
-    # "1000": "/science_1000",
+    # "500": "/science_500",
+    "1000": "/science_1000",
     # "2500": "/science_2500",
     # "upsample": "/science_upsample"
 }
