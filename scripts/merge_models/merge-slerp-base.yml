@@ -1,0 +1,12 @@
+slices:
+  - sources:
+      - model: /model-path
+        layer_range: [0, 32]
+      - model: /model-path
+        layer_range: [0, 32]
+merge_method: slerp
+base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+parameters:
+  t:
+    - value: 0.5
+dtype: bfloat16

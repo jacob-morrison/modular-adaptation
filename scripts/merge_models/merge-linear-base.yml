@@ -6,4 +6,4 @@ models:
     parameters:
       weight: weight
 merge_method: linear
-dtype: float16
+dtype: bfloat16

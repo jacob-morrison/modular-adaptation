@@ -16,8 +16,8 @@ weights = [
 ]
 
 science_files = {
-    "100": "/science_100",
-    "200": "/science_200",
+    # "100": "/science_100",
+    # "200": "/science_200",
     # "500": "/science_500",
     # "1000": "/science_1000",
     # "2500": "/science_2500",
@@ -25,8 +25,11 @@ science_files = {
 }
 
 merge_methods = [
-    # "linear_weighted",
-    "dare_linear",
+    "linear_weighted",
+    # "dare_linear",
+    # "dare_ties",
+    # "ties",
+    # "slerp",
 ]
 
 tulu_file = "/tulu_all"
@@ -38,30 +41,30 @@ def print_and_run(cmd):
 for merge_method in merge_methods:
     for (tuluWeight, scienceWeight) in weights:
         for science_amount in science_files:
+            # Copy yaml
+            base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
+            with open(base_yaml, 'r') as f:
+                d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
+            d = copy.deepcopy(d1)
             if merge_method == "linear_weighted":
-                # Copy yaml
-                base_yaml = "scripts/merge_models/merge-linear-base.yml"
-                with open(base_yaml, 'r') as f:
-                    d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
-                d = copy.deepcopy(d1)
-
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file
                 d["models"][0]["parameters"]["weight"] = tuluWeight
                 d["models"][1]["model"] = science_files[science_amount]
                 d["models"][1]["parameters"]["weight"] = scienceWeight
-            elif merge_method == "dare_linear":
-                # Copy yaml
-                base_yaml = "scripts/merge_models/merge-dare_linear-base.yml"
-                with open(base_yaml, 'r') as f:
-                    d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
-                d = copy.deepcopy(d1)
-
+            elif merge_method in ["dare_linear", "dare_ties", "ties"]:
                 # Set merge-specific parameters
                 d["models"][1]["model"] = tulu_file
                 d["models"][1]["parameters"]["weight"] = tuluWeight
                 d["models"][2]["model"] = science_files[science_amount]
                 d["models"][2]["parameters"]["weight"] = scienceWeight
+            elif merge_method == "slerp":
+                # Set merge-specific parameters
+                d["slices"][0]["sources"][0]["model"] = tulu_file
+                d["slices"][0]["sources"][1]["model"] = science_files[science_amount]
+                d["parameters"]["t"][0]["value"] = scienceWeight
+            else:
+                raise Exception
 
             # Create folders and files
             print_and_run("mkdir tmp")

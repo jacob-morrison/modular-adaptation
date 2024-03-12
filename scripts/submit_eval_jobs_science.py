@@ -48,8 +48,8 @@ lora = False
 datasets = [
     # 70b
     # ("01HR8E8SNZKVEKK46S650M4Q42", "llama_2_70b-tulu_all-science_none", "/model", "baselines"),
-    ("01HRNSDNB34WY6NXJR80707V2Z", "llama_2_70b-tulu_none-science_100", "/model", "baselines"),
-    ("01HRNGGG1VJS6C52164ESYYJBY", "llama_2_70b-tulu_none-science_1000", "/model", "baselines"),
+    # ("01HRNSDNB34WY6NXJR80707V2Z", "llama_2_70b-tulu_none-science_100", "/model", "baselines"),
+    # ("01HRNGGG1VJS6C52164ESYYJBY", "llama_2_70b-tulu_none-science_1000", "/model", "baselines"),
     # ("01HRAKXBWVW1YYA9T56FFVFVTP", "tulu_2_70b_continued_ft-tulu_match-science_1000", "/model", "baselines"),
     # ("01HREEEJ5YRJEX16RGA9F5CZV9", "tulu_2_70b_continued_ft-tulu_none-science_1000", "/model", "baselines"),
 
@@ -96,6 +96,26 @@ datasets = [
     # ("01HRB2999DT5MKJKMS2FZ2SWY1", "llama_2_7b-tulu_all-science_upsample", "/model", "baselines"),
 
     # Merged models:
+    ("", "dare_linear-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.2-science_100_0.8", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.3-science_100_0.7", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.4-science_100_0.6", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.5-science_100_0.5", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.6-science_100_0.4", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.7-science_100_0.3", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.8-science_100_0.2", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.9-science_100_0.1", "/model", "merged_models"),
+
+    ("", "dare_linear-llama_2_7b-tulu_all_0.1-science_200_0.9", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.2-science_200_0.8", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.3-science_200_0.7", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.4-science_200_0.6", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.5-science_200_0.5", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.6-science_200_0.4", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.7-science_200_0.3", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.8-science_200_0.2", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.9-science_200_0.1", "/model", "merged_models"),
+
     # ("01HRGFH0CTYWMCHEWF68JRJ8N5", "dare_linear-llama_2_7b-tulu_all_0.1-science_500_0.9", "/model", "merged_models"),
     # ("01HRGGJ79E0CV0PA4JDNZAKGV8", "dare_linear-llama_2_7b-tulu_all_0.2-science_500_0.8", "/model", "merged_models"),
     # ("01HRGHP5D6EXSMXFKMMCZD89CQ", "dare_linear-llama_2_7b-tulu_all_0.3-science_500_0.7", "/model", "merged_models"),
@@ -125,6 +145,16 @@ datasets = [
     # ("01HRGPH0HPS2M291P87R50TSM4", "dare_linear-llama_2_7b-tulu_all_0.7-science_2500_0.3", "/model", "merged_models"),
     # ("01HRGQM52YBS1PQ0Z7K2GRAPYE", "dare_linear-llama_2_7b-tulu_all_0.8-science_2500_0.2", "/model", "merged_models"),
     # ("01HRGRPCBWPKW91RYV18P05A32", "dare_linear-llama_2_7b-tulu_all_0.9-science_2500_0.1", "/model", "merged_models"),
+
+    ("", "dare_linear-llama_2_7b-tulu_all_0.1-science_upsample_0.9", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.2-science_upsample_0.8", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.3-science_upsample_0.7", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.4-science_upsample_0.6", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.5-science_upsample_0.5", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.6-science_upsample_0.4", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.7-science_upsample_0.3", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.8-science_upsample_0.2", "/model", "merged_models"),
+    ("", "dare_linear-llama_2_7b-tulu_all_0.9-science_upsample_0.1", "/model", "merged_models"),
 
     # ("01HR1DXMHWC68VF29PVBKS5XHF", "linear_weighted-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
     # ("01HR1FKFG7THD3W3NT7AN3CG7Z", "linear_weighted-llama_2_7b-tulu_all_0.2-science_100_0.8", "/model", "merged_models"),
@@ -175,6 +205,16 @@ datasets = [
     # ("01HR1S9VTDDA4RE2MHEX091HMR", "linear_weighted-llama_2_7b-tulu_all_0.7-science_2500_0.3", "/model", "merged_models"),
     # ("01HR1TZQ7M8DEW9J0QPZ1QE7NB", "linear_weighted-llama_2_7b-tulu_all_0.8-science_2500_0.2", "/model", "merged_models"),
     # ("01HR1WNVCYM2YKVQMMXK8SEBBC", "linear_weighted-llama_2_7b-tulu_all_0.9-science_2500_0.1", "/model", "merged_models"),
+
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.1-science_upsample_0.9", "/model", "merged_models"),
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.2-science_upsample_0.8", "/model", "merged_models"),
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.3-science_upsample_0.7", "/model", "merged_models"),
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.4-science_upsample_0.6", "/model", "merged_models"),
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.5-science_upsample_0.5", "/model", "merged_models"),
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.6-science_upsample_0.4", "/model", "merged_models"),
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.7-science_upsample_0.3", "/model", "merged_models"),
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.8-science_upsample_0.2", "/model", "merged_models"),
+    ("", "linear_weighted-llama_2_7b-tulu_all_0.9-science_upsample_0.1", "/model", "merged_models"),
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder

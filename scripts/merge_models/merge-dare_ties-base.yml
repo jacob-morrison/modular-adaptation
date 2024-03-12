@@ -9,6 +9,6 @@ models:
     parameters:
       density: 0.5
       weight: 0.5
-merge_method: dare_linear
+merge_method: dare_ties
 base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
 dtype: bfloat16
