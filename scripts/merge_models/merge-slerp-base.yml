@@ -5,7 +5,7 @@ slices:
       - model: /model-path
         layer_range: [0, 32]
 merge_method: slerp
-base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+base_model: /tulu_all
 parameters:
   t:
     - value: 0.5
