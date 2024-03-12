@@ -16,12 +16,12 @@ weights = [
 ]
 
 science_files = {
-    "500": "/science_500",
-    "100": "/science_100",
-    "200": "/science_200",
-    # "1000": "/science_1000",
-    # "2500": "/science_2500",
-    # "upsample": "/science_upsample"
+    # "100": "/science_100",
+    # "200": "/science_200",
+    # "500": "/science_500",
+    "1000": "/science_1000",
+    "2500": "/science_2500",
+    "upsample": "/science_upsample"
 }
 
 merge_methods = [
