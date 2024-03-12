@@ -4,32 +4,32 @@ import subprocess
 import yaml
 
 weights = [
-    # (0.1, 0.9),
-    # (0.2, 0.8),
-    # (0.3, 0.7),
-    # (0.4, 0.6),
-    # (0.5, 0.5),
+    (0.1, 0.9),
+    (0.2, 0.8),
+    (0.3, 0.7),
+    (0.4, 0.6),
+    (0.5, 0.5),
     (0.6, 0.4),
     (0.7, 0.3),
-    # (0.8, 0.2),
+    (0.8, 0.2),
     (0.9, 0.1),
 ]
 
 science_files = {
-    # "100": "/science_100",
-    # "200": "/science_200",
-    # "500": "/science_500",
-    # "1000": "/science_1000",
+    "100": "/science_100",
+    "200": "/science_200",
+    "500": "/science_500",
+    "1000": "/science_1000",
     "2500": "/science_2500",
-    # "upsample": "/science_upsample"
+    "upsample": "/science_upsample"
 }
 
 merge_methods = [
     # "linear_weighted",
     # "dare_linear",
     # "dare_ties",
-    "ties",
-    # "slerp",
+    # "ties",
+    "slerp",
 ]
 
 tulu_file = "/tulu_all"
