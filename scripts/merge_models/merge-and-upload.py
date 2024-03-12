@@ -19,17 +19,17 @@ science_files = {
     # "100": "/science_100",
     # "200": "/science_200",
     # "500": "/science_500",
-    # "1000": "/science_1000",
+    "1000": "/science_1000",
     # "2500": "/science_2500",
-    "upsample": "/science_upsample"
+    # "upsample": "/science_upsample"
 }
 
 merge_methods = [
-    "linear_weighted",
+    # "linear_weighted",
     # "dare_linear",
-    # "dare_ties",
-    # "ties",
-    # "slerp",
+    "dare_ties",
+    "ties",
+    "slerp",
 ]
 
 tulu_file = "/tulu_all"
@@ -39,8 +39,8 @@ def print_and_run(cmd):
     subprocess.run(cmd, shell=True)
 
 for merge_method in merge_methods:
-    for (tuluWeight, scienceWeight) in weights:
-        for science_amount in science_files:
+    for science_amount in science_files:
+        for (tuluWeight, scienceWeight) in weights:
             # Copy yaml
             base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
             with open(base_yaml, 'r') as f:
