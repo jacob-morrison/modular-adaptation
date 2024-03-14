@@ -157,7 +157,9 @@ print("Starting merged models")
 for model in os.listdir(merged_models_path):
     model_path = merged_models_path + model
     print(f"Evaluating {model_path}")
-    full_data.append(collect_metrics(model_path, merged=True))
+    results = collect_metrics(model_path, merged=True)
+    if results != None:
+        full_data.append(results)
 
 # from pprint import pprint
 # pprint(full_data)
