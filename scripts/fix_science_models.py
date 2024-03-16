@@ -38,11 +38,18 @@ baselines = [
     "llama_2_7b-tulu_match-science_2500",
     "llama_2_7b-tulu_none-science_500",
     "tulu_2_7b_continued_ft-tulu_match-science_500",
+]
+
+big_baselines = [
     "tulu_2_70b_continued_ft-tulu_none-science_1000",
     "llama_2_70b-tulu_none-science_1000",
     "tulu_2_70b_continued_ft-tulu_match-science_1000",
     "llama_2_70b-tulu_none-science_100",
     "llama_2_70b-tulu_all-science_none",
+]
+
+merged_models = [
+    # put these here
 ]
 
 for model in baselines:
