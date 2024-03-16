@@ -10,7 +10,7 @@
 # gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=ai2-tpu --worker=all --command="gsutil -m cp gs://jacobm-bucket/modular_adaptation/training_data/tulu-mixtures/tulu_all_science_0_eval_no.jsonl ."
 
 gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=ai2-tpu --worker=all --command="cd easylm; export WANDB_MODE=disabled; export LIBTPU_INIT_ARGS='--xla_jf_spmd_threshold_for_windowed_einsum_mib=0 --xla_tpu_spmd_threshold_for_allgather_cse=10000 --xla_tpu_spmd_rewrite_einsum_with_reshape=true --xla_tpu_enable_latency_hiding_scheduler=true TPU_MEGACORE=MEGACORE_DENSE'; python3 -m EasyLM.models.llama.llama_train \
-    --seed=52830 \
+    --seed=42 \
     --mesh_dim='1,-1,16' \
     --dtype='bf16' \
     --num_epochs=2 \
@@ -20,22 +20,22 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=a
     --load_llama_config='7b' \
     --update_llama_config='' \
     --load_dataset_state='' \
-    --load_checkpoint='params::gs://jacobm-bucket/modular_adaptation/checkpoints/llama_2_7b-tulu_all_science_none-seed_42/tulu-2-7b-tulu_all_science_none-seed_42/71f316cfe6af4ad4b24efd674ccac1a9/streaming_params_19906' \
+    --load_checkpoint='params::gs://jacobm-bucket/modular_adaptation/checkpoints/safety-models/llama_2_7b-tulu_all-safety_none/237aadecc26f4e2795732b238d0ee4f1/streaming_params_9308' \
     --tokenizer.vocab_file='gs://hamishi-east1/easylm/llama/tokenizer.model' \
     --optimizer.type='adamw' \
     --optimizer.adamw_optimizer.weight_decay=0.0 \
     --optimizer.adamw_optimizer.lr=2e-5 \
     --optimizer.adamw_optimizer.end_lr=0 \
     --optimizer.adamw_optimizer.warmup_ratio=0.03 \
-    --optimizer.accumulate_gradient_steps=4 \
+    --optimizer.accumulate_gradient_steps=2 \
     --train_dataset.type='tulu_json_torch' \
     --train_dataset.text_processor.fields='[prompt],completion' \
-    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/tulu-mixtures/tulu_none_science_upsample_eval_no.jsonl' \
-    --train_dataset.json_torch_dataset.seq_length=4096 \
-    --train_dataset.json_torch_dataset.batch_size=32  \
+    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/safety-mixtures/tulu_none-safety_v1_all.jsonl' \
+    --train_dataset.json_torch_dataset.seq_length=2048 \
+    --train_dataset.json_torch_dataset.batch_size=64  \
     --checkpointer.save_optimizer_state=False \
     --logger.online=True --logger.entity='jacobmai2' --logger.project='train-big-llamas-on-tpus' \
-    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/tulu_2_7b_continued_ft-tulu_none-science_upsample' &> all.log &"
+    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/safety-models/tulu_2_7b_uncensored-tulu_none-safety_v1_all' &> all.log &"
 
 # list processes:
 # gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128 --zone=us-east1-d --project=ai2-tpu --worker=all --command="sudo lsof -w /dev/accel0"
