@@ -52,7 +52,7 @@ merged_models = [
     # put these here
 ]
 
-for model in baselines:
+for model in baselines + big_baselines:
     beaker_name = "jacobm/" + model
     new_beaker_name = f"{model}_4096"
     print_and_run("mkdir tmp_model_directory")
