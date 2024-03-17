@@ -46,6 +46,48 @@ experiment_groups = [
 lora = False
 
 datasets = [
+    # fixed 4k baselines:
+    ("llama_2_7b-tulu_all-science_none-seed_123_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_match-science_500_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_none-science_upsample_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_none-science_100_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_all-science_none-seed_42_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_none-science_100_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_none-science_1000_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_all-science_none-seed_52830_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_none-science_1000_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_none-science_200_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_all-science_100_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_all-science_upsample_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_none-science_1000-seed_123_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_match-science_100_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_none-science_2500_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_all-science_1000_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_match-science_100_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_none-science_1000-seed_52830_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_match-science_1000_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_none-science_500_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_all-science_200_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_match-science_1000_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_none-science_200_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_match-science_200_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_none-science_upsample_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_all-science_2500_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_match-science_200_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_none-science_2500_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_match-science_2500_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_all-science_500_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_match-science_2500_4096", "/model", "baselines"),
+    ("llama_2_7b-tulu_none-science_500_4096", "/model", "baselines"),
+    ("tulu_2_7b_continued_ft-tulu_match-science_500_4096", "/model", "baselines"),
+
+    # to run:
+    # ("tulu_2_70b_continued_ft-tulu_none-science_1000_4096", "/model", "baselines"),
+    # ("llama_2_70b-tulu_none-science_1000_4096", "/model", "baselines"),
+    # ("tulu_2_70b_continued_ft-tulu_match-science_1000_4096", "/model", "baselines"),
+    # ("llama_2_70b-tulu_none-science_100_4096", "/model", "baselines"),
+    # ("llama_2_70b-tulu_all-science_none_4096", "/model", "baselines"),
+
     # 70b
     # ("01HR8E8SNZKVEKK46S650M4Q42", "llama_2_70b-tulu_all-science_none", "/model", "baselines"),
     # ("01HRNSDNB34WY6NXJR80707V2Z", "llama_2_70b-tulu_none-science_100", "/model", "baselines"),
@@ -94,6 +136,7 @@ datasets = [
     # ("01HRD0PSPQP1C2F458RS59X7TQ", "llama_2_7b-tulu_all-science_1000", "/model", "baselines"), # need to run
     # ("01HR6M9TYWFXFKRX1NBJFT4YNH", "llama_2_7b-tulu_all-science_2500", "/model", "baselines"),
     # ("01HRB2999DT5MKJKMS2FZ2SWY1", "llama_2_7b-tulu_all-science_upsample", "/model", "baselines"),
+    # ("", "llama_2_7b-tulu_all-science_500_4096", "/model", "test"),
 
     # Merged models:
     # ("01HRRG91TNWC1YHGCH3KN1Q2D7", "dare_ties-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
@@ -218,64 +261,64 @@ datasets = [
     # ("", "ties-llama_2_7b-tulu_all_0.9-science_upsample_0.1", "/model", "merged_models"),
 
     # slerp rerun all:
-    ("", "slerp-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.2-science_100_0.8", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.3-science_100_0.7", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.4-science_100_0.6", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.5-science_100_0.5", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.6-science_100_0.4", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.7-science_100_0.3", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.8-science_100_0.2", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.9-science_100_0.1", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.2-science_100_0.8", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.3-science_100_0.7", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.4-science_100_0.6", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.5-science_100_0.5", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.6-science_100_0.4", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.7-science_100_0.3", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.8-science_100_0.2", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.9-science_100_0.1", "/model", "merged_models"),
 
-    ("", "slerp-llama_2_7b-tulu_all_0.1-science_200_0.9", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.2-science_200_0.8", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.3-science_200_0.7", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.4-science_200_0.6", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.5-science_200_0.5", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.6-science_200_0.4", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.7-science_200_0.3", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.8-science_200_0.2", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.9-science_200_0.1", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.1-science_200_0.9", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.2-science_200_0.8", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.3-science_200_0.7", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.4-science_200_0.6", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.5-science_200_0.5", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.6-science_200_0.4", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.7-science_200_0.3", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.8-science_200_0.2", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.9-science_200_0.1", "/model", "merged_models"),
 
-    ("", "slerp-llama_2_7b-tulu_all_0.1-science_500_0.9", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.2-science_500_0.8", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.3-science_500_0.7", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.4-science_500_0.6", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.5-science_500_0.5", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.6-science_500_0.4", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.7-science_500_0.3", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.8-science_500_0.2", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.9-science_500_0.1", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.1-science_500_0.9", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.2-science_500_0.8", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.3-science_500_0.7", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.4-science_500_0.6", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.5-science_500_0.5", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.6-science_500_0.4", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.7-science_500_0.3", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.8-science_500_0.2", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.9-science_500_0.1", "/model", "merged_models"),
 
-    ("", "slerp-llama_2_7b-tulu_all_0.2-science_1000_0.8", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.3-science_1000_0.7", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.4-science_1000_0.6", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.5-science_1000_0.5", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.6-science_1000_0.4", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.7-science_1000_0.3", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.8-science_1000_0.2", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.9-science_1000_0.1", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.2-science_1000_0.8", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.3-science_1000_0.7", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.4-science_1000_0.6", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.5-science_1000_0.5", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.6-science_1000_0.4", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.7-science_1000_0.3", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.8-science_1000_0.2", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.9-science_1000_0.1", "/model", "merged_models"),
 
-    ("", "slerp-llama_2_7b-tulu_all_0.1-science_2500_0.9", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.2-science_2500_0.8", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.3-science_2500_0.7", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.4-science_2500_0.6", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.5-science_2500_0.5", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.6-science_2500_0.4", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.7-science_2500_0.3", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.8-science_2500_0.2", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.9-science_2500_0.1", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.1-science_2500_0.9", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.2-science_2500_0.8", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.3-science_2500_0.7", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.4-science_2500_0.6", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.5-science_2500_0.5", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.6-science_2500_0.4", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.7-science_2500_0.3", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.8-science_2500_0.2", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.9-science_2500_0.1", "/model", "merged_models"),
 
-    ("", "slerp-llama_2_7b-tulu_all_0.1-science_upsample_0.9", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.2-science_upsample_0.8", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.3-science_upsample_0.7", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.4-science_upsample_0.6", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.5-science_upsample_0.5", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.6-science_upsample_0.4", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.7-science_upsample_0.3", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.8-science_upsample_0.2", "/model", "merged_models"),
-    ("", "slerp-llama_2_7b-tulu_all_0.9-science_upsample_0.1", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.1-science_upsample_0.9", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.2-science_upsample_0.8", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.3-science_upsample_0.7", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.4-science_upsample_0.6", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.5-science_upsample_0.5", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.6-science_upsample_0.4", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.7-science_upsample_0.3", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.8-science_upsample_0.2", "/model", "merged_models"),
+    # ("", "slerp-llama_2_7b-tulu_all_0.9-science_upsample_0.1", "/model", "merged_models"),
     
     # ("01HRR3JBES59RECVY8PS85TMEK", "dare_linear-llama_2_7b-tulu_all_0.1-science_100_0.9", "/model", "merged_models"),
     # ("01HRR4NG6PEEXS1X0W12HC08AF", "dare_linear-llama_2_7b-tulu_all_0.2-science_100_0.8", "/model", "merged_models"),
@@ -414,9 +457,7 @@ models = [
 if not merge_models:
     # for experiment_group, model_info in itertools.product(experiment_groups, models):
     # for dataset, model_info, experiment_group in itertools.product(pairwise_trained_datasets, models, experiment_groups):
-    for (beaker, model_name, model_path, save_subdir), model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
-        if beaker == "" or len(beaker) == 0:
-            beaker = "jacobm/" + model_name
+    for (model_name, model_path, save_subdir), model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
         # if dataset != "/model":
         #     model_path = f'/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/{dataset}/'
         # else:
@@ -432,7 +473,7 @@ if not merge_models:
         # shorter_name = name.replace('llama_2_7b-', '')
 
         # if dataset == "/model":
-        d['tasks'][0]['datasets'][1]['source']['beaker'] = beaker
+        d['tasks'][0]['datasets'][1]['source']['beaker'] = "jacobm/" + model_name
         d['description'] = name
         d['tasks'][0]['name'] = name
 
@@ -442,7 +483,7 @@ if not merge_models:
         #     save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/{dataset.replace('/', '-')}/{experiment_group}/"
         # save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/with_daves_tulu_model/daves_tulu_model/{experiment_group}/"
         # save_dir = "/output/"
-        save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/{save_subdir}/{model_name}/{experiment_group}/"
+        save_dir = f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/{save_subdir}/{model_name}/{experiment_group}/"
 
         if experiment_group == "mmlu_0shot":
             d['tasks'][0]['arguments'][0] = f'''
