@@ -56,5 +56,5 @@ tasks:
     constraints:
       cluster:
         - ai2/s2-cirrascale-l40
-        - ai2/allennlp-cirrascale
+        # - ai2/allennlp-cirrascale
         - ai2/general-cirrascale-a100-80g-ib
