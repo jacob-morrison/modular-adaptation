@@ -317,7 +317,7 @@ merged_models = [
     "slerp-llama_2_7b-tulu_all_0.8-science_1000_0.2",
 ]
 
-for model in merged_models:
+for model in baselines:
     beaker_name = "jacobm/" + model
     new_beaker_name = f"{model}_4096"
     print_and_run("mkdir tmp_model_directory")

@@ -19,9 +19,9 @@ d1 = yaml.load(default_yaml, Loader=yaml.FullLoader)
 cluster = "ai2/general-cirrascale-a100-80g-ib"
 # cluster = "ai2/prior-elanding"
 num_gpus = 1
-d1['tasks'][0]['context']['cluster'] = cluster
-d1['tasks'][0]['context']['priority'] = "high"
-# d1['tasks'][0]['context']['priority'] = "preemptible"
+# d1['tasks'][0]['context']['cluster'] = cluster
+# d1['tasks'][0]['context']['priority'] = "high"
+d1['tasks'][0]['context']['priority'] = "preemptible"
 d1['tasks'][0]['resources']['gpuCount'] = num_gpus
 
 merge_models = False
@@ -46,8 +46,20 @@ experiment_groups = [
 lora = False
 
 datasets = [
-    ("llama_2_7b-tulu_all-safety_none", "/model", "safety"),
-    ("tulu_2_7b_uncensored-tulu_none-safety_v1_all", "/model", "safety"),
+    # ("llama_2_7b-tulu_all-safety_none", "/model", "safety"),
+    # ("tulu_2_7b_uncensored-tulu_none-safety_v1_all", "/model", "safety"),
+
+    ("01HRMHV81KCJT3FDWTQFGN85CG", "tulu-2-7b-safety-tulu-matched-adapt-3-epochs-real", "/model", "safety-for-faeze"),
+    ("01HRG4TSBFWGRCJR3VF9XDCWG5", "tulu-2-7b-bottom25-adapt-3-epochs", "/model", "safety-for-faeze"),
+    ("01HRTBDJCE7SBBF41ZCCY07E4Y", "tulu-2-7b-safety-adapt-1-epochs-real", "/model", "safety-for-faeze"),
+    ("01HRWX16NN9JPQ6Y6HQRW5FASE", "tulu-2-7b-uncensored-safety-adapt-1-epochs-real", "/model", "safety-for-faeze"),
+    ("01HS2C5BWB75WD1NBCEDZHH7BG", "tulu-2-7b-uncensored-safety-adapt-1-epoch", "/model", "safety-for-faeze"),
+    ("01HS6PEC7M8J8RTRSEVZ9PMAGH", "tulu-2-7b-uncensored-safety-adapt-2-epochs", "/model", "safety-for-faeze"),
+    ("01HS2C5C0TCD7CFBP5F8QF9YVF", "tulu-2-7b-uncensored-safety-adapt-3-epochs", "/model", "safety-for-faeze"),
+    ("01HS2BE0GH4G91H0T3CSXPQ2FY", "tulu-2-7b-safety-adapt-1-epoch", "/model", "safety-for-faeze"),
+    ("01HS2BE0NWMBYEGQ3EZHSVG1K5", "tulu-2-7b-uncensored-safety-adapt-2-epochs", "/model", "safety-for-faeze"),
+    ("01HS2BE0TRQJ81ZFNCFG7KZNXM", "tulu-2-7b-uncensored-safety-adapt-3-epochs", "/model", "safety-for-faeze"),
+
 ]
 
 # model to evaluate, each in the followng format: model name, their beaker id, checkpoint subfolder
@@ -66,7 +78,9 @@ models = [
 if not merge_models:
     # for experiment_group, model_info in itertools.product(experiment_groups, models):
     # for dataset, model_info, experiment_group in itertools.product(pairwise_trained_datasets, models, experiment_groups):
-    for (model_name, model_path, save_subdir), model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
+    for (beaker, model_name, model_path, save_subdir), model_info, experiment_group in itertools.product(datasets, models, experiment_groups):
+        if beaker == "":
+            beaker = "jacobm/" + model_name
         # if dataset != "/model":
         #     model_path = f'/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/checkpoints/domain_addition/{dataset}/'
         # else:
@@ -82,7 +96,7 @@ if not merge_models:
         # shorter_name = name.replace('llama_2_7b-', '')
 
         # if dataset == "/model":
-        d['tasks'][0]['datasets'][1]['source']['beaker'] = "jacobm/" + model_name
+        d['tasks'][0]['datasets'][1]['source']['beaker'] = beaker # "jacobm/" + model_name
         d['description'] = name
         d['tasks'][0]['name'] = name
 
