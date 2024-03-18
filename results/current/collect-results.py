@@ -93,13 +93,13 @@ def collect_metrics(model_path, merged=False):
             data = json.loads(f_in.read())
             model_data["bbh_cot"] = data["average_exact_match"]
 
-        with open(model_path + f"/bbh_direct/metrics.json") as f_in:
-            data = json.loads(f_in.read())
-            model_data["bbh_direct"] = data["average_exact_match"]
+        # with open(model_path + f"/bbh_direct/metrics.json") as f_in:
+        #     data = json.loads(f_in.read())
+        #     model_data["bbh_direct"] = data["average_exact_match"]
 
-        with open(model_path + f"/codex_eval_temp_0.1/metrics.json") as f_in:
-            data = json.loads(f_in.read())
-            model_data["codex_eval_temp_0.1"] = data["pass@1"]
+        # with open(model_path + f"/codex_eval_temp_0.1/metrics.json") as f_in:
+        #     data = json.loads(f_in.read())
+        #     model_data["codex_eval_temp_0.1"] = data["pass@1"]
 
         with open(model_path + f"/codex_eval_temp_0.8/metrics.json") as f_in:
             data = json.loads(f_in.read())
@@ -109,17 +109,17 @@ def collect_metrics(model_path, merged=False):
             data = json.loads(f_in.read())
             model_data["gsm_cot"] = data["exact_match"]
 
-        with open(model_path + f"/gsm_direct/metrics.json") as f_in:
-            data = json.loads(f_in.read())
-            model_data["gsm_direct"] = data["exact_match"]
+        # with open(model_path + f"/gsm_direct/metrics.json") as f_in:
+        #     data = json.loads(f_in.read())
+        #     model_data["gsm_direct"] = data["exact_match"]
 
         with open(model_path + f"/mmlu_0shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["mmlu_0shot"] = data["average_acc"]
 
-        with open(model_path + f"/mmlu_5shot/metrics.json") as f_in:
-            data = json.loads(f_in.read())
-            model_data["mmlu_5shot"] = data["average_acc"]
+        # with open(model_path + f"/mmlu_5shot/metrics.json") as f_in:
+        #     data = json.loads(f_in.read())
+        #     model_data["mmlu_5shot"] = data["average_acc"]
 
         with open(model_path + f"/toxigen/metrics.json") as f_in:
             data = json.loads(f_in.read())
@@ -133,9 +133,9 @@ def collect_metrics(model_path, merged=False):
             data = json.loads(f_in.read())
             model_data["tydiqa_goldp_1shot"] = data["average"]["f1"]
 
-        with open(model_path + f"/tydiqa_no_context_1shot/metrics.json") as f_in:
-            data = json.loads(f_in.read())
-            model_data["tydiqa_no_context_1shot"] = data["average"]["f1"]
+        # with open(model_path + f"/tydiqa_no_context_1shot/metrics.json") as f_in:
+        #     data = json.loads(f_in.read())
+        #     model_data["tydiqa_no_context_1shot"] = data["average"]["f1"]
             
         with open(model_path + f"/alpaca_farm/metrics.json") as f_in:
             data = json.loads(f_in.read())
