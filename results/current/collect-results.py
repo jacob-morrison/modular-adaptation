@@ -142,7 +142,6 @@ def collect_metrics(model_path, merged=False):
             model_data["alpaca_farm"] = data["win_rate"]["model-greedy-long"]
     except:
         print(f"Couldn't find metric for {model_path}")
-        return None
 
     return model_data
 
