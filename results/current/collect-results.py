@@ -5,7 +5,7 @@ import os
 # merged_models_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/merged_models/"
 # science_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/baselines/"
 
-safety_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/safety-for-faeze/"
+safety_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/safety/"
 baselines_path = safety_path
 
 # print(tulu_evals)
@@ -165,6 +165,6 @@ for model in os.listdir(baselines_path):
 # from pprint import pprint
 # pprint(full_data)
 
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/collected/safety-for-faeze/results.json", "w") as f_out:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/collected/safety/results.json", "w") as f_out:
     for blob in full_data:
         f_out.write(json.dumps(blob) + '\n')
