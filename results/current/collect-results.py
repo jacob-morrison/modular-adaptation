@@ -1,12 +1,10 @@
 import json
 import os
 
-# baselines_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/baselines/"
-# merged_models_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/merged_models/"
-# science_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/baselines/"
-
-safety_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/safety/"
-baselines_path = safety_path
+baselines_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/baselines/"
+merged_models_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/merged_models/"
+science_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/baselines/"
+# tulu_evals = os.listdir(baselines_path) # + os.listdir(merged_models_path)
 
 # print(tulu_evals)
 
@@ -93,13 +91,13 @@ def collect_metrics(model_path, merged=False):
             data = json.loads(f_in.read())
             model_data["bbh_cot"] = data["average_exact_match"]
 
-        # with open(model_path + f"/bbh_direct/metrics.json") as f_in:
-        #     data = json.loads(f_in.read())
-        #     model_data["bbh_direct"] = data["average_exact_match"]
+        with open(model_path + f"/bbh_direct/metrics.json") as f_in:
+            data = json.loads(f_in.read())
+            model_data["bbh_direct"] = data["average_exact_match"]
 
-        # with open(model_path + f"/codex_eval_temp_0.1/metrics.json") as f_in:
-        #     data = json.loads(f_in.read())
-        #     model_data["codex_eval_temp_0.1"] = data["pass@1"]
+        with open(model_path + f"/codex_eval_temp_0.1/metrics.json") as f_in:
+            data = json.loads(f_in.read())
+            model_data["codex_eval_temp_0.1"] = data["pass@1"]
 
         with open(model_path + f"/codex_eval_temp_0.8/metrics.json") as f_in:
             data = json.loads(f_in.read())
@@ -109,17 +107,17 @@ def collect_metrics(model_path, merged=False):
             data = json.loads(f_in.read())
             model_data["gsm_cot"] = data["exact_match"]
 
-        # with open(model_path + f"/gsm_direct/metrics.json") as f_in:
-        #     data = json.loads(f_in.read())
-        #     model_data["gsm_direct"] = data["exact_match"]
+        with open(model_path + f"/gsm_direct/metrics.json") as f_in:
+            data = json.loads(f_in.read())
+            model_data["gsm_direct"] = data["exact_match"]
 
         with open(model_path + f"/mmlu_0shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["mmlu_0shot"] = data["average_acc"]
 
-        # with open(model_path + f"/mmlu_5shot/metrics.json") as f_in:
-        #     data = json.loads(f_in.read())
-        #     model_data["mmlu_5shot"] = data["average_acc"]
+        with open(model_path + f"/mmlu_5shot/metrics.json") as f_in:
+            data = json.loads(f_in.read())
+            model_data["mmlu_5shot"] = data["average_acc"]
 
         with open(model_path + f"/toxigen/metrics.json") as f_in:
             data = json.loads(f_in.read())
@@ -133,15 +131,16 @@ def collect_metrics(model_path, merged=False):
             data = json.loads(f_in.read())
             model_data["tydiqa_goldp_1shot"] = data["average"]["f1"]
 
-        # with open(model_path + f"/tydiqa_no_context_1shot/metrics.json") as f_in:
-        #     data = json.loads(f_in.read())
-        #     model_data["tydiqa_no_context_1shot"] = data["average"]["f1"]
+        with open(model_path + f"/tydiqa_no_context_1shot/metrics.json") as f_in:
+            data = json.loads(f_in.read())
+            model_data["tydiqa_no_context_1shot"] = data["average"]["f1"]
             
         with open(model_path + f"/alpaca_farm/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["alpaca_farm"] = data["win_rate"]["model-greedy-long"]
     except:
         print(f"Couldn't find metric for {model_path}")
+        # return None
 
     return model_data
 
@@ -153,18 +152,18 @@ for model in os.listdir(baselines_path):
     if results != None:
         full_data.append(results)
 
-# print()
-# print("Starting merged models")
-# for model in os.listdir(merged_models_path):
-#     model_path = merged_models_path + model
-#     print(f"Evaluating {model_path}")
-#     results = collect_metrics(model_path, merged=True)
-#     if results != None:
-#         full_data.append(results)
+print()
+print("Starting merged models")
+for model in os.listdir(merged_models_path):
+    model_path = merged_models_path + model
+    print(f"Evaluating {model_path}")
+    results = collect_metrics(model_path, merged=True)
+    if results != None:
+        full_data.append(results)
 
 # from pprint import pprint
 # pprint(full_data)
 
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/new_baselines_results/collected/safety/results.json", "w") as f_out:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/collected/results.json", "w") as f_out:
     for blob in full_data:
         f_out.write(json.dumps(blob) + '\n')
