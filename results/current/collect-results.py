@@ -98,97 +98,97 @@ def collect_metrics(model_path):
             data = json.loads(f_in.read())
             model_data["bbh_cot"] = data["average_exact_match"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/bbh_direct/metrics.json"):
+        print(f"bbh_direct missing for {model_name}")
+        model_data["bbh_direct"] = 0.0
     else:
         with open(model_path + f"/bbh_direct/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["bbh_direct"] = data["average_exact_match"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/codex_eval_temp_0.1/metrics.json"):
+        print(f"codex_eval_temp_0.1 missing for {model_name}")
+        model_data["codex_eval_temp_0.1"] = 0.0
     else:
         with open(model_path + f"/codex_eval_temp_0.1/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["codex_eval_temp_0.1"] = data["pass@1"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/codex_eval_temp_0.8/metrics.json"):
+        print(f"codex_eval_temp_0.8 missing for {model_name}")
+        model_data["codex_eval_temp_0.8"] = 0.0
     else:
         with open(model_path + f"/codex_eval_temp_0.8/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["codex_eval_temp_0.8"] = data["pass@10"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/gsm_cot/metrics.json"):
+        print(f"gsm_cot missing for {model_name}")
+        model_data["gsm_cot"] = 0.0
     else:
         with open(model_path + f"/gsm_cot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["gsm_cot"] = data["exact_match"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/gsm_direct/metrics.json"):
+        print(f"gsm_direct missing for {model_name}")
+        model_data["gsm_direct"] = 0.0
     else:
         with open(model_path + f"/gsm_direct/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["gsm_direct"] = data["exact_match"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/mmlu_0shot/metrics.json"):
+        print(f"mmlu_0shot missing for {model_name}")
+        model_data["mmlu_0shot"] = 0.0
     else:
         with open(model_path + f"/mmlu_0shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["mmlu_0shot"] = data["average_acc"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/mmlu_5shot/metrics.json"):
+        print(f"mmlu_5shot missing for {model_name}")
+        model_data["mmlu_5shot"] = 0.0
     else:
         with open(model_path + f"/mmlu_5shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["mmlu_5shot"] = data["average_acc"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/toxigen/metrics.json"):
+        print(f"toxigen missing for {model_name}")
+        model_data["toxigen"] = 0.0
     else:
         with open(model_path + f"/toxigen/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["toxigen"] = data["overall"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/truthfulqa/metrics.json"):
+        print(f"truthfulqa missing for {model_name}")
+        model_data["truthfulqa"] = 0.0
     else:
         with open(model_path + f"/truthfulqa/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["truthfulqa"] = data["truth-info acc"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/tydiqa_goldp_1shot/metrics.json"):
+        print(f"tydiqa_goldp_1shot missing for {model_name}")
+        model_data["tydiqa_goldp_1shot"] = 0.0
     else:
         with open(model_path + f"/tydiqa_goldp_1shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["tydiqa_goldp_1shot"] = data["average"]["f1"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/tydiqa_no_context_1shot/metrics.json"):
+        print(f"tydiqa_no_context_1shot missing for {model_name}")
+        model_data["tydiqa_no_context_1shot"] = 0.0
     else:
         with open(model_path + f"/tydiqa_no_context_1shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["tydiqa_no_context_1shot"] = data["average"]["f1"]
             
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
+    if not os.path.isfile(model_path + f"/alpaca_farm/metrics.json"):
+        print(f"alpaca_farm missing for {model_name}")
+        model_data["alpaca_farm"] = 0.0
     else:
         with open(model_path + f"/alpaca_farm/metrics.json") as f_in:
             data = json.loads(f_in.read())
