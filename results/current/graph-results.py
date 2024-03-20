@@ -30,6 +30,9 @@ def create_model_combo(row):
         tokens = tokens[1:]
         tokens[1] = tokens[1][:-4]
         tokens[2] = tokens[2][:-4]
+    if tokens[0] not in model_dict:
+        print(tokens)
+        print(row)
     base_model = model_dict[tokens[0]]
     tulu_model = model_dict[tokens[1]]
     science_model = model_dict[tokens[2]]
@@ -63,6 +66,8 @@ def get_raw_df():
                     model_tokens = model.split('-')
 
                     for task, metric, value in zip(tasks, metrics, curr_data[1:]):
+                        if value == '':
+                            value = 0.0
                         curr_results[task] = {
                             "metric": metric,
                             "value": float(value)
@@ -209,12 +214,12 @@ def plot_linear_merge_vs_baselines():
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
 
-    # df_lines = df[df["merge_method"] != "N/A"]
-    # df_lines = df_lines[df_lines["science_model"].isin(merged_science_models)]
-    # df_lines = df_lines[df_lines["merge_method"].isin(merge_methods)]
+    df_lines = df[df["merge_method"] != "N/A"]
+    df_lines = df_lines[df_lines["science_model"].isin(merged_science_models)]
+    df_lines = df_lines[df_lines["merge_method"].isin(merge_methods)]
 
-    # df_lines.sort_values(by='Combo', inplace=True)
-    # df_lines.sort_values(by='Order', inplace=True)
+    df_lines.sort_values(by='Combo', inplace=True)
+    df_lines.sort_values(by='Order', inplace=True)
 
     df_baselines["Order"] = df_baselines.apply(lambda row: weird_science_ordering[row["science_model"]], axis=1)
     df_baselines.sort_values(by='Order', inplace=True)
@@ -227,7 +232,7 @@ def plot_linear_merge_vs_baselines():
     # write to csv
     df.to_csv("results/current/full_results.csv", index=False)
 
-    # sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
+    sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100)
     sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="*")
     sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="X")

@@ -53,6 +53,8 @@ def get_model_weights(model_name):
 
 def collect_metrics(model_path, merged=False):
     model_name = model_path.split("/")[-1]
+    if "llama_2" not in model_name.split("-") and "tulu_2" not in model_name.split("-"):
+        merged = True
     if merged:
         tokens = model_name.split('-')
         merge_method = tokens[0]
