@@ -52,7 +52,7 @@ def get_model_weights(model_name):
     return tulu_model_weight, science_model_weight
 
 def collect_metrics(model_path, merged=False):
-    model_name = model_path.split("/")[-1]
+    model_name = model_path.split("/")[-1].replace("_4096", "")
     if "llama_2" not in model_name.split("-")[0] and "tulu_2" not in model_name.split("-")[0]:
         merged = True
     if merged:
@@ -60,14 +60,14 @@ def collect_metrics(model_path, merged=False):
         merge_method = tokens[0]
         base_model = tokens[1]
         tulu_model = tokens[2][:-4]
-        science_model = tokens[3][:-4].replace("_4096", "")
+        science_model = tokens[3][:-4]
         tulu_model_weight, science_model_weight = get_model_weights(model_name)
     else:
         merge_method = "N/A"
         tokens = model_name.split('-')
         base_model = tokens[0]
         tulu_model = tokens[1]
-        science_model = tokens[2].replace("_4096", "")
+        science_model = tokens[2]
         if tulu_model == "tulu_none":
             tulu_model_weight = 0.0
         else:
