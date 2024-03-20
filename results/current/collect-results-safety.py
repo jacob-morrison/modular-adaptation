@@ -53,11 +53,11 @@ def get_model_weights(model_name):
     tulu_model_weight = float(tokens[-2].split('_')[-1])
     return tulu_model_weight, science_model_weight
 
-def collect_metrics(model_path, merged=False):
+def collect_metrics(model_path, merged=False, hardcode=False):
     model_name = model_path.split("/")[-1].replace("_4096", "")
     if "llama_2" not in model_name.split("-")[0] and "tulu_2" not in model_name.split("-")[0]:
         merged = True
-    if merged:
+    if merged and not hardcode:
         tokens = model_name.split('-')
         merge_method = tokens[0]
         base_model = tokens[1]
@@ -161,7 +161,7 @@ print("Starting Faeze's models")
 for model in os.listdir(faeze_path):
     model_path = merged_models_path + model
     print(f"Evaluating {model_path}")
-    results = collect_metrics(model_path, merged=True)
+    results = collect_metrics(model_path, merged=False, hardcode=True)
     if results != None:
         full_data.append(results)
 
