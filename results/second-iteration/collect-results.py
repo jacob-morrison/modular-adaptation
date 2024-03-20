@@ -1,9 +1,10 @@
 import json
 import os
-import pandas as pd
 
-science_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/science/tulu_evals/"
-safety_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu_evals/"
+baselines_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/baselines/"
+merged_models_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/merged_models/"
+science_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/baselines/"
+# tulu_evals = os.listdir(baselines_path) # + os.listdir(merged_models_path)
 
 # print(tulu_evals)
 
@@ -23,6 +24,7 @@ tulu_metrics = [
     "tydiqa_no_context_1shot",
 ]
 
+full_data = []
 example = {
     "base_model": "llama-2-7b",
     "tulu_model": "tulu_model_name",
@@ -49,15 +51,9 @@ def get_model_weights(model_name):
     tulu_model_weight = float(tokens[-2].split('_')[-1])
     return tulu_model_weight, science_model_weight
 
-def collect_metrics(model_path):
+def collect_metrics(model_path, merged=False):
     model_name = model_path.split("/")[-1].replace("_4096", "")
-    if model_name.split("-")[0] in [
-        "linear_weighted",
-        "ties",
-        "dare_linear",
-        "dare_ties",
-        "slerp",
-    ]:
+    if "llama_2" not in model_name.split("-")[0] and "tulu_2" not in model_name.split("-")[0]:
         merged = True
     if merged:
         tokens = model_name.split('-')
@@ -91,139 +87,85 @@ def collect_metrics(model_path):
         "merge_method": merge_method,
     }
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
+    try:
+
         with open(model_path + f"/bbh_cot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["bbh_cot"] = data["average_exact_match"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/bbh_direct/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["bbh_direct"] = data["average_exact_match"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/codex_eval_temp_0.1/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["codex_eval_temp_0.1"] = data["pass@1"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/codex_eval_temp_0.8/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["codex_eval_temp_0.8"] = data["pass@10"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/gsm_cot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["gsm_cot"] = data["exact_match"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/gsm_direct/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["gsm_direct"] = data["exact_match"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/mmlu_0shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["mmlu_0shot"] = data["average_acc"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/mmlu_5shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["mmlu_5shot"] = data["average_acc"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/toxigen/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["toxigen"] = data["overall"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/truthfulqa/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["truthfulqa"] = data["truth-info acc"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/tydiqa_goldp_1shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["tydiqa_goldp_1shot"] = data["average"]["f1"]
 
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/tydiqa_no_context_1shot/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["tydiqa_no_context_1shot"] = data["average"]["f1"]
             
-    if not os.path.isfile(model_path + f"/bbh_cot/metrics.json"):
-        print(f"bbh_cot missing for {model_name}")
-        model_data["bbh_cot"] = 0.0
-    else:
         with open(model_path + f"/alpaca_farm/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["alpaca_farm"] = data["win_rate"]["model-greedy-long"]
+    except:
+        print(f"Couldn't find metric for {model_path}")
+        # return None
 
     return model_data
 
-science_data = []
-print("Starting science models")
-for model in os.listdir(science_path):
-    model_path = science_path + model
+print("Starting baseline models")
+for model in os.listdir(baselines_path):
+    model_path = baselines_path + model
     print(f"Evaluating {model_path}")
     results = collect_metrics(model_path)
     if results != None:
-        science_data.append(results)
+        full_data.append(results)
 
-safety_data = []
 print()
-print("Starting safety models")
-for model in os.listdir(safety_path):
-    model_path = safety_path + model
+print("Starting merged models")
+for model in os.listdir(merged_models_path):
+    model_path = merged_models_path + model
     print(f"Evaluating {model_path}")
-    results = collect_metrics(model_path)
+    results = collect_metrics(model_path, merged=True)
     if results != None:
-        safety_data.append(results)
+        full_data.append(results)
 
-df_science = pd.DataFrame(science_data)
-df_science.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/science/tulu/results.csv", index=False)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/science/tulu/results.json", "w") as f_out:
-    for blob in science_data:
-        f_out.write(json.dumps(blob) + '\n')
+# from pprint import pprint
+# pprint(full_data)
 
-df_safety = pd.DataFrame(safety_data)
-df_safety.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.csv", index=False)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.json", "w") as f_out:
-    for blob in safety_data:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/fixed_4k/collected/results.json", "w") as f_out:
+    for blob in full_data:
         f_out.write(json.dumps(blob) + '\n')
