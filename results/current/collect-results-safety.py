@@ -159,7 +159,7 @@ for model in os.listdir(baselines_path):
 print()
 print("Starting Faeze's models")
 for model in os.listdir(faeze_path):
-    model_path = merged_models_path + model
+    model_path = faeze_path + model
     print(f"Evaluating {model_path}")
     results = collect_metrics(model_path, merged=False, hardcode=True)
     if results != None:
