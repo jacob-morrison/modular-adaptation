@@ -51,14 +51,13 @@ def get_model_weights(model_name):
 
 def collect_metrics(model_path):
     model_name = model_path.split("/")[-1].replace("_4096", "")
-    if model_name.split("-")[0] in [
+    merged = model_name.split("-")[0] in [
         "linear_weighted",
         "ties",
         "dare_linear",
         "dare_ties",
         "slerp",
-    ]:
-        merged = True
+    ]
     if merged:
         tokens = model_name.split('-')
         merge_method = tokens[0]
