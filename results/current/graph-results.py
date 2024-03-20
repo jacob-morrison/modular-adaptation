@@ -45,7 +45,6 @@ def create_model_combo(row):
     else:
         return f"{base_model} -> {tulu_model} merged with {science_model}, {row['merge_method']}"
 
-
 def get_raw_df():
     science_results = {}
     with open("results/current/science-evals.csv") as f_in:
@@ -215,7 +214,9 @@ def plot_linear_merge_vs_baselines():
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
+    print(df_lines["science_model"])
     df_lines = df_lines[df_lines["science_model"].isin(merged_science_models)]
+    print(df_lines)
     df_lines = df_lines[df_lines["merge_method"].isin(merge_methods)]
 
     df_lines.sort_values(by='Combo', inplace=True)
