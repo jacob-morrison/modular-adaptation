@@ -162,11 +162,11 @@ def collect_metrics(model_path):
             data = json.loads(f_in.read())
             model_data["toxigen"] = data["overall"]
 
-    if not os.path.isfile(model_path + f"/truthfulqa/metrics.json"):
+    if not os.path.isfile(model_path + f"/trutufulqa/metrics.json"):
         print(f"truthfulqa missing for {model_name}")
         model_data["truthfulqa"] = 0.0
     else:
-        with open(model_path + f"/truthfulqa/metrics.json") as f_in:
+        with open(model_path + f"/trutufulqa/metrics.json") as f_in:
             data = json.loads(f_in.read())
             model_data["truthfulqa"] = data["truth-info acc"]
 
