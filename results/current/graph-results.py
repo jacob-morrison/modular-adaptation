@@ -128,29 +128,29 @@ def plot_linear_merge_vs_baselines():
     df = get_raw_df()
 
     weird_science_ordering = {
-        "science_100": 3,
+        "science_100": 6,
         "science_200": 4,
+        "science_500": 2,
         "science_1000": 5,
-        "science_500": 1,
-        "science_2500": 2,
-        "science_upsample": 6,
+        "science_2500": 3,
+        "science_upsample": 1,
         "science_none": 7
     }
 
     merged_science_models = {
-        "science_100",
-        "science_200",
+        # "science_100",
+        # "science_200",
         "science_500",
         "science_1000",
         "science_2500",
-        # "science_upsample",
+        "science_upsample",
     }
 
     merge_methods = {
-        "linear_weighted",
+        # "linear_weighted",
         # "dare_linear",
         # "dare_ties",
-        # "ties",
+        "ties",
         # "slerp",
     }
 
@@ -170,12 +170,12 @@ def plot_linear_merge_vs_baselines():
         # "llama_2_7b-tulu_match-science_1000",
         # "llama_2_7b-tulu_match-science_2500",
 
-        "llama_2_7b-tulu_all-science_100",
-        "llama_2_7b-tulu_all-science_200",
+        # "llama_2_7b-tulu_all-science_100",
+        # "llama_2_7b-tulu_all-science_200",
         "llama_2_7b-tulu_all-science_500",
         "llama_2_7b-tulu_all-science_1000",
         "llama_2_7b-tulu_all-science_2500",
-        # "llama_2_7b-tulu_all-science_upsample",
+        "llama_2_7b-tulu_all-science_upsample",
 
         # "tulu_2_7b_continued_ft-tulu_none-science_100",
         # "tulu_2_7b_continued_ft-tulu_none-science_200",
@@ -191,17 +191,17 @@ def plot_linear_merge_vs_baselines():
     }
 
     continued_ft_keys = {
-        "tulu_2_7b_continued_ft-tulu_none-science_100",
-        "tulu_2_7b_continued_ft-tulu_none-science_200",
+        # "tulu_2_7b_continued_ft-tulu_none-science_100",
+        # "tulu_2_7b_continued_ft-tulu_none-science_200",
         "tulu_2_7b_continued_ft-tulu_none-science_500",
         "tulu_2_7b_continued_ft-tulu_none-science_1000",
         "tulu_2_7b_continued_ft-tulu_none-science_2500",
-        # "tulu_2_7b_continued_ft-tulu_none-science_upsample",
+        "tulu_2_7b_continued_ft-tulu_none-science_upsample",
     }
 
     continued_ft_mix_keys = {
-        "tulu_2_7b_continued_ft-tulu_match-science_100",
-        "tulu_2_7b_continued_ft-tulu_match-science_200",
+        # "tulu_2_7b_continued_ft-tulu_match-science_100",
+        # "tulu_2_7b_continued_ft-tulu_match-science_200",
         "tulu_2_7b_continued_ft-tulu_match-science_500",
         "tulu_2_7b_continued_ft-tulu_match-science_1000",
         "tulu_2_7b_continued_ft-tulu_match-science_2500",
@@ -255,9 +255,10 @@ def compare_merge_methods():
     merged_science_models = {
         # "science_100",
         # "science_200",
-        "science_500",
-        # "science_1000",
+        # "science_500",
+        "science_1000",
         # "science_2500",
+        # "science_upsample",
     }
 
     # normalize these 4
@@ -401,6 +402,7 @@ def plot_single_stage_curves():
         "science_500",
         "science_1000",
         "science_2500",
+        "science_upsample"
     }
 
     df_merges = get_raw_df()
@@ -416,6 +418,7 @@ def plot_single_stage_curves():
 
     df_linear_weighted = df_subset[df_subset["merge_method"] == "linear_weighted"]
     df_dare_linear = df_subset[df_subset["merge_method"] == "dare_linear"]
+    df_ties = df_subset[df_subset["merge_method"] == "ties"]
 
     df = get_raw_df()
     df = df[df["merge_method"] == "N/A"]
@@ -426,7 +429,7 @@ def plot_single_stage_curves():
     df.sort_values(by='science_amount', inplace=True)
 
     # sns.lineplot(data=df_linear_weighted, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='P', markersize=6)
-    # sns.lineplot(data=df_dare_linear, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='*', markersize=12)
+    sns.lineplot(data=df_ties, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='*', markersize=12)
     sns.lineplot(data=df, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
 
     plt.legend()
