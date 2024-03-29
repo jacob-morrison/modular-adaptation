@@ -9,7 +9,7 @@ models:
     parameters:
       weight: 1.0
       normalize: False
-  - model: /science_2500
+  - model: /tulu_all
     parameters:
       weight: -1.0
       normalize: False
