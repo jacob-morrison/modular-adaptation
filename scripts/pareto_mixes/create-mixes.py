@@ -25,7 +25,7 @@ tulu_data = tulu_data * 2
 mix_weights = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 
 for science_weight in mix_weights:
-    num_science_examples = total_number_of_examples * science_weight
+    num_science_examples = int(total_number_of_examples * science_weight)
     print(f"Science weight: {science_weight}")
     print(f"Number of science examples: {num_science_examples}")
     print(f"Number of Tulu examples: {total_number_of_examples - num_science_examples}\n")
