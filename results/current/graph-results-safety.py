@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 import pandas as pd 
+from pprint import pprint 
 
 def calculate_tulu_average(row, columns):
     subset_values = row[columns]
@@ -23,6 +24,7 @@ def create_model_combo(row):
         "safety_80": "Safety 80%",
         "safety_100": "Safety 100%",
         "safety_upsample": "Safety Upsample",
+        "tulu_2_7b_uncensored": "Tulu 2 7B Uncensored"
     }
 
     tokens = row["model_key"].split("-")
@@ -49,6 +51,26 @@ def create_model_combo(row):
         return f"{base_model} -> Tulu All & Safety 2500 Pareto Curve"
     else:
         return f"{base_model} -> {tulu_model} merged with {safety_model}, {row['merge_method']}"
+    
+models_to_skip = [
+    "tulu_2_7b_uncensored-tulu_none-safety_v1_all",
+    "tulu_2_7b_uncensored-tulu_match-safety_v0_100",
+    "tulu-2-7b-safety-tulu-matched-adapt-3-epochs-real",
+    "tulu-2-7b-bottom25-adapt-3-epochs"
+    "tulu-2-7b-safety-adapt-1-epochs-real",
+    "tulu-2-7b-uncensored-safety-adapt-1-epochs-real",
+    "tulu-2-7b-uncensored-safety-v0.1-contrastive-1-epoch",
+    "tulu-2-7b-safety-v0.1-contrastive-1-epoch",
+    "tulu-2-7b-only-contrastive-1-epoch",
+    "tulu-2-7b-uncensored-only-contrastive-1-epoch",
+    "tulu-2-7b_safety_adapt_v0.1_contrastive_harmless_epoch1",
+    "tulu-2-7b-uncensored_safety_adapt_v0.1_contrastive_combined_epoch1",
+    "tulu-2-7b-bottom25-adapt-3-epochs",
+    "tulu-2-7b-safety-adapt-1-epochs-real",
+    "llama_2_7b-tulu_all-safety_v0_all",
+    "llama_2_7b-tulu_all-safety_none_seed_123",
+    "llama_2_7b-tulu_all-safety_none_seed_52830",
+]
 
 def get_raw_df():
     safety_results = {}
@@ -65,7 +87,8 @@ def get_raw_df():
             else:
                 curr_data = line.split(',')
                 model = curr_data[0]
-                model_tokens = model.split('-')
+                if model in models_to_skip:
+                    continue
 
                 for key, info in zip(keys, curr_data):
                     if key in [
@@ -73,10 +96,12 @@ def get_raw_df():
                         "safe_average",
                         "unsafe_average"
                     ]:
-                        curr_results[key] = info
+                        curr_results[key] = float(info)
 
                 safety_results[model] = curr_results
             i += 1
+
+    pprint(list(safety_results.keys()))
 
     tulu_data = []
     with open("results/current/tulu-evals-safety.jsonl") as f_in:
@@ -84,12 +109,16 @@ def get_raw_df():
             for line in f_in.readlines(): # + f_in2.readlines():
                 data = json.loads(line.replace("_4096", ""))
                 model_key = data["model_key"]
+                if model_key in models_to_skip:
+                    continue
                 if model_key not in safety_results:
                     print(f"key not found: {model_key}")
                 else:
+                    print(f"key found: {model_key}")
                     for key in safety_results[model_key]:
                         data[key] = safety_results[model_key][key]
-                tulu_data.append(data)        
+                tulu_data.append(data)   
+     
 
     df = pd.DataFrame(tulu_data)
 
@@ -114,14 +143,16 @@ def get_raw_df():
     ]
 
     safety_columns_for_average = [
-        "toxigen",
-        "harmbench",
+        "invert_toxigen",
+        "normalized_harmbench",
         "invert_unsafe_average",
-        "safe_average"
+        "normalized_safe_average"
     ]
 
     df['invert_toxigen'] = df.apply(lambda row: 1 - row["toxigen"], axis=1)
-    df['invert_unsafe_average'] = df.apply(lambda row: 1 - row["unsafe_average"], axis=1)
+    df['invert_unsafe_average'] = df.apply(lambda row: 1 - (row["unsafe_average"] / 100), axis=1)
+    df["normalized_safe_average"] = df.apply(lambda row: row["safe_average"] / 100, axis=1)
+    df["normalized_harmbench"] = df.apply(lambda row: 1 - (row["harmbench"] / 100), axis=1)
     df['alpaca_farm'] = df.apply(lambda row: row["alpaca_farm"] / 100, axis=1)
     df['tydiqa_no_context_1shot'] = df.apply(lambda row: row["tydiqa_no_context_1shot"] / 100, axis=1)
     df['tydiqa_goldp_1shot'] = df.apply(lambda row: row["tydiqa_goldp_1shot"] / 100, axis=1)
@@ -133,7 +164,21 @@ def get_raw_df():
 
     df['Combo'] = df.apply(lambda row: create_model_combo(row), axis=1)
 
+    df.to_csv("results/current/safety_full_results.csv", index=False)
+
     return df
 
-df = get_raw_df()
-print(df.to_string())
+def plot_baselines():
+    df = get_raw_df()
+    sns.scatterplot(data=df, x="Tulu Average (Tulu Subset)", y="Safety Average", hue="Combo", s=100)
+
+    plt.legend()
+
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+
+    # plt.ylim(0.1, 0.4)
+
+    plt.show()
+
+# print(df.to_string())
+plot_baselines()
