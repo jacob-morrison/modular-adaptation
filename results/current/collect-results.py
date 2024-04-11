@@ -258,7 +258,7 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts"):
 
 df_safety_evals = pd.DataFrame(safety_eval_data)
 df_safety_evals.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety/results.csv", index=False)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.jsonl", "w") as f_out:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety/results.jsonl", "w") as f_out:
     for blob in safety_eval_data:
         f_out.write(json.dumps(blob) + "\n")
 
