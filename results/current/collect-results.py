@@ -198,48 +198,55 @@ for model in os.listdir(safety_path):
 # Read safety eval files
 # save to /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety/
 safety_eval_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety_evals/"
-safety_evals = ["", "harmbench_behaviors_text_all"]
+harmbench = {}
+with open(safety_eval_path + "/harmbench_behaviors_text_all/results_harmbench.tsv") as f_in:
+    for line in f_in.readlines():
+        tokens = line.split("\n")
+        if tokens[0] == "Model":
+            continue
+        harmbench[tokens[0]] = float(tokens[2])
 safety_eval_data = []
 for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts"):
-    with open(safety_eval_path + "xstest_v2_prompts" + "/" + model_name + "/compliance_xstest_orig.tsv") as f_in:
-        merged = model_name.split("-")[0] in [
-            "linear_weighted",
-            "ties",
-            "dare_linear",
-            "dare_ties",
-            "slerp",
-        ]
-        if merged:
-            tokens = model_name.split('-')
-            merge_method = tokens[0]
-            base_model = tokens[1]
-            tulu_model = tokens[2][:-4]
-            safety_model = tokens[3][:-4]
-            tulu_model_weight, safety_model_weight = get_model_weights(model_name)
+    merged = model_name.split("-")[0] in [
+        "linear_weighted",
+        "ties",
+        "dare_linear",
+        "dare_ties",
+        "slerp",
+    ]
+    if merged:
+        tokens = model_name.split('-')
+        merge_method = tokens[0]
+        base_model = tokens[1]
+        tulu_model = tokens[2][:-4]
+        safety_model = tokens[3][:-4]
+        tulu_model_weight, safety_model_weight = get_model_weights(model_name)
+    else:
+        merge_method = "N/A"
+        tokens = model_name.split('-')
+        base_model = tokens[0]
+        tulu_model = tokens[1]
+        safety_model = tokens[2]
+        if tulu_model == "tulu_none":
+            tulu_model_weight = 0.0
         else:
-            merge_method = "N/A"
-            tokens = model_name.split('-')
-            base_model = tokens[0]
-            tulu_model = tokens[1]
-            safety_model = tokens[2]
-            if tulu_model == "tulu_none":
-                tulu_model_weight = 0.0
-            else:
-                tulu_model_weight = 1.0
-            if safety_model == "safety_none":
-                safety_model_weight = 0.0
-            else:
-                safety_model_weight = 1.0
-
-        model_data = {
-            "model_key": model_name,
-            "base_model": base_model,
-            "tulu_model": tulu_model,
-            "tulu_model_weight": tulu_model_weight,
-            "safety_model": safety_model,
-            "safety_model_weight": safety_model_weight,
-            "merge_method": merge_method,
-        }
+            tulu_model_weight = 1.0
+        if safety_model == "safety_none":
+            safety_model_weight = 0.0
+        else:
+            safety_model_weight = 1.0
+    model_data = {
+        "model_key": model_name,
+        "base_model": base_model,
+        "tulu_model": tulu_model,
+        "tulu_model_weight": tulu_model_weight,
+        "safety_model": safety_model,
+        "safety_model_weight": safety_model_weight,
+        "merge_method": merge_method,
+        "harmbench": harmbench[model_name]
+    }
+    
+    with open(safety_eval_path + "xstest_v2_prompts" + "/" + model_name + "/compliance_xstest_orig.tsv") as f_in:
         for line in f_in.readlines():
             tokens = line.strip().split('\t')
             if tokens[0] == "safe_average":
@@ -247,6 +254,7 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts"):
             elif tokens[0] == "unsafe_average":
                 model_data["unsafe_average"] = float(tokens[1])
         safety_eval_data.append(model_data)
+
 
 df_safety_evals = pd.DataFrame(safety_eval_data)
 df_safety_evals.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety/results.csv", index=False)
