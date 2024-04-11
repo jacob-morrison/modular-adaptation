@@ -201,7 +201,7 @@ safety_eval_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/resul
 harmbench = {}
 with open(safety_eval_path + "/harmbench_behaviors_text_all/results_harmbench.tsv") as f_in:
     for line in f_in.readlines():
-        tokens = line.split("\n")
+        tokens = line.split("\t")
         if tokens[0] == "Model":
             continue
         harmbench[tokens[0]] = float(tokens[2])
