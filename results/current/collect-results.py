@@ -23,26 +23,6 @@ tulu_metrics = [
     "tydiqa_no_context_1shot",
 ]
 
-example = {
-    "base_model": "llama-2-7b",
-    "tulu_model": "tulu_model_name",
-    "tulu_model_weight": -0.5,
-    "science_model": "science_model_name",
-    "science_model_weight": -0.5,
-
-    "bbh_cot": -1,
-    "bbh_direct": -1,
-    "codex_eval_temp_0.1": -1,
-    "codex_eval_temp_0.8": -1,
-    "gsm_cot": -1,
-    "gsm_direct": -1,
-    "mmlu_0shot": -1,
-    "mmlu_5shot": -1,
-    "toxigen": -1,
-    "tydiqa_goldp_1shot": -1,
-    "tydiqa_no_context_1shot": -1,
-}
-
 def get_model_weights(model_name):
     tokens = model_name.split('-')
     science_model_weight = float(tokens[-1].split('_')[-1])
@@ -214,6 +194,65 @@ for model in os.listdir(safety_path):
     results = collect_metrics(model_path)
     if results != None:
         safety_data.append(results)
+
+# Read safety eval files
+# save to /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety/
+safety_eval_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety_evals/"
+safety_evals = ["", "harmbench_behaviors_text_all"]
+safety_eval_data = []
+for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts"):
+    with open(safety_eval_path + "xstest_v2_prompts" + "/" + model_name + "/compliance_xstest_orig.tsv") as f_in:
+        merged = model_name.split("-")[0] in [
+            "linear_weighted",
+            "ties",
+            "dare_linear",
+            "dare_ties",
+            "slerp",
+        ]
+        if merged:
+            tokens = model_name.split('-')
+            merge_method = tokens[0]
+            base_model = tokens[1]
+            tulu_model = tokens[2][:-4]
+            safety_model = tokens[3][:-4]
+            tulu_model_weight, safety_model_weight = get_model_weights(model_name)
+        else:
+            merge_method = "N/A"
+            tokens = model_name.split('-')
+            base_model = tokens[0]
+            tulu_model = tokens[1]
+            safety_model = tokens[2]
+            if tulu_model == "tulu_none":
+                tulu_model_weight = 0.0
+            else:
+                tulu_model_weight = 1.0
+            if safety_model == "safety_none":
+                safety_model_weight = 0.0
+            else:
+                safety_model_weight = 1.0
+
+        model_data = {
+            "model_key": model_name,
+            "base_model": base_model,
+            "tulu_model": tulu_model,
+            "tulu_model_weight": tulu_model_weight,
+            "safety_model": safety_model,
+            "safety_model_weight": safety_model_weight,
+            "merge_method": merge_method,
+        }
+        for line in f_in.readlines():
+            tokens = line.strip().split('\t')
+            if tokens[0] == "safe_average":
+                model_data["safe_average"] = float(tokens[1])
+            elif tokens[0] == "unsafe_average":
+                model_data["unsafe_average"] = float(tokens[1])
+        safety_eval_data.append(model_data)
+
+df_safety_evals = pd.DataFrame(safety_eval_data)
+df_safety_evals.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety/results.csv", index=False)
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.jsonl", "w") as f_out:
+    for blob in safety_eval_data:
+        f_out.write(json.dumps(blob) + "\n")
 
 df_science = pd.DataFrame(science_data)
 df_science.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/science/tulu/results.csv", index=False)

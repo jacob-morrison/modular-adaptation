@@ -23,10 +23,15 @@ def create_model_combo(row):
         "science_1000": "Science 1000",
         "science_2500": "Science 2500",
         "science_upsample": "Science Upsample",
+        "science_2500_minus_science_2500": "Science 2500 Minus Science 2500",
+        "science_2500_minus_tulu": "Science 2500 Minus Tulu",
     }
 
     tokens = row["model_key"].split("-")
-    if row["merge_method"] != "N/A":
+    if row["merge_method"] == "pareto":
+        tokens[1] = "tulu_all"
+        tokens[2] = "science_2500"
+    elif row["merge_method"] != "N/A":
         tokens = tokens[1:]
         tokens[1] = tokens[1][:-4]
         tokens[2] = tokens[2][:-4]
@@ -42,6 +47,8 @@ def create_model_combo(row):
 
     if row["merge_method"] == "N/A":
         return f"{base_model} -> {tulu_model} & {science_model}"
+    elif row["merge_method"] == "pareto":
+        return f"{base_model} -> Tulu All & Science 2500 Pareto Curve"
     else:
         return f"{base_model} -> {tulu_model} merged with {science_model}, {row['merge_method']}"
 
@@ -140,18 +147,19 @@ def plot_linear_merge_vs_baselines():
     merged_science_models = {
         # "science_100",
         # "science_200",
-        "science_500",
-        "science_1000",
+        # "science_500",
+        # "science_1000",
         "science_2500",
-        "science_upsample",
+        # "science_upsample",
     }
 
     merge_methods = {
-        # "linear_weighted",
-        # "dare_linear",
+        "linear_weighted",
+        "dare_linear",
         # "dare_ties",
-        "ties",
+        # "ties",
         # "slerp",
+        "pareto",
     }
 
     baseline_keys = {
@@ -172,10 +180,10 @@ def plot_linear_merge_vs_baselines():
 
         # "llama_2_7b-tulu_all-science_100",
         # "llama_2_7b-tulu_all-science_200",
-        "llama_2_7b-tulu_all-science_500",
-        "llama_2_7b-tulu_all-science_1000",
+        # "llama_2_7b-tulu_all-science_500",
+        # "llama_2_7b-tulu_all-science_1000",
         "llama_2_7b-tulu_all-science_2500",
-        "llama_2_7b-tulu_all-science_upsample",
+        # "llama_2_7b-tulu_all-science_upsample",
 
         # "tulu_2_7b_continued_ft-tulu_none-science_100",
         # "tulu_2_7b_continued_ft-tulu_none-science_200",
@@ -193,17 +201,17 @@ def plot_linear_merge_vs_baselines():
     continued_ft_keys = {
         # "tulu_2_7b_continued_ft-tulu_none-science_100",
         # "tulu_2_7b_continued_ft-tulu_none-science_200",
-        "tulu_2_7b_continued_ft-tulu_none-science_500",
-        "tulu_2_7b_continued_ft-tulu_none-science_1000",
+        # "tulu_2_7b_continued_ft-tulu_none-science_500",
+        # "tulu_2_7b_continued_ft-tulu_none-science_1000",
         "tulu_2_7b_continued_ft-tulu_none-science_2500",
-        "tulu_2_7b_continued_ft-tulu_none-science_upsample",
+        # "tulu_2_7b_continued_ft-tulu_none-science_upsample",
     }
 
     continued_ft_mix_keys = {
         # "tulu_2_7b_continued_ft-tulu_match-science_100",
         # "tulu_2_7b_continued_ft-tulu_match-science_200",
-        "tulu_2_7b_continued_ft-tulu_match-science_500",
-        "tulu_2_7b_continued_ft-tulu_match-science_1000",
+        # "tulu_2_7b_continued_ft-tulu_match-science_500",
+        # "tulu_2_7b_continued_ft-tulu_match-science_1000",
         "tulu_2_7b_continued_ft-tulu_match-science_2500",
     }
 
@@ -215,13 +223,15 @@ def plot_linear_merge_vs_baselines():
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
-    print(df_lines["science_model"])
+    # print(df_lines["science_model"])
     df_lines = df_lines[df_lines["science_model"].isin(merged_science_models)]
-    print(df_lines)
+    # print(df_lines)
     df_lines = df_lines[df_lines["merge_method"].isin(merge_methods)]
 
     df_lines.sort_values(by='Combo', inplace=True)
     df_lines.sort_values(by='Order', inplace=True)
+
+    print(df_lines)
 
     df_baselines["Order"] = df_baselines.apply(lambda row: weird_science_ordering[row["science_model"]], axis=1)
     df_baselines.sort_values(by='Order', inplace=True)
@@ -438,6 +448,6 @@ def plot_single_stage_curves():
 
     plt.show()
 
-# plot_linear_merge_vs_baselines()
+plot_linear_merge_vs_baselines()
 # compare_merge_methods()
-plot_single_stage_curves()
+# plot_single_stage_curves()
