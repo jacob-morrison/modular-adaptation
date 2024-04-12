@@ -166,13 +166,13 @@ def collect_metrics(model_path):
             data = json.loads(f_in.read())
             model_data["tydiqa_no_context_1shot"] = data["average"]["f1"]
             
-    if not os.path.isfile(model_path + f"/alpaca_farm/metrics.json"):
-        print(f"alpaca_farm missing for {model_name}")
-        model_data["alpaca_farm"] = 0.0
+    if not os.path.isfile(model_path + f"/alpaca_eval/metrics.json"):
+        print(f"alpaca_eval missing for {model_name}")
+        model_data["alpaca_eval"] = 0.0
     else:
-        with open(model_path + f"/alpaca_farm/metrics.json") as f_in:
+        with open(model_path + f"/alpaca_eval/metrics.json") as f_in:
             data = json.loads(f_in.read())
-            model_data["alpaca_farm"] = data["win_rate"]["model-greedy-long"]
+            model_data["alpaca_eval"] = data["win_rate"]["model-greedy-long"]
 
     return model_data
 
