@@ -264,12 +264,12 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
 
 df_science = pd.DataFrame(science_data)
 df_science.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/science/tulu/results.csv", index=False)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/science/tulu/results.json", "w") as f_out:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/science/tulu/results.jsonl", "w") as f_out:
     for blob in science_data:
         f_out.write(json.dumps(blob) + '\n')
 
 df_safety = pd.DataFrame(safety_data)
 df_safety.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.csv", index=False)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.json", "w") as f_out:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.jsonl", "w") as f_out:
     for blob in safety_data:
         f_out.write(json.dumps(blob) + '\n')
