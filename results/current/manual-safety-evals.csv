@@ -1,0 +1,7 @@
+model_key,base_model,tulu_model,tulu_model_weight,safety_model,safety_model_weight,merge_method,harmbench,safe_average,unsafe_average
+linear_weighted-llama_2_7b-tulu_all_1.0-safety_20_0.0,llama_2_7b,tulu_all,1.0,safety_none,0.0,N/A,54.0,99.19999603200017,31.99999872000005
+linear_weighted-llama_2_7b-tulu_all_1.0-safety_60_0.0,llama_2_7b,tulu_all,1.0,safety_none,0.0,N/A,54.0,99.19999603200017,31.99999872000005
+linear_weighted-llama_2_7b-tulu_all_1.0-safety_100_0.0,llama_2_7b,tulu_all,1.0,safety_none,0.0,N/A,54.0,99.19999603200017,31.99999872000005
+linear_weighted-llama_2_7b-tulu_all_0.0-safety_20_1.0,llama_2_7b,tulu_none,0.0,safety_20,1.0,N/A,0.0,5.599999776000009,0.0
+linear_weighted-llama_2_7b-tulu_all_0.0-safety_60_1.0,llama_2_7b,tulu_none,0.0,safety_60,1.0,N/A,0.0,9.999999600000017,0.0
+linear_weighted-llama_2_7b-tulu_all_0.0-safety_100_1.0,llama_2_7b,tulu_none,0.0,safety_100,1.0,N/A,0.0,7.999999680000011,0.4999999800000008

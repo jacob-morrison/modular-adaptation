@@ -75,38 +75,38 @@ models_to_skip = [
 def get_raw_df():
     safety_results = {}
     with open("results/current/safety-evals.csv") as f_in:
-        # with open("results/current/manual-safety-evals.csv") as f_in2:
-        # for baselines:
-        merge_method = "N/A"
-        i = 0
-        for line in f_in.readlines(): # + f_in2.readlines()[2:]:
-            line = line.strip().replace("_4096", "")
-            curr_results = {}
-            if i == 0: # model_key,base_model,tulu_model,tulu_model_weight,safety_model,safety_model_weight,merge_method,harmbench,safe_average,unsafe_average
-                keys = line.split(',')
-            else:
-                curr_data = line.split(',')
-                model = curr_data[0]
-                if model in models_to_skip:
-                    continue
+        with open("results/current/manual-safety-evals.csv") as f_in2:
+            # for baselines:
+            merge_method = "N/A"
+            i = 0
+            for line in f_in.readlines() + f_in2.readlines()[1:]:
+                line = line.strip().replace("_4096", "")
+                curr_results = {}
+                if i == 0: # model_key,base_model,tulu_model,tulu_model_weight,safety_model,safety_model_weight,merge_method,harmbench,safe_average,unsafe_average
+                    keys = line.split(',')
+                else:
+                    curr_data = line.split(',')
+                    model = curr_data[0]
+                    if model in models_to_skip:
+                        continue
 
-                for key, info in zip(keys, curr_data):
-                    if key in [
-                        "harmbench",
-                        "safe_average",
-                        "unsafe_average"
-                    ]:
-                        curr_results[key] = float(info)
+                    for key, info in zip(keys, curr_data):
+                        if key in [
+                            "harmbench",
+                            "safe_average",
+                            "unsafe_average"
+                        ]:
+                            curr_results[key] = float(info)
 
-                safety_results[model] = curr_results
-            i += 1
+                    safety_results[model] = curr_results
+                i += 1
 
-    pprint(list(safety_results.keys()))
+        pprint(list(safety_results.keys()))
 
     tulu_data = []
     with open("results/current/tulu-evals-safety.jsonl") as f_in:
-        # with open("results/current/manual-tulu-evals.jsonl") as f_in2:
-            for line in f_in.readlines(): # + f_in2.readlines():
+        with open("results/current/manual-tulu-evals-safety.jsonl") as f_in2:
+            for line in f_in.readlines() + f_in2.readlines():
                 data = json.loads(line.replace("_4096", ""))
                 model_key = data["model_key"]
                 if model_key in models_to_skip:
@@ -128,8 +128,6 @@ def get_raw_df():
         "bbh_cot",
         "tydiqa_goldp_1shot",
         "codex_eval_temp_0.8",
-        "alpaca_farm",
-        "invert_toxigen",
         "truthfulqa",
     ]
 
@@ -149,11 +147,17 @@ def get_raw_df():
         "normalized_safe_average"
     ]
 
+    safety_columns_for_average_except_exaggerated = [
+        "invert_toxigen",
+        "normalized_harmbench",
+        "invert_unsafe_average",
+    ]
+
     df['invert_toxigen'] = df.apply(lambda row: 1 - row["toxigen"], axis=1)
     df['invert_unsafe_average'] = df.apply(lambda row: 1 - (row["unsafe_average"] / 100), axis=1)
     df["normalized_safe_average"] = df.apply(lambda row: row["safe_average"] / 100, axis=1)
     df["normalized_harmbench"] = df.apply(lambda row: 1 - (row["harmbench"] / 100), axis=1)
-    df['alpaca_farm'] = df.apply(lambda row: row["alpaca_farm"] / 100, axis=1)
+    df['alpaca_eval'] = df.apply(lambda row: row["alpaca_eval"] / 100, axis=1)
     df['tydiqa_no_context_1shot'] = df.apply(lambda row: row["tydiqa_no_context_1shot"] / 100, axis=1)
     df['tydiqa_goldp_1shot'] = df.apply(lambda row: row["tydiqa_goldp_1shot"] / 100, axis=1)
 
@@ -161,6 +165,7 @@ def get_raw_df():
     df['Tulu Average (Other Evals)'] = df.apply(lambda row: calculate_tulu_average(row, tulu_columns_for_val_average), axis=1)
     df['Tulu Average (Tulu Subset)'] = df.apply(lambda row: calculate_tulu_average(row, tulu_columns_for_test_average), axis=1)
     df['Safety Average'] = df.apply(lambda row: calculate_tulu_average(row, safety_columns_for_average), axis=1)
+    df['Safety Average (except exaggerated)'] = df.apply(lambda row: calculate_tulu_average(row, safety_columns_for_average_except_exaggerated), axis=1)
 
     df['Combo'] = df.apply(lambda row: create_model_combo(row), axis=1)
 
@@ -180,5 +185,377 @@ def plot_baselines():
 
     plt.show()
 
-# print(df.to_string())
-plot_baselines()
+def plot_safety_vs_tulu(safety_subset):
+    df = get_raw_df()
+
+    weird_safety_ordering = {
+        "safety_20": 3,
+        "safety_40": 4,
+        "safety_60": 2,
+        "safety_80": 5,
+        "safety_100": 1,
+        "safety_upsample": 6,
+        "safety_none": 7
+    }
+
+    merged_safety_models = {
+        "safety_20",
+        "safety_60",
+        "safety_100",
+    }
+
+    merge_methods = {
+        "linear_weighted",
+        # "dare_linear",
+        # "dare_ties",
+        # "ties",
+        # "slerp",
+        # "pareto",
+    }
+
+    baseline_keys = {
+        # "llama_2_7b-tulu_none-safety_20",
+        # "llama_2_7b-tulu_none-safety_40",
+        # "llama_2_7b-tulu_none-safety_60",
+        # "llama_2_7b-tulu_none-safety_80",
+        # "llama_2_7b-tulu_none-safety_100",
+        # "llama_2_7b-tulu_none-safety_upsample",
+
+        "llama_2_7b-tulu_all-safety_none",
+
+        "llama_2_7b-tulu_match-safety_20",
+        # "llama_2_7b-tulu_match-safety_40",
+        "llama_2_7b-tulu_match-safety_60",
+        # "llama_2_7b-tulu_match-safety_80",
+        "llama_2_7b-tulu_match-safety_100",
+
+        "llama_2_7b-tulu_all-safety_20",
+        # "llama_2_7b-tulu_all-safety_40",
+        "llama_2_7b-tulu_all-safety_60",
+        "llama_2_7b-tulu_all-safety_100",
+        # "llama_2_7b-tulu_all-safety_upsample",
+
+        "tulu_2_7b_continued_ft-tulu_none-safety_20",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_40",
+        "tulu_2_7b_continued_ft-tulu_none-safety_60",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_80",
+        "tulu_2_7b_continued_ft-tulu_none-safety_100",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_upsample",
+
+        # "llama_2_7b-tulu_none-safety_1000-seed_123",
+        # "llama_2_7b-tulu_none-safety_1000-seed_52830",
+        # "llama_2_7b-tulu_all-safety_none-seed_123",
+        # "llama_2_7b-tulu_all-safety_none-seed_52830",
+    }
+
+    continued_ft_keys = {
+        "tulu_2_7b_uncensored-tulu_none-safety_20",
+        # "tulu_2_7b_uncensored-tulu_none-safety_40",
+        "tulu_2_7b_uncensored-tulu_none-safety_60",
+        # "tulu_2_7b_uncensored-tulu_none-safety_80",
+        "tulu_2_7b_uncensored-tulu_none-safety_100",
+        # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
+    }
+
+    continued_ft_mix_keys = {
+        "tulu_2_7b_uncensored-tulu_match-safety_20",
+        # "tulu_2_7b_uncensored-tulu_match-safety_40",
+        "tulu_2_7b_uncensored-tulu_match-safety_60",
+        # "tulu_2_7b_uncensored-tulu_match-safety_80",
+        "tulu_2_7b_uncensored-tulu_match-safety_100",
+    }
+
+    # normalize these 4
+    df["Order"] = df["tulu_model_weight"]
+
+    df_baselines = df[df["model_key"].isin(baseline_keys)]
+    df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
+
+    df_lines = df[df["merge_method"] != "N/A"]
+    # print(df_lines["safety_model"])
+    df_lines = df_lines[df_lines["science_model"].isin(merged_safety_models)]
+    # print(df_lines)
+    df_lines = df_lines[df_lines["merge_method"].isin(merge_methods)]
+
+    df_lines.sort_values(by='Combo', inplace=True)
+    df_lines.sort_values(by='Order', inplace=True)
+
+    print(df_lines)
+
+    df_baselines["Order"] = df_baselines.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_baselines.sort_values(by='Order', inplace=True)
+    df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_mix.sort_values(by='Order', inplace=True)
+
+
+    # write to csv
+    df.to_csv("results/current/full_results.csv", index=False)
+
+    sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
+    sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100)
+    sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="X")
+
+    plt.legend()
+
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+
+    # plt.ylim(0.1, 0.4)
+
+    plt.show()
+
+def plot_safety_vs_exaggerated(safety_subset):
+    df = get_raw_df()
+
+    weird_safety_ordering = {
+        "safety_20": 3,
+        "safety_40": 4,
+        "safety_60": 2,
+        "safety_80": 5,
+        "safety_100": 1,
+        "safety_upsample": 6,
+        "safety_none": 7
+    }
+
+    merged_safety_models = {
+        "safety_20",
+        "safety_60",
+        "safety_100",
+    }
+
+    merge_methods = {
+        "linear_weighted",
+        # "dare_linear",
+        # "dare_ties",
+        # "ties",
+        # "slerp",
+        # "pareto",
+    }
+
+    baseline_keys = {
+        # "llama_2_7b-tulu_none-safety_20",
+        # "llama_2_7b-tulu_none-safety_40",
+        # "llama_2_7b-tulu_none-safety_60",
+        # "llama_2_7b-tulu_none-safety_80",
+        # "llama_2_7b-tulu_none-safety_100",
+        # "llama_2_7b-tulu_none-safety_upsample",
+
+        "llama_2_7b-tulu_all-safety_none",
+
+        "llama_2_7b-tulu_match-safety_20",
+        # "llama_2_7b-tulu_match-safety_40",
+        "llama_2_7b-tulu_match-safety_60",
+        # "llama_2_7b-tulu_match-safety_80",
+        "llama_2_7b-tulu_match-safety_100",
+
+        "llama_2_7b-tulu_all-safety_20",
+        # "llama_2_7b-tulu_all-safety_40",
+        "llama_2_7b-tulu_all-safety_60",
+        "llama_2_7b-tulu_all-safety_100",
+        # "llama_2_7b-tulu_all-safety_upsample",
+
+        "tulu_2_7b_continued_ft-tulu_none-safety_20",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_40",
+        "tulu_2_7b_continued_ft-tulu_none-safety_60",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_80",
+        "tulu_2_7b_continued_ft-tulu_none-safety_100",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_upsample",
+
+        # "llama_2_7b-tulu_none-safety_1000-seed_123",
+        # "llama_2_7b-tulu_none-safety_1000-seed_52830",
+        # "llama_2_7b-tulu_all-safety_none-seed_123",
+        # "llama_2_7b-tulu_all-safety_none-seed_52830",
+    }
+
+    continued_ft_keys = {
+        "tulu_2_7b_uncensored-tulu_none-safety_20",
+        # "tulu_2_7b_uncensored-tulu_none-safety_40",
+        "tulu_2_7b_uncensored-tulu_none-safety_60",
+        # "tulu_2_7b_uncensored-tulu_none-safety_80",
+        "tulu_2_7b_uncensored-tulu_none-safety_100",
+        # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
+    }
+
+    continued_ft_mix_keys = {
+        "tulu_2_7b_uncensored-tulu_match-safety_20",
+        # "tulu_2_7b_uncensored-tulu_match-safety_40",
+        "tulu_2_7b_uncensored-tulu_match-safety_60",
+        # "tulu_2_7b_uncensored-tulu_match-safety_80",
+        "tulu_2_7b_uncensored-tulu_match-safety_100",
+    }
+
+    # normalize these 4
+    df["Order"] = df["tulu_model_weight"]
+
+    df_baselines = df[df["model_key"].isin(baseline_keys)]
+    df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
+
+    df_lines = df[df["merge_method"] != "N/A"]
+    # print(df_lines["safety_model"])
+    df_lines = df_lines[df_lines["science_model"].isin(merged_safety_models)]
+    # print(df_lines)
+    df_lines = df_lines[df_lines["merge_method"].isin(merge_methods)]
+
+    df_lines.sort_values(by='Combo', inplace=True)
+    df_lines.sort_values(by='Order', inplace=True)
+
+    print(df_lines)
+
+    df_baselines["Order"] = df_baselines.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_baselines.sort_values(by='Order', inplace=True)
+    df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_mix.sort_values(by='Order', inplace=True)
+
+
+    # write to csv
+    df.to_csv("results/current/full_results.csv", index=False)
+
+    sns.lineplot(data=df_lines, x="normalized_safe_average", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
+    sns.scatterplot(data=df_baselines, x="normalized_safe_average", y=safety_subset, hue="Combo", s=100)
+    sns.scatterplot(data=df_continued_ft, x="normalized_safe_average", y=safety_subset, hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_mix, x="normalized_safe_average", y=safety_subset, hue="Combo", s=100, marker="X")
+
+    plt.legend()
+
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+
+    # plt.ylim(0.1, 0.4)
+
+    plt.show()
+
+def plot_alpaca_vs_safety(safety_subset):
+    df = get_raw_df()
+
+    weird_safety_ordering = {
+        "safety_20": 3,
+        "safety_40": 4,
+        "safety_60": 2,
+        "safety_80": 5,
+        "safety_100": 1,
+        "safety_upsample": 6,
+        "safety_none": 7
+    }
+
+    merged_safety_models = {
+        "safety_20",
+        "safety_60",
+        "safety_100",
+    }
+
+    merge_methods = {
+        "linear_weighted",
+        # "dare_linear",
+        # "dare_ties",
+        # "ties",
+        # "slerp",
+        # "pareto",
+    }
+
+    baseline_keys = {
+        # "llama_2_7b-tulu_none-safety_20",
+        # "llama_2_7b-tulu_none-safety_40",
+        # "llama_2_7b-tulu_none-safety_60",
+        # "llama_2_7b-tulu_none-safety_80",
+        # "llama_2_7b-tulu_none-safety_100",
+        # "llama_2_7b-tulu_none-safety_upsample",
+
+        "llama_2_7b-tulu_all-safety_none",
+
+        "llama_2_7b-tulu_match-safety_20",
+        # "llama_2_7b-tulu_match-safety_40",
+        "llama_2_7b-tulu_match-safety_60",
+        # "llama_2_7b-tulu_match-safety_80",
+        "llama_2_7b-tulu_match-safety_100",
+
+        "llama_2_7b-tulu_all-safety_20",
+        # "llama_2_7b-tulu_all-safety_40",
+        "llama_2_7b-tulu_all-safety_60",
+        "llama_2_7b-tulu_all-safety_100",
+        # "llama_2_7b-tulu_all-safety_upsample",
+
+        "tulu_2_7b_continued_ft-tulu_none-safety_20",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_40",
+        "tulu_2_7b_continued_ft-tulu_none-safety_60",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_80",
+        "tulu_2_7b_continued_ft-tulu_none-safety_100",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_upsample",
+
+        # "llama_2_7b-tulu_none-safety_1000-seed_123",
+        # "llama_2_7b-tulu_none-safety_1000-seed_52830",
+        # "llama_2_7b-tulu_all-safety_none-seed_123",
+        # "llama_2_7b-tulu_all-safety_none-seed_52830",
+    }
+
+    continued_ft_keys = {
+        "tulu_2_7b_uncensored-tulu_none-safety_20",
+        # "tulu_2_7b_uncensored-tulu_none-safety_40",
+        "tulu_2_7b_uncensored-tulu_none-safety_60",
+        # "tulu_2_7b_uncensored-tulu_none-safety_80",
+        "tulu_2_7b_uncensored-tulu_none-safety_100",
+        # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
+    }
+
+    continued_ft_mix_keys = {
+        "tulu_2_7b_uncensored-tulu_match-safety_20",
+        # "tulu_2_7b_uncensored-tulu_match-safety_40",
+        "tulu_2_7b_uncensored-tulu_match-safety_60",
+        # "tulu_2_7b_uncensored-tulu_match-safety_80",
+        "tulu_2_7b_uncensored-tulu_match-safety_100",
+    }
+
+    # normalize these 4
+    df["Order"] = df["tulu_model_weight"]
+
+    df_baselines = df[df["model_key"].isin(baseline_keys)]
+    df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
+
+    df_lines = df[df["merge_method"] != "N/A"]
+    # print(df_lines["safety_model"])
+    df_lines = df_lines[df_lines["science_model"].isin(merged_safety_models)]
+    # print(df_lines)
+    df_lines = df_lines[df_lines["merge_method"].isin(merge_methods)]
+
+    df_lines.sort_values(by='Combo', inplace=True)
+    df_lines.sort_values(by='Order', inplace=True)
+
+    print(df_lines)
+
+    df_baselines["Order"] = df_baselines.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_baselines.sort_values(by='Order', inplace=True)
+    df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_mix.sort_values(by='Order', inplace=True)
+
+
+    # write to csv
+    df.to_csv("results/current/full_results.csv", index=False)
+
+    sns.lineplot(data=df_lines, x="alpaca_eval", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
+    sns.scatterplot(data=df_baselines, x="alpaca_eval", y=safety_subset, hue="Combo", s=100)
+    sns.scatterplot(data=df_continued_ft, x="alpaca_eval", y=safety_subset, hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_mix, x="alpaca_eval", y=safety_subset, hue="Combo", s=100, marker="X")
+
+    plt.legend()
+
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+
+    # plt.ylim(0.1, 0.4)
+
+    plt.show()
+
+# safety_subset = "normalized_safe_average"
+# safety_subset = "Safety Average"
+safety_subset = "Safety Average (except exaggerated)"
+
+# plot_baselines()
+# plot_safety_vs_exaggerated(safety_subset)
+# plot_safety_vs_tulu(safety_subset)
+plot_alpaca_vs_safety(safety_subset)
