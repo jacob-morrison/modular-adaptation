@@ -21,44 +21,59 @@ tulu_amounts = [
     # "tulu_match",
     "tulu_none",
 ]
-for tulu_amount in tulu_amounts:
-    for safety_amount in science_amounts:
-        if safety_amount == "safety_upsample" and tulu_amount == "tulu_match":
-            continue
-        science_data = []
-        print(safety_amount)
-        with open(f"training_data/safety-mixtures/tulu_none-safety_100.jsonl") as f_in:
-            for line in f_in.readlines():
-                data = json.loads(line)
-                science_data.append(data)
+# for tulu_amount in tulu_amounts:
+#     for safety_amount in science_amounts:
+#         if safety_amount == "safety_upsample" and tulu_amount == "tulu_match":
+#             continue
+#         science_data = []
+#         print(safety_amount)
+#         with open(f"training_data/safety-mixtures/tulu_none-safety_100.jsonl") as f_in:
+#             for line in f_in.readlines():
+#                 data = json.loads(line)
+#                 science_data.append(data)
 
-        tulu_data = []
-        with open("training_data/safety-mixtures/tulu_all-safety_none.jsonl") as f_in:
-            for line in f_in.readlines():
-                data = json.loads(line)
-                tulu_data.append(data)
+        # tulu_data = []
+        # with open("training_data/safety-mixtures/tulu_all-safety_none.jsonl") as f_in:
+        #     for line in f_in.readlines():
+        #         data = json.loads(line)
+        #         tulu_data.append(data)
         
-        if tulu_amount == "tulu_match":
-            random.shuffle(tulu_data)
-            tulu_data = tulu_data[:len(science_data)]
+#         if tulu_amount == "tulu_match":
+#             random.shuffle(tulu_data)
+#             tulu_data = tulu_data[:len(science_data)]
 
-        print(len(science_data))
-        if safety_amount == "safety_upsample":
-            science_data = science_data * 6
-            print(len(science_data))
-            science_data = science_data[:len(tulu_data)]
-            print(len(science_data))
-        print(len(tulu_data))
-        full_data = tulu_data + science_data
-        random.shuffle(full_data)
-        print(len(full_data))
+#         print(len(science_data))
+#         if safety_amount == "safety_upsample":
+#             science_data = science_data * 6
+#             print(len(science_data))
+#             science_data = science_data[:len(tulu_data)]
+#             print(len(science_data))
+#         print(len(tulu_data))
+#         full_data = tulu_data + science_data
+#         random.shuffle(full_data)
+#         print(len(full_data))
 
-        with open("training_data/safety-mixtures/tulu_none-safety_upsample.jsonl", "w") as f:
-            for x in science_data:
-                print(json.dumps(x), file=f)
+#         with open("training_data/safety-mixtures/tulu_none-safety_upsample.jsonl", "w") as f:
+#             for x in science_data:
+#                 print(json.dumps(x), file=f)
 
-        with open(f"training_data/safety-mixtures/tulu_all-{safety_amount}.jsonl", "w") as f:
-            for x in full_data:
-                print(json.dumps(x), file=f)
+        # with open(f"training_data/safety-mixtures/tulu_all-{safety_amount}.jsonl", "w") as f:
+        #     for x in full_data:
+        #         print(json.dumps(x), file=f)
 
-        print()
+#         print()
+
+tulu_data = []
+with open("training_data/safety-mixtures/tulu_all-safety_none.jsonl") as f_in:
+    for line in f_in.readlines():
+        data = json.loads(line)
+        tulu_data.append(data)
+
+random.shuffle(tulu_data)
+tulu_data = tulu_data * 2
+tulu_data = tulu_data[:302940 + 66161]
+random.shuffle(tulu_data)
+
+with open(f"training_data/safety-mixtures/tulu_upsample-safety_none.jsonl", "w") as f:
+    for x in tulu_data:
+        print(json.dumps(x), file=f)
