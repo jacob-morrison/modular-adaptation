@@ -25,7 +25,7 @@ weights = [
 # }
 
 safety_files = {
-    "10": "safety_10",
+    "10": "/safety_10",
     # "20": "/safety_20",
     # "60": "/safety_60",
     # "100": "/safety_100",
