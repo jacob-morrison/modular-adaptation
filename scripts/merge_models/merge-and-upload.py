@@ -47,7 +47,8 @@ safety_files = {
 }
 
 merge_methods = [
-    "linear_weighted",
+    # "linear_weighted",
+    "task_arithmetic",
     # "dare_linear",
     # "dare_ties",
     # "ties",
@@ -66,7 +67,7 @@ for merge_method in merge_methods:
         # for (tuluWeight, scienceWeight) in weights:
         for (tuluWeight, safetyWeight) in weights:
             # Copy yaml
-            base_yaml = f"scripts/merge_models/merge-{merge_method}-base-not-normalized.yml"
+            base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
             with open(base_yaml, 'r') as f:
                 d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
             d = copy.deepcopy(d1)
