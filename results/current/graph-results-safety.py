@@ -29,6 +29,7 @@ def create_model_combo(row):
         "safety_upsample": "Safety Upsample",
         "tulu_2_7b_uncensored": "Tulu 2 7B Uncensored",
         "tulu_2_7b_uncensored_safety_100": "Tulu 2 7B Uncensored c.t. Safety 100%",
+        "tulu_2_7b_continued_ft_lora": "Tulu 2 7B Uncensored c.t. with Lora"
     }
 
     tokens = row["model_key"].split("-")
@@ -272,6 +273,14 @@ def plot_safety_vs_tulu(safety_subset):
         # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
     }
 
+    continued_ft_lora_keys = {
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_20",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_60",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
+    }
+
+
     continued_ft_mix_keys = {
         "tulu_2_7b_uncensored-tulu_match-safety_10",
         "tulu_2_7b_uncensored-tulu_match-safety_20",
@@ -282,10 +291,11 @@ def plot_safety_vs_tulu(safety_subset):
     }
 
     # normalize these 4
-    df["Order"] = df["tulu_model_weight"]
+    df["Order"] = df["science_model_weight"]
 
     df_baselines = df[df["model_key"].isin(baseline_keys)]
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_lora = df[df["model_key"].isin(continued_ft_lora_keys)]
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
@@ -303,6 +313,8 @@ def plot_safety_vs_tulu(safety_subset):
     df_baselines.sort_values(by='Order', inplace=True)
     df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_lora["Order"] = df_continued_ft_lora.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_lora.sort_values(by='Order', inplace=True)
     df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft_mix.sort_values(by='Order', inplace=True)
 
@@ -313,6 +325,7 @@ def plot_safety_vs_tulu(safety_subset):
     sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100)
     sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_lora, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="P")
     sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="X")
 
     plt.legend()
@@ -398,6 +411,14 @@ def plot_safety_vs_exaggerated():
         # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
     }
 
+    continued_ft_lora_keys = {
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_20",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_60",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
+    }
+
+
     continued_ft_mix_keys = {
         "tulu_2_7b_uncensored-tulu_match-safety_20",
         # "tulu_2_7b_uncensored-tulu_match-safety_40",
@@ -407,10 +428,11 @@ def plot_safety_vs_exaggerated():
     }
 
     # normalize these 4
-    df["Order"] = df["tulu_model_weight"]
+    df["Order"] = df["science_model_weight"]
 
     df_baselines = df[df["model_key"].isin(baseline_keys)]
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_lora = df[df["model_key"].isin(continued_ft_lora_keys)]
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
@@ -428,6 +450,8 @@ def plot_safety_vs_exaggerated():
     df_baselines.sort_values(by='Order', inplace=True)
     df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_lora["Order"] = df_continued_ft_lora.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_lora.sort_values(by='Order', inplace=True)
     df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft_mix.sort_values(by='Order', inplace=True)
 
@@ -438,6 +462,7 @@ def plot_safety_vs_exaggerated():
     sns.lineplot(data=df_lines, x="normalized_safe_average", y="Safety Average (except exaggerated)", hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="normalized_safe_average", y="Safety Average (except exaggerated)", hue="Combo", s=100)
     sns.scatterplot(data=df_continued_ft, x="normalized_safe_average", y="Safety Average (except exaggerated)", hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_lora, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="P")
     sns.scatterplot(data=df_continued_ft_mix, x="normalized_safe_average", y="Safety Average (except exaggerated)", hue="Combo", s=100, marker="X")
 
     plt.legend()
@@ -523,6 +548,14 @@ def plot_alpaca_vs_safety(safety_subset):
         # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
     }
 
+    continued_ft_lora_keys = {
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_20",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_60",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
+    }
+
+
     continued_ft_mix_keys = {
         "tulu_2_7b_uncensored-tulu_match-safety_20",
         # "tulu_2_7b_uncensored-tulu_match-safety_40",
@@ -532,10 +565,11 @@ def plot_alpaca_vs_safety(safety_subset):
     }
 
     # normalize these 4
-    df["Order"] = df["tulu_model_weight"]
+    df["Order"] = df["science_model_weight"]
 
     df_baselines = df[df["model_key"].isin(baseline_keys)]
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_lora = df[df["model_key"].isin(continued_ft_lora_keys)]
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
@@ -553,6 +587,8 @@ def plot_alpaca_vs_safety(safety_subset):
     df_baselines.sort_values(by='Order', inplace=True)
     df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_lora["Order"] = df_continued_ft_lora.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_lora.sort_values(by='Order', inplace=True)
     df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft_mix.sort_values(by='Order', inplace=True)
 
@@ -563,6 +599,7 @@ def plot_alpaca_vs_safety(safety_subset):
     sns.lineplot(data=df_lines, x="alpaca_eval", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="alpaca_eval", y=safety_subset, hue="Combo", s=100)
     sns.scatterplot(data=df_continued_ft, x="alpaca_eval", y=safety_subset, hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_lora, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="P")
     sns.scatterplot(data=df_continued_ft_mix, x="alpaca_eval", y=safety_subset, hue="Combo", s=100, marker="X")
 
     plt.legend()
@@ -648,6 +685,13 @@ def plot_tulu_vs_alpaca_eval():
         # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
     }
 
+    continued_ft_lora_keys = {
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_20",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_60",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
+    }
+
     continued_ft_mix_keys = {
         "tulu_2_7b_uncensored-tulu_match-safety_20",
         # "tulu_2_7b_uncensored-tulu_match-safety_40",
@@ -657,10 +701,11 @@ def plot_tulu_vs_alpaca_eval():
     }
 
     # normalize these 4
-    df["Order"] = df["tulu_model_weight"]
+    df["Order"] = df["science_model_weight"]
 
     df_baselines = df[df["model_key"].isin(baseline_keys)]
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_lora = df[df["model_key"].isin(continued_ft_lora_keys)]
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
@@ -678,6 +723,8 @@ def plot_tulu_vs_alpaca_eval():
     df_baselines.sort_values(by='Order', inplace=True)
     df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_lora["Order"] = df_continued_ft_lora.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_lora.sort_values(by='Order', inplace=True)
     df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft_mix.sort_values(by='Order', inplace=True)
 
@@ -688,7 +735,148 @@ def plot_tulu_vs_alpaca_eval():
     sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y="alpaca_eval", hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y="alpaca_eval", hue="Combo", s=100)
     sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y="alpaca_eval", hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_lora, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="P")
     sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y="alpaca_eval", hue="Combo", s=100, marker="X")
+
+    plt.legend()
+
+    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+
+    # plt.ylim(0.1, 0.4)
+
+    plt.show()
+
+def plot_compare_merge_methods(safety_subset):
+    if safety_subset == "Exaggerated Refusals":
+        safety_subset = "normalized_safe_average"
+
+    df = get_raw_df()
+
+    weird_safety_ordering = {
+        "safety_20": 3,
+        "safety_40": 4,
+        "safety_60": 2,
+        "safety_80": 5,
+        "safety_100": 1,
+        "safety_upsample": 6,
+        "safety_none": 7
+    }
+
+    merged_safety_models = {
+        # "safety_v0_100",
+        "tulu_2_7b_uncensored_safety_100",
+        # "safety_10",
+        # "safety_20",
+        # "safety_60",
+        "safety_100",
+    }
+
+    merge_methods = {
+        "linear_weighted",
+        "task_arithmetic",
+        # "dare_linear",
+        # "dare_ties",
+        # "ties",
+        # "slerp",
+        # "pareto",
+    }
+
+    baseline_keys = {
+        # "llama_2_7b-tulu_none-safety_20",
+        # "llama_2_7b-tulu_none-safety_40",
+        # "llama_2_7b-tulu_none-safety_60",
+        # "llama_2_7b-tulu_none-safety_80",
+        # "llama_2_7b-tulu_none-safety_100",
+        # "llama_2_7b-tulu_none-safety_upsample",
+
+        "llama_2_7b-tulu_all-safety_none",
+
+        # "llama_2_7b-tulu_match-safety_20",
+        # "llama_2_7b-tulu_match-safety_40",
+        # "llama_2_7b-tulu_match-safety_60",
+        # "llama_2_7b-tulu_match-safety_80",
+        "llama_2_7b-tulu_match-safety_100",
+
+        # "llama_2_7b-tulu_all-safety_20",
+        # "llama_2_7b-tulu_all-safety_40",
+        # "llama_2_7b-tulu_all-safety_60",
+        "llama_2_7b-tulu_all-safety_100",
+        # "llama_2_7b-tulu_all-safety_upsample",
+
+        # "tulu_2_7b_continued_ft-tulu_none-safety_20",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_40",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_60",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_80",
+        "tulu_2_7b_continued_ft-tulu_none-safety_100",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_upsample",
+
+        # "llama_2_7b-tulu_none-safety_1000-seed_123",
+        # "llama_2_7b-tulu_none-safety_1000-seed_52830",
+        # "llama_2_7b-tulu_all-safety_none-seed_123",
+        # "llama_2_7b-tulu_all-safety_none-seed_52830",
+    }
+
+    continued_ft_keys = {
+        # "tulu_2_7b_uncensored-tulu_none-safety_20",
+        # "tulu_2_7b_uncensored-tulu_none-safety_40",
+        # "tulu_2_7b_uncensored-tulu_none-safety_60",
+        # "tulu_2_7b_uncensored-tulu_none-safety_80",
+        "tulu_2_7b_uncensored-tulu_none-safety_100",
+        # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
+    }
+
+    continued_ft_lora_keys = {
+        # "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
+        # "tulu_2_7b_continued_ft_lora-tulu_none-safety_20",
+        # "tulu_2_7b_continued_ft_lora-tulu_none-safety_60",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
+    }
+
+    continued_ft_mix_keys = {
+        # "tulu_2_7b_uncensored-tulu_match-safety_20",
+        # "tulu_2_7b_uncensored-tulu_match-safety_40",
+        # "tulu_2_7b_uncensored-tulu_match-safety_60",
+        # "tulu_2_7b_uncensored-tulu_match-safety_80",
+        "tulu_2_7b_uncensored-tulu_match-safety_100",
+    }
+
+    # normalize these 4
+    df["Order"] = df["science_model_weight"]
+
+    df_baselines = df[df["model_key"].isin(baseline_keys)]
+    df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_lora = df[df["model_key"].isin(continued_ft_lora_keys)]
+    df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
+
+    df_lines = df[df["merge_method"] != "N/A"]
+    # print(df_lines["safety_model"])
+    df_lines = df_lines[df_lines["science_model"].isin(merged_safety_models)]
+    # print(df_lines)
+    df_lines = df_lines[df_lines["merge_method"].isin(merge_methods)]
+
+    df_lines.sort_values(by='Combo', inplace=True)
+    df_lines.sort_values(by='Order', inplace=True)
+
+    print(df_lines)
+
+    df_baselines["Order"] = df_baselines.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_baselines.sort_values(by='Order', inplace=True)
+    df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_lora["Order"] = df_continued_ft_lora.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_lora.sort_values(by='Order', inplace=True)
+    df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_mix.sort_values(by='Order', inplace=True)
+
+
+    # write to csv
+    df.to_csv("results/current/full_results.csv", index=False)
+
+    sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
+    sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100)
+    sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_lora, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="P")
+    sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="X")
 
     plt.legend()
 
@@ -705,6 +893,7 @@ def plot_all_curves(safety_subset):
     df = get_raw_df()
 
     weird_safety_ordering = {
+        "safety_10": 8,
         "safety_20": 3,
         "safety_40": 4,
         "safety_60": 2,
@@ -725,6 +914,7 @@ def plot_all_curves(safety_subset):
 
     merge_methods = {
         "linear_weighted",
+        "task_arithmetic",
         # "dare_linear",
         # "dare_ties",
         # "ties",
@@ -776,6 +966,13 @@ def plot_all_curves(safety_subset):
         # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
     }
 
+    continued_ft_lora_keys = {
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_20",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_60",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
+    }
+
     continued_ft_mix_keys = {
         "tulu_2_7b_uncensored-tulu_match-safety_20",
         # "tulu_2_7b_uncensored-tulu_match-safety_40",
@@ -785,10 +982,11 @@ def plot_all_curves(safety_subset):
     }
 
     # normalize these 4
-    df["Order"] = df["tulu_model_weight"]
+    df["Order"] = df["science_model_weight"]
 
     df_baselines = df[df["model_key"].isin(baseline_keys)]
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
+    df_continued_ft_lora = df[df["model_key"].isin(continued_ft_lora_keys)]
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
@@ -806,6 +1004,8 @@ def plot_all_curves(safety_subset):
     df_baselines.sort_values(by='Order', inplace=True)
     df_continued_ft["Order"] = df_continued_ft.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft.sort_values(by='Order', inplace=True)
+    df_continued_ft_lora["Order"] = df_continued_ft_lora.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_continued_ft_lora.sort_values(by='Order', inplace=True)
     df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft_mix.sort_values(by='Order', inplace=True)
 
@@ -816,6 +1016,7 @@ def plot_all_curves(safety_subset):
     sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
     # sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100)
     # sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=300, marker="*")
+    # sns.scatterplot(data=df_continued_ft_lora, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="P")
     # sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="X")
 
     plt.legend()
@@ -826,13 +1027,14 @@ def plot_all_curves(safety_subset):
 
     plt.show()
 
-# safety_subset = "Safety Average"
+safety_subset = "Safety Average"
 # safety_subset = "Safety Average (except exaggerated)"
-safety_subset = "Exaggerated Refusals"
+# safety_subset = "Exaggerated Refusals"
 
 # plot_baselines()
-plot_safety_vs_tulu(safety_subset)
+# plot_safety_vs_tulu(safety_subset)
 # plot_alpaca_vs_safety(safety_subset)
 # plot_safety_vs_exaggerated()
 # plot_tulu_vs_alpaca_eval()
 # plot_all_curves(safety_subset)
+plot_compare_merge_methods(safety_subset)

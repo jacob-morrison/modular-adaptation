@@ -1,4 +1,5 @@
 model_key,base_model,tulu_model,tulu_model_weight,safety_model,safety_model_weight,merge_method,harmbench,safe_average,unsafe_average
+task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.0,llama_2_7b,tulu_all,1.0,safety_none,0.0,N/A,54.0,99.19999603200017,31.99999872000005
 linear_weighted-llama_2_7b-tulu_all_1.0-tulu_2_7b_uncensored_safety_100_0.0,llama_2_7b,tulu_all,1.0,safety_none,0.0,N/A,54.0,99.19999603200017,31.99999872000005
 linear_weighted-llama_2_7b-tulu_all_1.0-safety_v0_100_0.0,llama_2_7b,tulu_all,1.0,safety_none,0.0,N/A,54.0,99.19999603200017,31.99999872000005
 linear_weighted-llama_2_7b-tulu_all_1.0-safety_10_0.0,llama_2_7b,tulu_all,1.0,safety_none,0.0,N/A,54.0,99.19999603200017,31.99999872000005
