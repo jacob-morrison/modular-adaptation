@@ -3,16 +3,29 @@ import os
 import subprocess
 import yaml
 
+# weights = [
+#     (0.1, 0.9),
+#     (0.2, 0.8),
+#     (0.3, 0.7),
+#     (0.4, 0.6),
+#     (0.5, 0.5),
+#     (0.6, 0.4),
+#     (0.7, 0.3),
+#     (0.8, 0.2),
+#     (0.9, 0.1),
+# ]
+
 weights = [
-    (0.1, 0.9),
-    (0.2, 0.8),
-    (0.3, 0.7),
-    (0.4, 0.6),
-    (0.5, 0.5),
-    (0.6, 0.4),
-    (0.7, 0.3),
-    (0.8, 0.2),
-    (0.9, 0.1),
+    (1.0, 1.0),
+    (1.0, 0.9),
+    (1.0, 0.8),
+    (1.0, 0.7),
+    (1.0, 0.6),
+    (1.0, 0.5),
+    (1.0, 0.4),
+    (1.0, 0.3),
+    (1.0, 0.2),
+    (1.0, 0.1),
 ]
 
 # science_files = {
@@ -25,11 +38,11 @@ weights = [
 # }
 
 safety_files = {
-    "uncensored_100": "/tulu_2_7b_uncensored_safety_100",
+    # "uncensored_100": "/tulu_2_7b_uncensored_safety_100",
     # "10": "/safety_10",
     # "20": "/safety_20",
     # "60": "/safety_60",
-    # "100": "/safety_100",
+    "100": "/safety_100",
     # "v0_100": "/safety_v0_100",
 }
 
@@ -53,7 +66,7 @@ for merge_method in merge_methods:
         # for (tuluWeight, scienceWeight) in weights:
         for (tuluWeight, safetyWeight) in weights:
             # Copy yaml
-            base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
+            base_yaml = f"scripts/merge_models/merge-{merge_method}-base-not-normalized.yml"
             with open(base_yaml, 'r') as f:
                 d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
             d = copy.deepcopy(d1)

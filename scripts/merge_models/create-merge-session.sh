@@ -13,6 +13,10 @@ beaker session create --gpus 1 -d --budget ai2/allennlp \
     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_60=/safety_60 \
     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100=/safety_100
 
+beaker session create --gpus 1 -d --budget ai2/allennlp \
+    --mount beaker://jacobm/llama_2_7b-tulu_all-safety_none=/tulu_all \
+    --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100=/safety_100
+
 	
 
 beaker session create --gpus 1 -d --budget ai2/oe-adapt \

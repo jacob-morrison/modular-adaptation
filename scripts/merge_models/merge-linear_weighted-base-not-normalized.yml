@@ -1,0 +1,12 @@
+models:
+  - model: /model-path
+    parameters:
+      weight: weight
+      normalize: False
+  - model: /model-path
+    parameters:
+      weight: weight
+      normalize: False
+merge_method: task_arithmetic
+base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+dtype: bfloat16
