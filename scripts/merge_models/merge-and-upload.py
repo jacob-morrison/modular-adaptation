@@ -71,7 +71,7 @@ for merge_method in merge_methods:
             with open(base_yaml, 'r') as f:
                 d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
             d = copy.deepcopy(d1)
-            if merge_method == "linear_weighted":
+            if merge_method == "linear_weighted" or merge_method == "task_arithmetic":
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file
                 d["models"][0]["parameters"]["weight"] = tuluWeight
