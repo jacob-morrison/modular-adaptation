@@ -201,11 +201,12 @@ for model in os.listdir(safety_path):
 safety_eval_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety_evals/"
 harmbench = {}
 with open(safety_eval_path + "/harmbench_behaviors_text_all/results_harmbench.tsv") as f_in:
-    for line in f_in.readlines():
-        tokens = line.split("\t")
-        if tokens[0] == "Model":
-            continue
-        harmbench[tokens[0]] = float(tokens[2])
+    with open(safety_eval_path + "/harmbench_behaviors_text_all/results_harmbench_dataset_weighting.tsv") as f_in2:
+        for line in f_in.readlines() + f_in2.readlines():
+            tokens = line.split("\t")
+            if tokens[0] == "Model":
+                continue
+            harmbench[tokens[0]] = float(tokens[2])
 safety_eval_data = []
 for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts"):
     merged = model_name.split("-")[0] in [
