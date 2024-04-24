@@ -103,7 +103,7 @@ def get_raw_df():
         "bbh_cot",
         "tydiqa_goldp_1shot",
         "codex_eval_temp_0.8",
-        "alpaca_farm",
+        # "alpaca_farm",
         "invert_toxigen",
         "truthfulqa",
     ]
@@ -156,10 +156,11 @@ def plot_linear_merge_vs_baselines():
     merge_methods = {
         "linear_weighted",
         "dare_linear",
-        # "dare_ties",
-        # "ties",
-        # "slerp",
-        "pareto",
+        "dare_ties",
+        "ties",
+        "slerp",
+        # "pareto",
+        "task_arithmetic",
     }
 
     baseline_keys = {
@@ -176,7 +177,7 @@ def plot_linear_merge_vs_baselines():
         # "llama_2_7b-tulu_match-science_200",
         # "llama_2_7b-tulu_match-science_500",
         # "llama_2_7b-tulu_match-science_1000",
-        # "llama_2_7b-tulu_match-science_2500",
+        "llama_2_7b-tulu_match-science_2500",
 
         # "llama_2_7b-tulu_all-science_100",
         # "llama_2_7b-tulu_all-science_200",
@@ -216,7 +217,7 @@ def plot_linear_merge_vs_baselines():
     }
 
     # normalize these 4
-    df["Order"] = df["tulu_model_weight"]
+    df["Order"] = df["science_model_weight"]
 
     df_baselines = df[df["model_key"].isin(baseline_keys)]
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
@@ -272,7 +273,7 @@ def compare_merge_methods():
     }
 
     # normalize these 4
-    df["Order"] = df["tulu_model_weight"]
+    df["Order"] = df["science_model_weight"]
 
     # df_baselines = df[df["model_key"].isin(baseline_keys)]
     # df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]

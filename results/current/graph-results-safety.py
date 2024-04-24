@@ -753,6 +753,7 @@ def plot_compare_merge_methods(safety_subset):
     df = get_raw_df()
 
     weird_safety_ordering = {
+        "safety_10": 8,
         "safety_20": 3,
         "safety_40": 4,
         "safety_60": 2,
@@ -764,11 +765,11 @@ def plot_compare_merge_methods(safety_subset):
 
     merged_safety_models = {
         # "safety_v0_100",
-        "tulu_2_7b_uncensored_safety_100",
-        # "safety_10",
+        # "tulu_2_7b_uncensored_safety_100",
+        "safety_10",
         # "safety_20",
         # "safety_60",
-        "safety_100",
+        # "safety_100",
     }
 
     merge_methods = {
@@ -791,23 +792,25 @@ def plot_compare_merge_methods(safety_subset):
 
         "llama_2_7b-tulu_all-safety_none",
 
-        # "llama_2_7b-tulu_match-safety_20",
+        "llama_2_7b-tulu_match-safety_10",
         # "llama_2_7b-tulu_match-safety_40",
         # "llama_2_7b-tulu_match-safety_60",
         # "llama_2_7b-tulu_match-safety_80",
-        "llama_2_7b-tulu_match-safety_100",
+        # "llama_2_7b-tulu_match-safety_100",
 
+        "llama_2_7b-tulu_all-safety_10",
         # "llama_2_7b-tulu_all-safety_20",
         # "llama_2_7b-tulu_all-safety_40",
         # "llama_2_7b-tulu_all-safety_60",
-        "llama_2_7b-tulu_all-safety_100",
+        # "llama_2_7b-tulu_all-safety_100",
         # "llama_2_7b-tulu_all-safety_upsample",
 
+        "tulu_2_7b_continued_ft-tulu_none-safety_10",
         # "tulu_2_7b_continued_ft-tulu_none-safety_20",
         # "tulu_2_7b_continued_ft-tulu_none-safety_40",
         # "tulu_2_7b_continued_ft-tulu_none-safety_60",
         # "tulu_2_7b_continued_ft-tulu_none-safety_80",
-        "tulu_2_7b_continued_ft-tulu_none-safety_100",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_100",
         # "tulu_2_7b_continued_ft-tulu_none-safety_upsample",
 
         # "llama_2_7b-tulu_none-safety_1000-seed_123",
@@ -817,27 +820,29 @@ def plot_compare_merge_methods(safety_subset):
     }
 
     continued_ft_keys = {
+        "tulu_2_7b_uncensored-tulu_none-safety_10",
         # "tulu_2_7b_uncensored-tulu_none-safety_20",
         # "tulu_2_7b_uncensored-tulu_none-safety_40",
         # "tulu_2_7b_uncensored-tulu_none-safety_60",
         # "tulu_2_7b_uncensored-tulu_none-safety_80",
-        "tulu_2_7b_uncensored-tulu_none-safety_100",
+        # "tulu_2_7b_uncensored-tulu_none-safety_100",
         # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
     }
 
     continued_ft_lora_keys = {
-        # "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
         # "tulu_2_7b_continued_ft_lora-tulu_none-safety_20",
         # "tulu_2_7b_continued_ft_lora-tulu_none-safety_60",
-        "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
+        # "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
     }
 
     continued_ft_mix_keys = {
+        "tulu_2_7b_uncensored-tulu_match-safety_10",
         # "tulu_2_7b_uncensored-tulu_match-safety_20",
         # "tulu_2_7b_uncensored-tulu_match-safety_40",
         # "tulu_2_7b_uncensored-tulu_match-safety_60",
         # "tulu_2_7b_uncensored-tulu_match-safety_80",
-        "tulu_2_7b_uncensored-tulu_match-safety_100",
+        # "tulu_2_7b_uncensored-tulu_match-safety_100",
     }
 
     # normalize these 4
@@ -1032,9 +1037,9 @@ safety_subset = "Safety Average"
 # safety_subset = "Exaggerated Refusals"
 
 # plot_baselines()
-plot_safety_vs_tulu(safety_subset)
+# plot_safety_vs_tulu(safety_subset)
 # plot_alpaca_vs_safety(safety_subset)
 # plot_safety_vs_exaggerated()
 # plot_tulu_vs_alpaca_eval()
 # plot_all_curves(safety_subset)
-# plot_compare_merge_methods(safety_subset)
+plot_compare_merge_methods(safety_subset)
