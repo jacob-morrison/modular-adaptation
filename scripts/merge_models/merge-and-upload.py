@@ -38,8 +38,8 @@ weights = [
 
     # (1.0, 0.022), # safety 10
     # (1.0, 0.044), # safety 20
-    # (1.0, 0.131), # safety 60
-    (1.0, 0.22), # safety 100
+    (1.0, 0.131), # safety 60
+    # (1.0, 0.22), # safety 100
 ]
 
 # science_files = {
@@ -55,8 +55,8 @@ safety_files = {
     # "uncensored_100": "/tulu_2_7b_uncensored_safety_100",
     # "10": "/safety_10",
     # "20": "/safety_20",
-    # "60": "/safety_60",
-    "100": "/safety_100",
+    "60": "/safety_60",
+    # "100": "/safety_100",
     # "v0_100": "/safety_v0_100",
 }
 
