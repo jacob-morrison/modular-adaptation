@@ -30,8 +30,16 @@ import yaml
 
 # by data amounts
 weights = [
-    # (0.82, 0.18),
-    (1.0, 0.22)
+    # LINEAR WEIGHTED!!!
+    # (0.98, 0.02) # safety 10
+    # (0.96, 0.04) # safety 20
+    # (0.88, 0.12) # safety 60
+    # (0.82, 0.18), # safety 100
+
+    # (1.0, 0.022), # safety 10
+    # (1.0, 0.044), # safety 20
+    # (1.0, 0.131), # safety 60
+    (1.0, 0.22), # safety 100
 ]
 
 # science_files = {
