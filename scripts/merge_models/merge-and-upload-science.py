@@ -28,22 +28,13 @@ weights = [
     (1.0, 0.1),
 ]
 
-# science_files = {
-#     "100": "/science_100",
-#     # "200": "/science_200",
-#     # "500": "/science_500",
-#     # "1000": "/science_1000",
-#     # "2500": "/science_2500",
-#     # "upsample": "/science_upsample"
-# }
-
-safety_files = {
-    # "uncensored_100": "/tulu_2_7b_uncensored_safety_100",
-    # "10": "/safety_10",
-    # "20": "/safety_20",
-    # "60": "/safety_60",
-    "100": "/safety_100",
-    # "v0_100": "/safety_v0_100",
+science_files = {
+    "100": "/science_100",
+    # "200": "/science_200",
+    # "500": "/science_500",
+    # "1000": "/science_1000",
+    # "2500": "/science_2500",
+    # "upsample": "/science_upsample"
 }
 
 merge_methods = [
@@ -62,10 +53,8 @@ def print_and_run(cmd):
     subprocess.run(cmd, shell=True)
 
 for merge_method in merge_methods:
-    # for science_amount in science_files:
-    for safety_amount in safety_files:
-        # for (tuluWeight, scienceWeight) in weights:
-        for (tuluWeight, safetyWeight) in weights:
+    for science_amount in science_files:
+        for (tuluWeight, scienceWeight) in weights:
             # Copy yaml
             base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
             with open(base_yaml, 'r') as f:
@@ -75,19 +64,19 @@ for merge_method in merge_methods:
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file
                 d["models"][0]["parameters"]["weight"] = tuluWeight
-                d["models"][1]["model"] = safety_files[safety_amount]
-                d["models"][1]["parameters"]["weight"] = safetyWeight
+                d["models"][1]["model"] = science_files[science_amount]
+                d["models"][1]["parameters"]["weight"] = scienceWeight
             elif merge_method in ["dare_linear", "dare_ties", "ties"]:
                 # Set merge-specific parameters
                 d["models"][1]["model"] = tulu_file
                 d["models"][1]["parameters"]["weight"] = tuluWeight
-                d["models"][2]["model"] = safety_files[safety_amount]
-                d["models"][2]["parameters"]["weight"] = safetyWeight
+                d["models"][2]["model"] = science_files[science_amount]
+                d["models"][2]["parameters"]["weight"] = scienceWeight
             elif merge_method == "slerp":
                 # Set merge-specific parameters
                 d["slices"][0]["sources"][0]["model"] = tulu_file
-                d["slices"][0]["sources"][1]["model"] = safety_files[safety_amount]
-                d["parameters"]["t"][0]["value"] = safetyWeight
+                d["slices"][0]["sources"][1]["model"] = science_files[science_amount]
+                d["parameters"]["t"][0]["value"] = scienceWeight
             else:
                 raise Exception
 
@@ -101,9 +90,8 @@ for merge_method in merge_methods:
             print_and_run(f"mergekit-yaml tmp/merge-config.yaml tmp/ --cuda")
 
             # Upload model
-            # model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
-            model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{safety_files[safety_amount][1:]}_{safetyWeight}"
-            print_and_run(f"beaker dataset create tmp --name {model_name} --workspace ai2/modular-adaptation-safety")
+            model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
+            print_and_run(f"beaker dataset create tmp --name {model_name} --workspace ai2/modular-adaptation-science")
 
             # Cleanup
             print_and_run("rm -rf tmp")

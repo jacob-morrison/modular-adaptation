@@ -1032,9 +1032,9 @@ safety_subset = "Safety Average"
 # safety_subset = "Exaggerated Refusals"
 
 # plot_baselines()
-# plot_safety_vs_tulu(safety_subset)
+plot_safety_vs_tulu(safety_subset)
 # plot_alpaca_vs_safety(safety_subset)
 # plot_safety_vs_exaggerated()
 # plot_tulu_vs_alpaca_eval()
 # plot_all_curves(safety_subset)
-plot_compare_merge_methods(safety_subset)
+# plot_compare_merge_methods(safety_subset)
