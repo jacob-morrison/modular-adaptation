@@ -32,8 +32,8 @@ import yaml
 weights = [
     # LINEAR WEIGHTED!!!
     # (0.98, 0.02) # safety 10
-    # (0.96, 0.04) # safety 20
-    (0.88, 0.12) # safety 60
+    (0.96, 0.04) # safety 20
+    # (0.88, 0.12) # safety 60
     # (0.82, 0.18), # safety 100
 
     # (1.0, 0.02), # safety 10
@@ -54,8 +54,8 @@ weights = [
 safety_files = {
     # "uncensored_100": "/tulu_2_7b_uncensored_safety_100",
     # "10": "/safety_10",
-    # "20": "/safety_20",
-    "60": "/safety_60",
+    "20": "/safety_20",
+    # "60": "/safety_60",
     # "100": "/safety_100",
     # "v0_100": "/safety_v0_100",
 }
