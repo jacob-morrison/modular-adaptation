@@ -1,0 +1,7 @@
+models:
+  - model: /tulu_all
+  - model: /safety_100
+  - model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+merge_method: model_stock
+base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+dtype: bfloat16

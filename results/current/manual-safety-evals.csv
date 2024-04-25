@@ -13,3 +13,11 @@ linear_weighted-llama_2_7b-tulu_all_0.0-safety_100_1.0,llama_2_7b,tulu_none,0.0,
 linear_weighted-llama_2_7b-tulu_all_0.0-safety_v0_100_1.0,llama_2_7b,tulu_none,0.0,safety_v0_100,1.0,N/A,0.0,16.79999932800003,0.4999999800000008
 linear_weighted-llama_2_7b-tulu_all_0.0-safety_10_1.0,llama_2_7b,tulu_none,0.0,safety_10,1.0,N/A,0.0,5.199999792000008,0.0
 linear_weighted-llama_2_7b-tulu_all_0.0-tulu_2_7b_uncensored_safety_100_1.0,tulu_2_7b_uncensored,tulu_none,0.0,safety_100,1.0,N/A,0.0,13.599999456000022,0.0
+data_weighted_linear-llama_2_7b-tulu_all-safety_10,llama_2_7b,tulu_all,0.98,safety_10_,0.02,linear_weighted,54.25,98.79999604800017,26.49999894000004
+data_weighted_linear-llama_2_7b-tulu_all-safety_20,llama_2_7b,tulu_all,0.96,safety_20_,0.04,linear_weighted,47.5,97.59999609600017,24.499999020000036
+data_weighted_linear-llama_2_7b-tulu_all-safety_60,llama_2_7b,tulu_all,0.88,safety_60_,0.12,linear_weighted,38.5,94.79999620800017,10.499999580000017
+data_weighted_linear-llama_2_7b-tulu_all-safety_100,llama_2_7b,tulu_all,0.82,safety_100_,0.18,linear_weighted,31.0,91.99999632000016,6.49999974000001
+data_weighted_task_arithmetic-llama_2_7b-tulu_all-safety_10,task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,54.5,99.19999603200017,26.999998920000046
+data_weighted_task_arithmetic-llama_2_7b-tulu_all-safety_20,task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,52.75,98.39999606400018,27.49999890000004
+data_weighted_task_arithmetic-llama_2_7b-tulu_all-safety_60,task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,38.0,95.99999616000015,11.499999540000017
+data_weighted_task_arithmetic-llama_2_7b-tulu_all-safety_100,task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,26.0,89.99999640000014,6.4999997400000105

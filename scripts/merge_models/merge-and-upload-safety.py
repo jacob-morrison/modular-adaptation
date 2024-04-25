@@ -3,17 +3,17 @@ import os
 import subprocess
 import yaml
 
-# weights = [
-#     (0.1, 0.9),
-#     (0.2, 0.8),
-#     (0.3, 0.7),
-#     (0.4, 0.6),
-#     (0.5, 0.5),
-#     (0.6, 0.4),
-#     (0.7, 0.3),
-#     (0.8, 0.2),
-#     (0.9, 0.1),
-# ]
+weights = [
+    (0.1, 0.9),
+    (0.2, 0.8),
+    (0.3, 0.7),
+    (0.4, 0.6),
+    (0.5, 0.5),
+    (0.6, 0.4),
+    (0.7, 0.3),
+    (0.8, 0.2),
+    (0.9, 0.1),
+]
 
 # weights = [
 #     (1.0, 1.0),
@@ -31,7 +31,7 @@ import yaml
 # by data amounts
 weights = [
     # LINEAR WEIGHTED!!!
-    (0.98, 0.02) # safety 10
+    # (0.98, 0.02) # safety 10
     # (0.96, 0.04) # safety 20
     # (0.88, 0.12) # safety 60
     # (0.82, 0.18), # safety 100
@@ -53,20 +53,20 @@ weights = [
 
 safety_files = {
     # "uncensored_100": "/tulu_2_7b_uncensored_safety_100",
-    "10": "/safety_10",
+    # "10": "/safety_10",
     # "20": "/safety_20",
     # "60": "/safety_60",
-    # "100": "/safety_100",
+    "100": "/safety_100",
     # "v0_100": "/safety_v0_100",
 }
 
 merge_methods = [
-    "linear_weighted",
+    # "linear_weighted",
     # "task_arithmetic",
-    # "dare_linear",
-    # "dare_ties",
-    # "ties",
-    # "slerp",
+    "dare_linear",
+    "dare_ties",
+    "ties",
+    "slerp",
 ]
 
 tulu_file = "/tulu_all"

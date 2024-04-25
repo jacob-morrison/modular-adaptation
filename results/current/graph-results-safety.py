@@ -29,7 +29,10 @@ def create_model_combo(row):
         "safety_upsample": "Safety Upsample",
         "tulu_2_7b_uncensored": "Tulu 2 7B Uncensored",
         "tulu_2_7b_uncensored_safety_100": "Tulu 2 7B Uncensored c.t. Safety 100%",
-        "tulu_2_7b_continued_ft_lora": "Tulu 2 7B Uncensored c.t. with Lora"
+        "tulu_2_7b_continued_ft_lora": "Tulu 2 7B Uncensored c.t. with Lora",
+        "tulu": "Tulu All",
+        "safet": "Safety X",
+        "safety": "Safety X",
     }
 
     tokens = row["model_key"].split("-")
@@ -43,6 +46,10 @@ def create_model_combo(row):
     if tokens[0] not in model_dict:
         print(tokens)
         print(row)
+    if tokens[1][-1] == "_":
+        tokens[1] = tokens[1][:-1]
+    if tokens[2][-1] == "_":
+        tokens[2] = tokens[2][:-1]
     base_model = model_dict[tokens[0]]
     tulu_model = model_dict[tokens[1]]
     safety_model = model_dict[tokens[2]]
@@ -766,10 +773,10 @@ def plot_compare_merge_methods(safety_subset):
     merged_safety_models = {
         # "safety_v0_100",
         # "tulu_2_7b_uncensored_safety_100",
-        "safety_10",
+        # "safety_10",
         # "safety_20",
         # "safety_60",
-        # "safety_100",
+        "safety_100",
     }
 
     merge_methods = {
@@ -792,25 +799,25 @@ def plot_compare_merge_methods(safety_subset):
 
         "llama_2_7b-tulu_all-safety_none",
 
-        "llama_2_7b-tulu_match-safety_10",
+        # "llama_2_7b-tulu_match-safety_10",
         # "llama_2_7b-tulu_match-safety_40",
         # "llama_2_7b-tulu_match-safety_60",
         # "llama_2_7b-tulu_match-safety_80",
-        # "llama_2_7b-tulu_match-safety_100",
+        "llama_2_7b-tulu_match-safety_100",
 
-        "llama_2_7b-tulu_all-safety_10",
+        # "llama_2_7b-tulu_all-safety_10",
         # "llama_2_7b-tulu_all-safety_20",
         # "llama_2_7b-tulu_all-safety_40",
         # "llama_2_7b-tulu_all-safety_60",
-        # "llama_2_7b-tulu_all-safety_100",
+        "llama_2_7b-tulu_all-safety_100",
         # "llama_2_7b-tulu_all-safety_upsample",
 
-        "tulu_2_7b_continued_ft-tulu_none-safety_10",
+        # "tulu_2_7b_continued_ft-tulu_none-safety_10",
         # "tulu_2_7b_continued_ft-tulu_none-safety_20",
         # "tulu_2_7b_continued_ft-tulu_none-safety_40",
         # "tulu_2_7b_continued_ft-tulu_none-safety_60",
         # "tulu_2_7b_continued_ft-tulu_none-safety_80",
-        # "tulu_2_7b_continued_ft-tulu_none-safety_100",
+        "tulu_2_7b_continued_ft-tulu_none-safety_100",
         # "tulu_2_7b_continued_ft-tulu_none-safety_upsample",
 
         # "llama_2_7b-tulu_none-safety_1000-seed_123",
@@ -820,29 +827,43 @@ def plot_compare_merge_methods(safety_subset):
     }
 
     continued_ft_keys = {
-        "tulu_2_7b_uncensored-tulu_none-safety_10",
+        # "tulu_2_7b_uncensored-tulu_none-safety_10",
         # "tulu_2_7b_uncensored-tulu_none-safety_20",
         # "tulu_2_7b_uncensored-tulu_none-safety_40",
         # "tulu_2_7b_uncensored-tulu_none-safety_60",
         # "tulu_2_7b_uncensored-tulu_none-safety_80",
-        # "tulu_2_7b_uncensored-tulu_none-safety_100",
+        "tulu_2_7b_uncensored-tulu_none-safety_100",
         # "tulu_2_7b_uncensored-tulu_none-safety_upsample",
     }
 
     continued_ft_lora_keys = {
-        "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
+        # "tulu_2_7b_continued_ft_lora-tulu_none-safety_10",
         # "tulu_2_7b_continued_ft_lora-tulu_none-safety_20",
         # "tulu_2_7b_continued_ft_lora-tulu_none-safety_60",
-        # "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
+        "tulu_2_7b_continued_ft_lora-tulu_none-safety_100",
     }
 
     continued_ft_mix_keys = {
-        "tulu_2_7b_uncensored-tulu_match-safety_10",
+        # "tulu_2_7b_uncensored-tulu_match-safety_10",
         # "tulu_2_7b_uncensored-tulu_match-safety_20",
         # "tulu_2_7b_uncensored-tulu_match-safety_40",
         # "tulu_2_7b_uncensored-tulu_match-safety_60",
         # "tulu_2_7b_uncensored-tulu_match-safety_80",
-        # "tulu_2_7b_uncensored-tulu_match-safety_100",
+        "tulu_2_7b_uncensored-tulu_match-safety_100",
+    }
+
+    merge_data_weighted_linear_keys = {
+        # "data_weighted_linear-llama_2_7b-tulu_all-safety_10",
+        # "data_weighted_linear-llama_2_7b-tulu_all-safety_20",
+        # "data_weighted_linear-llama_2_7b-tulu_all-safety_60",
+        "data_weighted_linear-llama_2_7b-tulu_all-safety_100",
+    }
+
+    merge_data_weighted_ta_keys = {
+        # "data_weighted_task_arithmetic-llama_2_7b-tulu_all-safety_10",
+        # "data_weighted_task_arithmetic-llama_2_7b-tulu_all-safety_20",
+        # "data_weighted_task_arithmetic-llama_2_7b-tulu_all-safety_60",
+        "data_weighted_task_arithmetic-llama_2_7b-tulu_all-safety_100",
     }
 
     # normalize these 4
@@ -852,6 +873,8 @@ def plot_compare_merge_methods(safety_subset):
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
     df_continued_ft_lora = df[df["model_key"].isin(continued_ft_lora_keys)]
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
+    df_merge_data_weighted_linear = df[df["model_key"].isin(merge_data_weighted_linear_keys)]
+    df_merge_data_weighted_task_arithmetic = df[df["model_key"].isin(merge_data_weighted_ta_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
     # print(df_lines["safety_model"])
@@ -872,6 +895,10 @@ def plot_compare_merge_methods(safety_subset):
     df_continued_ft_lora.sort_values(by='Order', inplace=True)
     df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
     df_continued_ft_mix.sort_values(by='Order', inplace=True)
+    df_merge_data_weighted_linear["Order"] = df_merge_data_weighted_linear.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_merge_data_weighted_linear.sort_values(by='Order', inplace=True)
+    df_merge_data_weighted_task_arithmetic["Order"] = df_merge_data_weighted_task_arithmetic.apply(lambda row: weird_safety_ordering[row["science_model"]], axis=1)
+    df_merge_data_weighted_task_arithmetic.sort_values(by='Order', inplace=True)
 
 
     # write to csv
@@ -882,6 +909,8 @@ def plot_compare_merge_methods(safety_subset):
     sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=300, marker="*")
     sns.scatterplot(data=df_continued_ft_lora, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="P")
     sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="X")
+    sns.scatterplot(data=df_merge_data_weighted_linear, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="o")
+    sns.scatterplot(data=df_merge_data_weighted_task_arithmetic, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="o")
 
     plt.legend()
 
