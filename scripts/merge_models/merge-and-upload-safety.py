@@ -63,6 +63,7 @@ safety_files = {
 merge_methods = [
     # "linear_weighted",
     # "task_arithmetic",
+    # "dare_task_arithmetic",
     "dare_linear",
     "dare_ties",
     "ties",

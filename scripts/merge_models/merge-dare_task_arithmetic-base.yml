@@ -1,0 +1,16 @@
+models:
+  - model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+    # no parameters necessary for base model
+  - model: /model-path
+    parameters:
+      density: 0.5
+      weight: 0.5
+      normalize: False
+  - model: /model-path
+    parameters:
+      density: 0.5
+      weight: 0.5
+      normalize: False
+merge_method: dare_linear
+base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+dtype: bfloat16
