@@ -25,6 +25,10 @@ def create_model_combo(row):
         "science_upsample": "Science Upsample",
         "science_2500_minus_science_2500": "Science 2500 Minus Science 2500",
         "science_2500_minus_tulu": "Science 2500 Minus Tulu",
+        "science_2500_": "Science 2500 Data Weighted",
+        "tulu_all_": "Tulu All Data Weighted",
+        "tulu": "Tulu All",
+        "science_": "Science 2500",
     }
 
     tokens = row["model_key"].split("-")
@@ -141,7 +145,7 @@ def plot_linear_merge_vs_baselines():
         "science_1000": 5,
         "science_2500": 3,
         "science_upsample": 1,
-        "science_none": 7
+        "science_none": 7,
     }
 
     merged_science_models = {
@@ -157,7 +161,7 @@ def plot_linear_merge_vs_baselines():
         "linear_weighted",
         "dare_linear",
         "dare_ties",
-        "ties",
+        # "ties",
         "slerp",
         # "pareto",
         "task_arithmetic",
@@ -216,12 +220,22 @@ def plot_linear_merge_vs_baselines():
         "tulu_2_7b_continued_ft-tulu_match-science_2500",
     }
 
+    merge_data_weighted_linear_keys = {
+        "data_weighted_linear-llama_2_7b-tulu_all-science_2500",
+    }
+
+    merge_data_weighted_ta_keys = {
+        "data_weighted_task_arithmetic-llama_2_7b-tulu_all-science_2500",
+    }
+
     # normalize these 4
     df["Order"] = df["science_model_weight"]
 
     df_baselines = df[df["model_key"].isin(baseline_keys)]
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
     df_continued_ft_mix = df[df["model_key"].isin(continued_ft_mix_keys)]
+    df_merge_data_weighted_linear = df[df["model_key"].isin(merge_data_weighted_linear_keys)]
+    df_merge_data_weighted_task_arithmetic = df[df["model_key"].isin(merge_data_weighted_ta_keys)]
 
     df_lines = df[df["merge_method"] != "N/A"]
     # print(df_lines["science_model"])
@@ -240,7 +254,10 @@ def plot_linear_merge_vs_baselines():
     df_continued_ft.sort_values(by='Order', inplace=True)
     df_continued_ft_mix["Order"] = df_continued_ft_mix.apply(lambda row: weird_science_ordering[row["science_model"]], axis=1)
     df_continued_ft_mix.sort_values(by='Order', inplace=True)
-
+    df_merge_data_weighted_linear["Order"] = df_merge_data_weighted_linear.apply(lambda row: weird_science_ordering[row["science_model"]], axis=1)
+    df_merge_data_weighted_linear.sort_values(by='Order', inplace=True)
+    df_merge_data_weighted_task_arithmetic["Order"] = df_merge_data_weighted_task_arithmetic.apply(lambda row: weird_science_ordering[row["science_model"]], axis=1)
+    df_merge_data_weighted_task_arithmetic.sort_values(by='Order', inplace=True)
 
     # write to csv
     df.to_csv("results/current/full_results.csv", index=False)
@@ -249,6 +266,8 @@ def plot_linear_merge_vs_baselines():
     sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100)
     sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="*")
     sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="X")
+    sns.scatterplot(data=df_merge_data_weighted_linear, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="o")
+    sns.scatterplot(data=df_merge_data_weighted_task_arithmetic, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="o")
 
     # sns.scatterplot(data=filtered_df, x="Tulu Average", y="Science Average", hue="Combo", marker="*", s=250, legend=False)
 

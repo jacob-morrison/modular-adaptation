@@ -772,8 +772,8 @@ def plot_compare_merge_methods(safety_subset):
 
     merged_safety_models = {
         # "safety_v0_100",
-        # "tulu_2_7b_uncensored_safety_100",
-        "safety_10",
+        "tulu_2_7b_uncensored_safety_100",
+        # "safety_10",
         # "safety_20",
         # "safety_60",
         "safety_100",
@@ -904,13 +904,16 @@ def plot_compare_merge_methods(safety_subset):
     # write to csv
     df.to_csv("results/current/full_results.csv", index=False)
 
-    sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
-    sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100)
-    sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=300, marker="*")
-    sns.scatterplot(data=df_continued_ft_lora, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="P")
-    sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="X")
-    sns.scatterplot(data=df_merge_data_weighted_linear, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="o")
-    sns.scatterplot(data=df_merge_data_weighted_task_arithmetic, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100, marker="o")
+    x_val = "Tulu Average (Tulu Subset)"
+    # x_val = "mmlu_0shot"
+
+    sns.lineplot(data=df_lines, x=x_val, y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
+    sns.scatterplot(data=df_baselines, x=x_val, y=safety_subset, hue="Combo", s=100)
+    sns.scatterplot(data=df_continued_ft, x=x_val, y=safety_subset, hue="Combo", s=300, marker="*")
+    sns.scatterplot(data=df_continued_ft_lora, x=x_val, y=safety_subset, hue="Combo", s=100, marker="P")
+    sns.scatterplot(data=df_continued_ft_mix, x=x_val, y=safety_subset, hue="Combo", s=100, marker="X")
+    sns.scatterplot(data=df_merge_data_weighted_linear, x=x_val, y=safety_subset, hue="Combo", s=100, marker="o")
+    sns.scatterplot(data=df_merge_data_weighted_task_arithmetic, x=x_val, y=safety_subset, hue="Combo", s=100, marker="o")
 
     plt.legend()
 
