@@ -95,7 +95,7 @@ for merge_method in merge_methods:
 
             # Upload model
             model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
-            print_and_run(f"beaker dataset create tmp --name {model_name} --workspace ai2/modular-adaptation-science")
+            print_and_run(f"beaker dataset create tmp-science --name {model_name} --workspace ai2/modular-adaptation-science")
 
             # Cleanup
-            print_and_run("rm -rf tmp")
+            print_and_run("rm -rf tmp-science")
