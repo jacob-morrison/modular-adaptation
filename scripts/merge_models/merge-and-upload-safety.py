@@ -100,13 +100,13 @@ for merge_method in merge_methods:
                 raise Exception
 
             # Create folders and files
-            print_and_run("mkdir tmp-safety/")
-            file = open("tmp-safety//merge-config.yaml", "w")
+            print_and_run("mkdir tmp-safety")
+            file = open("tmp-safety/merge-config.yaml", "w")
             yaml.dump(d, file, default_flow_style=True)
             file.close()
 
             # Merge model
-            print_and_run(f"mergekit-yaml tmp-safety//merge-config.yaml tmp-safety// --cuda")
+            print_and_run(f"mergekit-yaml tmp-safety/merge-config.yaml tmp-safety/ --cuda")
 
             # Upload model
             # model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
