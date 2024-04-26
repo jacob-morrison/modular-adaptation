@@ -16,17 +16,17 @@ import yaml
 # ]
 
 weights = [
-    (1.0, 1.0),
+    # (1.0, 1.0),
     (1.0, 0.9),
-    (1.0, 0.8),
-    (1.0, 0.7),
+    # (1.0, 0.8),
+    # (1.0, 0.7),
     (1.0, 0.6),
-    (1.0, 0.5),
-    (1.0, 0.4),
+    # (1.0, 0.5),
+    # (1.0, 0.4),
     (1.0, 0.3),
-    (1.0, 0.22), # safety 100
-    (1.0, 0.2),
-    (1.0, 0.1),
+    # (1.0, 0.22), # safety 100
+    # (1.0, 0.2),
+    # (1.0, 0.1),
 ]
 
 # by data amounts
@@ -100,18 +100,18 @@ for merge_method in merge_methods:
                 raise Exception
 
             # Create folders and files
-            print_and_run("mkdir tmp")
-            file = open("tmp/merge-config.yaml", "w")
+            print_and_run("mkdir tmp-safety/")
+            file = open("tmp-safety//merge-config.yaml", "w")
             yaml.dump(d, file, default_flow_style=True)
             file.close()
 
             # Merge model
-            print_and_run(f"mergekit-yaml tmp/merge-config.yaml tmp/ --cuda")
+            print_and_run(f"mergekit-yaml tmp-safety//merge-config.yaml tmp-safety// --cuda")
 
             # Upload model
             # model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
             model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{safety_files[safety_amount][1:]}_{safetyWeight}"
-            print_and_run(f"beaker dataset create tmp --name {model_name} --workspace ai2/modular-adaptation-safety")
+            print_and_run(f"beaker dataset create tmp-safety/ --name {model_name} --workspace ai2/modular-adaptation-safety")
 
             # Cleanup
-            print_and_run("rm -rf tmp")
+            print_and_run("rm -rf tmp-safety/")
