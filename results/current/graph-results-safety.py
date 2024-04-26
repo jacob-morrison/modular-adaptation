@@ -143,6 +143,7 @@ def get_raw_df():
         "tydiqa_goldp_1shot",
         "codex_eval_temp_0.8",
         "truthfulqa",
+        "normalized_safe_average"
     ]
 
     tulu_columns_for_val_average = [
@@ -158,7 +159,7 @@ def get_raw_df():
         "invert_toxigen",
         "normalized_harmbench",
         "invert_unsafe_average",
-        "normalized_safe_average"
+        # "normalized_safe_average"
     ]
 
     safety_columns_for_average_except_exaggerated = [

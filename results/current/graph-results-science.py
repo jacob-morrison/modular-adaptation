@@ -183,7 +183,7 @@ def plot_linear_merge_vs_baselines():
         # "llama_2_7b-tulu_match-science_200",
         # "llama_2_7b-tulu_match-science_500",
         # "llama_2_7b-tulu_match-science_1000",
-        "llama_2_7b-tulu_match-science_2500",
+        # "llama_2_7b-tulu_match-science_2500",
 
         # "llama_2_7b-tulu_all-science_100",
         # "llama_2_7b-tulu_all-science_200",
