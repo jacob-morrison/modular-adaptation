@@ -29,6 +29,7 @@ def create_model_combo(row):
         "tulu_all_": "Tulu All Data Weighted",
         "tulu": "Tulu All",
         "science_": "Science 2500",
+        "tulu_2_7b_science_2500": "Tulu 2 7B c.ft. Science 2500"
     }
 
     tokens = row["model_key"].split("-")
@@ -155,6 +156,7 @@ def plot_linear_merge_vs_baselines():
         # "science_1000",
         "science_2500",
         # "science_upsample",
+        "tulu_2_7b_science_2500",
     }
 
     merge_methods = {
@@ -194,7 +196,6 @@ def plot_linear_merge_vs_baselines():
         # "tulu_2_7b_continued_ft-tulu_none-science_200",
         # "tulu_2_7b_continued_ft-tulu_none-science_500",
         # "tulu_2_7b_continued_ft-tulu_none-science_1000",
-        # "tulu_2_7b_continued_ft-tulu_none-science_2500",
         # "tulu_2_7b_continued_ft-tulu_none-science_2500",
 
         # "llama_2_7b-tulu_none-science_1000-seed_123",
@@ -264,7 +265,7 @@ def plot_linear_merge_vs_baselines():
 
     sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100)
-    sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="*")
+    sns.scatterplot(data=df_continued_ft, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=300, marker="*")
     sns.scatterplot(data=df_continued_ft_mix, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="X")
     sns.scatterplot(data=df_merge_data_weighted_linear, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="o")
     sns.scatterplot(data=df_merge_data_weighted_task_arithmetic, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100, marker="o")

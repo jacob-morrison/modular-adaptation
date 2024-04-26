@@ -1,5 +1,7 @@
 task,bioasq,biored,discomat,evidence_inference,evidence_inference,evidence_inference,multicite,mup,qasper,scierc,scifact,scifact,scifact,mean,median
 metric,f1,f1,bleu,f1_exact,f1_overlap,f1_substring,f1,bleu,bleu,f1,f1_evidence_sent,f1_evidence_token,f1_label,null,null
+linear_weighted-llama_2_7b-tulu_all_1.0-tulu_2_7b_science_2500_0.0,0.41802,0.15129,0.47823,0.00000,0.02931,0.00000,0.33588,0.28403,0.02761,0.03022,0.21218,0.25963,0.35364,0.49485,0.24739,0.25963
+linear_weighted-llama_2_7b-tulu_all_0.0-tulu_2_7b_science_2500_1.0,0.27154,0.54628,0.50758,0.00000,0.00224,0.00895,0.55457,0.29884,0.08203,0.19079,0.32356,0.43931,0.47964,0.65049,0.35156,0.32356
 task_arithmetic-llama_2_7b-tulu_all_1.0-science_2500_0.0,0.41802,0.15129,0.47823,0.00000,0.02931,0.00000,0.33588,0.28403,0.02761,0.03022,0.21218,0.25963,0.35364,0.49485,0.24739,0.25963
 linear_weighted-llama_2_7b-tulu_all_1.0-science_100_0.0,0.41802,0.15129,0.47823,0.00000,0.02931,0.00000,0.33588,0.28403,0.02761,0.03022,0.21218,0.25963,0.35364,0.49485,0.24739,0.25963
 linear_weighted-llama_2_7b-tulu_all_1.0-science_200_0.0,0.41802,0.15129,0.47823,0.00000,0.02931,0.00000,0.33588,0.28403,0.02761,0.03022,0.21218,0.25963,0.35364,0.49485,0.24739,0.25963
