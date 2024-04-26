@@ -85,7 +85,7 @@ for merge_method in merge_methods:
                 raise Exception
 
             # Create folders and files
-            print_and_run("mkdir tmp")
+            print_and_run("mkdir tmp-science")
             file = open("tmp-science/merge-config.yaml", "w")
             yaml.dump(d, file, default_flow_style=True)
             file.close()
