@@ -86,12 +86,12 @@ for merge_method in merge_methods:
 
             # Create folders and files
             print_and_run("mkdir tmp")
-            file = open("tmp/merge-config.yaml", "w")
+            file = open("tmp-science/merge-config.yaml", "w")
             yaml.dump(d, file, default_flow_style=True)
             file.close()
 
             # Merge model
-            print_and_run(f"mergekit-yaml tmp/merge-config.yaml tmp/ --cuda")
+            print_and_run(f"mergekit-yaml tmp-science/merge-config.yaml tmp-science/ --cuda")
 
             # Upload model
             model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
