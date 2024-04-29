@@ -66,7 +66,7 @@ def create_model_combo(row):
     
 models_to_skip = [
     "tulu_2_7b_uncensored-tulu_none-safety_v1_all",
-    "tulu_2_7b_uncensored-tulu_match-safety_v0_100",
+    # "tulu_2_7b_uncensored-tulu_match-safety_v0_100",
     "tulu-2-7b-safety-tulu-matched-adapt-3-epochs-real",
     "tulu-2-7b-bottom25-adapt-3-epochs"
     "tulu-2-7b-safety-adapt-1-epochs-real",
@@ -631,7 +631,8 @@ def plot_tulu_vs_alpaca_eval():
         "safety_80": 5,
         "safety_100": 1,
         "safety_upsample": 6,
-        "safety_none": 7
+        "safety_none": 7,
+        "safety_v0_100": 8
     }
 
     merged_safety_models = {
@@ -768,7 +769,8 @@ def plot_compare_merge_methods(safety_subset):
         "safety_80": 5,
         "safety_100": 1,
         "safety_upsample": 6,
-        "safety_none": 7
+        "safety_none": 7,
+        "safety_v0_100": 8
     }
 
     merged_safety_models = {
@@ -791,6 +793,8 @@ def plot_compare_merge_methods(safety_subset):
     }
 
     baseline_keys = {
+        # "llama_2_7b-tulu_all-safety_v0_100",
+
         # "llama_2_7b-tulu_none-safety_20",
         # "llama_2_7b-tulu_none-safety_40",
         # "llama_2_7b-tulu_none-safety_60",
@@ -850,7 +854,8 @@ def plot_compare_merge_methods(safety_subset):
         # "tulu_2_7b_uncensored-tulu_match-safety_40",
         # "tulu_2_7b_uncensored-tulu_match-safety_60",
         # "tulu_2_7b_uncensored-tulu_match-safety_80",
-        "tulu_2_7b_uncensored-tulu_match-safety_100",
+        # "tulu_2_7b_uncensored-tulu_match-safety_100",
+        "tulu_2_7b_uncensored-tulu_match-safety_v0_100",
     }
 
     merge_data_weighted_linear_keys = {
