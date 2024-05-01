@@ -162,11 +162,12 @@ def plot_linear_merge_vs_baselines():
     merge_methods = {
         "linear_weighted",
         "dare_linear",
-        "dare_ties",
+        # "dare_ties",
         # "ties",
-        "slerp",
+        # "slerp",
         # "pareto",
         "task_arithmetic",
+        "dare_task_arithmetic",
     }
 
     baseline_keys = {
@@ -287,8 +288,8 @@ def compare_merge_methods():
         # "science_100",
         # "science_200",
         # "science_500",
-        "science_1000",
-        # "science_2500",
+        # "science_1000",
+        "science_2500",
         # "science_upsample",
     }
 

@@ -775,7 +775,7 @@ def plot_compare_merge_methods(safety_subset):
 
     merged_safety_models = {
         # "safety_v0_100",
-        "tulu_2_7b_uncensored_safety_100",
+        # "tulu_2_7b_uncensored_safety_100",
         # "safety_10",
         # "safety_20",
         # "safety_60",
@@ -785,6 +785,7 @@ def plot_compare_merge_methods(safety_subset):
     merge_methods = {
         "linear_weighted",
         "task_arithmetic",
+        "dare_task_arithmetic",
         # "dare_linear",
         # "dare_ties",
         # "ties",

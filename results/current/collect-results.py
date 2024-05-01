@@ -37,7 +37,8 @@ def collect_metrics(model_path):
         "dare_linear",
         "dare_ties",
         "slerp",
-        "task_arithmetic"
+        "task_arithmetic",
+        "dare_task_arithmetic",
     ]
     if merged:
         tokens = model_name.split('-')
