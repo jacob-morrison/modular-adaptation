@@ -42,13 +42,13 @@ weights = [
     # (0.66, 0.34), # code 100
 
     # task arithmetic
-    # (1.0, 0.26), # code 50
+    (1.0, 0.26), # code 50
     (1.0, 0.51), # code 100
 ]
 
 coding_files = {
-    # "50": "/coding_50",
-    "100": "/coding_100",
+    "50": "/coding_50",
+    # "100": "/coding_100",
 }
 
 merge_methods = [
