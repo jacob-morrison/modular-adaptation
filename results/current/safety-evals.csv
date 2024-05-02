@@ -118,3 +118,11 @@ task_arithmetic-llama_2_7b-tulu_all_1.0-safety_10_0.02,task_arithmetic,llama_2_7
 task_arithmetic-llama_2_7b-tulu_all_1.0-safety_20_0.04,task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,52.75,98.39999606400018,27.49999890000004
 task_arithmetic-llama_2_7b-tulu_all_1.0-safety_60_0.13,task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,38.0,95.99999616000015,11.499999540000017
 task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.22,task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,26.0,89.99999640000014,6.4999997400000105
+dare_task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.1,dare_task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,40.0,96.79999612800017,14.499999420000023
+dare_task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.2,dare_task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,25.25,89.99999640000013,4.499999820000007
+dare_task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.22,dare_task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,26.75,90.79999636800015,4.499999820000007
+dare_task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.3,dare_task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,14.0,81.99999672000014,2.9999998800000047
+dare_task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.4,dare_task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,10.5,73.19999707200012,4.499999820000007
+dare_task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.5,dare_task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,7.0,64.7999974080001,1.9999999200000032
+dare_task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.6,dare_task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,4.0,53.59999785600008,1.4999999400000024
+dare_task_arithmetic-llama_2_7b-tulu_all_1.0-safety_100_0.7,dare_task_arithmetic,llama_2_7b,1.0,tulu_all_1.0,1.0,N/A,1.25,45.99999816000007,1.9999999200000032
