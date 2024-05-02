@@ -39,11 +39,11 @@ import yaml
 weights = [
     # linear weighted
     # (0.80, 0.20), # code 50
-    (0.66, 0.34), # code 100
+    # (0.66, 0.34), # code 100
 
     # task arithmetic
     # (1.0, 0.26), # code 50
-    # (1.0, 0.51), # code 100
+    (1.0, 0.51), # code 100
 ]
 
 coding_files = {
@@ -52,8 +52,8 @@ coding_files = {
 }
 
 merge_methods = [
-    "linear_weighted",
-    # "task_arithmetic",
+    # "linear_weighted",
+    "task_arithmetic",
 ]
 
 tulu_file = "/tulu_all"
