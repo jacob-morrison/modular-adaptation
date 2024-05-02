@@ -9,17 +9,17 @@ import yaml
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/coding_100
 
 
-weights = [
-    (0.1, 0.9),
-    (0.2, 0.8),
-    (0.3, 0.7),
-    (0.4, 0.6),
-    (0.5, 0.5),
-    (0.6, 0.4),
-    (0.7, 0.3),
-    (0.8, 0.2),
-    (0.9, 0.1),
-]
+# weights = [
+#     (0.1, 0.9),
+#     (0.2, 0.8),
+#     (0.3, 0.7),
+#     (0.4, 0.6),
+#     (0.5, 0.5),
+#     (0.6, 0.4),
+#     (0.7, 0.3),
+#     (0.8, 0.2),
+#     (0.9, 0.1),
+# ]
 
 # weights = [
 #     (1.0, 1.0),
@@ -36,14 +36,24 @@ weights = [
 #     (1.0, 0.1),
 # ]
 
+weights = [
+    # linear weighted
+    # (0.80, 0.20), # code 50
+    (0.66, 0.34), # code 100
+
+    # task arithmetic
+    # (1.0, 0.26), # code 50
+    # (1.0, 0.51), # code 100
+]
+
 coding_files = {
-    "50": "/coding_50",
+    # "50": "/coding_50",
     "100": "/coding_100",
 }
 
 merge_methods = [
     "linear_weighted",
-    "task_arithmetic",
+    # "task_arithmetic",
 ]
 
 tulu_file = "/tulu_all"
@@ -62,16 +72,12 @@ for merge_method in merge_methods:
             with open(base_yaml, 'r') as f:
                 d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
             d = copy.deepcopy(d1)
-            if merge_method == "linear_weighted":
+            if merge_method == "task_arithmetic":
+                tuluWeight = 1.0
+            if merge_method == "linear_weighted" or merge_method == "task_arithmetic":
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file
                 d["models"][0]["parameters"]["weight"] = tuluWeight
-                d["models"][1]["model"] = coding_files[coding_amount]
-                d["models"][1]["parameters"]["weight"] = codingWeight
-            elif merge_method == "task_arithmetic":
-                # Set merge-specific parameters
-                d["models"][0]["model"] = tulu_file
-                d["models"][0]["parameters"]["weight"] = 1.0
                 d["models"][1]["model"] = coding_files[coding_amount]
                 d["models"][1]["parameters"]["weight"] = codingWeight
             elif merge_method in ["dare_linear", "dare_ties", "ties", "dare_task_arithmetic"]:
