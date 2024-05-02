@@ -30,12 +30,12 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project
     --optimizer.accumulate_gradient_steps=2 \
     --train_dataset.type='tulu_json_torch' \
     --train_dataset.text_processor.fields='[prompt],completion' \
-    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/tulu_v2_mix.jsonl' \
+    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/coding/tulu_all-coding_50.jsonl' \
     --train_dataset.json_torch_dataset.seq_length=2048 \
     --train_dataset.json_torch_dataset.batch_size=32  \
     --checkpointer.save_optimizer_state=False \
     --logger.online=True --logger.entity='jacobmai2' --logger.project='train-big-llamas-on-tpus' \
-    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/tulu_2_retrain' &> all.log &"
+    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/coding-models/llama_2_7b-tulu_all-coding_50' &> all.log &"
 
     # --load_checkpoint='params::gs://gs://jacobm-bucket/modular_adaptation/checkpoints/coding-models/llama_2_7b-tulu_all-coding_none/ ... \
     # --load_checkpoint='params::gs://hamishi-east1/easylm/llama2/7b' \
