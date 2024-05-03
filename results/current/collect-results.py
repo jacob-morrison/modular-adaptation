@@ -51,9 +51,14 @@ def collect_metrics(model_path, coding=False):
     else:
         merge_method = "N/A"
         tokens = model_name.split('-')
-        base_model = tokens[0]
-        tulu_model = tokens[1]
-        science_model = tokens[2]
+        if len(tokens) == 1:
+            base_model = tokens[0]
+            tulu_model = tokens[0]
+            science_model = tokens[0]
+        else:
+            base_model = tokens[0]
+            tulu_model = tokens[1]
+            science_model = tokens[2]
         if tulu_model == "tulu_none":
             tulu_model_weight = 0.0
         else:
