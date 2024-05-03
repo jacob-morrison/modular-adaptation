@@ -4,6 +4,7 @@ import pandas as pd
 
 science_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/science/tulu_evals/"
 safety_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu_evals/"
+coding_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/coding/tulu_evals/"
 
 # print(tulu_evals)
 
@@ -29,7 +30,7 @@ def get_model_weights(model_name):
     tulu_model_weight = float(tokens[-2].split('_')[-1])
     return tulu_model_weight, science_model_weight
 
-def collect_metrics(model_path):
+def collect_metrics(model_path, coding=False):
     model_name = model_path.split("/")[-1].replace("_4096", "")
     merged = model_name.split("-")[0] in [
         "linear_weighted",
@@ -176,6 +177,43 @@ def collect_metrics(model_path):
             data = json.loads(f_in.read())
             model_data["alpaca_eval"] = data["win_rate"]["model-greedy-long"]
 
+    if coding:
+        # codex_eval_plus_temp_0.1/
+        if not os.path.isfile(model_path + f"/codex_eval_plus_temp_0.1/metrics.json"):
+            print(f"codex_eval_plus_temp_0.1 missing for {model_name}")
+            model_data["codex_eval_plus_temp_0.1"] = 0.0
+        else:
+            with open(model_path + f"/codex_eval_plus_temp_0.1/metrics.json") as f_in:
+                data = json.loads(f_in.read())
+                model_data["codex_eval_plus_temp_0.1"] = data["pass@1"]
+
+        # codex_eval_plus_temp_0.8/
+        if not os.path.isfile(model_path + f"/codex_eval_plus_temp_0.8/metrics.json"):
+            print(f"codex_eval_plus_temp_0.8 missing for {model_name}")
+            model_data["codex_eval_plus_temp_0.8"] = 0.0
+        else:
+            with open(model_path + f"/codex_eval_plus_temp_0.8/metrics.json") as f_in:
+                data = json.loads(f_in.read())
+                model_data["codex_eval_plus_temp_0.8"] = data["pass@10"]
+
+        # mbpp_temp_0.1/
+        if not os.path.isfile(model_path + f"/mbpp_temp_0.1/metrics.json"):
+            print(f"mbpp_temp_0.1 missing for {model_name}")
+            model_data["mbpp_temp_0.1"] = 0.0
+        else:
+            with open(model_path + f"/mbpp_temp_0.1/metrics.json") as f_in:
+                data = json.loads(f_in.read())
+                model_data["mbpp_temp_0.1"] = data["pass@1"]
+
+        # mbpp_temp_0.8/
+        if not os.path.isfile(model_path + f"/mbpp_temp_0.8/metrics.json"):
+            print(f"mbpp_temp_0.8 missing for {model_name}")
+            model_data["mbpp_temp_0.8"] = 0.0
+        else:
+            with open(model_path + f"/mbpp_temp_0.8/metrics.json") as f_in:
+                data = json.loads(f_in.read())
+                model_data["mbpp_temp_0.8"] = data["pass@10"]
+
     return model_data
 
 science_data = []
@@ -196,6 +234,16 @@ for model in os.listdir(safety_path):
     results = collect_metrics(model_path)
     if results != None:
         safety_data.append(results)
+
+coding_data = []
+print()
+print("Starting coding models")
+for model in os.listdir(coding_path):
+    model_path = coding_path + model
+    print(f"Evaluating {model_path}")
+    results = collect_metrics(model_path, coding=True)
+    if results != None:
+        coding_data.append(results)
 
 # Read safety eval files
 # save to /net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/safety/
@@ -274,4 +322,10 @@ df_safety = pd.DataFrame(safety_data)
 df_safety.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.csv", index=False)
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/safety/tulu/results.jsonl", "w") as f_out:
     for blob in safety_data:
+        f_out.write(json.dumps(blob) + '\n')
+
+df_coding = pd.DataFrame(coding_data)
+df_coding.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/coding/tulu/results.csv", index=False)
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/coding/tulu/results.jsonl", "w") as f_out:
+    for blob in coding_data:
         f_out.write(json.dumps(blob) + '\n')

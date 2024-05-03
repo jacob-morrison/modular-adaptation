@@ -43,7 +43,7 @@ weights = [
 
     # task arithmetic
     (1.0, 0.26), # code 50
-    (1.0, 0.51), # code 100
+    # (1.0, 0.51), # code 100
 ]
 
 coding_files = {
