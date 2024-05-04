@@ -161,13 +161,13 @@ def plot_linear_merge_vs_baselines():
 
     merge_methods = {
         "linear_weighted",
-        "dare_linear",
+        # "dare_linear",
         # "dare_ties",
         # "ties",
         # "slerp",
         # "pareto",
         "task_arithmetic",
-        "dare_task_arithmetic",
+        # "dare_task_arithmetic",
     }
 
     baseline_keys = {
