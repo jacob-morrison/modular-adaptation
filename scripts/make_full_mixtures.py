@@ -4,12 +4,12 @@ import random
 tulu_examples = []
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/tulu_v2_mix.jsonl") as f_in:
     for line in f_in.readlines():
-        tulu_examples.append(line)
+        tulu_examples.append(json.loads(line))
 
 science_examples = []
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/science/tulu_none_science_2500_eval_no.jsonl") as f_in:
     for line in f_in.readlines():
-        science_examples.append(line)
+        science_examples.append(json.loads(line))
 science_examples = science_examples + tulu_examples
 random.shuffle(science_examples)
 
@@ -20,7 +20,7 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/ful
 safety_examples = []
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/safety/tulu_none-safety_100.jsonl") as f_in:
     for line in f_in.readlines():
-        safety_examples.append(line)
+        safety_examples.append(json.loads(line))
 safety_examples = safety_examples + tulu_examples
 random.shuffle(safety_examples)
 
@@ -31,7 +31,7 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/ful
 code_examples_50p = []
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/coding/tulu_none-coding_50.jsonl") as f_in:
     for line in f_in.readlines():
-        code_examples_50p.append(line)
+        code_examples_50p.append(json.loads(line))
 code_examples_50p = code_examples_50p + tulu_examples
 random.shuffle(code_examples_50p)
 
@@ -42,7 +42,7 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/ful
 code_examples = []
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/coding/tulu_none-coding_100.jsonl") as f_in:
     for line in f_in.readlines():
-        code_examples.append(line)
+        code_examples.append(json.loads(line))
 code_examples = code_examples + tulu_examples
 random.shuffle(code_examples)
 
