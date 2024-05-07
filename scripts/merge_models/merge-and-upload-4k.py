@@ -58,7 +58,7 @@ def print_and_run(cmd):
 
 for merge_method in merge_methods:
     # for science_amount in science_files:
-    for model_name in domain_models:
+    for model_tag in domain_models:
         # for (tuluWeight, scienceWeight) in weights:
         for (tuluWeight, domainWeight) in weights:
             # Copy yaml
@@ -72,18 +72,18 @@ for merge_method in merge_methods:
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file
                 d["models"][0]["parameters"]["weight"] = tuluWeight
-                d["models"][1]["model"] = domain_models[model_name]
+                d["models"][1]["model"] = domain_models[model_tag]
                 d["models"][1]["parameters"]["weight"] = domainWeight
             elif merge_method in ["dare_linear", "dare_ties", "ties", "dare_task_arithmetic"]:
                 # Set merge-specific parameters
                 d["models"][1]["model"] = tulu_file
                 d["models"][1]["parameters"]["weight"] = tuluWeight
-                d["models"][2]["model"] = domain_models[model_name]
+                d["models"][2]["model"] = domain_models[model_tag]
                 d["models"][2]["parameters"]["weight"] = domainWeight
             elif merge_method == "slerp":
                 # Set merge-specific parameters
                 d["slices"][0]["sources"][0]["model"] = tulu_file
-                d["slices"][0]["sources"][1]["model"] = domain_models[model_name]
+                d["slices"][0]["sources"][1]["model"] = domain_models[model_tag]
                 d["parameters"]["t"][0]["value"] = domainWeight
             else:
                 raise Exception
@@ -99,7 +99,7 @@ for merge_method in merge_methods:
 
             # Upload model
             # model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
-            model_name = f"{merge_method}-{tulu_file[1:]}_{tuluWeight}-{domain_models[model_name][1:]}_{domainWeight}"
+            model_name = f"{merge_method}-{tulu_file[1:]}_{tuluWeight}-{domain_models[model_tag][1:]}_{domainWeight}"
             print_and_run(f"beaker dataset create tmp-4k/ --name {model_name} --workspace ai2/modular_adaptation")
 
             # Cleanup
