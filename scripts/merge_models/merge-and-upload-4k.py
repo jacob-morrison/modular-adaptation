@@ -45,9 +45,9 @@ weights = [
 # ]
 
 domain_models = {
-    "tulu_2_7b_coding_100": "/tulu_match-tulu_none-coding_100",
-    "tulu_2_7b_safety_100": "/tulu_match-tulu_none-safety_100",
-    "tulu_2_7b_science_2500": "/tulu_match-tulu_none-science_2500",
+    "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
+    "tulu_2_7b_safety_100": "/tulu_2_7b-tulu_none-safety_100",
+    "tulu_2_7b_science_2500": "/tulu_2_7b-tulu_none-science_2500",
 }
 
 merge_methods = [
