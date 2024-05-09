@@ -13,9 +13,9 @@ import yaml
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
 #     --mount beaker://jacobm/llama_2_7b-tulu_all_no_science_no_safety_no_coding=/llama_2_7b-tulu_all_no_science_no_safety_no_coding \
-#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100=/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100 \
-#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-safety_100=/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-safety_100 \
-#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-science_2500=/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-science_2500
+#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100=/tulu_match-tulu_none-coding_100 \
+#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-safety_100=/tulu_match-tulu_none-safety_100 \
+#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-science_2500=/tulu_match-tulu_none-science_2500
 
 weights = [
     (0.1, 0.9),
@@ -45,9 +45,9 @@ weights = [
 # ]
 
 domain_models = {
-    "tulu_2_7b_coding_100": "/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100",
-    "tulu_2_7b_safety_100": "/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-safety_100",
-    "tulu_2_7b_science_2500": "/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-science_2500",
+    "tulu_2_7b_coding_100": "/tulu_match-tulu_none-coding_100",
+    "tulu_2_7b_safety_100": "/tulu_match-tulu_none-safety_100",
+    "tulu_2_7b_science_2500": "/tulu_match-tulu_none-science_2500",
 }
 
 merge_methods = [
