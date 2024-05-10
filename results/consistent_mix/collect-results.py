@@ -225,6 +225,7 @@ data_map = {}
 print("Starting tulu evals")
 for model in os.listdir(tulu_eval_path):
     model_path = tulu_eval_path + model
+    print()
     print(f"Evaluating {model_path}")
     results = collect_metrics(model_path)
     tulu_data.append(results)
