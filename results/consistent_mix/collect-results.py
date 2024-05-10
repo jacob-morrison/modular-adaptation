@@ -252,6 +252,7 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts_annotated"):
         "dare_ties",
         "slerp",
     ]
+    original_model_name = model_name
     model_name = model_name.replace("-4k", "")
     if merged:
         tokens = model_name.split('-')
@@ -282,9 +283,9 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts_annotated"):
         "safety_model": safety_model,
         "safety_model_weight": safety_model_weight,
         "merge_method": merge_method,
-        "harmbench": harmbench[model_name]
+        "harmbench": harmbench[original_model_name]
     }
-    data_map[model_name]["harmbench"] = harmbench[model_name]
+    data_map[model_name]["harmbench"] = harmbench[original_model_name]
     
     with open(safety_eval_path + "xstest_v2_prompts" + "/" + model_name + "/compliance_xstest_orig.tsv") as f_in:
         for line in f_in.readlines():
