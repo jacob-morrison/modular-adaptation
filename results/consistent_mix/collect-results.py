@@ -23,11 +23,11 @@ tulu_metrics = [
 def get_model_weights(model_name):
     tokens = model_name.split('-')
     science_model_weight = float(tokens[-1].split('_')[-1])
-    tulu_model_weight = float(tokens[-2].split('_')[-1])
+    tulu_model_weight = float(tokens[2].split('_')[-1])
     return tulu_model_weight, science_model_weight
 
 def collect_metrics(model_path):
-    model_name = model_path.split("/")[-1].replace("_4096", "")
+    model_name = model_path.split("/")[-1].replace("-4k", "")
     merged = model_name.split("-")[0] in [
         "linear_weighted",
         "ties",
@@ -311,12 +311,13 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             i += 1
         else:
             tokens = line.split("\t")
+            model_key = tokens[0].replace("-4k", "")
             curr_data = {
-                "model_key": tokens[0],
+                "model_key": model_key,
             }
             for task, metric, value in zip(tasks[1:], metrics[1:], tokens[1:]):
                 curr_data[f"{task}_{metric}"] = float(value)
-                data_map[tokens[0]][f"{task}_{metric}"] = float(value)
+                data_map[model_key][f"{task}_{metric}"] = float(value)
             science_eval_data.append(curr_data)
 
 df = pd.DataFrame(data_map.values())
