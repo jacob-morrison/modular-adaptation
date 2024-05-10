@@ -184,7 +184,7 @@ def collect_metrics(model_path):
 
     # codex_eval_plus_temp_0.1/
     if not os.path.isfile(model_path + f"/codex_eval_plus_temp_0.1/metrics.json"):
-        print(f"codex_eval_plus_temp_0.1 missing for {model_name}")
+        # print(f"codex_eval_plus_temp_0.1 missing for {model_name}")
         model_data["codex_eval_plus_temp_0.1"] = 0.0
     else:
         with open(model_path + f"/codex_eval_plus_temp_0.1/metrics.json") as f_in:
@@ -193,7 +193,7 @@ def collect_metrics(model_path):
 
     # codex_eval_plus_temp_0.8/
     if not os.path.isfile(model_path + f"/codex_eval_plus_temp_0.8/metrics.json"):
-        print(f"codex_eval_plus_temp_0.8 missing for {model_name}")
+        # print(f"codex_eval_plus_temp_0.8 missing for {model_name}")
         model_data["codex_eval_plus_temp_0.8"] = 0.0
     else:
         with open(model_path + f"/codex_eval_plus_temp_0.8/metrics.json") as f_in:
@@ -202,7 +202,7 @@ def collect_metrics(model_path):
 
     # mbpp_temp_0.1/
     if not os.path.isfile(model_path + f"/mbpp_temp_0.1/metrics.json"):
-        print(f"mbpp_temp_0.1 missing for {model_name}")
+        # print(f"mbpp_temp_0.1 missing for {model_name}")
         model_data["mbpp_temp_0.1"] = 0.0
     else:
         with open(model_path + f"/mbpp_temp_0.1/metrics.json") as f_in:
@@ -211,7 +211,7 @@ def collect_metrics(model_path):
 
     # mbpp_temp_0.8/
     if not os.path.isfile(model_path + f"/mbpp_temp_0.8/metrics.json"):
-        print(f"mbpp_temp_0.8 missing for {model_name}")
+        # print(f"mbpp_temp_0.8 missing for {model_name}")
         model_data["mbpp_temp_0.8"] = 0.0
     else:
         with open(model_path + f"/mbpp_temp_0.8/metrics.json") as f_in:
@@ -266,7 +266,10 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts_annotated"):
         tokens = model_name.split('-')
         base_model = tokens[0]
         tulu_model = tokens[1]
-        safety_model = tokens[2]
+        if len(tokens) == 2:
+            safety_model = "safety_none"
+        else:
+            safety_model = tokens[2]
         if tulu_model == "tulu_none":
             tulu_model_weight = 0.0
         else:
