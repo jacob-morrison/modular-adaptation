@@ -51,6 +51,10 @@ def collect_metrics(model_path):
             base_model = tokens[0]
             tulu_model = tokens[0]
             science_model = tokens[0]
+        elif len(tokens) == 2:
+            base_model = tokens[0]
+            tulu_model = tokens[1]
+            science_model = "none"
         else:
             base_model = tokens[0]
             tulu_model = tokens[1]
