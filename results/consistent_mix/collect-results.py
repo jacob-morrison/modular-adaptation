@@ -287,7 +287,7 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts_annotated"):
     }
     data_map[model_name]["harmbench"] = harmbench[original_model_name]
     
-    with open(safety_eval_path + "xstest_v2_prompts" + "/" + model_name + "/compliance_xstest_orig.tsv") as f_in:
+    with open(safety_eval_path + "xstest_v2_prompts_annotated/" + model_name + "/compliance_xstest_orig.tsv") as f_in:
         for line in f_in.readlines():
             tokens = line.strip().split('\t')
             if tokens[0] == "safe_average":
