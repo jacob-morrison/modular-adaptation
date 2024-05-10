@@ -12,10 +12,10 @@ import yaml
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/coding_100
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
-#     --mount beaker://jacobm/llama_2_7b-tulu_all_no_science_no_safety_no_coding=/llama_2_7b-tulu_all_no_science_no_safety_no_coding \
-#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100=/tulu_match-tulu_none-coding_100 \
-#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-safety_100=/tulu_match-tulu_none-safety_100 \
-#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-science_2500=/tulu_match-tulu_none-science_2500
+#     --mount beaker://jacobm/llama_2_7b-tulu_all_no_science_no_safety_no_coding=/llama_2_7b-tulu_consistent_mix \
+#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100=/tulu_2_7b-tulu_none-coding_100 \
+#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-safety_100=/tulu_2_7b-tulu_none-safety_100 \
+#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-science_2500=/tulu_2_7b-tulu_none-science_2500
 
 weights = [
     (0.1, 0.9),
@@ -55,7 +55,7 @@ merge_methods = [
     # "task_arithmetic",
 ]
 
-tulu_file = "/llama_2_7b-tulu_all_no_science_no_safety_no_coding"
+tulu_file = "/llama_2_7b-tulu_consistent_mix"
 
 def print_and_run(cmd):
     print(cmd)
