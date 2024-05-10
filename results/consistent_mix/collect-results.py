@@ -306,15 +306,15 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
     i = 0
     for line in f_in.readlines():
         if i == 0:
-            tasks = line.split("\t")
+            tasks = line.split()
             i += 1
         elif i == 1:
-            metrics = line.split("\t")
+            metrics = line.split()
             metrics.append("null")
             metrics.append("null")
             i += 1
         else:
-            tokens = line.split("\t")
+            tokens = line.split()
             model_key = tokens[0].replace("-4k", "")
             curr_data = {
                 "model_key": model_key,
