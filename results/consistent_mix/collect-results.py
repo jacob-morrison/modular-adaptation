@@ -244,7 +244,7 @@ with open(safety_eval_path + "/harmbench_behaviors_text_all/results_harmbench.ts
             continue
         harmbench[tokens[0]] = float(tokens[2])
 safety_eval_data = []
-for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts"):
+for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts_annotated"):
     merged = model_name.split("-")[0] in [
         "linear_weighted",
         "ties",
