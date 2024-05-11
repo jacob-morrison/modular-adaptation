@@ -49,18 +49,18 @@ weights = [
     # (1.0, 0.57),
 
     # safety
-    (0.81, 0.19),
-    (1.0, 0.24),
+    # (0.81, 0.19),
+    # (1.0, 0.24),
 
     # science
-    # (0.82, 0.18),
-    # (1.0, 0.22),
+    (0.82, 0.18),
+    (1.0, 0.22),
 ]
 
 domain_models = {
     # "coding_100": "/llama_2_7b-coding_100",
-    "safety_100": "/llama_2_7b-safety_100",
-    # "science_2500": "/llama_2_7b-science_2500",
+    # "safety_100": "/llama_2_7b-safety_100",
+    "science_2500": "/llama_2_7b-science_2500",
 
     # "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
     # "tulu_2_7b_safety_100": "/tulu_2_7b-tulu_none-safety_100",
