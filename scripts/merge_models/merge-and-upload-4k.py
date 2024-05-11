@@ -6,28 +6,29 @@ import os
 import subprocess
 import yaml
 
-# beaker session create --gpus 1 --budget ai2/oe-adapt \
-#     --mount beaker://jacobm/llama_2_7b-tulu_all-coding_none=/tulu_all \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_50=/coding_50 \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/coding_100
-
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
 #     --mount beaker://jacobm/llama_2_7b-tulu_all_no_science_no_safety_no_coding=/llama_2_7b-tulu_consistent_mix \
 #     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100=/tulu_2_7b-tulu_none-coding_100 \
 #     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-safety_100=/tulu_2_7b-tulu_none-safety_100 \
 #     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-science_2500=/tulu_2_7b-tulu_none-science_2500
 
-weights = [
-    (0.1, 0.9),
-    (0.2, 0.8),
-    (0.3, 0.7),
-    (0.4, 0.6),
-    (0.5, 0.5),
-    (0.6, 0.4),
-    (0.7, 0.3),
-    (0.8, 0.2),
-    (0.9, 0.1),
-]
+# beaker session create --gpus 1 --budget ai2/oe-adapt  \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all_no_science_no_safety_no_coding=/llama_2_7b-tulu_consistent_mix \
+    # --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100-4k=/llama_2_7b-coding_100 \
+    # --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100-4k=/llama_2_7b-safety_100 \
+    # --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500-4k=/llama_2_7b-science_2500
+
+# weights = [
+#     (0.1, 0.9),
+#     (0.2, 0.8),
+#     (0.3, 0.7),
+#     (0.4, 0.6),
+#     (0.5, 0.5),
+#     (0.6, 0.4),
+#     (0.7, 0.3),
+#     (0.8, 0.2),
+#     (0.9, 0.1),
+# ]
 
 # weights = [
 #     (1.0, 1.0),
@@ -38,16 +39,32 @@ weights = [
 #     (1.0, 0.5),
 #     (1.0, 0.4),
 #     (1.0, 0.3),
-#     # (1.0, 0.), # coding 100
-#     # (1.0, 0.), # coding 100
 #     (1.0, 0.2),
 #     (1.0, 0.1),
 # ]
 
+weights = [
+    # coding
+    (0.64, 0.36),
+    (1.0, 0.57),
+
+    # safety
+    # (0.81, 0.19),
+    # (1.0, 0.24),
+
+    # science
+    # (0.82, 0.18),
+    # (1.0, 0.22),
+]
+
 domain_models = {
-    "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
-    "tulu_2_7b_safety_100": "/tulu_2_7b-tulu_none-safety_100",
-    "tulu_2_7b_science_2500": "/tulu_2_7b-tulu_none-science_2500",
+    "coding_100": "/llama_2_7b-coding_100",
+    # "safety_100": "/llama_2_7b-safety_100",
+    # "science_2500": "/llama_2_7b-science_2500",
+
+    # "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
+    # "tulu_2_7b_safety_100": "/tulu_2_7b-tulu_none-safety_100",
+    # "tulu_2_7b_science_2500": "/tulu_2_7b-tulu_none-science_2500",
 }
 
 merge_methods = [
