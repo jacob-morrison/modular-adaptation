@@ -51,8 +51,8 @@ models_to_skip = [
 
 def get_raw_df():
     tulu_data = []
-    with open("results/current/coding-results.jsonl") as f_in:
-        with open("results/current/coding-results-manual.jsonl") as f_in2:
+    with open("results/third-iteration/coding-results.jsonl") as f_in:
+        with open("results/third-iteration/coding-results-manual.jsonl") as f_in2:
             for line in f_in.readlines() + f_in2.readlines():
                 data = json.loads(line)
                 model_key = data["model_key"]
@@ -112,7 +112,7 @@ def get_raw_df():
 
     df['Combo'] = df.apply(lambda row: create_model_combo(row), axis=1)
 
-    df.to_csv("results/current/coding_full_results.csv", index=False)
+    df.to_csv("results/third-iteration/coding_full_results.csv", index=False)
 
     return df
 
@@ -203,7 +203,7 @@ def plot_all_curves():
 
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     tulu_subset = "Tulu Average (Tulu Subset)"
     # tulu_subset = "Tulu Average (w/o Toxigen)"

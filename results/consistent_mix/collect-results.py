@@ -22,9 +22,9 @@ tulu_metrics = [
 
 def get_model_weights(model_name):
     tokens = model_name.split('-')
-    science_model_weight = float(tokens[-1].split('_')[-1])
+    domain_model_weight = float(tokens[-1].split('_')[-1])
     tulu_model_weight = float(tokens[2].split('_')[-1])
-    return tulu_model_weight, science_model_weight
+    return tulu_model_weight, domain_model_weight
 
 def collect_metrics(model_path):
     model_name = model_path.split("/")[-1].replace("-4k", "")
@@ -42,39 +42,39 @@ def collect_metrics(model_path):
         merge_method = tokens[0]
         base_model = tokens[1]
         tulu_model = tokens[2][:-4]
-        science_model = tokens[3][:-4]
-        tulu_model_weight, science_model_weight = get_model_weights(model_name)
+        domain_model = tokens[3][:-4]
+        tulu_model_weight, domain_model_weight = get_model_weights(model_name)
     else:
         merge_method = "N/A"
         tokens = model_name.split('-')
         if len(tokens) == 1:
             base_model = tokens[0]
             tulu_model = tokens[0]
-            science_model = tokens[0]
+            domain_model = tokens[0]
         elif len(tokens) == 2:
             base_model = tokens[0]
             tulu_model = tokens[1]
-            science_model = "none"
+            domain_model = "none"
         else:
             base_model = tokens[0]
             tulu_model = tokens[1]
-            science_model = tokens[2]
+            domain_model = tokens[2]
         if tulu_model == "tulu_none":
             tulu_model_weight = 0.0
         else:
             tulu_model_weight = 1.0
-        if science_model == "science_none":
-            science_model_weight = 0.0
+        if domain_model == "science_none":
+            domain_model_weight = 0.0
         else:
-            science_model_weight = 1.0
+            domain_model_weight = 1.0
 
     model_data = {
         "model_key": model_name,
         "base_model": base_model,
         "tulu_model": tulu_model,
         "tulu_model_weight": tulu_model_weight,
-        "science_model": science_model,
-        "science_model_weight": science_model_weight,
+        "domain_model": domain_model,
+        "domain_model_weight": domain_model_weight,
         "merge_method": merge_method,
     }
 

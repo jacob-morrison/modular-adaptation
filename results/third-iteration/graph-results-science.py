@@ -59,8 +59,8 @@ def create_model_combo(row):
 
 def get_raw_df():
     science_results = {}
-    with open("results/current/science-evals.csv") as f_in:
-        with open("results/current/manual-science-evals.csv") as f_in2:
+    with open("results/third-iteration/science-evals.csv") as f_in:
+        with open("results/third-iteration/manual-science-evals.csv") as f_in2:
             # for baselines:
             merge_method = "N/A"
             i = 0
@@ -88,8 +88,8 @@ def get_raw_df():
                 i += 1
 
     tulu_data = []
-    with open("results/current/tulu-evals.jsonl") as f_in:
-        with open("results/current/manual-tulu-evals.jsonl") as f_in2:
+    with open("results/third-iteration/tulu-evals.jsonl") as f_in:
+        with open("results/third-iteration/manual-tulu-evals.jsonl") as f_in2:
             for line in f_in.readlines() + f_in2.readlines():
                 data = json.loads(line.replace("_4096", ""))
                 model_key = data["model_key"]
@@ -262,7 +262,7 @@ def plot_linear_merge_vs_baselines():
     df_merge_data_weighted_task_arithmetic.sort_values(by='Order', inplace=True)
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", s=100)
@@ -321,7 +321,7 @@ def compare_merge_methods():
 
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     sns.lineplot(data=df_merges, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df_linear_weighted, x="Tulu Average (Tulu Subset)", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)

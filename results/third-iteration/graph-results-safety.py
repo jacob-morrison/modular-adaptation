@@ -86,8 +86,8 @@ models_to_skip = [
 
 def get_raw_df():
     safety_results = {}
-    with open("results/current/safety-evals.csv") as f_in:
-        with open("results/current/manual-safety-evals.csv") as f_in2:
+    with open("results/third-iteration/safety-evals.csv") as f_in:
+        with open("results/third-iteration/manual-safety-evals.csv") as f_in2:
             # for baselines:
             merge_method = "N/A"
             i = 0
@@ -118,8 +118,8 @@ def get_raw_df():
     # quit()
 
     tulu_data = []
-    with open("results/current/tulu-evals-safety.jsonl") as f_in:
-        with open("results/current/manual-tulu-evals-safety.jsonl") as f_in2:
+    with open("results/third-iteration/tulu-evals-safety.jsonl") as f_in:
+        with open("results/third-iteration/manual-tulu-evals-safety.jsonl") as f_in2:
             for line in f_in.readlines() + f_in2.readlines():
                 data = json.loads(line.replace("_4096", ""))
                 model_key = data["model_key"]
@@ -184,7 +184,7 @@ def get_raw_df():
 
     df['Combo'] = df.apply(lambda row: create_model_combo(row), axis=1)
 
-    df.to_csv("results/current/safety_full_results.csv", index=False)
+    df.to_csv("results/third-iteration/safety_full_results.csv", index=False)
 
     return df
 
@@ -328,7 +328,7 @@ def plot_safety_vs_tulu(safety_subset):
 
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100)
@@ -465,7 +465,7 @@ def plot_safety_vs_exaggerated():
 
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     sns.lineplot(data=df_lines, x="normalized_safe_average", y="Safety Average (except exaggerated)", hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="normalized_safe_average", y="Safety Average (except exaggerated)", hue="Combo", s=100)
@@ -602,7 +602,7 @@ def plot_alpaca_vs_safety(safety_subset):
 
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     sns.lineplot(data=df_lines, x="alpaca_eval", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="alpaca_eval", y=safety_subset, hue="Combo", s=100)
@@ -739,7 +739,7 @@ def plot_tulu_vs_alpaca_eval():
 
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y="alpaca_eval", hue="Combo", sort=False, marker='o', markersize=6)
     sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y="alpaca_eval", hue="Combo", s=100)
@@ -909,7 +909,7 @@ def plot_compare_merge_methods(safety_subset):
 
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     x_val = "Tulu Average (Tulu Subset)"
     # x_val = "mmlu_0shot"
@@ -1055,7 +1055,7 @@ def plot_all_curves(safety_subset):
 
 
     # write to csv
-    df.to_csv("results/current/full_results.csv", index=False)
+    df.to_csv("results/third-iteration/full_results.csv", index=False)
 
     sns.lineplot(data=df_lines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", sort=False, marker='o', markersize=6)
     # sns.scatterplot(data=df_baselines, x="Tulu Average (Tulu Subset)", y=safety_subset, hue="Combo", s=100)
@@ -1071,9 +1071,9 @@ def plot_all_curves(safety_subset):
 
     plt.show()
 
-safety_subset = "Safety Average"
+# safety_subset = "Safety Average"
 # safety_subset = "Safety Average (except exaggerated)"
-# safety_subset = "Exaggerated Refusals"
+safety_subset = "Exaggerated Refusals"
 
 # plot_baselines()
 # plot_safety_vs_tulu(safety_subset)
