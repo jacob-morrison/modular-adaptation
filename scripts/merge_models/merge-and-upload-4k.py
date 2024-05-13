@@ -54,8 +54,8 @@ weights = [
     # (1.0, 0.57),
 
     # coding with tulu w/ coding
-    (0.65, 0.35),
-    # (1.00, 0.53)
+    # (0.65, 0.35)
+    (1.00, 0.53)
 
     # safety
     # (0.81, 0.19),
@@ -77,8 +77,8 @@ domain_models = {
 }
 
 merge_methods = [
-    "linear_weighted",
-    # "task_arithmetic",
+    # "linear_weighted",
+    "task_arithmetic",
 ]
 
 tulu_file = "/llama_2_7b-tulu_consistent_mix_with_coding"
