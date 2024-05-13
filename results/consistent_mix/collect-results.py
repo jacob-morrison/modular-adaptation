@@ -50,6 +50,7 @@ def collect_metrics(model_path):
     else:
         base_model_weight = 1.0
         domain_model_weight = 1.0
+        merge_method = "N/A"
     base_model = tokens[0]
     tulu_model = tokens[1]
     if len(tokens) == 2:
