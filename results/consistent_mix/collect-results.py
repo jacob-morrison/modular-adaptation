@@ -214,7 +214,7 @@ def collect_metrics(model_path):
 
     # codex_eval_plus_temp_0.1/
     if not os.path.isfile(model_path + f"/codex_eval_plus_temp_0.1/metrics.json"):
-        if "coding" in model_path:
+        if "coding_" in model_path:
             print(f"codex_eval_plus_temp_0.1 missing for {model_name}")
         model_data["codex_eval_plus_temp_0.1"] = 0.0
     else:
@@ -224,7 +224,7 @@ def collect_metrics(model_path):
 
     # codex_eval_plus_temp_0.8/
     if not os.path.isfile(model_path + f"/codex_eval_plus_temp_0.8/metrics.json"):
-        if "coding" in model_path:
+        if "coding_" in model_path:
             print(f"codex_eval_plus_temp_0.8 missing for {model_name}")
         model_data["codex_eval_plus_temp_0.8"] = 0.0
     else:
@@ -234,7 +234,7 @@ def collect_metrics(model_path):
 
     # mbpp_temp_0.1/
     if not os.path.isfile(model_path + f"/mbpp_temp_0.1/metrics.json"):
-        if "coding" in model_path:
+        if "coding_" in model_path:
             print(f"mbpp_temp_0.1 missing for {model_name}")
         model_data["mbpp_temp_0.1"] = 0.0
     else:
@@ -244,7 +244,7 @@ def collect_metrics(model_path):
 
     # mbpp_temp_0.8/
     if not os.path.isfile(model_path + f"/mbpp_temp_0.8/metrics.json"):
-        if "coding" in model_path:
+        if "coding_" in model_path:
             print(f"mbpp_temp_0.8 missing for {model_name}")
         model_data["mbpp_temp_0.8"] = 0.0
     else:
