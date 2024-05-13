@@ -33,6 +33,7 @@ weights = [
     (0.7, 0.3),
     (0.8, 0.2),
     (0.9, 0.1),
+    (0.65, 0.35),
 ]
 
 # weights = [
@@ -48,37 +49,38 @@ weights = [
 #     (1.0, 0.1),
 # ]
 
-weights = [
-    # coding
-    # (0.64, 0.36),
-    # (1.0, 0.57),
+# weights = [
+#     # coding
+#     # (0.64, 0.36),
+#     # (1.0, 0.57),
 
-    # coding with tulu w/ coding
-    # (0.65, 0.35)
-    (1.00, 0.53)
+#     # coding with tulu w/ coding
+#     (0.65, 0.35)
+#     # (1.00, 0.53)
 
-    # safety
-    # (0.81, 0.19),
-    # (1.0, 0.24),
+#     # safety
+#     # (0.81, 0.19),
+#     # (1.0, 0.24),
 
-    # science
-    # (0.82, 0.18),
-    # (1.0, 0.22),
-]
+#     # science
+#     # (0.82, 0.18),
+#     # (1.0, 0.22),
+# ]
 
 domain_models = {
-    "coding_100": "/llama_2_7b-coding_100",
+    # "coding_100": "/llama_2_7b-coding_100",
     # "safety_100": "/llama_2_7b-safety_100",
     # "science_2500": "/llama_2_7b-science_2500",
 
     # "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
     # "tulu_2_7b_safety_100": "/tulu_2_7b-tulu_none-safety_100",
     # "tulu_2_7b_science_2500": "/tulu_2_7b-tulu_none-science_2500",
+    "tulu_2_7b_with_coding_coding_100": "/tulu_2_7b_with_coding-tulu_none-coding_100",
 }
 
 merge_methods = [
-    # "linear_weighted",
-    "task_arithmetic",
+    "linear_weighted",
+    # "task_arithmetic",
 ]
 
 tulu_file = "/llama_2_7b-tulu_consistent_mix_with_coding"
