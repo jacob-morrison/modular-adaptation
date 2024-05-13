@@ -97,7 +97,7 @@ def collect_metrics(model_path):
         "model_key": model_name,
         "base_model": base_model,
         "tulu_model": tulu_model,
-        "tulu_model_weight": tulu_model_weight,
+        "tulu_model_weight": base_model_weight,
         "domain_model": domain_model,
         "domain_model_weight": domain_model_weight,
         "merge_method": merge_method,
