@@ -47,6 +47,9 @@ def collect_metrics(model_path):
         tokens = tokens[:3]
         domain_model_weight = float(tokens[2].split("_")[-1])
         tokens[2] = tokens[2].replace(f"_{domain_model_weight}", "")
+    else:
+        base_model_weight = 1.0
+        domain_model_weight = 1.0
     base_model = tokens[0]
     tulu_model = tokens[1]
     if len(tokens) == 2:
