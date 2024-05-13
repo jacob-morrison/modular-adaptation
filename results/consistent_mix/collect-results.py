@@ -28,7 +28,8 @@ def get_model_weights(model_name):
 
 def collect_metrics(model_path):
     model_name = model_path.split("/")[-1].replace("-4k", "")
-    merged = model_name.split("-")[0] in [
+    tokens = model_name.split("-")
+    if tokens[0] in [
         "linear_weighted",
         "ties",
         "dare_linear",
@@ -36,37 +37,61 @@ def collect_metrics(model_path):
         "slerp",
         "task_arithmetic",
         "dare_task_arithmetic",
-    ]
-    if merged:
-        tokens = model_name.split('-')
-        merge_method = tokens[0]
-        base_model = tokens[1]
-        tulu_model = tokens[2][:-4]
-        domain_model = tokens[3][:-4]
-        tulu_model_weight, domain_model_weight = get_model_weights(model_name)
+    ]:
+        tokens = tokens[1:]
+        tokens[1] = tokens[1]
+        base_model_weight = float(tokens[1].split("_")[-1])
+        tokens[1] = tokens[1].replace(f"_{base_model_weight}", "")
+        tokens[2] = "-".join(tokens[2:])
+        tokens = tokens[:3]
+        domain_model_weight = float(tokens[2].split("_")[-1])
+        tokens[2] = tokens[2].replace(f"_{domain_model_weight}", "")
+    base_model = tokens[0]
+    tulu_model = tokens[1]
+    if len(tokens) == 2:
+        domain_model = "None"
     else:
-        merge_method = "N/A"
-        tokens = model_name.split('-')
-        if len(tokens) == 1:
-            base_model = tokens[0]
-            tulu_model = tokens[0]
-            domain_model = tokens[0]
-        elif len(tokens) == 2:
-            base_model = tokens[0]
-            tulu_model = tokens[1]
-            domain_model = "none"
-        else:
-            base_model = tokens[0]
-            tulu_model = tokens[1]
-            domain_model = tokens[2]
-        if tulu_model == "tulu_none":
-            tulu_model_weight = 0.0
-        else:
-            tulu_model_weight = 1.0
-        if domain_model == "science_none":
-            domain_model_weight = 0.0
-        else:
-            domain_model_weight = 1.0
+        domain_model = tokens[2].split("-")[-1]
+
+    # merged = model_name.split("-")[0] in [
+    #     "linear_weighted",
+    #     "ties",
+    #     "dare_linear",
+    #     "dare_ties",
+    #     "slerp",
+    #     "task_arithmetic",
+    #     "dare_task_arithmetic",
+    # ]
+    # if merged:
+    #     tokens = model_name.split('-')
+    #     merge_method = tokens[0]
+    #     base_model = tokens[1]
+    #     tulu_model = tokens[2][:-4]
+    #     domain_model = tokens[3][:-4]
+    #     tulu_model_weight, domain_model_weight = get_model_weights(model_name)
+    # else:
+    #     merge_method = "N/A"
+    #     tokens = model_name.split('-')
+    #     if len(tokens) == 1:
+    #         base_model = tokens[0]
+    #         tulu_model = tokens[0]
+    #         domain_model = tokens[0]
+    #     elif len(tokens) == 2:
+    #         base_model = tokens[0]
+    #         tulu_model = tokens[1]
+    #         domain_model = "none"
+    #     else:
+    #         base_model = tokens[0]
+    #         tulu_model = tokens[1]
+    #         domain_model = tokens[2]
+    #     if tulu_model == "tulu_none":
+    #         tulu_model_weight = 0.0
+    #     else:
+    #         tulu_model_weight = 1.0
+    #     if domain_model == "science_none":
+    #         domain_model_weight = 0.0
+    #     else:
+    #         domain_model_weight = 1.0
 
     model_data = {
         "model_key": model_name,
@@ -184,7 +209,8 @@ def collect_metrics(model_path):
 
     # codex_eval_plus_temp_0.1/
     if not os.path.isfile(model_path + f"/codex_eval_plus_temp_0.1/metrics.json"):
-        # print(f"codex_eval_plus_temp_0.1 missing for {model_name}")
+        if "coding" in model_path:
+            print(f"codex_eval_plus_temp_0.1 missing for {model_name}")
         model_data["codex_eval_plus_temp_0.1"] = 0.0
     else:
         with open(model_path + f"/codex_eval_plus_temp_0.1/metrics.json") as f_in:
@@ -193,7 +219,8 @@ def collect_metrics(model_path):
 
     # codex_eval_plus_temp_0.8/
     if not os.path.isfile(model_path + f"/codex_eval_plus_temp_0.8/metrics.json"):
-        # print(f"codex_eval_plus_temp_0.8 missing for {model_name}")
+        if "coding" in model_path:
+            print(f"codex_eval_plus_temp_0.8 missing for {model_name}")
         model_data["codex_eval_plus_temp_0.8"] = 0.0
     else:
         with open(model_path + f"/codex_eval_plus_temp_0.8/metrics.json") as f_in:
@@ -202,7 +229,8 @@ def collect_metrics(model_path):
 
     # mbpp_temp_0.1/
     if not os.path.isfile(model_path + f"/mbpp_temp_0.1/metrics.json"):
-        # print(f"mbpp_temp_0.1 missing for {model_name}")
+        if "coding" in model_path:
+            print(f"mbpp_temp_0.1 missing for {model_name}")
         model_data["mbpp_temp_0.1"] = 0.0
     else:
         with open(model_path + f"/mbpp_temp_0.1/metrics.json") as f_in:
@@ -211,7 +239,8 @@ def collect_metrics(model_path):
 
     # mbpp_temp_0.8/
     if not os.path.isfile(model_path + f"/mbpp_temp_0.8/metrics.json"):
-        # print(f"mbpp_temp_0.8 missing for {model_name}")
+        if "coding" in model_path:
+            print(f"mbpp_temp_0.8 missing for {model_name}")
         model_data["mbpp_temp_0.8"] = 0.0
     else:
         with open(model_path + f"/mbpp_temp_0.8/metrics.json") as f_in:
