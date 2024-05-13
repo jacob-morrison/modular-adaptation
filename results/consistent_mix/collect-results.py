@@ -363,7 +363,7 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             science_eval_data.append(curr_data)
 
 df = pd.DataFrame(data_map.values())
-print(df.to_string())
+print(df)
 df.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/consistent_mix/results.csv", index=False)
 
 # df_safety_evals = pd.DataFrame(safety_eval_data)
