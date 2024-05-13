@@ -38,6 +38,7 @@ def collect_metrics(model_path):
         "task_arithmetic",
         "dare_task_arithmetic",
     ]:
+        merge_method = tokens[0]
         tokens = tokens[1:]
         tokens[1] = tokens[1]
         base_model_weight = float(tokens[1].split("_")[-1])
