@@ -48,10 +48,14 @@ weights = [
 #     (1.0, 0.1),
 # ]
 
-weights = [
+# weights = [
     # coding
     # (0.64, 0.36),
     # (1.0, 0.57),
+
+    # coding with tulu w/ coding
+    # (0.65, 0.35)
+    # (1.00, 0.53)
 
     # safety
     # (0.81, 0.19),
@@ -60,7 +64,7 @@ weights = [
     # science
     # (0.82, 0.18),
     # (1.0, 0.22),
-]
+# ]
 
 domain_models = {
     "coding_100": "/llama_2_7b-coding_100",
