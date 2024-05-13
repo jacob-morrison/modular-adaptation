@@ -313,6 +313,8 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts_annotated"):
             safety_model_weight = 0.0
         else:
             safety_model_weight = 1.0
+    if original_model_name not in harmbench:
+        print(harmbench)
     model_data = {
         "model_key": model_name,
         "base_model": base_model,
