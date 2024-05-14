@@ -30,12 +30,12 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project
     --optimizer.accumulate_gradient_steps=4 \
     --train_dataset.type='tulu_json_torch' \
     --train_dataset.text_processor.fields='[prompt],completion' \
-    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/tulu-mixtures/tulu_all_science_200_eval_no.jsonl' \
+    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/consistent_mix/tulu_all_no_science_no_safety_no_coding.jsonl' \
     --train_dataset.json_torch_dataset.seq_length=4096 \
     --train_dataset.json_torch_dataset.batch_size=32  \
     --checkpointer.save_optimizer_state=False \
     --logger.online=True --logger.entity='jacobmai2' --logger.project='train-big-llamas-on-tpus' \
-    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/llama_2_7b-tulu_all-science_200' &> all.log &"
+    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/consistent_mix/llama_2_7b-tulu_all' &> all.log &"
 
 # list processes:
 # gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project=ai2-tpu --worker=all --command="sudo lsof -w /dev/accel0"
@@ -44,4 +44,4 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project
 # gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project=ai2-tpu --worker=all --command="pgrep llama | xargs kill -9"
 
 # read logs on tpus:
-# gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project=ai2-tpu --worker=all --command="cd easylm; tail -n 50 all.log"
+# gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-2 --zone=us-east1-d --project=ai2-tpu --worker=all --command="cd easylm; tail -n 5 all.log"

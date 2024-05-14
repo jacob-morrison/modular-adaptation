@@ -89,6 +89,31 @@ def get_df():
         # "normalized_safe_average"
     ]
 
+    # ("bioasq", "f1"),
+    # ("biored", "f1"),
+    # ("discomat", "bleu"),
+    # ("evidence_inference", "f1_overlap"),
+    # ("multicite", "f1"),
+    # ("mup", "rouge"),
+    # ("qasper", "f1_answer"),
+    # ("qasper", "f1_evidence"),
+    # ("scierc", "f1"),
+    # ("scifact", "f1_label"),
+    # ("scifact", "f1_evidence_sent"),
+    science_columns_for_average_without_some_evals = [
+        "bioasq_f1",
+        "biored_f1",
+        "discomat_bleu",
+        # "evidence_inference_f1_overlap", # problematic
+        "multicite_f1",
+        "mup_rouge",
+        "qasper_f1_answer",
+        "qasper_f1_evidence",
+        "scierc_f1",
+        "scifact_f1_label",
+        "scifact_f1_evidence_sent",
+    ]
+
     df['invert_toxigen'] = df.apply(lambda row: 1 - row["toxigen"], axis=1)
     df['invert_unsafe_average'] = df.apply(lambda row: 1 - (row["unsafe_average"] / 100), axis=1)
     df["normalized_safe_average"] = df.apply(lambda row: row["safe_average"] / 100, axis=1)
@@ -103,6 +128,7 @@ def get_df():
     df['Tulu Average'] = df.apply(lambda row: calculate_tulu_average(row, tulu_columns_for_test_average), axis=1)
     df['Safety Average'] = df.apply(lambda row: calculate_tulu_average(row, safety_columns_for_average), axis=1)
     df["Science Average"] = df.apply(lambda row: row["mean_null"], axis=1)
+    df['Test Science Average'] = df.apply(lambda row: calculate_tulu_average(row, science_columns_for_average_without_some_evals), axis=1)
     df['Coding Average'] = df.apply(lambda row: calculate_tulu_average(row, coding_columns_for_average), axis=1)
 
     df['Combo'] = df.apply(lambda row: create_model_combo(row), axis=1)
@@ -222,7 +248,8 @@ def plot_science_curves():
     df.sort_values(by='Order', inplace=True)
     df = df[~df["Combo"].str.contains("Safety 100") & ~df["Combo"].str.contains("Coding 100")]
 
-    sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
+    # sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
+    sns.lineplot(data=df, x="Tulu Average", y="Test Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
     # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=100)
     # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=300, marker="*")
@@ -266,6 +293,6 @@ def plot_safety_curves():
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
     plt.show()
 
-# plot_science_curves()
-plot_coding_curves()
+plot_science_curves()
+# plot_coding_curves()
 # plot_safety_curves()

@@ -24,6 +24,11 @@ import yaml
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100-4k=/llama_2_7b-coding_100 \
 #     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety-tulu_none-coding_100=/tulu_2_7b_with_coding-tulu_none-coding_100
 
+# beaker session create --gpus 1 --budget ai2/oe-adapt  \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all_no_science_no_safety_no_coding=/llama_2_7b-tulu_consistent_mix \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500_4096=/llama_2_7b-tulu_none-science_2500_test \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100_test 
+
 weights = [
     (0.1, 0.9),
     (0.2, 0.8),
@@ -34,7 +39,7 @@ weights = [
     (0.7, 0.3),
     (0.8, 0.2),
     (0.9, 0.1),
-    (0.65, 0.35),
+    # (0.65, 0.35),
 ]
 
 # weights = [
@@ -69,24 +74,26 @@ weights = [
 # ]
 
 domain_models = {
-    "coding_100": "/llama_2_7b-coding_100",
+    "science_2500_test": "/llama_2_7b-tulu_none-science_2500_test",
+    # "coding_100_test": "/llama_2_7b-tulu_none-coding_100_test",
+    # "coding_100": "/llama_2_7b-coding_100",
     # "safety_100": "/llama_2_7b-safety_100",
     # "science_2500": "/llama_2_7b-science_2500",
 
-    "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
+    # "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
     # "tulu_2_7b_safety_100": "/tulu_2_7b-tulu_none-safety_100",
     # "tulu_2_7b_science_2500": "/tulu_2_7b-tulu_none-science_2500",
     # "tulu_2_7b_with_coding_coding_100": "/tulu_2_7b_with_coding-tulu_none-coding_100",
 }
 
 merge_methods = [
-    # "linear_weighted",
+    "linear_weighted",
     # "task_arithmetic",
-    "dare_task_arithmetic",
-    "dare_linear",
-    "dare_ties",
-    "ties",
-    "slerp",
+    # "dare_task_arithmetic",
+    # "dare_linear",
+    # "dare_ties",
+    # "ties",
+    # "slerp",
 ]
 
 tulu_file = "/llama_2_7b-tulu_consistent_mix"
