@@ -434,6 +434,28 @@ row6["tulu_model_weight"] = 1.0
 row6["domain_model_weight"] = 0.0
 data_map["linear_weighted-llama_2_7b-tulu_all_no_science_no_safety_no_coding_1.0-llama_2_7b-tulu_none-science_2500_0.0"] = row6
 
+row7 = data_map["llama_2_7b-tulu_all_no_science_no_safety_no_coding"].copy()
+row7["model_key"] = "task_arithmetic-llama_2_7b-tulu_consistent_mix_with_coding_1.0-llama_2_7b-tulu_none-coding_100_0.0"
+row7["merge_method"] = "linear_weighted"
+row7["tulu_model_weight"] = 1.0
+row7["domain_model_weight"] = 0.0
+data_map["task_arithmetic-llama_2_7b-tulu_consistent_mix_with_coding_1.0-llama_2_7b-tulu_none-coding_100_0.0"] = row7
+
+row8 = data_map["llama_2_7b-tulu_all_no_science_no_safety_no_coding"].copy()
+row8["model_key"] = "task_arithmetic-llama_2_7b-tulu_consistent_mix_with_coding_1.0-llama_2_7b-tulu_none-safety_100_0.0"
+row8["merge_method"] = "linear_weighted"
+row8["tulu_model_weight"] = 1.0
+row8["domain_model_weight"] = 0.0
+data_map["task_arithmetic-llama_2_7b-tulu_consistent_mix_with_coding_1.0-llama_2_7b-tulu_none-safety_100_0.0"] = row8
+
+row9 = data_map["llama_2_7b-tulu_all_no_science_no_safety_no_coding"].copy()
+row9["model_key"] = "task_arithmetic-llama_2_7b-tulu_consistent_mix_with_coding_1.0-llama_2_7b-tulu_none-science_2500_0.0"
+row9["merge_method"] = "linear_weighted"
+row9["tulu_model_weight"] = 1.0
+row9["domain_model_weight"] = 0.0
+data_map["task_arithmetic-llama_2_7b-tulu_consistent_mix_with_coding_1.0-llama_2_7b-tulu_none-science_2500_0.0"] = row9
+
+
 df = pd.DataFrame(data_map.values())
 print(df)
 df.to_csv("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/consistent_mix/results.csv", index=False)
