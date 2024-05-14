@@ -343,7 +343,7 @@ science_eval_data = []
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/consistent_mix/science/metrics/tables/summary.tsv") as f_in:
     i = 0
     for line in f_in.readlines():
-        line = line.replace("\t", ",")
+        line = line.replace("\t", ",").strip()
         print(line)
         print(line.split(","))
         if i == 0:
