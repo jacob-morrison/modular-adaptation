@@ -350,9 +350,10 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             tasks = line.split(",")
             i += 1
         elif i == 1:
-            metrics = line.split(",")
+            metrics = line.split(",")[:-2]
             metrics.append("null")
             metrics.append("null")
+            print(metrics)
             i += 1
         else:
             tokens = line.split()
