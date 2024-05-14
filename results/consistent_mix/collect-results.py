@@ -344,8 +344,6 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
     i = 0
     for line in f_in.readlines():
         line = line.replace("\t", ",").strip()
-        print(line)
-        print(line.split(","))
         if i == 0:
             tasks = line.split(",")
             i += 1
@@ -353,7 +351,6 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             metrics = line.split(",")[:-2]
             metrics.append("null")
             metrics.append("null")
-            print(metrics)
             i += 1
         else:
             tokens = line.split()
@@ -361,6 +358,10 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             curr_data = {
                 "model_key": model_key,
             }
+            print(tasks)
+            print(metrics)
+            print(tokens)
+            print()
             for task, metric, value in zip(tasks[1:], metrics[1:], tokens[1:]):
                 curr_data[f"{task}_{metric}"] = float(value)
                 data_map[model_key][f"{task}_{metric}"] = float(value)
