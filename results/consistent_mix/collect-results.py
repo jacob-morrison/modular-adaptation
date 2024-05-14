@@ -28,7 +28,7 @@ def get_model_weights(model_name):
     return tulu_model_weight, domain_model_weight
 
 def collect_metrics(model_path):
-    model_name = model_path.split("/")[-1].replace("-4k", "")
+    model_name = model_path.split("/")[-1].replace("-4k", "").replace("finetune-", "")
     tokens = model_name.split("-")
     if tokens[0] in [
         "linear_weighted",
