@@ -235,7 +235,7 @@ def plot_coding_curves():
     df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
-    df = df[df["Coding Average"] > 0]
+    df = df[~df["Combo"].str.contains("Science 2500") & ~df["Combo"].str.contains("Safety 100") & ~df["Combo"].str.contains("w/ Coding")]
 
     sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
@@ -267,5 +267,5 @@ def plot_safety_curves():
     plt.show()
 
 # plot_science_curves()
-# plot_coding_curves()
-plot_safety_curves()
+plot_coding_curves()
+# plot_safety_curves()
