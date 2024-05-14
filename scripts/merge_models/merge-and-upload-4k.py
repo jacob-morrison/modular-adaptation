@@ -89,7 +89,7 @@ merge_methods = [
     "slerp",
 ]
 
-tulu_file = "/llama_2_7b-tulu_consistent_mix_with_coding"
+tulu_file = "/llama_2_7b-tulu_consistent_mix"
 
 def print_and_run(cmd):
     print(cmd)
