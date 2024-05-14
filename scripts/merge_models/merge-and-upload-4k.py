@@ -15,6 +15,7 @@ import yaml
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
 #     --mount beaker://jacobm/llama_2_7b-tulu_all_no_science_no_safety_no_coding=/llama_2_7b-tulu_consistent_mix \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100-4k=/llama_2_7b-coding_100 \
+#     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100=/tulu_2_7b-tulu_none-coding_100 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100-4k=/llama_2_7b-safety_100 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500-4k=/llama_2_7b-science_2500
 
@@ -68,19 +69,24 @@ weights = [
 # ]
 
 domain_models = {
-    # "coding_100": "/llama_2_7b-coding_100",
+    "coding_100": "/llama_2_7b-coding_100",
     # "safety_100": "/llama_2_7b-safety_100",
     # "science_2500": "/llama_2_7b-science_2500",
 
-    # "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
+    "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
     # "tulu_2_7b_safety_100": "/tulu_2_7b-tulu_none-safety_100",
     # "tulu_2_7b_science_2500": "/tulu_2_7b-tulu_none-science_2500",
-    "tulu_2_7b_with_coding_coding_100": "/tulu_2_7b_with_coding-tulu_none-coding_100",
+    # "tulu_2_7b_with_coding_coding_100": "/tulu_2_7b_with_coding-tulu_none-coding_100",
 }
 
 merge_methods = [
-    "linear_weighted",
+    # "linear_weighted",
     # "task_arithmetic",
+    "dare_task_arithmetic",
+    "dare_linear",
+    "dare_ties",
+    "ties",
+    "slerp",
 ]
 
 tulu_file = "/llama_2_7b-tulu_consistent_mix_with_coding"
@@ -99,7 +105,9 @@ for merge_method in merge_methods:
             with open(base_yaml, 'r') as f:
                 d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
             d = copy.deepcopy(d1)
-            if merge_method == "task_arithmetic":
+            if merge_method == "task_arithmetic" or merge_method == "dare_task_arithmetic":
+                if tuluWeight == 0.65:
+                    domainWeight = 0.53
                 tuluWeight = 1.0
             if merge_method == "linear_weighted" or merge_method == "task_arithmetic":
                 # Set merge-specific parameters

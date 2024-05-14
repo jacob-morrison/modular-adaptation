@@ -55,7 +55,7 @@ def create_model_combo(row):
     if str(row["merge_method"]) == "nan":
         return f"{base_model} -> {tulu_model} & {domain_model.strip()}"
     else:
-        return f"{base_model} -> {tulu_model} merged with {domain_model.strip()}, {row['merge_method']}"
+        return f"{base_model} -> {tulu_model} merged with {domain_model.strip()}, {row['merge_method']}".replace(" Tulu None", "")
     
 models_to_skip = [
     "tulu_2_13b_retrain",
@@ -220,7 +220,7 @@ def plot_science_curves():
     df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
-    df = df[~df["Science Average"].isna()]
+    df = df[~df["Combo"].str.contains("Safety 100") & ~df["Combo"].str.contains("Coding 100")]
 
     sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
@@ -259,8 +259,8 @@ def plot_safety_curves():
 
     pd.set_option('display.max_colwidth', None)
     print(df["model_key"])
-    sns.lineplot(data=df, x="Tulu Average", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
-    # sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
+    # sns.lineplot(data=df, x="Tulu Average", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
+    sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='o', markersize=6)
     plt.legend()
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
