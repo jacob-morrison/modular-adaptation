@@ -343,11 +343,12 @@ science_eval_data = []
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/consistent_mix/science/metrics/tables/summary.tsv") as f_in:
     i = 0
     for line in f_in.readlines():
+        line = line.replace("\t", ",")
         if i == 0:
-            tasks = line.split("\t")
+            tasks = line.split(",")
             i += 1
         elif i == 1:
-            metrics = line.split("\t")
+            metrics = line.split(",")
             metrics.append("null")
             metrics.append("null")
             i += 1
