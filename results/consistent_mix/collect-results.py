@@ -419,7 +419,7 @@ data_map["task_arithmetic-llama_2_7b-tulu_consistent_mix_1.0-llama_2_7b-tulu_non
 
 row11 = data_map["llama_2_7b-tulu_all_no_science_no_safety_no_coding"].copy()
 row11["model_key"] = "linear_weighted-llama_2_7b-tulu_consistent_mix_1.0-tulu_2_7b-tulu_none-coding_100_0.0"
-row11["merge_method"] = "task_arithmetic"
+row11["merge_method"] = "linear_weighted"
 row11["tulu_model_weight"] = 1.0
 row11["domain_model_weight"] = 0.0
 row11["tulu_model"] = "tulu_consistent_mix"
@@ -456,7 +456,7 @@ data_map["task_arithmetic-llama_2_7b-tulu_consistent_mix_1.0-llama_2_7b-tulu_non
 
 row10 = data_map["llama_2_7b-tulu_all_no_science_no_safety_no_coding"].copy()
 row10["model_key"] = "linear_weighted-llama_2_7b-tulu_consistent_mix_1.0-tulu_2_7b-tulu_none-science_2500_0.0"
-row10["merge_method"] = "task_arithmetic"
+row10["merge_method"] = "linear_weighted"
 row10["tulu_model_weight"] = 1.0
 row10["domain_model_weight"] = 0.0
 row10["tulu_model"] = "tulu_consistent_mix"
@@ -493,7 +493,7 @@ data_map["linear_weighted-llama_2_7b-tulu_all_no_science_no_safety_no_coding_0.0
 
 row10 = data_map["llama_2_7b-tulu_all_no_science_no_safety_no_coding"].copy()
 row10["model_key"] = "linear_weighted-llama_2_7b-tulu_consistent_mix_1.0-tulu_2_7b-tulu_none-safety_100_0.0"
-row10["merge_method"] = "task_arithmetic"
+row10["merge_method"] = "linear_weighted"
 row10["tulu_model_weight"] = 1.0
 row10["domain_model_weight"] = 0.0
 row10["tulu_model"] = "tulu_consistent_mix"
