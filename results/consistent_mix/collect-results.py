@@ -299,7 +299,13 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts_annotated"):
         "slerp",
     ]
     original_model_name = model_name
-    model_name = model_name.replace("-4k", "")
+    model_name = model_name.replace("-4k", "").replace(
+            "llama_2_7b-coding_100_0", "llama_2_7b-tulu_none-coding_100_0"
+        ).replace(
+            "llama_2_7b-safety_100_0", "llama_2_7b-tulu_none-safety_100_0"
+        ).replace(
+            "llama_2_7b-science_2500_0", "llama_2_7b-tulu_none-science_2500_0"
+        )
     if merged:
         tokens = model_name.split('-')
         merge_method = tokens[0]
