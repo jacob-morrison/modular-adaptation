@@ -342,7 +342,7 @@ for model_name in os.listdir(safety_eval_path + "xstest_v2_prompts_annotated"):
 science_eval_data = []
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/consistent_mix/science/metrics/tables/summary.tsv") as f_in:
     i = 0
-    for line in f_in.readlines(∂):
+    for line in f_in.readlines():
         if i == 0:
             tasks = line.split("\t")
             i += 1
