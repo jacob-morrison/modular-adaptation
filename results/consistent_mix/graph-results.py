@@ -250,7 +250,12 @@ def plot_safety_curves():
     df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
-    df = df[(df["normalized_safe_average"] > 0) | ("safety_100" in df["model_key"])]
+    # df = df[(df["normalized_safe_average"] > 0) | ("safety_100" in df["model_key"])]
+    # df = df[~df["domain_model"].isin({
+        # "science_2500",
+        # "coding_100"
+    # })]
+    df = df[~df["Combo"].str.contains("Science 2500") & ~df["Combo"].str.contains("Coding 100")]
 
     pd.set_option('display.max_colwidth', None)
     print(df["model_key"])
