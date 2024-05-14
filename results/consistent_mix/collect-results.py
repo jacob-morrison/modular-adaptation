@@ -427,7 +427,7 @@ row11["domain_model"] = "coding_100"
 data_map["linear_weighted-llama_2_7b-tulu_consistent_mix_1.0-tulu_2_7b-tulu_none-coding_100_0.0"] = row11
 
 # tulu_2_7b_no_science_no_safety-tulu_none-coding_100
-row13 = data_map["tulu_2_7b_no_science_no_safety-tulu_none-coding_100"].copy()
+row13 = data_map["tulu_2_7b_no_science_no_safety_no_coding-tulu_none-coding_100"].copy()
 row13["model_key"] = "linear_weighted-llama_2_7b-tulu_consistent_mix_0.0-tulu_2_7b-tulu_none-coding_100_1.0"
 row13["merge_method"] = "linear_weighted"
 row13["tulu_model_weight"] = 0.0
