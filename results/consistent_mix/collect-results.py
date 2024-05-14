@@ -344,6 +344,8 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
     i = 0
     for line in f_in.readlines():
         line = line.replace("\t", ",")
+        print(line)
+        print(line.split(","))
         if i == 0:
             tasks = line.split(",")
             i += 1
