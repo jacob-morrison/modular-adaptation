@@ -353,12 +353,11 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             metrics.append("null")
             i += 1
         else:
-            tokens = line.split(",")
+            tokens = line.split(",").replace("''", "0.0") # TODO: fix and replace later
             model_key = tokens[0].replace("-4k", "")
             curr_data = {
                 "model_key": model_key,
             }
-            print(tokens)
             for task, metric, value in zip(tasks[1:], metrics[1:], tokens[1:]):
                 curr_data[f"{task}_{metric}"] = float(value)
                 data_map[model_key][f"{task}_{metric}"] = float(value)
