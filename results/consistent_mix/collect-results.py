@@ -358,6 +358,7 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             curr_data = {
                 "model_key": model_key,
             }
+            print(tokens)
             for task, metric, value in zip(tasks[1:], metrics[1:], tokens[1:]):
                 curr_data[f"{task}_{metric}"] = float(value)
                 data_map[model_key][f"{task}_{metric}"] = float(value)
