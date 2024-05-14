@@ -9,7 +9,6 @@ def calculate_tulu_average(row, columns):
     return subset_values.mean()
 
 def create_model_combo(row):
-    print(row)
     model_dict = {
         "llama_2_7b": "Llama 2 7B",
         "tulu_none": "Tulu None",
@@ -21,7 +20,13 @@ def create_model_combo(row):
         "safety_100": "Safety 100%",
         "science_2500": "Science 2500",
         "tulu_all_no_science_no_safety_no_coding": "Tulu Consistent Mix",
+        "tulu_all_no_science_no_safety": "Tulu Consistent Mix w/ Coding",
+        "tulu_2_7b": "Tulu 2 7B Consistent Mix",
         "tulu_2_7b_no_science_no_safety_no_coding": "Tulu 2 7B Consistent Mix",
+        "tulu_2_7b_with_coding": "Tulu 2 7B Consistent Mix w/ Coding",
+        "tulu_2_7b_no_science_no_safety": "Tulu 2 7B Consistent Mix w/ Coding",
+        "tulu_consistent_mix": "Tulu Consistent Mix",
+        "tulu_consistent_mix_with_coding": "Tulu Consistent Mix w/ Coding",
         "tulu_match_no_science_no_safety_no_coding": "Tulu Match"
         # "tulu_v2_mix": "Full Tulu Mix",
         # "tulu_2_code_none": "Tulu 2 7B w/o Code Alpaca",
@@ -42,12 +47,15 @@ def create_model_combo(row):
     if len(tokens) == 2:
         domain_model = "None"
     else:
-        domain_model = model_dict[tokens[2].split("-")[-1]]
+        print(tokens[2])
+        domain_model = ""
+        for token in tokens[2].split("-"):
+            domain_model += " " + model_dict[token]
 
     if str(row["merge_method"]) == "nan":
-        return f"{base_model} -> {tulu_model} & {domain_model}"
+        return f"{base_model} -> {tulu_model} & {domain_model.strip()}"
     else:
-        return f"{base_model} -> {tulu_model} merged with {domain_model}, {row['merge_method']}"
+        return f"{base_model} -> {tulu_model} merged with {domain_model.strip()}, {row['merge_method']}"
     
 models_to_skip = [
     "tulu_2_13b_retrain",
@@ -157,7 +165,7 @@ def plot_all_curves():
     }
 
     # normalize these 4
-    df["Order"] = df["science_model_weight"]
+    df["Order"] = df["domain_model_weight"]
 
     df_baselines = df[df["model_key"].isin(baseline_keys)]
     df_continued_ft = df[df["model_key"].isin(continued_ft_keys)]
@@ -209,7 +217,7 @@ def plot_all_curves():
 
 def plot_science_curves():
     df = get_df()
-    df["Order"] = df["science_model_weight"]
+    df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
     df = df[~df["Science Average"].isna()]
@@ -224,7 +232,7 @@ def plot_science_curves():
 
 def plot_coding_curves():
     df = get_df()
-    df["Order"] = df["science_model_weight"]
+    df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
     df = df[df["Coding Average"] > 0]
@@ -239,11 +247,13 @@ def plot_coding_curves():
 
 def plot_safety_curves():
     df = get_df()
-    df["Order"] = df["science_model_weight"]
+    df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
-    df = df[df["harmbench"] > 0]
+    df = df[(df["normalized_safe_average"] > 0) | ("safety_100" in df["model_key"])]
 
+    pd.set_option('display.max_colwidth', None)
+    print(df["model_key"])
     sns.lineplot(data=df, x="Tulu Average", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='o', markersize=6)
