@@ -25,9 +25,10 @@ import yaml
 #     --mount beaker://jacobm/tulu_2_7b_no_science_no_safety-tulu_none-coding_100=/tulu_2_7b_with_coding-tulu_none-coding_100
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
-#     --mount beaker://jacobm/llama_2_7b-tulu_all_no_science_no_safety_no_coding=/llama_2_7b-tulu_consistent_mix \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500_4096=/llama_2_7b-tulu_none-science_2500_test \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100_test 
+#     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100	=/llama_2_7b-tulu_none-safety_100 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100	=/llama_2_7b-tulu_none-coding_100 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500=/llama_2_7b-tulu_none-science_2500 
 
 weights = [
     (0.1, 0.9),
@@ -74,21 +75,14 @@ weights = [
 # ]
 
 domain_models = {
-    "science_2500_test": "/llama_2_7b-tulu_none-science_2500_test",
-    # "coding_100_test": "/llama_2_7b-tulu_none-coding_100_test",
-    # "coding_100": "/llama_2_7b-coding_100",
-    # "safety_100": "/llama_2_7b-safety_100",
-    # "science_2500": "/llama_2_7b-science_2500",
-
-    # "tulu_2_7b_coding_100": "/tulu_2_7b-tulu_none-coding_100",
-    # "tulu_2_7b_safety_100": "/tulu_2_7b-tulu_none-safety_100",
-    # "tulu_2_7b_science_2500": "/tulu_2_7b-tulu_none-science_2500",
-    # "tulu_2_7b_with_coding_coding_100": "/tulu_2_7b_with_coding-tulu_none-coding_100",
+    "safety_100": "/llama_2_7b-tulu_none-safety_100",
+    "coding_100": "/llama_2_7b-tulu_none-coding_100",
+    "science_2500": "/llama_2_7b-tulu_none-science_2500",
 }
 
 merge_methods = [
     "linear_weighted",
-    # "task_arithmetic",
+    "task_arithmetic",
     # "dare_task_arithmetic",
     # "dare_linear",
     # "dare_ties",
@@ -96,16 +90,14 @@ merge_methods = [
     # "slerp",
 ]
 
-tulu_file = "/llama_2_7b-tulu_consistent_mix"
+tulu_file = "/llama_2_7b-tulu_all"
 
 def print_and_run(cmd):
     print(cmd)
     subprocess.run(cmd, shell=True)
 
-for merge_method in merge_methods:
-    # for science_amount in science_files:
-    for model_tag in domain_models:
-        # for (tuluWeight, scienceWeight) in weights:
+for model_tag in domain_models:
+    for merge_method in merge_methods:
         for (tuluWeight, domainWeight) in weights:
             # Copy yaml
             base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
