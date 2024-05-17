@@ -393,7 +393,7 @@ from pprint import pprint
 pprint(data_map.keys())
             
 for dataset in [
-    # "coding_100",
+    "coding_100",
     "safety_100",
     "science_2500"
     ]:

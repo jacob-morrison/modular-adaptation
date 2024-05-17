@@ -291,6 +291,6 @@ def plot_safety_curves():
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
     plt.show()
 
-plot_science_curves()
-# plot_coding_curves()
+# plot_science_curves()
+plot_coding_curves()
 # plot_safety_curves()
