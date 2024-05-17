@@ -393,14 +393,14 @@ from pprint import pprint
 pprint(data_map.keys())
             
 for dataset in ["coding_100", "safety_100", "science_2500"]:
-    row = data_map[f"llama_2_7b-tulu_none-{dataset}"].copy()
-    row["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"
-    row["merge_method"] = "linear_weighted"
-    row["tulu_model_weight"] = 0.0
-    row["domain_model_weight"] = 1.0
-    row["tulu_model"] = "tulu_all"
-    row["domain_model"] = dataset
-    data_map[f"linear_weighted-llama_2_7b-tulu_all_no_science_no_safety_no_coding_0.0-llama_2_7b-tulu_none-{dataset}_1.0"] = row
+    # row = data_map[f"llama_2_7b-tulu_none-{dataset}"].copy()
+    # row["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"
+    # row["merge_method"] = "linear_weighted"
+    # row["tulu_model_weight"] = 0.0
+    # row["domain_model_weight"] = 1.0
+    # row["tulu_model"] = "tulu_all"
+    # row["domain_model"] = dataset
+    # data_map[f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"] = row
 
     row2 = data_map["llama_2_7b-tulu_all"].copy()
     row2["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"
