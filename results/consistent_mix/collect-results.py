@@ -389,6 +389,9 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
 
 # need to edit a bunch of rows
             
+from pprint import pprint
+pprint(data_map.keys())
+            
 for dataset in ["coding_100", "safety_100", "science_2500"]:
     row = data_map[f"llama_2_7b-tulu_none-{dataset}"].copy()
     row["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"
