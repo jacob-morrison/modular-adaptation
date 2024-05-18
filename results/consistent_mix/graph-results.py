@@ -244,10 +244,13 @@ def plot_science_curves():
     df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
-    df = df[~df["Combo"].str.contains("Safety 100") & ~df["Combo"].str.contains("Coding 100")]
+    df = df[
+        ~df["Combo"].str.contains("Safety 100") &
+        ~df["Combo"].str.contains("Coding 100")
+    ]
 
-    # sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
-    sns.lineplot(data=df, x="Tulu Average", y="Test Science Average", hue="Combo", sort=False, marker='o', markersize=6)
+    sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
+    # sns.lineplot(data=df, x="Tulu Average", y="Test Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
     # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=100)
     # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=300, marker="*")
@@ -291,6 +294,6 @@ def plot_safety_curves():
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
     plt.show()
 
-# plot_science_curves()
-plot_coding_curves()
+plot_science_curves()
+# plot_coding_curves()
 # plot_safety_curves()
