@@ -47,16 +47,27 @@ import yaml
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_60=/llama_2_7b-tulu_none-safety_60 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_80=/llama_2_7b-tulu_none-safety_80
 
+# beaker session create --gpus 1 --budget ai2/oe-adapt  \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_100=/tulu_2_7b-tulu_none-science_100 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_200=/tulu_2_7b-tulu_none-science_200 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_500=/tulu_2_7b-tulu_none-science_500 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_1000=/tulu_2_7b-tulu_none-science_1000 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_20=/tulu_2_7b-tulu_none-safety_20 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_40=/tulu_2_7b-tulu_none-safety_40 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_60=/tulu_2_7b-tulu_none-safety_60 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_80=/tulu_2_7b-tulu_none-safety_80
+
 weights = [
-    # (0.1, 0.9),
-    # (0.2, 0.8),
+    (0.1, 0.9),
+    (0.2, 0.8),
     (0.3, 0.7),
-    # (0.4, 0.6),
-    # (0.5, 0.5),
-    # (0.6, 0.4),
-    # (0.7, 0.3),
-    # (0.8, 0.2),
-    # (0.9, 0.1),
+    (0.4, 0.6),
+    (0.5, 0.5),
+    (0.6, 0.4),
+    (0.7, 0.3),
+    (0.8, 0.2),
+    (0.9, 0.1),
 ]
 
 # weights = [
@@ -104,15 +115,25 @@ domain_models = {
     # "science_500": "/llama_2_7b-tulu_none-science_500",
     # "science_1000": "/llama_2_7b-tulu_none-science_1000",
 
-    "safety_20": "/llama_2_7b-tulu_none-safety_20",
+    # "safety_20": "/llama_2_7b-tulu_none-safety_20",
     # "safety_40": "/llama_2_7b-tulu_none-safety_40",
     # "safety_60": "/llama_2_7b-tulu_none-safety_60",
     # "safety_80": "/llama_2_7b-tulu_none-safety_80",
+
+    "science_100": "/tulu_2_7b-tulu_none-science_100",
+    "science_200": "/tulu_2_7b-tulu_none-science_200",
+    "science_500": "/tulu_2_7b-tulu_none-science_500",
+    "science_1000": "/tulu_2_7b-tulu_none-science_1000",
+
+    # "safety_20": "/tulu_2_7b-tulu_none-safety_20",
+    # "safety_40": "/tulu_2_7b-tulu_none-safety_40",
+    # "safety_60": "/tulu_2_7b-tulu_none-safety_60",
+    # "safety_80": "/tulu_2_7b-tulu_none-safety_80",
 }
 
 merge_methods = [
-    # "linear_weighted",
-    "task_arithmetic",
+    "linear_weighted",
+    # "task_arithmetic",
     # "dare_task_arithmetic",
     # "dare_linear",
     # "dare_ties",
