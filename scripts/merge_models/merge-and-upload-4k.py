@@ -49,8 +49,8 @@ import yaml
 
 weights = [
     # (0.1, 0.9),
-    (0.2, 0.8),
-    # (0.3, 0.7),
+    # (0.2, 0.8),
+    (0.3, 0.7),
     # (0.4, 0.6),
     # (0.5, 0.5),
     # (0.6, 0.4),
@@ -102,9 +102,9 @@ domain_models = {
     # "science_100": "/llama_2_7b-tulu_none-science_100",
     # "science_200": "/llama_2_7b-tulu_none-science_200",
     # "science_500": "/llama_2_7b-tulu_none-science_500",
-    "science_1000": "/llama_2_7b-tulu_none-science_1000",
+    # "science_1000": "/llama_2_7b-tulu_none-science_1000",
 
-    # "safety_20": "/llama_2_7b-tulu_none-safety_20",
+    "safety_20": "/llama_2_7b-tulu_none-safety_20",
     # "safety_40": "/llama_2_7b-tulu_none-safety_40",
     # "safety_60": "/llama_2_7b-tulu_none-safety_60",
     # "safety_80": "/llama_2_7b-tulu_none-safety_80",
