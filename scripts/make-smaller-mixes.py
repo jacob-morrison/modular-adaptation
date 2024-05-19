@@ -18,7 +18,7 @@ amounts = [
 ]
 
 for amt in amounts:
-    current_coding_examples = coding_examples[:len(coding_examples) * amt / 100.]
+    current_coding_examples = coding_examples[:int(len(coding_examples) * amt / 100.)]
     with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/coding/tulu_none-coding_{amt}.jsonl", "w") as f_out:
         for elem in current_coding_examples:
             print(json.dumps(elem), file=f_out)
