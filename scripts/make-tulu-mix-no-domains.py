@@ -2,7 +2,7 @@ import json
 import random
 
 tulu_no_science_no_safety_no_coding = []
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_all_no_science_no_safety.jsonl") as f_in:
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_all_no_science_no_safety_no_coding.jsonl") as f_in:
     for line in f_in.readlines():
         tulu_no_science_no_safety_no_coding.append(json.loads(line)) 
 
@@ -13,12 +13,48 @@ science_amounts = [
     "science_1000",    
 ]
 
+for amt in science_amounts:
+    science_examples = []
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/science/tulu_none_{amt}_eval_no.jsonl") as f_in:
+        for line in f_in.readlines():
+            science_examples.append(json.loads(line))
+    
+    all_combined = science_examples + tulu_no_science_no_safety_no_coding
+    random.shuffle(all_combined)
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_all_no_science_no_safety-{amt}.jsonl", "w") as f_out:
+        for elem in all_combined:
+            print(json.dumps(elem), file=f_out)
+
+    match_combined = science_examples + tulu_no_science_no_safety_no_coding[:len(science_examples)]
+    random.shuffle(match_combined)
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety-{amt}.jsonl", "w") as f_out:
+        for elem in match_combined:
+            print(json.dumps(elem), file=f_out)
+
 safety_amounts = [
     "safety_20",
     "safety_40",
     "safety_60",
     "safety_80",
 ]
+
+for amt in safety_amounts:
+    science_examples = []
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/safety/tulu_none-{amt}.jsonl") as f_in:
+        for line in f_in.readlines():
+            science_examples.append(json.loads(line))
+    
+    all_combined = science_examples + tulu_no_science_no_safety_no_coding
+    random.shuffle(all_combined)
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_all_no_science_no_safety_no_coding-{amt}.jsonl", "w") as f_out:
+        for elem in all_combined:
+            print(json.dumps(elem), file=f_out)
+
+    match_combined = science_examples + tulu_no_science_no_safety_no_coding[:len(science_examples)]
+    random.shuffle(match_combined)
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety_no_coding-{amt}.jsonl", "w") as f_out:
+        for elem in match_combined:
+            print(json.dumps(elem), file=f_out)
 
 coding_amounts = [
     "coding_20",
@@ -27,60 +63,20 @@ coding_amounts = [
     "coding_80",
 ]
 
-science_only_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/science/tulu_none_science_2500_eval_no.jsonl"
-safety_only_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/safety/tulu_none-safety_100.jsonl"
-coding_only_path = "/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/coding/tulu_none-coding_100.jsonl"
+for amt in coding_amounts:
+    science_examples = []
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/coding/tulu_none-{amt}.jsonl") as f_in:
+        for line in f_in.readlines():
+            science_examples.append(json.loads(line))
+    
+    all_combined = science_examples + tulu_no_science_no_safety_no_coding
+    random.shuffle(all_combined)
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_all_no_science_no_safety_no_coding-{amt}.jsonl", "w") as f_out:
+        for elem in all_combined:
+            print(json.dumps(elem), file=f_out)
 
-science_only_examples = []
-with open(science_only_path) as f_in:
-    for line in f_in.readlines():
-        science_only_examples.append(json.loads(line))
-
-safety_only_examples = []
-with open(safety_only_path) as f_in:
-    for line in f_in.readlines():
-        safety_only_examples.append(json.loads(line))
-
-coding_only_examples = []
-with open(coding_only_path) as f_in:
-    for line in f_in.readlines():
-        coding_only_examples.append(json.loads(line))
-
-random.shuffle(tulu_no_science_no_safety)
-random.shuffle(tulu_no_science_no_safety_no_coding)
-
-tulu_1_and_science = science_only_examples + tulu_no_science_no_safety[:len(science_only_examples)]
-random.shuffle(tulu_1_and_science)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety-science_2500.jsonl", "w") as f_out:
-    for elem in tulu_1_and_science:
-        print(json.dumps(elem), file=f_out)
-
-tulu_2_and_science = science_only_examples + tulu_no_science_no_safety_no_coding[:len(science_only_examples)]
-random.shuffle(tulu_2_and_science)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety_no_coding-science_2500.jsonl", "w") as f_out:
-    for elem in tulu_2_and_science:
-        print(json.dumps(elem), file=f_out)
-
-tulu_1_and_safety = safety_only_examples + tulu_no_science_no_safety[:len(safety_only_examples)]
-random.shuffle(tulu_1_and_safety)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety-safety_100.jsonl", "w") as f_out:
-    for elem in tulu_1_and_safety:
-        print(json.dumps(elem), file=f_out)
-
-tulu_2_and_safety = safety_only_examples + tulu_no_science_no_safety_no_coding[:len(safety_only_examples)]
-random.shuffle(tulu_2_and_safety)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety_no_coding-safety_100.jsonl", "w") as f_out:
-    for elem in tulu_2_and_safety:
-        print(json.dumps(elem), file=f_out)
-
-tulu_1_and_coding = coding_only_examples + tulu_no_science_no_safety[:len(coding_only_examples)]
-random.shuffle(tulu_1_and_coding)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety-coding_100.jsonl", "w") as f_out:
-    for elem in tulu_1_and_coding:
-        print(json.dumps(elem), file=f_out)
-        
-tulu_2_and_coding = coding_only_examples + tulu_no_science_no_safety_no_coding[:len(coding_only_examples)]
-random.shuffle(tulu_2_and_coding)
-with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety_no_coding-coding_100.jsonl", "w") as f_out:
-    for elem in tulu_2_and_coding:
-        print(json.dumps(elem), file=f_out)
+    match_combined = science_examples + tulu_no_science_no_safety_no_coding[:len(science_examples)]
+    random.shuffle(match_combined)
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety_no_coding-{amt}.jsonl", "w") as f_out:
+        for elem in match_combined:
+            print(json.dumps(elem), file=f_out)
