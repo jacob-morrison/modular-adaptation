@@ -49,10 +49,10 @@ import yaml
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
 #     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_100=/tulu_2_7b-tulu_none-science_100 \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_200=/tulu_2_7b-tulu_none-science_200 \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_500=/tulu_2_7b-tulu_none-science_500 \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_1000=/tulu_2_7b-tulu_none-science_1000 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_20=/tulu_2_7b-tulu_none-coding_20 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_40=/tulu_2_7b-tulu_none-coding_40 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_60=/tulu_2_7b-tulu_none-coding_60 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_80=/tulu_2_7b-tulu_none-coding_80 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_20=/tulu_2_7b-tulu_none-safety_20 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_40=/tulu_2_7b-tulu_none-safety_40 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_60=/tulu_2_7b-tulu_none-safety_60 \
@@ -120,15 +120,20 @@ domain_models = {
     # "safety_60": "/llama_2_7b-tulu_none-safety_60",
     # "safety_80": "/llama_2_7b-tulu_none-safety_80",
 
-    "science_100": "/tulu_2_7b-tulu_none-science_100",
-    "science_200": "/tulu_2_7b-tulu_none-science_200",
-    "science_500": "/tulu_2_7b-tulu_none-science_500",
-    "science_1000": "/tulu_2_7b-tulu_none-science_1000",
+    # "science_100": "/tulu_2_7b-tulu_none-science_100",
+    # "science_200": "/tulu_2_7b-tulu_none-science_200",
+    # "science_500": "/tulu_2_7b-tulu_none-science_500",
+    # "science_1000": "/tulu_2_7b-tulu_none-science_1000",
 
-    # "safety_20": "/tulu_2_7b-tulu_none-safety_20",
-    # "safety_40": "/tulu_2_7b-tulu_none-safety_40",
-    # "safety_60": "/tulu_2_7b-tulu_none-safety_60",
-    # "safety_80": "/tulu_2_7b-tulu_none-safety_80",
+    "safety_20": "/tulu_2_7b-tulu_none-safety_20",
+    "safety_40": "/tulu_2_7b-tulu_none-safety_40",
+    "safety_60": "/tulu_2_7b-tulu_none-safety_60",
+    "safety_80": "/tulu_2_7b-tulu_none-safety_80",
+
+    "coding_20": "/tulu_2_7b-tulu_none-coding_20",
+    "coding_40": "/tulu_2_7b-tulu_none-coding_40",
+    "coding_60": "/tulu_2_7b-tulu_none-coding_60",
+    "coding_80": "/tulu_2_7b-tulu_none-coding_80",
 }
 
 merge_methods = [

@@ -21,13 +21,13 @@ for amt in science_amounts:
     
     all_combined = science_examples + tulu_no_science_no_safety_no_coding
     random.shuffle(all_combined)
-    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_all_no_science_no_safety-{amt}.jsonl", "w") as f_out:
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_all_no_science_no_safety_no_coding-{amt}.jsonl", "w") as f_out:
         for elem in all_combined:
             print(json.dumps(elem), file=f_out)
 
     match_combined = science_examples + tulu_no_science_no_safety_no_coding[:len(science_examples)]
     random.shuffle(match_combined)
-    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety-{amt}.jsonl", "w") as f_out:
+    with open(f"/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety_no_coding-{amt}.jsonl", "w") as f_out:
         for elem in match_combined:
             print(json.dumps(elem), file=f_out)
 
