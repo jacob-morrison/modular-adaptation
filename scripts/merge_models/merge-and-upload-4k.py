@@ -59,15 +59,15 @@ import yaml
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_80=/tulu_2_7b-tulu_none-safety_80
 
 weights = [
-    (0.1, 0.9),
-    (0.2, 0.8),
-    (0.3, 0.7),
+    # (0.1, 0.9),
+    # (0.2, 0.8),
+    # (0.3, 0.7),
     (0.4, 0.6),
-    (0.5, 0.5),
-    (0.6, 0.4),
-    (0.7, 0.3),
-    (0.8, 0.2),
-    (0.9, 0.1),
+    # (0.5, 0.5),
+    # (0.6, 0.4),
+    # (0.7, 0.3),
+    # (0.8, 0.2),
+    # (0.9, 0.1),
 ]
 
 # weights = [
@@ -125,15 +125,15 @@ domain_models = {
     # "science_500": "/tulu_2_7b-tulu_none-science_500",
     # "science_1000": "/tulu_2_7b-tulu_none-science_1000",
 
-    "safety_20": "/tulu_2_7b-tulu_none-safety_20",
-    "safety_40": "/tulu_2_7b-tulu_none-safety_40",
+    # "safety_20": "/tulu_2_7b-tulu_none-safety_20",
+    # "safety_40": "/tulu_2_7b-tulu_none-safety_40",
     "safety_60": "/tulu_2_7b-tulu_none-safety_60",
-    "safety_80": "/tulu_2_7b-tulu_none-safety_80",
+    # "safety_80": "/tulu_2_7b-tulu_none-safety_80",
 
-    "coding_20": "/tulu_2_7b-tulu_none-coding_20",
-    "coding_40": "/tulu_2_7b-tulu_none-coding_40",
+    # "coding_20": "/tulu_2_7b-tulu_none-coding_20",
+    # "coding_40": "/tulu_2_7b-tulu_none-coding_40",
     "coding_60": "/tulu_2_7b-tulu_none-coding_60",
-    "coding_80": "/tulu_2_7b-tulu_none-coding_80",
+    # "coding_80": "/tulu_2_7b-tulu_none-coding_80",
 }
 
 merge_methods = [
