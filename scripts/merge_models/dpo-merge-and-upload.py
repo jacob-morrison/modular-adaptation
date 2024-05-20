@@ -125,7 +125,7 @@ for model_tag in domain_models:
 
             # Upload model
             # model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
-            model_name = f"{merge_method}-{tulu_file.replace("allenai/", "")}_{tuluWeight}-{domain_models[model_tag][1:]}_{domainWeight}"
+            model_name = f"{merge_method}-{tulu_file.replace('allenai/', '')}_{tuluWeight}-{domain_models[model_tag][1:]}_{domainWeight}"
             print_and_run(f"beaker dataset create tmp-dpo/ --name {model_name} --workspace ai2/synth-data")
 
             # Cleanup
