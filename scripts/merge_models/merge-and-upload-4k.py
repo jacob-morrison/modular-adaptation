@@ -63,10 +63,10 @@ import yaml
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_80=/tulu_2_7b-tulu_none-safety_80
 
 weights = [
-    # (0.1, 0.9),
+    (0.1, 0.9),
     # (0.2, 0.8),
     # (0.3, 0.7),
-    (0.4, 0.6),
+    # (0.4, 0.6),
     # (0.5, 0.5),
     # (0.6, 0.4),
     # (0.7, 0.3),
@@ -127,8 +127,8 @@ domain_models = {
     # "coding_20": "/llama_2_7b-tulu_none-coding_20",
     # "coding_40": "/llama_2_7b-tulu_none-coding_40",
 
-    "coding_60": "/llama_2_7b-tulu_none-coding_60",
-    # "coding_80": "/llama_2_7b-tulu_none-coding_80",
+    # "coding_60": "/llama_2_7b-tulu_none-coding_60",
+    "coding_80": "/llama_2_7b-tulu_none-coding_80",
 
     # "science_100": "/tulu_2_7b-tulu_none-science_100",
     # "science_200": "/tulu_2_7b-tulu_none-science_200",
