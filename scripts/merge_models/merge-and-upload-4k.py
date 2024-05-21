@@ -62,16 +62,23 @@ import yaml
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_60=/tulu_2_7b-tulu_none-safety_60 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_80=/tulu_2_7b-tulu_none-safety_80
 
+# beaker session create --gpus 1 --budget ai2/oe-adapt  \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all_with_coding=/llama_2_7b-tulu_all_with_coding \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_20=/llama_2_7b-tulu_none-coding_20 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_40=/llama_2_7b-tulu_none-coding_40 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_60=/llama_2_7b-tulu_none-coding_60 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_80=/llama_2_7b-tulu_none-coding_80 
+
 weights = [
     (0.1, 0.9),
-    # (0.2, 0.8),
-    # (0.3, 0.7),
-    # (0.4, 0.6),
-    # (0.5, 0.5),
-    # (0.6, 0.4),
-    # (0.7, 0.3),
-    # (0.8, 0.2),
-    # (0.9, 0.1),
+    (0.2, 0.8),
+    (0.3, 0.7),
+    (0.4, 0.6),
+    (0.5, 0.5),
+    (0.6, 0.4),
+    (0.7, 0.3),
+    (0.8, 0.2),
+    (0.9, 0.1),
 ]
 
 # weights = [
@@ -124,10 +131,9 @@ domain_models = {
     # "safety_60": "/llama_2_7b-tulu_none-safety_60",
     # "safety_80": "/llama_2_7b-tulu_none-safety_80",
 
-    # "coding_20": "/llama_2_7b-tulu_none-coding_20",
-    # "coding_40": "/llama_2_7b-tulu_none-coding_40",
-
-    # "coding_60": "/llama_2_7b-tulu_none-coding_60",
+    "coding_20": "/llama_2_7b-tulu_none-coding_20",
+    "coding_40": "/llama_2_7b-tulu_none-coding_40",
+    "coding_60": "/llama_2_7b-tulu_none-coding_60",
     "coding_80": "/llama_2_7b-tulu_none-coding_80",
 
     # "science_100": "/tulu_2_7b-tulu_none-science_100",
@@ -148,7 +154,7 @@ domain_models = {
 
 merge_methods = [
     "linear_weighted",
-    # "task_arithmetic",
+    "task_arithmetic",
     # "dare_task_arithmetic",
     # "dare_linear",
     # "dare_ties",
@@ -156,7 +162,8 @@ merge_methods = [
     # "slerp",
 ]
 
-tulu_file = "/llama_2_7b-tulu_all"
+# tulu_file = "/llama_2_7b-tulu_all"
+tulu_file = "/llama_2_7b-tulu_all_with_coding"
 
 def print_and_run(cmd):
     print(cmd)
