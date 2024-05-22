@@ -90,51 +90,51 @@ import yaml
 # ]
 
 data_weighted_coefficients = {
-    # # # coding 20
-    # # (
-    # #     "/llama_2_7b-tulu_all",
-    # #     "/llama_2_7b-tulu_none-coding_20",
-    # #     "linear_weighted",
-    # # ) :
-    # # [
-    # #     (0.90, 0.10),
-    # # ],
-    # # coding 40
+    # # coding 20
     # (
     #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_40",
+    #     "/llama_2_7b-tulu_none-coding_20",
     #     "linear_weighted",
     # ) :
     # [
-    #     (0.81, 0.19),
+    #     (0.90, 0.10),
     # ],
-    # # coding 60
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_60",
-    #     "linear_weighted",
-    # ) :
-    # [
-    #     (0.75, 0.25),
-    # ],
-    # # coding 80
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_80",
-    #     "linear_weighted",
-    # ) :
-    # [
-    #     (0.69, 0.31),
-    # ],
-    # # coding 100
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_100",
-    #     "linear_weighted",
-    # ) :
-    # [
-    #     (0.64, 0.36),
-    # ],
+    # coding 40
+    (
+        "/llama_2_7b-tulu_all",
+        "/tulu_2_7b-tulu_none-coding_40",
+        "linear_weighted",
+    ) :
+    [
+        (0.81, 0.19),
+    ],
+    # coding 60
+    (
+        "/llama_2_7b-tulu_all",
+        "/tulu_2_7b-tulu_none-coding_60",
+        "linear_weighted",
+    ) :
+    [
+        (0.75, 0.25),
+    ],
+    # coding 80
+    (
+        "/llama_2_7b-tulu_all",
+        "/tulu_2_7b-tulu_none-coding_80",
+        "linear_weighted",
+    ) :
+    [
+        (0.69, 0.31),
+    ],
+    # coding 100
+    (
+        "/llama_2_7b-tulu_all",
+        "/tulu_2_7b-tulu_none-coding_100",
+        "linear_weighted",
+    ) :
+    [
+        (0.64, 0.36),
+    ],
     # # coding 20
     # (
     #     "/llama_2_7b-tulu_all",
@@ -171,15 +171,15 @@ data_weighted_coefficients = {
     # [
     #     (1.0, 0.45),
     # ],
-    # coding 100
-    (
-        "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_100",
-        "task_arithmetic",
-    ) :
-    [
-        (1.0, 0.57),
-    ],
+    # # coding 100
+    # (
+    #     "/llama_2_7b-tulu_all",
+    #     "/llama_2_7b-tulu_none-coding_100",
+    #     "task_arithmetic",
+    # ) :
+    # [
+    #     (1.0, 0.57),
+    # ],
 }
 
 
