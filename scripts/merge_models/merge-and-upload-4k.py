@@ -67,50 +67,118 @@ import yaml
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_20=/llama_2_7b-tulu_none-coding_20 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_40=/llama_2_7b-tulu_none-coding_40 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_60=/llama_2_7b-tulu_none-coding_60 \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_80=/llama_2_7b-tulu_none-coding_80 
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_80=/llama_2_7b-tulu_none-coding_80 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100 
+
+# weights = [
+#     (0.1, 0.9),
+#     (0.2, 0.8),
+#     (0.3, 0.7),
+#     (0.4, 0.6),
+#     (0.5, 0.5),
+#     (0.6, 0.4),
+#     (0.7, 0.3),
+#     (0.8, 0.2),
+#     (0.9, 0.1),
+# ]
 
 weights = [
-    (0.1, 0.9),
-    (0.2, 0.8),
-    (0.3, 0.7),
-    (0.4, 0.6),
-    (0.5, 0.5),
-    (0.6, 0.4),
-    (0.7, 0.3),
-    (0.8, 0.2),
-    (0.9, 0.1),
+
 ]
 
-# weights = [
-#     (1.0, 1.0),
-#     (1.0, 0.9),
-#     (1.0, 0.8),
-#     (1.0, 0.7),
-#     (1.0, 0.6),
-#     (1.0, 0.5),
-#     (1.0, 0.4),
-#     (1.0, 0.3),
-#     (1.0, 0.2),
-#     (1.0, 0.1),
-# ]
+data_weighted_coefficients = {
+    # # coding 20
+    # (
+    #     "/llama_2_7b-tulu_all",
+    #     "/llama_2_7b-tulu_none-coding_20",
+    #     "linear_weighted",
+    # ) :
+    # [
+    #     (0.90, 0.10),
+    # ],
+    # coding 40
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_40",
+        "linear_weighted",
+    ) :
+    [
+        (0.81, 0.19),
+    ],
+    # coding 60
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_60",
+        "linear_weighted",
+    ) :
+    [
+        (0.75, 0.25),
+    ],
+    # coding 80
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_80",
+        "linear_weighted",
+    ) :
+    [
+        (0.69, 0.31),
+    ],
+    # coding 100
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_100",
+        "linear_weighted",
+    ) :
+    [
+        (0.64, 0.36),
+    ],
+    # coding 20
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_20",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.11),
+    ],
+    # coding 40
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_40",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.23),
+    ],
+    # coding 60
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_60",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.34),
+    ],
+    # coding 80
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_80",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.45),
+    ],
+    # coding 100
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_100",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.57),
+    ],
+}
 
-# weights = [
-#     # coding
-#     # (0.64, 0.36),
-#     # (1.0, 0.57),
-
-#     # coding with tulu w/ coding
-#     (0.65, 0.35)
-#     # (1.00, 0.53)
-
-#     # safety
-#     # (0.81, 0.19),
-#     # (1.0, 0.24),
-
-#     # science
-#     # (0.82, 0.18),
-#     # (1.0, 0.22),
-# ]
 
 domain_models = {
     # "safety_100": "/llama_2_7b-tulu_none-safety_100",
@@ -169,8 +237,10 @@ def print_and_run(cmd):
     print(cmd)
     subprocess.run(cmd, shell=True)
 
-for model_tag in domain_models:
-    for merge_method in merge_methods:
+# for model_tag in domain_models:
+#     for merge_method in merge_methods:
+#         for (tuluWeight, domainWeight) in weights:
+for base_model, domain_model, merge_method in data_weighted_coefficients:
         for (tuluWeight, domainWeight) in weights:
             # Copy yaml
             base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
@@ -185,18 +255,21 @@ for model_tag in domain_models:
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file
                 d["models"][0]["parameters"]["weight"] = tuluWeight
-                d["models"][1]["model"] = domain_models[model_tag]
+                # d["models"][1]["model"] = domain_models[model_tag]
+                d["models"][1]["model"] = domain_model
                 d["models"][1]["parameters"]["weight"] = domainWeight
             elif merge_method in ["dare_linear", "dare_ties", "ties", "dare_task_arithmetic"]:
                 # Set merge-specific parameters
                 d["models"][1]["model"] = tulu_file
                 d["models"][1]["parameters"]["weight"] = tuluWeight
-                d["models"][2]["model"] = domain_models[model_tag]
+                # d["models"][2]["model"] = domain_models[model_tag]
+                d["models"][2]["model"] = domain_model
                 d["models"][2]["parameters"]["weight"] = domainWeight
             elif merge_method == "slerp":
                 # Set merge-specific parameters
                 d["slices"][0]["sources"][0]["model"] = tulu_file
-                d["slices"][0]["sources"][1]["model"] = domain_models[model_tag]
+                # d["slices"][0]["sources"][1]["model"] = domain_models[model_tag]
+                d["slices"][0]["sources"][1]["model"] = domain_model
                 d["parameters"]["t"][0]["value"] = domainWeight
             else:
                 raise Exception

@@ -387,6 +387,8 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
                 data_map[model_key][f"{task}_{metric}"] = float(value)
             science_eval_data.append(curr_data)
 
+# TODO: collect test results
+
 # need to edit a bunch of rows
             
 from pprint import pprint

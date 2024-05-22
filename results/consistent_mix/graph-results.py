@@ -16,16 +16,29 @@ def create_model_combo(row):
         # "tulu_all": "Tulu All",
         "coding_none": "Coding None",
         # "coding_50": "Coding 50%",
+        "coding_20": "Coding 20%",
+        "coding_40": "Coding 40%",
+        "coding_60": "Coding 60%",
+        "coding_80": "Coding 80%",
         "coding_100": "Coding 100%",
+        "safety_20": "Safety 20%",
+        "safety_40": "Safety 40%",
+        "safety_60": "Safety 60%",
+        "safety_80": "Safety 80%",
         "safety_100": "Safety 100%",
+        "science_100": "Science 100",
+        "science_200": "Science 200",
+        "science_500": "Science 500",
+        "science_1000": "Science 1000",
         "science_2500": "Science 2500",
         "tulu_all": "Tulu Consistent Mix",
         "tulu_all_with_coding": "Tulu Consistent Mix w/ Coding",
         "tulu_2_7b": "Tulu 2 7B Consistent Mix",
+        "tulu_2_7b_with_coding": "Tulu 2 7B Consistent Mix w/ Coding",
         # "tulu_2_7b_no_science_no_safety_no_coding": "Tulu 2 7B Consistent Mix",
         # "tulu_2_7b_with_coding": "Tulu 2 7B Consistent Mix w/ Coding",
-        "tulu_2_7b_no_science_no_safety": "Tulu 2 7B Consistent Mix w/ Coding",
-        "tulu_match_no_science_no_safety_no_coding": "Tulu Match"
+        # "tulu_2_7b_no_science_no_safety": "Tulu 2 7B Consistent Mix w/ Coding",
+        # "tulu_match_no_science_no_safety_no_coding": "Tulu Match"
         # "tulu_v2_mix": "Full Tulu Mix",
         # "tulu_2_code_none": "Tulu 2 7B w/o Code Alpaca",
     }
@@ -246,7 +259,14 @@ def plot_science_curves():
     df.sort_values(by='Order', inplace=True)
     df = df[
         ~df["Combo"].str.contains("Safety 100") &
-        ~df["Combo"].str.contains("Coding 100")
+        ~df["Combo"].str.contains("Coding 100") &
+        (
+            # df["Combo"].str.contains("Science 100") |
+            # df["Combo"].str.contains("Science 200") |
+            # df["Combo"].str.contains("Science 500") |
+            # df["Combo"].str.contains("Science 1000") |
+            df["Combo"].str.contains("Science 2500")
+        )
     ]
 
     sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
@@ -263,7 +283,12 @@ def plot_coding_curves():
     df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
-    df = df[~df["Combo"].str.contains("Science 2500") & ~df["Combo"].str.contains("Safety 100") & ~df["Combo"].str.contains("w/ Coding")]
+    df = df[
+        ~df["Combo"].str.contains("Science 2500") &
+        ~df["Combo"].str.contains("Safety 100") &
+        ~df["Combo"].str.contains("w/ Coding") &
+        df["Combo"].str.contains("Coding 100")
+    ]
 
     sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
@@ -283,13 +308,17 @@ def plot_safety_curves():
         # "science_2500",
         # "coding_100"
     # })]
-    df = df[~df["Combo"].str.contains("Science 2500") & ~df["Combo"].str.contains("Coding 100")]
+    df = df[
+        ~df["Combo"].str.contains("Science 2500") &
+        ~df["Combo"].str.contains("Coding 100") &
+        df["Combo"].str.contains("Safety 100")
+    ]
 
     pd.set_option('display.max_colwidth', None)
     print(df["model_key"])
     # sns.lineplot(data=df, x="Tulu Average", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
-    sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
-    # sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='o', markersize=6)
+    # sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
+    sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='o', markersize=6)
     plt.legend()
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
     plt.show()
