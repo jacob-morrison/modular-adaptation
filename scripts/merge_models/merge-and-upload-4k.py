@@ -241,7 +241,7 @@ def print_and_run(cmd):
 #     for merge_method in merge_methods:
 #         for (tuluWeight, domainWeight) in weights:
 for base_model, domain_model, merge_method in data_weighted_coefficients:
-        for (tuluWeight, domainWeight) in weights:
+        for (tuluWeight, domainWeight) in data_weighted_coefficients[(base_model, domain_model, merge_method)]:
             # Copy yaml
             base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
             with open(base_yaml, 'r') as f:
