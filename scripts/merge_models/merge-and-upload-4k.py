@@ -285,7 +285,8 @@ for base_model, domain_model, merge_method in data_weighted_coefficients:
 
             # Upload model
             # model_name = f"{merge_method}-llama_2_7b-tulu_all_{tuluWeight}-{science_files[science_amount][1:]}_{scienceWeight}"
-            model_name = f"{merge_method}-{tulu_file[1:]}_{tuluWeight}-{domain_models[model_tag][1:]}_{domainWeight}"
+            # model_name = f"{merge_method}-{tulu_file[1:]}_{tuluWeight}-{domain_models[model_tag][1:]}_{domainWeight}"
+            model_name = f"{merge_method}-{base_model[1:]}_{tuluWeight}-{domain_model[1:]}_{domainWeight}"
             print_and_run(f"beaker dataset create tmp-4k/ --name {model_name} --workspace ai2/modular_adaptation")
 
             # Cleanup
