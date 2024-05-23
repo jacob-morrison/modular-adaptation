@@ -76,10 +76,29 @@ import yaml
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
 #     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_40=/tulu_2_7b-tulu_none-coding_40 \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_60=/tulu_2_7b-tulu_none-coding_60 \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_80=/tulu_2_7b-tulu_none-coding_80 \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_100=/tulu_2_7b-tulu_none-coding_100 
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_20=/llama_2_7b-tulu_none-safety_20 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_40=/llama_2_7b-tulu_none-safety_40 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_60=/llama_2_7b-tulu_none-safety_60 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_80=/llama_2_7b-tulu_none-safety_80 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100=/llama_2_7b-tulu_none-safety_100 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_20=/tulu_2_7b-tulu_none-safety_20 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_40=/tulu_2_7b-tulu_none-safety_40 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_60=/tulu_2_7b-tulu_none-safety_60 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_80=/tulu_2_7b-tulu_none-safety_80 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_100=/tulu_2_7b-tulu_none-safety_100 
+
+# beaker session create --gpus 1 --budget ai2/oe-adapt  \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_100=/llama_2_7b-tulu_none-science_100 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_200=/llama_2_7b-tulu_none-science_200 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_500=/llama_2_7b-tulu_none-science_500 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_1000=/llama_2_7b-tulu_none-science_1000 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500=/llama_2_7b-tulu_none-science_2500 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_100=/tulu_2_7b-tulu_none-science_100 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_200=/tulu_2_7b-tulu_none-science_200 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_500=/tulu_2_7b-tulu_none-science_500 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_1000=/tulu_2_7b-tulu_none-science_1000 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_2500=/tulu_2_7b-tulu_none-science_2500 
 
 # weights = [
 #     (0.1, 0.9),
@@ -94,141 +113,142 @@ import yaml
 # ]
 
 data_weighted_coefficients = {
-    # # coding 20
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_20",
-    #     "linear_weighted",
-    # ) :
-    # [
-    #     (0.90, 0.10),
-    # ],
-    # coding 40
+    # safety 20
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_40",
+        "/llama_2_7b-tulu_none-safety_20",
+        "linear_weighted",
+    ) :
+    [
+        (0.95, 0.05),
+    ],
+    # safety 40
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-safety_40",
+        "linear_weighted",
+    ) :
+    [
+        (0.91, 0.09),
+    ],
+    # safety 60
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-safety_60",
+        "linear_weighted",
+    ) :
+    [
+        (0.87, 0.13),
+    ],
+    # safety 80
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-safety_80",
+        "linear_weighted",
+    ) :
+    [
+        (0.84, 0.16),
+    ],
+    # safety 100
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-safety_100",
         "linear_weighted",
     ) :
     [
         (0.81, 0.19),
     ],
-    # coding 60
+    # safety 20
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_60",
+        "/llama_2_7b-tulu_none-safety_20",
         "linear_weighted",
     ) :
     [
-        (0.75, 0.25),
+        (0.95, 0.05),
     ],
-    # coding 80
+    # safety 40
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_80",
+        "/tulu_2_7b-tulu_none-safety_40",
         "linear_weighted",
     ) :
     [
-        (0.69, 0.31),
+        (0.91, 0.09),
     ],
-    # coding 100
+    # safety 60
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_100",
+        "/tulu_2_7b-tulu_none-safety_60",
         "linear_weighted",
     ) :
     [
-        (0.64, 0.36),
+        (0.87, 0.13),
     ],
-    # # coding 20
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_20",
-    #     "linear_weighted",
-    # ) :
-    # [
-    #     (0.90, 0.10),
-    # ],
-    # coding 40
+    # safety 80
     (
         "/llama_2_7b-tulu_all",
-        "/tulu_2_7b-tulu_none-coding_40",
+        "/tulu_2_7b-tulu_none-safety_80",
+        "linear_weighted",
+    ) :
+    [
+        (0.84, 0.16),
+    ],
+    # safety 100
+    (
+        "/llama_2_7b-tulu_all",
+        "/tulu_2_7b-tulu_none-safety_100",
         "linear_weighted",
     ) :
     [
         (0.81, 0.19),
     ],
-    # coding 60
+    # safety 20
     (
         "/llama_2_7b-tulu_all",
-        "/tulu_2_7b-tulu_none-coding_60",
-        "linear_weighted",
-    ) :
-    [
-        (0.75, 0.25),
-    ],
-    # coding 80
-    (
-        "/llama_2_7b-tulu_all",
-        "/tulu_2_7b-tulu_none-coding_80",
-        "linear_weighted",
-    ) :
-    [
-        (0.69, 0.31),
-    ],
-    # coding 100
-    (
-        "/llama_2_7b-tulu_all",
-        "/tulu_2_7b-tulu_none-coding_100",
-        "linear_weighted",
-    ) :
-    [
-        (0.64, 0.36),
-    ],
-    # coding 20
-    (
-        "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_20",
+        "/llama_2_7b-tulu_none-safety_20",
         "task_arithmetic",
     ) :
     [
-        (1.0, 0.11),
+        (1.0, 0.05),
     ],
-    # coding 40
+    # # safety 40
+    # (
+    #     "/llama_2_7b-tulu_all",
+    #     "/llama_2_7b-tulu_none-safety_40",
+    #     "task_arithmetic",
+    # ) :
+    # [
+    #     (1.0, 0.10),
+    # ],
+    # safety 60
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_40",
+        "/llama_2_7b-tulu_none-safety_60",
         "task_arithmetic",
     ) :
     [
-        (1.0, 0.23),
+        (1.0, 0.14),
     ],
-    # coding 60
+    # safety 80
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_60",
+        "/llama_2_7b-tulu_none-safety_80",
         "task_arithmetic",
     ) :
     [
-        (1.0, 0.34),
+        (1.0, 0.19),
     ],
-    # coding 80
+    # safety 100
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_80",
+        "/llama_2_7b-tulu_none-safety_100",
         "task_arithmetic",
     ) :
     [
-        (1.0, 0.45),
+        (1.0, 0.24),
     ],
-    # coding 100
-    (
-        "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-coding_100",
-        "task_arithmetic",
-    ) :
-    [
-        (1.0, 0.57),
-    ],
+
 }
 
 
