@@ -113,140 +113,140 @@ import yaml
 # ]
 
 data_weighted_coefficients = {
-    # safety 20
+    # science 100
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_20",
+        "/llama_2_7b-tulu_none-science_100",
         "linear_weighted",
     ) :
     [
-        (0.95, 0.05),
+        (0.99, 0.01),
     ],
-    # safety 40
+    # science 200
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_40",
+        "/llama_2_7b-tulu_none-science_200",
         "linear_weighted",
     ) :
     [
-        (0.91, 0.09),
+        (0.97, 0.03),
     ],
-    # safety 60
+    # science 500
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_60",
+        "/llama_2_7b-tulu_none-science_500",
         "linear_weighted",
     ) :
     [
-        (0.87, 0.13),
+        (0.93, 0.07),
     ],
-    # safety 80
+    # science 1000
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_80",
+        "/llama_2_7b-tulu_none-science_1000",
         "linear_weighted",
     ) :
     [
-        (0.84, 0.16),
+        (0.89, 0.11),
     ],
-    # safety 100
+    # science 2500
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_100",
+        "/llama_2_7b-tulu_none-science_2500",
         "linear_weighted",
     ) :
     [
-        (0.81, 0.19),
+        (0.82, 0.18),
     ],
-    # safety 20
+    # science 100
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_20",
+        "/tulu_2_7b-tulu_none-science_100",
         "linear_weighted",
     ) :
     [
-        (0.95, 0.05),
+        (0.99, 0.01),
     ],
-    # safety 40
+    # science 200
     (
         "/llama_2_7b-tulu_all",
-        "/tulu_2_7b-tulu_none-safety_40",
+        "/tulu_2_7b-tulu_none-science_200",
         "linear_weighted",
     ) :
     [
-        (0.91, 0.09),
+        (0.97, 0.03),
     ],
-    # safety 60
+    # science 500
     (
         "/llama_2_7b-tulu_all",
-        "/tulu_2_7b-tulu_none-safety_60",
+        "/tulu_2_7b-tulu_none-science_500",
         "linear_weighted",
     ) :
     [
-        (0.87, 0.13),
+        (0.93, 0.07),
     ],
-    # safety 80
+    # science 1000
     (
         "/llama_2_7b-tulu_all",
-        "/tulu_2_7b-tulu_none-safety_80",
+        "/tulu_2_7b-tulu_none-science_1000",
         "linear_weighted",
     ) :
     [
-        (0.84, 0.16),
+        (0.89, 0.11),
     ],
-    # safety 100
+    # science 2500
     (
         "/llama_2_7b-tulu_all",
-        "/tulu_2_7b-tulu_none-safety_100",
+        "/tulu_2_7b-tulu_none-science_2500",
         "linear_weighted",
     ) :
     [
-        (0.81, 0.19),
+        (0.82, 0.18),
     ],
-    # safety 20
+    # science 100
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_20",
+        "/llama_2_7b-tulu_none-science_100",
         "task_arithmetic",
     ) :
     [
-        (1.0, 0.05),
+        (1.0, 0.02),
     ],
-    # # safety 40
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-safety_40",
-    #     "task_arithmetic",
-    # ) :
-    # [
-    #     (1.0, 0.10),
-    # ],
-    # safety 60
+    # science 200
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_60",
+        "/llama_2_7b-tulu_none-science_200",
         "task_arithmetic",
     ) :
     [
-        (1.0, 0.14),
+        (1.0, 0.03),
     ],
-    # safety 80
+    # science 500
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_80",
+        "/llama_2_7b-tulu_none-science_500",
         "task_arithmetic",
     ) :
     [
-        (1.0, 0.19),
+        (1.0, 0.07),
     ],
-    # safety 100
+    # science 1000
     (
         "/llama_2_7b-tulu_all",
-        "/llama_2_7b-tulu_none-safety_100",
+        "/llama_2_7b-tulu_none-science_1000",
         "task_arithmetic",
     ) :
     [
-        (1.0, 0.24),
+        (1.0, 0.13),
+    ],
+    # science 2500
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-science_2500",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.22),
     ],
 
 }
