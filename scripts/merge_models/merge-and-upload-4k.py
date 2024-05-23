@@ -63,15 +63,19 @@ import yaml
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_80=/tulu_2_7b-tulu_none-safety_80
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
-#     --mount beaker://jacobm/llama_2_7b-tulu_all_with_coding=/llama_2_7b-tulu_all_with_coding \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_20=/llama_2_7b-tulu_none-coding_20 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_40=/llama_2_7b-tulu_none-coding_40 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_60=/llama_2_7b-tulu_none-coding_60 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_80=/llama_2_7b-tulu_none-coding_80 \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100 
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_40=/tulu_2_7b-tulu_none-coding_40 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_60=/tulu_2_7b-tulu_none-coding_60 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_80=/tulu_2_7b-tulu_none-coding_80 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_100=/tulu_2_7b-tulu_none-coding_100 
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
-#     --mount beaker://jacobm/llama_2_7b-tulu_all_with_coding=/llama_2_7b-tulu_all_with_coding \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_40=/tulu_2_7b-tulu_none-coding_40 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_60=/tulu_2_7b-tulu_none-coding_60 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_80=/tulu_2_7b-tulu_none-coding_80 \
@@ -90,6 +94,51 @@ import yaml
 # ]
 
 data_weighted_coefficients = {
+    # # coding 20
+    # (
+    #     "/llama_2_7b-tulu_all",
+    #     "/llama_2_7b-tulu_none-coding_20",
+    #     "linear_weighted",
+    # ) :
+    # [
+    #     (0.90, 0.10),
+    # ],
+    # coding 40
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_40",
+        "linear_weighted",
+    ) :
+    [
+        (0.81, 0.19),
+    ],
+    # coding 60
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_60",
+        "linear_weighted",
+    ) :
+    [
+        (0.75, 0.25),
+    ],
+    # coding 80
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_80",
+        "linear_weighted",
+    ) :
+    [
+        (0.69, 0.31),
+    ],
+    # coding 100
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_100",
+        "linear_weighted",
+    ) :
+    [
+        (0.64, 0.36),
+    ],
     # # coding 20
     # (
     #     "/llama_2_7b-tulu_all",
@@ -135,51 +184,51 @@ data_weighted_coefficients = {
     [
         (0.64, 0.36),
     ],
-    # # coding 20
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_20",
-    #     "task_arithmetic",
-    # ) :
-    # [
-    #     (1.0, 0.11),
-    # ],
-    # # coding 40
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_40",
-    #     "task_arithmetic",
-    # ) :
-    # [
-    #     (1.0, 0.23),
-    # ],
-    # # coding 60
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_60",
-    #     "task_arithmetic",
-    # ) :
-    # [
-    #     (1.0, 0.34),
-    # ],
-    # # coding 80
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_80",
-    #     "task_arithmetic",
-    # ) :
-    # [
-    #     (1.0, 0.45),
-    # ],
-    # # coding 100
-    # (
-    #     "/llama_2_7b-tulu_all",
-    #     "/llama_2_7b-tulu_none-coding_100",
-    #     "task_arithmetic",
-    # ) :
-    # [
-    #     (1.0, 0.57),
-    # ],
+    # coding 20
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_20",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.11),
+    ],
+    # coding 40
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_40",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.23),
+    ],
+    # coding 60
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_60",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.34),
+    ],
+    # coding 80
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_80",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.45),
+    ],
+    # coding 100
+    (
+        "/llama_2_7b-tulu_all",
+        "/llama_2_7b-tulu_none-coding_100",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 0.57),
+    ],
 }
 
 
@@ -233,8 +282,8 @@ merge_methods = [
     # "slerp",
 ]
 
-# tulu_file = "/llama_2_7b-tulu_all"
-tulu_file = "/llama_2_7b-tulu_all_with_coding"
+tulu_file = "/llama_2_7b-tulu_all"
+# tulu_file = "/llama_2_7b-tulu_all_with_coding"
 
 def print_and_run(cmd):
     print(cmd)
