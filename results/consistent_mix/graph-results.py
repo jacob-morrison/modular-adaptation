@@ -79,11 +79,9 @@ def get_df():
         "mmlu_0shot",
         "gsm_cot",
         "bbh_cot",
-        "tydiqa_goldp_1shot",
+        # "tydiqa_goldp_1shot",
         "truthfulqa",
         "alpaca_eval",
-        # "codex_eval_temp_0.8",
-        # "invert_toxigen",
     ]
 
     coding_columns_for_average = [
@@ -337,6 +335,6 @@ def plot_safety_curves():
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
     plt.show()
 
-# plot_science_curves()
-plot_coding_curves()
+plot_science_curves()
+# plot_coding_curves()
 # plot_safety_curves()
