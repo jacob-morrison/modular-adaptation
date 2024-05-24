@@ -308,7 +308,7 @@ domain_models = {
 
 merge_methods = [
     "linear_weighted",
-    "task_arithmetic",
+    # "task_arithmetic",
     # "dare_task_arithmetic",
     # "dare_linear",
     # "dare_ties",
