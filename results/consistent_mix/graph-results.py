@@ -31,10 +31,10 @@ def create_model_combo(row):
         "science_500": "Science 500",
         "science_1000": "Science 1000",
         "science_2500": "Science 2500",
-        "tulu_all": "Tulu Consistent Mix",
-        "tulu_all_with_coding": "Tulu Consistent Mix w/ Coding",
-        "tulu_2_7b": "Tulu 2 7B Consistent Mix",
-        "tulu_2_7b_with_coding": "Tulu 2 7B Consistent Mix w/ Coding",
+        "tulu_all": "Tulu",
+        "tulu_all_with_coding": "Tulu w/ Coding",
+        "tulu_2_7b": "Tulu 2 7B",
+        "tulu_2_7b_with_coding": "Tulu 2 7B w/ Coding",
         # "tulu_2_7b_no_science_no_safety_no_coding": "Tulu 2 7B Consistent Mix",
         # "tulu_2_7b_with_coding": "Tulu 2 7B Consistent Mix w/ Coding",
         # "tulu_2_7b_no_science_no_safety": "Tulu 2 7B Consistent Mix w/ Coding",
@@ -64,9 +64,9 @@ def create_model_combo(row):
             domain_model += " " + model_dict[token]
 
     if str(row["merge_method"]) == "nan":
-        return f"{base_model} -> {tulu_model} & {domain_model.strip()}"
+        return f"{base_model} ft. on {tulu_model} & {domain_model.strip()}".replace(" Tulu None &", "")
     else:
-        return f"{base_model} -> {tulu_model} merged with {domain_model.strip()}, {row['merge_method']}".replace(" Tulu None", "")
+        return f"{base_model} ft. on {tulu_model} merged with {domain_model.strip()} ({row['merge_method']})".replace(" Tulu None &", "")
     
 models_to_skip = [
     "tulu_2_13b_retrain",
@@ -269,7 +269,10 @@ def plot_science_curves():
         )
     ]
 
-    sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='o', markersize=6)
+    sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
+    plt.xlabel("Tulu Average",fontsize=18)
+    plt.ylabel("Science Average",fontsize=18)
+
     # sns.lineplot(data=df, x="Tulu Average", y="Test Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
     # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=100)
@@ -290,7 +293,9 @@ def plot_coding_curves():
         df["Combo"].str.contains("Coding 100")
     ]
 
-    sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='o', markersize=6)
+    sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
+    plt.xlabel("Tulu Average",fontsize=18)
+    plt.ylabel("Coding Average",fontsize=18)
     # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
     # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=100)
     # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=300, marker="*")
@@ -316,13 +321,22 @@ def plot_safety_curves():
 
     pd.set_option('display.max_colwidth', None)
     print(df["model_key"])
-    # sns.lineplot(data=df, x="Tulu Average", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
-    # sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', markersize=6)
-    sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='o', markersize=6)
+    # sns.lineplot(data=df, x="Tulu Average", y="Safety Average", hue="Combo", sort=False, marker='o', linewidth=3, markersize=13)
+    # plt.xlabel("Tulu Average",fontsize=18)
+    # plt.ylabel("Safety Average",fontsize=18)
+
+    sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
+    plt.xlabel("Tulu Average",fontsize=18)
+    plt.ylabel("Exaggerated Refusals",fontsize=18)
+
+    # sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', linewidth=3, markersize=13)
+    # plt.xlabel("Exaggerated Refusals",fontsize=18)
+    # plt.ylabel("Safety Average",fontsize=18)
+
     plt.legend()
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
     plt.show()
 
-plot_science_curves()
-# plot_coding_curves()
+# plot_science_curves()
+plot_coding_curves()
 # plot_safety_curves()
