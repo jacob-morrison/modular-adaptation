@@ -20,7 +20,7 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-3 --zone=us-east1-d --project
     --load_llama_config='7b' \
     --update_llama_config='' \
     --load_dataset_state='' \
-    --load_checkpoint='params::gs://hamishi-east1/easylm/llama2/7b' \
+    --load_checkpoint='params::gs://jacobm-bucket/modular_adaptation/checkpoints/consistent_mix/llama_2_7b-tulu_all_with_coding/95a3ecd3bd614ce9a2713889ac478490/streaming_params_18458' \
     --tokenizer.vocab_file='gs://hamishi-east1/easylm/llama/tokenizer.model' \
     --optimizer.type='adamw' \
     --optimizer.adamw_optimizer.weight_decay=0.0 \
@@ -30,12 +30,12 @@ gcloud alpha compute tpus tpu-vm ssh jacobm-v3-128-3 --zone=us-east1-d --project
     --optimizer.accumulate_gradient_steps=4 \
     --train_dataset.type='tulu_json_torch' \
     --train_dataset.text_processor.fields='[prompt],completion' \
-    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/consistent_mix/tulu_all_no_science_no_safety_no_coding-coding_40.jsonl' \
+    --train_dataset.json_torch_dataset.path='gs://jacobm-bucket/modular_adaptation/training_data/consistent_mix/tulu_match_no_science_no_safety-coding_20.jsonl' \
     --train_dataset.json_torch_dataset.seq_length=4096 \
     --train_dataset.json_torch_dataset.batch_size=32  \
     --checkpointer.save_optimizer_state=False \
     --logger.online=True --logger.entity='jacobmai2' --logger.project='train-big-llamas-on-tpus' \
-    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/consistent_mix/llama_2_7b-tulu_all-coding_40' &> all.log &"
+    --logger.output_dir='gs://jacobm-bucket/modular_adaptation/checkpoints/consistent_mix/tulu_2_7b_with_coding-tulu_match-coding_20' &> all.log &"
 
     # --load_checkpoint='params::gs://hamishi-east1/easylm/llama2/7b' \
     # --load_checkpoint='params::gs://jacobm-bucket/modular_adaptation/checkpoints/consistent_mix/llama_2_7b-tulu_all/44fd8533fde84a2e8a117e4bbc2c89e0/streaming_params_17208' \

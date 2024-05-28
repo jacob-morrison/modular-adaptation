@@ -66,7 +66,8 @@ def create_model_combo(row):
     if str(row["merge_method"]) == "nan":
         return f"{base_model} ft. on {tulu_model} & {domain_model.strip()}".replace(" Tulu None &", "")
     else:
-        return f"{base_model} ft. on {tulu_model} merged with {domain_model.strip()} ({row['merge_method']})".replace(" Tulu None &", "")
+        # return f"{base_model} ft. on {tulu_model} merged with {domain_model.strip()} ({row['merge_method']})".replace(" Tulu None &", "")
+        return f"{domain_model.replace(' 7B Tulu None', '').strip()} - {row['merge_method']}"
     
 models_to_skip = [
     "tulu_2_13b_retrain",
@@ -270,6 +271,8 @@ def plot_science_curves():
     sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
     plt.xlabel("Tulu Average",fontsize=18)
     plt.ylabel("Science Average",fontsize=18)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
 
     # sns.lineplot(data=df, x="Tulu Average", y="Test Science Average", hue="Combo", sort=False, marker='o', markersize=6)
     # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
@@ -277,7 +280,8 @@ def plot_science_curves():
     # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=300, marker="*")
     plt.legend()
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-    plt.show()
+    # plt.show()
+    plt.savefig('results/consistent_mix/plots/science_2500.png', dpi=300, bbox_inches='tight')
 
 def plot_coding_curves():
     df = get_df()
@@ -323,13 +327,13 @@ def plot_safety_curves():
     # plt.xlabel("Tulu Average",fontsize=18)
     # plt.ylabel("Safety Average",fontsize=18)
 
-    sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
-    plt.xlabel("Tulu Average",fontsize=18)
-    plt.ylabel("Exaggerated Refusals",fontsize=18)
+    sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', linewidth=3, markersize=13)
+    plt.xlabel("Exaggerated Refusals",fontsize=18)
+    plt.ylabel("Safety Average",fontsize=18)
 
-    # sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', linewidth=3, markersize=13)
-    # plt.xlabel("Exaggerated Refusals",fontsize=18)
-    # plt.ylabel("Safety Average",fontsize=18)
+    # sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
+    # plt.xlabel("Tulu Average",fontsize=18)
+    # plt.ylabel("Exaggerated Refusals",fontsize=18)
 
     plt.legend()
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)

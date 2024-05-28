@@ -370,13 +370,7 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             i += 1
         else:
             tokens = line.split(",")
-            model_key = tokens[0].replace("-4k", "").replace(
-                "llama_2_7b-coding_100_0", "llama_2_7b-tulu_none-coding_100_0"
-            ).replace(
-                "llama_2_7b-safety_100_0", "llama_2_7b-tulu_none-safety_100_0"
-            ).replace(
-                "llama_2_7b-science_2500_0", "llama_2_7b-tulu_none-science_2500_0"
-            )
+            model_key = tokens[0]
             curr_data = {
                 "model_key": model_key,
             }
@@ -388,6 +382,31 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             science_eval_data.append(curr_data)
 
 # TODO: collect test results
+science_eval_data = []
+with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain_addition/consistent_mix/science-test/metrics/tables/summary.tsv") as f_in:
+    i = 0
+    for line in f_in.readlines():
+        line = line.replace("\t", ",").strip()
+        if i == 0:
+            tasks = line.split(",")
+            i += 1
+        elif i == 1:
+            metrics = line.split(",")[:-2]
+            metrics.append("null")
+            metrics.append("null")
+            i += 1
+        else:
+            tokens = line.split(",")
+            model_key = tokens[0]
+            curr_data = {
+                "model_key": model_key,
+            }
+            for task, metric, value in zip(tasks[1:], metrics[1:], tokens[1:]):
+                if value == '':
+                    value = 0.0 # TODO: fix and replace later
+                curr_data[f"{task}_{metric}_TEST"] = float(value)
+                data_map[model_key][f"{task}_{metric}"] = float(value)
+            science_eval_data.append(curr_data)
 
 # need to edit a bunch of rows
             
