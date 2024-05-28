@@ -13,34 +13,30 @@ def create_model_combo(row):
         "llama_2_7b": "Llama 2 7B",
         "tulu_none": "Tulu None",
         "tulu_match": "Tulu Match",
-        # "tulu_all": "Tulu All",
-        "coding_none": "Coding None",
-        # "coding_50": "Coding 50%",
+
         "coding_20": "Coding 20%",
         "coding_40": "Coding 40%",
         "coding_60": "Coding 60%",
         "coding_80": "Coding 80%",
         "coding_100": "Coding 100%",
+
         "safety_20": "Safety 20%",
         "safety_40": "Safety 40%",
         "safety_60": "Safety 60%",
         "safety_80": "Safety 80%",
         "safety_100": "Safety 100%",
+
         "science_100": "Science 100",
         "science_200": "Science 200",
         "science_500": "Science 500",
         "science_1000": "Science 1000",
         "science_2500": "Science 2500",
+
         "tulu_all": "Tulu",
-        "tulu_all_with_coding": "Tulu w/ Coding",
         "tulu_2_7b": "Tulu 2 7B",
+
+        "tulu_all_with_coding": "Tulu w/ Coding",
         "tulu_2_7b_with_coding": "Tulu 2 7B w/ Coding",
-        # "tulu_2_7b_no_science_no_safety_no_coding": "Tulu 2 7B Consistent Mix",
-        # "tulu_2_7b_with_coding": "Tulu 2 7B Consistent Mix w/ Coding",
-        # "tulu_2_7b_no_science_no_safety": "Tulu 2 7B Consistent Mix w/ Coding",
-        # "tulu_match_no_science_no_safety_no_coding": "Tulu Match"
-        # "tulu_v2_mix": "Full Tulu Mix",
-        # "tulu_2_code_none": "Tulu 2 7B w/o Code Alpaca",
     }
 
     tokens = row["model_key"].split("-")
@@ -53,12 +49,14 @@ def create_model_combo(row):
         tokens = tokens[:3]
         domain_model_weight = float(tokens[2].split("_")[-1])
         tokens[2] = tokens[2].replace(f"_{domain_model_weight}", "")
+        if row["merge_method"] == "task_arithmetic" and domain_model_weight == 1.0:
+            print(row["model_key"])
     base_model = model_dict[tokens[0]]
     tulu_model = model_dict[tokens[1]]
     if len(tokens) == 2:
         domain_model = "None"
     else:
-        print(tokens[2])
+        # print(tokens[2])
         domain_model = ""
         for token in tokens[2].split("-"):
             domain_model += " " + model_dict[token]
@@ -251,59 +249,69 @@ def plot_all_curves():
 
     plt.show()
 
-def plot_science_curves():
-    df = get_df()
-    df["Order"] = df["domain_model_weight"]
-    df.sort_values(by='Combo', inplace=True)
-    df.sort_values(by='Order', inplace=True)
-    df = df[
-        ~df["Combo"].str.contains("Safety 100") &
-        ~df["Combo"].str.contains("Coding 100") &
-        (
-            # df["Combo"].str.contains("Science 100") |
-            # df["Combo"].str.contains("Science 200") |
-            # df["Combo"].str.contains("Science 500") |
-            # df["Combo"].str.contains("Science 1000") |
-            df["Combo"].str.contains("Science 2500")
-        )
+def plot_individual_science_curves():
+    science_amounts = [
+        "100",
+        "200",
+        "500",
+        "1000",
+        "2500",
     ]
+    for amount in science_amounts:
+        df = get_df()
+        df["Order"] = df["domain_model_weight"]
+        df.sort_values(by='Combo', inplace=True)
+        df.sort_values(by='Order', inplace=True)
+        df = df[
+            ~df["Combo"].str.contains("Safety 100") &
+            ~df["Combo"].str.contains("Coding 100") &
+            (
+                # df["Combo"].str.contains("Science 100") |
+                # df["Combo"].str.contains("Science 200") |
+                # df["Combo"].str.contains("Science 500") |
+                # df["Combo"].str.contains("Science 1000") |
+                df["Combo"].str.contains(f"Science {amount}")
+            )
+        ]
+        if amount == "100":
+            df = df[~df["Combo"].str.contains("Science 1000")]
 
-    sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
-    plt.xlabel("Tulu Average",fontsize=18)
-    plt.ylabel("Science Average",fontsize=18)
-    plt.xticks(fontsize=12)
-    plt.yticks(fontsize=12)
+        sns.lineplot(data=df, x="Tulu Average", y="Science Average", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
+        plt.legend()
+        plt.xlabel("Tulu Average",fontsize=20)
+        plt.ylabel("Science Average",fontsize=20)
+        plt.xticks(fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.legend(fontsize=11)
 
-    # sns.lineplot(data=df, x="Tulu Average", y="Test Science Average", hue="Combo", sort=False, marker='o', markersize=6)
-    # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
-    # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=100)
-    # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=300, marker="*")
-    plt.legend()
-    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-    # plt.show()
-    plt.savefig('results/consistent_mix/plots/science_2500.png', dpi=300, bbox_inches='tight')
+        plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        plt.savefig(f'results/consistent_mix/plots/science_{amount}.png', dpi=300, bbox_inches='tight')
+        plt.clf()
 
-def plot_coding_curves():
-    df = get_df()
-    df["Order"] = df["domain_model_weight"]
-    df.sort_values(by='Combo', inplace=True)
-    df.sort_values(by='Order', inplace=True)
-    df = df[
-        ~df["Combo"].str.contains("Science 2500") &
-        ~df["Combo"].str.contains("Safety 100") &
-        ~df["Combo"].str.contains("w/ Coding") &
-        df["Combo"].str.contains("Coding 100")
-    ]
+def plot_individual_coding_curves():
+        amount = "100"
+        df = get_df()
+        df["Order"] = df["domain_model_weight"]
+        df.sort_values(by='Combo', inplace=True)
+        df.sort_values(by='Order', inplace=True)
+        df = df[
+            ~df["Combo"].str.contains("Science 2500") &
+            ~df["Combo"].str.contains("Safety 100") &
+            ~df["Combo"].str.contains("w/ Coding") &
+            df["Combo"].str.contains("Coding 100")
+        ]
 
-    sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
-    plt.xlabel("Tulu Average",fontsize=18)
-    plt.ylabel("Coding Average",fontsize=18)
-    # sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='^', markersize=6)
-    # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=100)
-    # sns.scatterplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", s=300, marker="*")
-    plt.legend()
-    plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-    plt.show()
+        sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
+        plt.legend()
+        plt.xlabel("Tulu Average",fontsize=20)
+        plt.ylabel("Coding Average",fontsize=20)
+        plt.xticks(fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.legend(fontsize=11)
+
+        plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        plt.savefig(f'results/consistent_mix/plots/coding_{amount}.png', dpi=300, bbox_inches='tight')
+        plt.clf()
 
 def plot_safety_curves():
     df = get_df()
@@ -322,7 +330,7 @@ def plot_safety_curves():
     ]
 
     pd.set_option('display.max_colwidth', None)
-    print(df["model_key"])
+    # print(df["model_key"])
     # sns.lineplot(data=df, x="Tulu Average", y="Safety Average", hue="Combo", sort=False, marker='o', linewidth=3, markersize=13)
     # plt.xlabel("Tulu Average",fontsize=18)
     # plt.ylabel("Safety Average",fontsize=18)
@@ -339,6 +347,6 @@ def plot_safety_curves():
     plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
     plt.show()
 
-plot_science_curves()
-# plot_coding_curves()
+# plot_individual_science_curves()
+plot_individual_coding_curves()
 # plot_safety_curves()
