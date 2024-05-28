@@ -51,10 +51,11 @@ def collect_metrics(model_path):
     ]:
         merge_method = tokens[0]
         tokens = tokens[1:]
-        tokens[1] = tokens[1]
         base_model_weight = float(tokens[1].split("_")[-1])
         tokens[1] = tokens[1].replace(f"_{base_model_weight}", "")
         tokens[2] = "-".join(tokens[2:])
+        if "tulu" in tokens[2]:
+            merge_method = "wise-ft"
         tokens = tokens[:3]
         domain_model_weight = float(tokens[2].split("_")[-1])
         tokens[2] = tokens[2].replace(f"_{domain_model_weight}", "")
