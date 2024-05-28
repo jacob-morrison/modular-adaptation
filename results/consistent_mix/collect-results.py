@@ -405,55 +405,67 @@ from pprint import pprint
 pprint(data_map.keys())
 
 # TODO: fix!!          
-# for dataset in [
-#     "coding_100",
-#     "safety_100",
-#     "science_2500"
-#     ]:
-#     row = data_map[f"llama_2_7b-tulu_none-{dataset}"].copy()
-#     row["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"
-#     row["merge_method"] = "linear_weighted"
-#     row["tulu_model_weight"] = 0.0
-#     row["domain_model_weight"] = 1.0
-#     row["tulu_model"] = "tulu_all"
-#     row["domain_model"] = dataset
-#     data_map[f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"] = row
+for dataset in [
+    "coding_20",
+    "coding_40",
+    "coding_60",
+    "coding_80",
+    "coding_100",
+    "safety_20",
+    "safety_40",
+    "safety_60",
+    "safety_80",
+    "safety_100",
+    "science_100"
+    "science_200"
+    "science_500"
+    "science_1000"
+    "science_2500"
+    ]:
+    row = data_map[f"llama_2_7b-tulu_none-{dataset}"].copy()
+    row["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"
+    row["merge_method"] = "linear_weighted"
+    row["tulu_model_weight"] = 0.0
+    row["domain_model_weight"] = 1.0
+    row["tulu_model"] = "tulu_all"
+    row["domain_model"] = dataset
+    data_map[f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"] = row
 
-#     row2 = data_map["llama_2_7b-tulu_all"].copy()
-#     row2["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"
-#     row2["merge_method"] = "linear_weighted"
-#     row2["tulu_model_weight"] = 1.0
-#     row2["domain_model_weight"] = 0.0
-#     row2["tulu_model"] = "tulu_all"
-#     row2["domain_model"] = dataset
-#     data_map[f"linear_weighted-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"] = row2
+    row2 = data_map["llama_2_7b-tulu_all"].copy()
+    row2["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"
+    row2["merge_method"] = "linear_weighted"
+    row2["tulu_model_weight"] = 1.0
+    row2["domain_model_weight"] = 0.0
+    row2["tulu_model"] = "tulu_all"
+    row2["domain_model"] = dataset
+    data_map[f"linear_weighted-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"] = row2
 
-#     row3 = data_map["llama_2_7b-tulu_all"].copy()
-#     row3["model_key"] = f"task_arithmetic-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"
-#     row3["merge_method"] = "task_arithmetic"
-#     row3["tulu_model_weight"] = 1.0
-#     row3["domain_model_weight"] = 0.0
-#     row3["tulu_model"] = "tulu_all"
-#     row3["domain_model"] = dataset
-#     data_map[f"task_arithmetic-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"] = row3
+    row3 = data_map["llama_2_7b-tulu_all"].copy()
+    row3["model_key"] = f"task_arithmetic-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"
+    row3["merge_method"] = "task_arithmetic"
+    row3["tulu_model_weight"] = 1.0
+    row3["domain_model_weight"] = 0.0
+    row3["tulu_model"] = "tulu_all"
+    row3["domain_model"] = dataset
+    data_map[f"task_arithmetic-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-{dataset}_0.0"] = row3
 
-#     row4 = data_map["llama_2_7b-tulu_all"].copy()
-#     row4["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_1.0-tulu_2_7b-tulu_none-{dataset}_0.0"
-#     row4["merge_method"] = "linear_weighted"
-#     row4["tulu_model_weight"] = 1.0
-#     row4["domain_model_weight"] = 0.0
-#     row4["tulu_model"] = "tulu_all"
-#     row4["domain_model"] = dataset
-#     data_map[f"linear_weighted-llama_2_7b-tulu_all_1.0-tulu_2_7b-tulu_none-{dataset}_0.0"] = row4
+    row4 = data_map["llama_2_7b-tulu_all"].copy()
+    row4["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_1.0-tulu_2_7b-tulu_none-{dataset}_0.0"
+    row4["merge_method"] = "linear_weighted"
+    row4["tulu_model_weight"] = 1.0
+    row4["domain_model_weight"] = 0.0
+    row4["tulu_model"] = "tulu_all"
+    row4["domain_model"] = dataset
+    data_map[f"linear_weighted-llama_2_7b-tulu_all_1.0-tulu_2_7b-tulu_none-{dataset}_0.0"] = row4
 
-#     row5 = data_map[f"tulu_2_7b-tulu_none-{dataset}"].copy()
-#     row5["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-tulu_2_7b-tulu_none-{dataset}_1.0"
-#     row5["merge_method"] = "linear_weighted"
-#     row5["tulu_model_weight"] = 0.0
-#     row5["domain_model_weight"] = 1.0
-#     row5["tulu_model"] = "tulu_all"
-#     row5["domain_model"] = dataset
-#     data_map[f"linear_weighted-llama_2_7b-tulu_all_0.0-tulu_2_7b-tulu_none-{dataset}_1.0"] = row5
+    row5 = data_map[f"tulu_2_7b-tulu_none-{dataset}"].copy()
+    row5["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-tulu_2_7b-tulu_none-{dataset}_1.0"
+    row5["merge_method"] = "linear_weighted"
+    row5["tulu_model_weight"] = 0.0
+    row5["domain_model_weight"] = 1.0
+    row5["tulu_model"] = "tulu_all"
+    row5["domain_model"] = dataset
+    data_map[f"linear_weighted-llama_2_7b-tulu_all_0.0-tulu_2_7b-tulu_none-{dataset}_1.0"] = row5
 
 df = pd.DataFrame(data_map.values())
 print(df)

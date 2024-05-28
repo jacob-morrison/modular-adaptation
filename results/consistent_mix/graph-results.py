@@ -64,7 +64,7 @@ def create_model_combo(row):
             domain_model += " " + model_dict[token]
 
     if str(row["merge_method"]) == "nan":
-        return f"{base_model} ft. on {tulu_model} & {domain_model.strip()}".replace(" Tulu None &", "")
+        return f"{base_model} ft. on {tulu_model} & {domain_model.strip()}".replace(" Tulu None &", "").replace(" Tulu Match", " Tulu")
     else:
         # return f"{base_model} ft. on {tulu_model} merged with {domain_model.strip()} ({row['merge_method']})".replace(" Tulu None &", "")
         return f"{domain_model.replace(' 7B Tulu None', '').strip()} - {row['merge_method']}"
