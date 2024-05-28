@@ -451,7 +451,7 @@ for dataset in [
 
     row4 = data_map["llama_2_7b-tulu_all"].copy()
     row4["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_1.0-tulu_2_7b-tulu_none-{dataset}_0.0"
-    row4["merge_method"] = "linear_weighted"
+    row4["merge_method"] = "wise-ft"
     row4["tulu_model_weight"] = 1.0
     row4["domain_model_weight"] = 0.0
     row4["tulu_model"] = "tulu_all"
@@ -460,7 +460,7 @@ for dataset in [
 
     row5 = data_map[f"tulu_2_7b-tulu_none-{dataset}"].copy()
     row5["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-tulu_2_7b-tulu_none-{dataset}_1.0"
-    row5["merge_method"] = "linear_weighted"
+    row5["merge_method"] = "wise-ft"
     row5["tulu_model_weight"] = 0.0
     row5["domain_model_weight"] = 1.0
     row5["tulu_model"] = "tulu_all"
