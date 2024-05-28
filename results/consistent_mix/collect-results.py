@@ -416,11 +416,11 @@ for dataset in [
     "safety_60",
     "safety_80",
     "safety_100",
-    "science_100"
-    "science_200"
-    "science_500"
-    "science_1000"
-    "science_2500"
+    "science_100",
+    "science_200",
+    "science_500",
+    "science_1000",
+    "science_2500",
     ]:
     row = data_map[f"llama_2_7b-tulu_none-{dataset}"].copy()
     row["model_key"] = f"linear_weighted-llama_2_7b-tulu_all_0.0-llama_2_7b-tulu_none-{dataset}_1.0"
