@@ -28,17 +28,7 @@ def get_model_weights(model_name):
     return tulu_model_weight, domain_model_weight
 
 def collect_metrics(model_path):
-    model_name = model_path.split("/")[-1].replace(
-            "-4k", ""
-        ).replace(
-            "finetune-", ""
-        ).replace(
-            "llama_2_7b-coding_100_0", "llama_2_7b-tulu_none-coding_100_0"
-        ).replace(
-            "llama_2_7b-safety_100_0", "llama_2_7b-tulu_none-safety_100_0"
-        ).replace(
-            "llama_2_7b-science_2500_0", "llama_2_7b-tulu_none-science_2500_0"
-        )
+    model_name = model_path.split("/")[-1]
     tokens = model_name.split("-")
     if tokens[0] in [
         "linear_weighted",
@@ -54,7 +44,7 @@ def collect_metrics(model_path):
         base_model_weight = float(tokens[1].split("_")[-1])
         tokens[1] = tokens[1].replace(f"_{base_model_weight}", "")
         tokens[2] = "-".join(tokens[2:])
-        if "tulu" in tokens[2]:
+        if "tulu_2_7b" in tokens[2]:
             merge_method = "wise-ft"
         tokens = tokens[:3]
         domain_model_weight = float(tokens[2].split("_")[-1])
