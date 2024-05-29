@@ -386,8 +386,8 @@ merge_methods = [
     # "slerp",
 ]
 
-tulu_file = "/llama_2_7b-tulu_all"
-# tulu_file = "/llama_2_7b-tulu_all_with_coding"
+# tulu_file = "/llama_2_7b-tulu_all"
+tulu_file = "/llama_2_7b-tulu_all_with_coding"
 
 def print_and_run(cmd):
     print(cmd)
