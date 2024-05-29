@@ -131,18 +131,18 @@ import yaml
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-science_1000=/llama_2_7b-tulu_none-science_1000 \
 #     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500=/llama_2_7b-tulu_none-science_2500
 
-weights = [
-    # (0.1, 0.9),
-    # (0.2, 0.8),
-    # (0.3, 0.7),
-    # (0.4, 0.6),
-    # (0.5, 0.5),
-    # (0.6, 0.4),
-    # (0.7, 0.3),
-    # (0.8, 0.2),
-    # (0.9, 0.1),
-    (1.0, 1.0),
-]
+# weights = [
+#     # (0.1, 0.9),
+#     # (0.2, 0.8),
+#     # (0.3, 0.7),
+#     # (0.4, 0.6),
+#     # (0.5, 0.5),
+#     # (0.6, 0.4),
+#     # (0.7, 0.3),
+#     # (0.8, 0.2),
+#     # (0.9, 0.1),
+#     (1.0, 1.0),
+# ]
 
 data_weighted_coefficients = {
     # # science 100
@@ -280,7 +280,51 @@ data_weighted_coefficients = {
     [
         (1.0, 0.53),
     ],
-
+    # science 100
+    (
+        "/llama_2_7b-tulu_all_with_coding",
+        "/llama_2_7b-tulu_none-coding_20",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 1.0),
+    ],
+    # science 200
+    (
+        "/llama_2_7b-tulu_all_with_coding",
+        "/llama_2_7b-tulu_none-coding_40",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 1.0),
+    ],
+    # science 500
+    (
+        "/llama_2_7b-tulu_all_with_coding",
+        "/llama_2_7b-tulu_none-coding_60",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 1.0),
+    ],
+    # science 1000
+    (
+        "/llama_2_7b-tulu_all_with_coding",
+        "/llama_2_7b-tulu_none-coding_80",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 1.0),
+    ],
+    # science 2500
+    (
+        "/llama_2_7b-tulu_all_with_coding",
+        "/llama_2_7b-tulu_none-coding_100",
+        "task_arithmetic",
+    ) :
+    [
+        (1.0, 1.0),
+    ],
 }
 
 
@@ -349,11 +393,11 @@ def print_and_run(cmd):
     print(cmd)
     subprocess.run(cmd, shell=True)
 
-for model_tag in domain_models:
-    for merge_method in merge_methods:
-        for (tuluWeight, domainWeight) in weights:
-# for base_model, domain_model, merge_method in data_weighted_coefficients:
-        # for (tuluWeight, domainWeight) in data_weighted_coefficients[(base_model, domain_model, merge_method)]:
+# for model_tag in domain_models:
+    # for merge_method in merge_methods:
+        # for (tuluWeight, domainWeight) in weights:
+for base_model, domain_model, merge_method in data_weighted_coefficients:
+        for (tuluWeight, domainWeight) in data_weighted_coefficients[(base_model, domain_model, merge_method)]:
             # Copy yaml
             base_yaml = f"scripts/merge_models/merge-{merge_method}-base.yml"
             with open(base_yaml, 'r') as f:
@@ -365,21 +409,21 @@ for model_tag in domain_models:
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file
                 d["models"][0]["parameters"]["weight"] = tuluWeight
-                d["models"][1]["model"] = domain_models[model_tag]
-                # d["models"][1]["model"] = domain_model
+                # d["models"][1]["model"] = domain_models[model_tag]
+                d["models"][1]["model"] = domain_model
                 d["models"][1]["parameters"]["weight"] = domainWeight
             elif merge_method in ["dare_linear", "dare_ties", "ties", "dare_task_arithmetic"]:
                 # Set merge-specific parameters
                 d["models"][1]["model"] = tulu_file
                 d["models"][1]["parameters"]["weight"] = tuluWeight
-                d["models"][2]["model"] = domain_models[model_tag]
-                # d["models"][2]["model"] = domain_model
+                # d["models"][2]["model"] = domain_models[model_tag]
+                d["models"][2]["model"] = domain_model
                 d["models"][2]["parameters"]["weight"] = domainWeight
             elif merge_method == "slerp":
                 # Set merge-specific parameters
                 d["slices"][0]["sources"][0]["model"] = tulu_file
-                d["slices"][0]["sources"][1]["model"] = domain_models[model_tag]
-                # d["slices"][0]["sources"][1]["model"] = domain_model
+                # d["slices"][0]["sources"][1]["model"] = domain_models[model_tag]
+                d["slices"][0]["sources"][1]["model"] = domain_model
                 d["parameters"]["t"][0]["value"] = domainWeight
             else:
                 raise Exception
@@ -394,8 +438,8 @@ for model_tag in domain_models:
             print_and_run(f"mergekit-yaml tmp-4k/merge-config.yaml tmp-4k/ --cuda")
 
             # Upload model
-            model_name = f"{merge_method}-{tulu_file[1:]}_{tuluWeight}-{domain_models[model_tag][1:]}_{domainWeight}"
-            # model_name = f"{merge_method}-{base_model[1:]}_{tuluWeight}-{domain_model[1:]}_{domainWeight}"
+            # model_name = f"{merge_method}-{tulu_file[1:]}_{tuluWeight}-{domain_models[model_tag][1:]}_{domainWeight}"
+            model_name = f"{merge_method}-{base_model[1:]}_{tuluWeight}-{domain_model[1:]}_{domainWeight}"
             print_and_run(f"beaker dataset create tmp-4k/ --name {model_name} --workspace ai2/modular_adaptation")
 
             # Cleanup
