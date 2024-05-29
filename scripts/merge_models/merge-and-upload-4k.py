@@ -154,24 +154,24 @@ data_weighted_coefficients = {
     # [
     #     (0.90, 0.10),
     # ],
-    # science 200
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/llama_2_7b-tulu_none-coding_40",
-        "linear_weighted",
-    ) :
-    [
-        (0.83, 0.17),
-    ],
-    # science 500
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/llama_2_7b-tulu_none-coding_60",
-        "linear_weighted",
-    ) :
-    [
-        (0.76, 0.24),
-    ],
+    # # science 200
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/llama_2_7b-tulu_none-coding_40",
+    #     "linear_weighted",
+    # ) :
+    # [
+    #     (0.83, 0.17),
+    # ],
+    # # science 500
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/llama_2_7b-tulu_none-coding_60",
+    #     "linear_weighted",
+    # ) :
+    # [
+    #     (0.76, 0.24),
+    # ],
     # science 1000
     # (
     #     "/llama_2_7b-tulu_all_with_coding",
@@ -181,15 +181,15 @@ data_weighted_coefficients = {
     # [
     #     (0.70, 0.30),
     # ],
-    # science 2500
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/llama_2_7b-tulu_none-coding_100",
-        "linear_weighted",
-    ) :
-    [
-        (0.65, 0.35),
-    ],
+    # # science 2500
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/llama_2_7b-tulu_none-coding_100",
+    #     "linear_weighted",
+    # ) :
+    # [
+    #     (0.65, 0.35),
+    # ],
     # science 100
     # (
     #     "/llama_2_7b-tulu_all_with_coding",
@@ -199,24 +199,24 @@ data_weighted_coefficients = {
     # [
     #     (0.90, 0.10),
     # ],
-    # science 200
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/tulu_2_7b_with_coding-tulu_none-coding_40",
-        "linear_weighted",
-    ) :
-    [
-        (0.83, 0.17),
-    ],
-    # science 500
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/tulu_2_7b_with_coding-tulu_none-coding_60",
-        "linear_weighted",
-    ) :
-    [
-        (0.76, 0.24),
-    ],
+    # # science 200
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/tulu_2_7b_with_coding-tulu_none-coding_40",
+    #     "linear_weighted",
+    # ) :
+    # [
+    #     (0.83, 0.17),
+    # ],
+    # # science 500
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/tulu_2_7b_with_coding-tulu_none-coding_60",
+    #     "linear_weighted",
+    # ) :
+    # [
+    #     (0.76, 0.24),
+    # ],
     # science 1000
     # (
     #     "/llama_2_7b-tulu_all_with_coding",
@@ -226,15 +226,15 @@ data_weighted_coefficients = {
     # [
     #     (0.70, 0.30),
     # ],
-    # science 2500
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/tulu_2_7b_with_coding-tulu_none-coding_100",
-        "linear_weighted",
-    ) :
-    [
-        (0.65, 0.35),
-    ],
+    # # science 2500
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/tulu_2_7b_with_coding-tulu_none-coding_100",
+    #     "linear_weighted",
+    # ) :
+    # [
+    #     (0.65, 0.35),
+    # ],
     # science 100
     (
         "/llama_2_7b-tulu_all_with_coding",
@@ -280,51 +280,51 @@ data_weighted_coefficients = {
     [
         (1.0, 0.53),
     ],
-    # science 100
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/llama_2_7b-tulu_none-coding_20",
-        "task_arithmetic",
-    ) :
-    [
-        (1.0, 1.0),
-    ],
-    # science 200
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/llama_2_7b-tulu_none-coding_40",
-        "task_arithmetic",
-    ) :
-    [
-        (1.0, 1.0),
-    ],
-    # science 500
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/llama_2_7b-tulu_none-coding_60",
-        "task_arithmetic",
-    ) :
-    [
-        (1.0, 1.0),
-    ],
-    # science 1000
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/llama_2_7b-tulu_none-coding_80",
-        "task_arithmetic",
-    ) :
-    [
-        (1.0, 1.0),
-    ],
-    # science 2500
-    (
-        "/llama_2_7b-tulu_all_with_coding",
-        "/llama_2_7b-tulu_none-coding_100",
-        "task_arithmetic",
-    ) :
-    [
-        (1.0, 1.0),
-    ],
+    # # science 100
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/llama_2_7b-tulu_none-coding_20",
+    #     "task_arithmetic",
+    # ) :
+    # [
+    #     (1.0, 1.0),
+    # ],
+    # # science 200
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/llama_2_7b-tulu_none-coding_40",
+    #     "task_arithmetic",
+    # ) :
+    # [
+    #     (1.0, 1.0),
+    # ],
+    # # science 500
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/llama_2_7b-tulu_none-coding_60",
+    #     "task_arithmetic",
+    # ) :
+    # [
+    #     (1.0, 1.0),
+    # ],
+    # # science 1000
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/llama_2_7b-tulu_none-coding_80",
+    #     "task_arithmetic",
+    # ) :
+    # [
+    #     (1.0, 1.0),
+    # ],
+    # # science 2500
+    # (
+    #     "/llama_2_7b-tulu_all_with_coding",
+    #     "/llama_2_7b-tulu_none-coding_100",
+    #     "task_arithmetic",
+    # ) :
+    # [
+    #     (1.0, 1.0),
+    # ],
 }
 
 
