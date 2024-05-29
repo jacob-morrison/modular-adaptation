@@ -136,7 +136,7 @@ def get_df():
     df['Tulu Average'] = df.apply(lambda row: calculate_tulu_average(row, tulu_columns_for_test_average), axis=1)
     df['Safety Average'] = df.apply(lambda row: calculate_tulu_average(row, safety_columns_for_average), axis=1)
     df["Science Average"] = df.apply(lambda row: row["mean_null"], axis=1)
-    df['Test Science Average'] = df.apply(lambda row: calculate_tulu_average(row, science_columns_for_average_without_some_evals), axis=1)
+    # df['Test Science Average'] = df.apply(lambda row: calculate_tulu_average(row, science_columns_for_average_without_some_evals), axis=1)
     df['Coding Average'] = df.apply(lambda row: calculate_tulu_average(row, coding_columns_for_average), axis=1)
 
     df['Combo'] = df.apply(lambda row: create_model_combo(row), axis=1)
