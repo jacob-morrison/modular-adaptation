@@ -3,14 +3,14 @@ models:
     parameters:
       weight: 0.22
       normalize: False
-  - model: /tulu_2_7b-tulu_none-coding_100
-    parameters:
-      weight: 0.57
-      normalize: False
-  # - model: /tulu_2_7b-tulu_none-safety_100
+  # - model: /tulu_2_7b-tulu_none-coding_100
   #   parameters:
-  #     weight: 0.24
+  #     weight: 0.57
   #     normalize: False
+  - model: /tulu_2_7b-tulu_none-safety_100
+    parameters:
+      weight: 0.24
+      normalize: False
 merge_method: task_arithmetic
 base_model: /llama_2_7b-tulu_all
 dtype: bfloat16
