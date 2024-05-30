@@ -133,15 +133,18 @@ import yaml
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
 #     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500=/llama_2_7b-tulu_none-science_2500 \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100=/llama_2_7b-tulu_none-safety_100 \
-#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100
+    # --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500=/llama_2_7b-tulu_none-science_2500 \
+    # --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100=/llama_2_7b-tulu_none-safety_100 \
+    # --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
 #     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-science_2500=/tulu_2_7b-tulu_none-science_2500 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_none-coding_100=/tulu_2_7b-tulu_none-coding_100 \
-#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_100=/tulu_2_7b-tulu_none-safety_100 
+#     --mount beaker://jacobm/tulu_2_7b-tulu_none-safety_100=/tulu_2_7b-tulu_none-safety_100 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500=/llama_2_7b-tulu_none-science_2500 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-safety_100=/llama_2_7b-tulu_none-safety_100 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100
 
 # weights = [
 #     # (0.1, 0.9),
