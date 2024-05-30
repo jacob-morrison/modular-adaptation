@@ -1,26 +1,21 @@
 models:
-  - model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
-    # no parameters necessary for base model
   - model: /llama_2_7b-tulu_all
-    parameters:
-      density: 0.5
-      weight: 1.0
-      normalize: False
-  - model: /llama_2_7b-tulu_none-science_2500
+    # no parameters necessary for base model
+  - model: /tulu_2_7b-tulu_none-science_2500
     parameters:
       density: 0.5
       weight: 0.22
       normalize: False
-  - model: /llama_2_7b-tulu_none-coding_100
+  - model: /tulu_2_7b-tulu_none-coding_100
     parameters:
       density: 0.5
       weight: 0.57
       normalize: False
-  - model: /llama_2_7b-tulu_none-safety_100
+  - model: /tulu_2_7b-tulu_none-safety_100
     parameters:
       density: 0.5
       weight: 0.24
       normalize: False
 merge_method: ties
-base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+base_model: /llama_2_7b-tulu_all
 dtype: bfloat16
