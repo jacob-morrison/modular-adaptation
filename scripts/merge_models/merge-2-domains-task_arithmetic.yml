@@ -1,4 +1,6 @@
 models:
+  - model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
+    # no parameters necessary for base model
   - model: /llama_2_7b-tulu_none-science_2500
     parameters:
       weight: 0.28
@@ -12,5 +14,5 @@ models:
       # weight: 0.52
       # normalize: False
 merge_method: task_arithmetic
-base_model: /llama_2_7b-tulu_all
+base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
 dtype: bfloat16
