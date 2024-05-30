@@ -4,13 +4,13 @@ models:
       weight: 1.0
       normalize: False
   - model: /llama_2_7b-tulu_none-science_2500
-      parameters:
-        weight: 0.22
-        normalize: False
+    parameters:
+      weight: 0.22
+      normalize: False
   - model: /llama_2_7b-tulu_none-coding_100
-      parameters:
-        weight: 0.57
-        normalize: False
+    parameters:
+      weight: 0.57
+      normalize: False
   # - model: /llama_2_7b-tulu_none-safety_100
   #   parameters:
   #     weight: 0.24
