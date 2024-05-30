@@ -7,14 +7,14 @@ models:
     parameters:
       weight: 0.22
       normalize: False
-  # - model: /llama_2_7b-tulu_none-coding_100
-    # parameters:
-      # weight: 0.57
-      # normalize: False
-  - model: /llama_2_7b-tulu_none-safety_100
+  - model: /llama_2_7b-tulu_none-coding_100
     parameters:
-      weight: 0.24
+      weight: 0.57
       normalize: False
+  # - model: /llama_2_7b-tulu_none-safety_100
+  #   parameters:
+  #     weight: 0.24
+  #     normalize: False
 merge_method: task_arithmetic
 base_model: /net/nfs.cirrascale/allennlp/yizhongw/hf_llama2_models/7B/
 dtype: bfloat16
