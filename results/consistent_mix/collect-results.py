@@ -483,7 +483,7 @@ for dataset in [
     row["merge_method"] = "linear_weighted"
     row["tulu_model_weight"] = 0.0
     row["domain_model_weight"] = 1.0
-    row["tulu_model"] = "tulu_all"
+    row["tulu_model"] = "tulu_all_with_coding"
     row["domain_model"] = dataset
     data_map[f"linear_weighted-llama_2_7b-tulu_all_with_coding_0.0-llama_2_7b-tulu_none-{dataset}_1.0"] = row
 
@@ -492,7 +492,7 @@ for dataset in [
     row2["merge_method"] = "linear_weighted"
     row2["tulu_model_weight"] = 1.0
     row2["domain_model_weight"] = 0.0
-    row2["tulu_model"] = "tulu_all"
+    row2["tulu_model"] = "tulu_all_with_coding"
     row2["domain_model"] = dataset
     data_map[f"linear_weighted-llama_2_7b-tulu_all_with_coding_1.0-llama_2_7b-tulu_none-{dataset}_0.0"] = row2
 
@@ -501,7 +501,7 @@ for dataset in [
     row3["merge_method"] = "task_arithmetic"
     row3["tulu_model_weight"] = 1.0
     row3["domain_model_weight"] = 0.0
-    row3["tulu_model"] = "tulu_all"
+    row3["tulu_model"] = "tulu_all_with_coding"
     row3["domain_model"] = dataset
     data_map[f"task_arithmetic-llama_2_7b-tulu_all_with_coding_1.0-llama_2_7b-tulu_none-{dataset}_0.0"] = row3
 
@@ -510,7 +510,7 @@ for dataset in [
     row4["merge_method"] = "wise-ft"
     row4["tulu_model_weight"] = 1.0
     row4["domain_model_weight"] = 0.0
-    row4["tulu_model"] = "tulu_all"
+    row4["tulu_model"] = "tulu_all_with_coding"
     row4["domain_model"] = dataset
     data_map[f"linear_weighted-llama_2_7b-tulu_all_with_coding_1.0-tulu_2_7b_with_coding-tulu_none-{dataset}_0.0"] = row4
 
@@ -519,7 +519,7 @@ for dataset in [
     row5["merge_method"] = "wise-ft"
     row5["tulu_model_weight"] = 0.0
     row5["domain_model_weight"] = 1.0
-    row5["tulu_model"] = "tulu_all"
+    row5["tulu_model"] = "tulu_all_with_coding"
     row5["domain_model"] = dataset
     data_map[f"linear_weighted-llama_2_7b-tulu_all_with_coding_0.0-tulu_2_7b_with_coding-tulu_none-{dataset}_1.0"] = row5
 
