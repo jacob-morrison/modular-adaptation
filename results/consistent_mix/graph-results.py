@@ -11,6 +11,7 @@ def calculate_tulu_average(row, columns):
 def create_model_combo(row):
     model_dict = {
         "llama_2_7b": "Llama 2 7B",
+        "llama_2": "Llama 2 7B",
         "tulu_none": "Tulu None",
         "tulu_match": "Tulu Match",
 
@@ -59,7 +60,10 @@ def create_model_combo(row):
         # print(tokens[2])
         domain_model = ""
         for token in tokens[2].split("-"):
-            domain_model += " " + model_dict[token]
+            if token in model_dict:
+                domain_model += " " + model_dict[token]
+            else:
+                domain_model += f" MISSING {token}"
 
     if str(row["merge_method"]) == "nan":
         return f"{base_model} ft. on {tulu_model} & {domain_model.strip()}".replace(" Tulu None &", "").replace(" Tulu Match", " Tulu")
@@ -323,6 +327,41 @@ def plot_individual_coding_curves():
         plt.savefig(f'results/consistent_mix/plots/coding_{amount}.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
+def plot_individual_coding_curves_tulu_with_coding():
+    coding_amounts = [
+        "20",
+        "40",
+        "60",
+        "80",
+        "100",
+    ]
+    for amount in coding_amounts:
+        df = get_df()
+        df["Order"] = df["domain_model_weight"]
+        df.sort_values(by='Combo', inplace=True)
+        df.sort_values(by='Order', inplace=True)
+        df = df[
+            ~df["Combo"].str.contains("Science 2500") &
+            ~df["Combo"].str.contains("Safety 100") &
+            ~df["Combo"].str.contains("w/ Coding") &
+            df["tulu_model"].str.contains("coding") &
+            df["Combo"].str.contains(f"Coding {amount}")
+        ]
+
+
+        print(df)
+        sns.lineplot(data=df, x="Tulu Average", y="Coding Average", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
+        plt.legend()
+        plt.xlabel("Tulu Average",fontsize=20)
+        plt.ylabel("Coding Average",fontsize=20)
+        plt.xticks(fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.legend(fontsize=11)
+
+        plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        plt.savefig(f'results/consistent_mix/plots/tulu_with_coding_{amount}.png', dpi=300, bbox_inches='tight')
+        plt.clf()
+
 def plot_individual_safety_curves():
         amount = "100"
         df = get_df()
@@ -367,4 +406,5 @@ def plot_individual_safety_curves():
 
 # plot_individual_science_curves()
 # plot_individual_coding_curves()
-plot_individual_safety_curves()
+# plot_individual_safety_curves()
+plot_individual_coding_curves_tulu_with_coding()
