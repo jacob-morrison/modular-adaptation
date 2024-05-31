@@ -256,7 +256,7 @@ def collect_metrics(model_path):
 
     if model_name == "linear_weighted-llama_2_7b-tulu_all_with_coding_0.5-tulu_2_7b_with_coding-tulu_none-coding_80_0.5":
         print(model_data)
-        quit()
+        # quit()
 
     return model_data
 
