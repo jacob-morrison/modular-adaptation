@@ -329,10 +329,10 @@ def plot_individual_coding_curves():
 
 def plot_individual_coding_curves_tulu_with_coding():
     coding_amounts = [
-        "20",
-        "40",
-        "60",
-        "80",
+        # "20",
+        # "40",
+        # "60",
+        # "80",
         "100",
     ]
     for amount in coding_amounts:
@@ -343,7 +343,7 @@ def plot_individual_coding_curves_tulu_with_coding():
         df = df[
             ~df["Combo"].str.contains("Science 2500") &
             ~df["Combo"].str.contains("Safety 100") &
-            ~df["Combo"].str.contains("w/ Coding") &
+            # ~df["Combo"].str.contains("w/ Coding") &
             df["tulu_model"].str.contains("coding") &
             df["Combo"].str.contains(f"Coding {amount}")
         ]
@@ -359,8 +359,10 @@ def plot_individual_coding_curves_tulu_with_coding():
         plt.legend(fontsize=11)
 
         plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        plt.savefig(f'results/consistent_mix/plots/tulu_with_coding_{amount}.png', dpi=300, bbox_inches='tight')
-        plt.clf()
+        plt.show()
+
+        # plt.savefig(f'results/consistent_mix/plots/tulu_with_coding_{amount}.png', dpi=300, bbox_inches='tight')
+        # plt.clf()
 
 def plot_individual_safety_curves():
         amount = "100"
