@@ -254,6 +254,10 @@ def collect_metrics(model_path):
             data = json.loads(f_in.read())
             model_data["mbpp_temp_0.8"] = data["pass@10"]
 
+    if model_name == "linear_weighted-llama_2_7b-tulu_all_with_coding_0.5-tulu_2_7b_with_coding-tulu_none-coding_80_0.5":
+        print(model_data)
+        quit()
+
     return model_data
 
 tulu_data = []
