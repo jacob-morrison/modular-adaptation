@@ -399,10 +399,10 @@ domain_models = {
     # "coding_80": "/tulu_2_7b_with_coding-tulu_none-coding_80",
     # "coding_100": "/tulu_2_7b_with_coding-tulu_none-coding_100",
 
-    "science_100": "/tulu_2_7b-tulu_match-science_100",
-    "science_200": "/tulu_2_7b-tulu_match-science_200",
-    "science_500": "/tulu_2_7b-tulu_match-science_500",
+    # "science_100": "/tulu_2_7b-tulu_match-science_100",
+    # "science_200": "/tulu_2_7b-tulu_match-science_200",
     "science_1000": "/tulu_2_7b-tulu_match-science_1000",
+    "science_500": "/tulu_2_7b-tulu_match-science_500",
     # "science_2500": "/tulu_2_7b-tulu_match-science_2500",
 }
 
