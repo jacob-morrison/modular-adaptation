@@ -148,6 +148,10 @@ import yaml
 
 # beaker session create --gpus 1 --budget ai2/oe-adapt  \
 #     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_match-science_100=/tulu_2_7b-tulu_match-science_100 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_match-science_200=/tulu_2_7b-tulu_match-science_200 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_match-science_500=/tulu_2_7b-tulu_match-science_500 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_match-science_1000=/tulu_2_7b-tulu_match-science_1000 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_match-science_2500=/tulu_2_7b-tulu_match-science_2500
 
 
@@ -395,12 +399,16 @@ domain_models = {
     # "coding_80": "/tulu_2_7b_with_coding-tulu_none-coding_80",
     # "coding_100": "/tulu_2_7b_with_coding-tulu_none-coding_100",
 
-    "science_2500": "/tulu_2_7b-tulu_match-science_2500",
+    "science_100": "/tulu_2_7b-tulu_match-science_100",
+    "science_200": "/tulu_2_7b-tulu_match-science_200",
+    "science_500": "/tulu_2_7b-tulu_match-science_500",
+    "science_1000": "/tulu_2_7b-tulu_match-science_1000",
+    # "science_2500": "/tulu_2_7b-tulu_match-science_2500",
 }
 
 merge_methods = [
-    # "linear_weighted",
-    "task_arithmetic",
+    "linear_weighted",
+    # "task_arithmetic",
     # "dare_task_arithmetic",
     # "dare_linear",
     # "dare_ties",
@@ -425,8 +433,8 @@ for model_tag in domain_models:
             with open(base_yaml, 'r') as f:
                 d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
             d = copy.deepcopy(d1)
-            # if merge_method == "task_arithmetic" or merge_method == "dare_task_arithmetic":
-                # tuluWeight = 1.0
+            if merge_method == "task_arithmetic" or merge_method == "dare_task_arithmetic":
+                tuluWeight = 1.0
             if merge_method == "linear_weighted" or merge_method == "task_arithmetic":
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file

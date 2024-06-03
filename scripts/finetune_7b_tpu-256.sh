@@ -9,8 +9,6 @@
 
 # gcloud alpha compute tpus tpu-vm ssh jacobm-v3-256 --zone=us-east1-d --project=ai2-tpu --worker=all --command="python3 -m wandb login 52b8bf39aebeae0660ca724b9aac5539a6c36bf5"
 
-# gcloud alpha compute tpus tpu-vm ssh jacobm-v3-256 --zone=us-east1-d --project=ai2-tpu --worker=all --command="gsutil -m cp gs://jacobm-bucket/modular_adaptation/training_data/tulu-mixtures/tulu_all_science_0_eval_no.jsonl ."
-
 gcloud alpha compute tpus tpu-vm ssh jacobm-v3-256 --zone=us-east1-d --project=ai2-tpu --worker=all --command="cd easylm; export WANDB_MODE=disabled; export LIBTPU_INIT_ARGS='--xla_jf_spmd_threshold_for_windowed_einsum_mib=0 --xla_tpu_spmd_threshold_for_allgather_cse=10000 --xla_tpu_spmd_rewrite_einsum_with_reshape=true --xla_tpu_enable_latency_hiding_scheduler=true TPU_MEGACORE=MEGACORE_DENSE'; python3 -m EasyLM.models.llama.llama_train \
     --seed=42 \
     --mesh_dim='1,-1,16' \

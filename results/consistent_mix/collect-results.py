@@ -407,8 +407,7 @@ with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/results/domain
             
 from pprint import pprint
 pprint(data_map.keys())
-
-# TODO: fix!!          
+        
 for dataset in [
     "coding_20",
     "coding_40",

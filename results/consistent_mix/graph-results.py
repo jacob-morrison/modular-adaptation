@@ -66,7 +66,7 @@ def create_model_combo(row):
                 domain_model += f" MISSING {token}"
 
     if str(row["merge_method"]) == "nan":
-        return f"{base_model} ft. on {tulu_model} & {domain_model.strip()}".replace(" Tulu None &", "").replace(" Tulu Match", " Tulu")
+        return f"{base_model} ft. on {tulu_model} & {domain_model.strip()}".replace(" Tulu None &", "")
     else:
         # return f"{base_model} ft. on {tulu_model} merged with {domain_model.strip()} ({row['merge_method']})".replace(" Tulu None &", "")
         return f"{domain_model.replace(' 7B Tulu None', '').strip()} - {row['merge_method']}"
@@ -255,10 +255,10 @@ def plot_all_curves():
 
 def plot_individual_science_curves():
     science_amounts = [
-        "100",
-        "200",
-        "500",
-        "1000",
+        # "100",
+        # "200",
+        # "500",
+        # "1000",
         "2500",
     ]
     for amount in science_amounts:
@@ -274,9 +274,10 @@ def plot_individual_science_curves():
                 # df["Combo"].str.contains("Science 200") |
                 # df["Combo"].str.contains("Science 500") |
                 # df["Combo"].str.contains("Science 1000") |
-                df["Combo"].str.contains(f"Science {amount}")
+                df["Combo"].str.contains(f"cience {amount}")
             )
         ]
+        print(df)
         if amount == "100":
             df = df[~df["Combo"].str.contains("Science 1000")]
 
@@ -449,8 +450,8 @@ def plot_individual_safety_vs_exaggerated_refusals():
         plt.clf()
 
 
-# plot_individual_science_curves()
+plot_individual_science_curves()
 # plot_individual_coding_curves()
 # plot_individual_safety_curves()
 # plot_individual_coding_curves_tulu_with_coding()
-plot_individual_safety_vs_exaggerated_refusals()
+# plot_individual_safety_vs_exaggerated_refusals()
