@@ -161,7 +161,7 @@ weights = [
     (0.7, 0.3),
     (0.8, 0.2),
     (0.9, 0.1),
-    (1.0, 1.0),
+    # (1.0, 1.0),
 ]
 
 data_weighted_coefficients = {
@@ -425,8 +425,8 @@ for model_tag in domain_models:
             with open(base_yaml, 'r') as f:
                 d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
             d = copy.deepcopy(d1)
-            if merge_method == "task_arithmetic" or merge_method == "dare_task_arithmetic":
-                tuluWeight = 1.0
+            # if merge_method == "task_arithmetic" or merge_method == "dare_task_arithmetic":
+                # tuluWeight = 1.0
             if merge_method == "linear_weighted" or merge_method == "task_arithmetic":
                 # Set merge-specific parameters
                 d["models"][0]["model"] = tulu_file
