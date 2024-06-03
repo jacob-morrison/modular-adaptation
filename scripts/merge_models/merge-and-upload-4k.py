@@ -154,6 +154,11 @@ import yaml
 #     --mount beaker://jacobm/tulu_2_7b-tulu_match-science_1000=/tulu_2_7b-tulu_match-science_1000 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_match-science_2500=/tulu_2_7b-tulu_match-science_2500
 
+# beaker session create --gpus 1 --budget ai2/oe-adapt  \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_match-coding_100=/tulu_2_7b-tulu_match-coding_100 \
+#     --mount beaker://jacobm/tulu_2_7b-tulu_match-safety_100=/tulu_2_7b-tulu_match-safety_100
+
 
 weights = [
     (0.1, 0.9),
@@ -401,9 +406,12 @@ domain_models = {
 
     # "science_100": "/tulu_2_7b-tulu_match-science_100",
     # "science_200": "/tulu_2_7b-tulu_match-science_200",
-    "science_1000": "/tulu_2_7b-tulu_match-science_1000",
-    "science_500": "/tulu_2_7b-tulu_match-science_500",
+    # "science_1000": "/tulu_2_7b-tulu_match-science_1000",
+    # "science_500": "/tulu_2_7b-tulu_match-science_500",
     # "science_2500": "/tulu_2_7b-tulu_match-science_2500",
+
+    "coding_100": "/tulu_2_7b_with_coding-tulu_match-coding_100",
+    "safety_100": "/tulu_2_7b_with_coding-tulu_match-safety_100",
 }
 
 merge_methods = [
