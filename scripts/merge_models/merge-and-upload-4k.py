@@ -410,8 +410,8 @@ domain_models = {
     # "science_500": "/tulu_2_7b-tulu_match-science_500",
     # "science_2500": "/tulu_2_7b-tulu_match-science_2500",
 
-    "coding_100": "/tulu_2_7b_with_coding-tulu_match-coding_100",
-    "safety_100": "/tulu_2_7b_with_coding-tulu_match-safety_100",
+    "coding_100": "/tulu_2_7b-tulu_match-coding_100",
+    "safety_100": "/tulu_2_7b-tulu_match-safety_100",
 }
 
 merge_methods = [
