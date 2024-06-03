@@ -329,10 +329,10 @@ def plot_individual_coding_curves():
 
 def plot_individual_coding_curves_tulu_with_coding():
     coding_amounts = [
-        # "20",
-        # "40",
-        # "60",
-        # "80",
+        "20",
+        "40",
+        "60",
+        "80",
         "100",
     ]
     for amount in coding_amounts:
@@ -359,10 +359,10 @@ def plot_individual_coding_curves_tulu_with_coding():
         plt.legend(fontsize=11)
 
         plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        plt.show()
+        # plt.show()
 
-        # plt.savefig(f'results/consistent_mix/plots/tulu_with_coding_{amount}.png', dpi=300, bbox_inches='tight')
-        # plt.clf()
+        plt.savefig(f'results/consistent_mix/plots/tulu_with_coding_{amount}.png', dpi=300, bbox_inches='tight')
+        plt.clf()
 
 def plot_individual_safety_curves():
         amount = "100"
@@ -406,7 +406,51 @@ def plot_individual_safety_curves():
         plt.savefig(f'results/consistent_mix/plots/safety_{amount}.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
+def plot_individual_safety_vs_exaggerated_refusals():
+        amount = "100"
+        df = get_df()
+        df["Order"] = df["domain_model_weight"]
+        df.sort_values(by='Combo', inplace=True)
+        df.sort_values(by='Order', inplace=True)
+        # df = df[(df["normalized_safe_average"] > 0) | ("safety_100" in df["model_key"])]
+        # df = df[~df["domain_model"].isin({
+            # "science_2500",
+            # "coding_100"
+        # })]
+        df = df[
+            ~df["Combo"].str.contains("cience") &
+            ~df["Combo"].str.contains("Coding 100") &
+            df["Combo"].str.contains(f"Safety {amount}")
+        ]
+
+        # pd.set_option('display.max_colwidth', None)
+
+        # sns.lineplot(data=df, x="Tulu Average", y="Safety Average", hue="Combo", sort=False, marker='o', linewidth=3, markersize=13)
+        # plt.legend()
+        # plt.xlabel("Tulu Average",fontsize=20)
+        # plt.ylabel("Safety Average",fontsize=20)
+
+        sns.lineplot(data=df, x="Exaggerated Refusals", y="Safety Average", hue="Combo", sort=False, marker='o', linewidth=3, markersize=13)
+        plt.legend()
+        plt.xlabel("Exaggerated Refusals",fontsize=20)
+        plt.ylabel("Safety Average",fontsize=20)
+
+        # sns.lineplot(data=df, x="Tulu Average", y="Exaggerated Refusals", hue="Combo", sort=False, marker='X', linewidth=3, markersize=13)
+        # plt.legend()
+        # plt.xlabel("Tulu Average",fontsize=20)
+        # plt.ylabel("Exaggerated Refusals",fontsize=20)
+
+        plt.xticks(fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.legend(fontsize=11)
+
+        plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        plt.savefig(f'results/consistent_mix/plots/safety_exaggerated_refusals_{amount}.png', dpi=300, bbox_inches='tight')
+        plt.clf()
+
+
 # plot_individual_science_curves()
 # plot_individual_coding_curves()
 # plot_individual_safety_curves()
-plot_individual_coding_curves_tulu_with_coding()
+# plot_individual_coding_curves_tulu_with_coding()
+plot_individual_safety_vs_exaggerated_refusals()
