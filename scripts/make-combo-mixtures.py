@@ -28,7 +28,9 @@ random.shuffle(three_domains)
 #     for elem in three_domains:
 #         print(json.dumps(elem), file=f_out)
 
-tulu_and_three_domains = tulu_all_no_science_no_safety_no_coding[:len(three_domains)] + three_domains
+double_tulu = tulu_all_no_science_no_safety_no_coding * 2
+
+tulu_and_three_domains = double_tulu[:len(three_domains)] + three_domains
 random.shuffle(tulu_and_three_domains)
 with open("/net/nfs.cirrascale/allennlp/jacobm/modular_adaptation/train_data/consistent_mix/tulu_match_no_science_no_safety_no_coding-science_2500-safety_100-coding_100.jsonl", "w") as f_out:
     for elem in tulu_and_three_domains:
