@@ -255,10 +255,10 @@ def plot_all_curves():
 
 def plot_individual_science_curves():
     science_amounts = [
-        # "100",
-        # "200",
-        # "500",
-        # "1000",
+        "100",
+        "200",
+        "500",
+        "1000",
         "2500",
     ]
     for amount in science_amounts:
@@ -307,8 +307,8 @@ def plot_individual_coding_curves():
         df.sort_values(by='Combo', inplace=True)
         df.sort_values(by='Order', inplace=True)
         df = df[
-            ~df["Combo"].str.contains("Science 2500") &
-            ~df["Combo"].str.contains("Safety 100") &
+            ~df["Combo"].str.contains("cience") &
+            ~df["Combo"].str.contains("afety") &
             ~df["Combo"].str.contains("w/ Coding") &
             ~df["tulu_model"].str.contains("coding") &
             df["Combo"].str.contains(f"Coding {amount}")
@@ -377,7 +377,7 @@ def plot_individual_safety_curves():
             # "coding_100"
         # })]
         df = df[
-            ~df["Combo"].str.contains("Science 2500") &
+            ~df["Combo"].str.contains("cience") &
             ~df["Combo"].str.contains("Coding 100") &
             df["Combo"].str.contains(f"Safety {amount}")
         ]
@@ -450,8 +450,8 @@ def plot_individual_safety_vs_exaggerated_refusals():
         plt.clf()
 
 
-plot_individual_science_curves()
-# plot_individual_coding_curves()
+# plot_individual_science_curves()
+plot_individual_coding_curves()
 # plot_individual_safety_curves()
 # plot_individual_coding_curves_tulu_with_coding()
 # plot_individual_safety_vs_exaggerated_refusals()
