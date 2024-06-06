@@ -451,7 +451,7 @@ def plot_individual_safety_vs_exaggerated_refusals():
 
 
 # plot_individual_science_curves()
-plot_individual_coding_curves()
+# plot_individual_coding_curves()
 # plot_individual_safety_curves()
 # plot_individual_coding_curves_tulu_with_coding()
-# plot_individual_safety_vs_exaggerated_refusals()
+plot_individual_safety_vs_exaggerated_refusals()
