@@ -159,6 +159,11 @@ import yaml
 #     --mount beaker://jacobm/tulu_2_7b-tulu_match-coding_100=/tulu_2_7b-tulu_match-coding_100 \
 #     --mount beaker://jacobm/tulu_2_7b-tulu_match-safety_100=/tulu_2_7b-tulu_match-safety_100
 
+# beaker session create --gpus 1 --budget ai2/oe-adapt  \
+#     --mount beaker://jacobm/llama_2_7b-tulu_all=/llama_2_7b-tulu_all \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-coding_100=/llama_2_7b-tulu_none-coding_100 \
+#     --mount beaker://jacobm/llama_2_7b-tulu_none-science_2500=/llama_2_7b-tulu_none-science_2500
+
 
 weights = [
     (0.1, 0.9),
@@ -369,7 +374,7 @@ domain_models = {
     # "science_200": "/llama_2_7b-tulu_none-science_200",
     # "science_500": "/llama_2_7b-tulu_none-science_500",
     # "science_1000": "/llama_2_7b-tulu_none-science_1000",
-    # "science_2500": "/llama_2_7b-tulu_none-science_2500",
+    "science_2500": "/llama_2_7b-tulu_none-science_2500",
 
     # "safety_20": "/llama_2_7b-tulu_none-safety_20",
     # "safety_40": "/llama_2_7b-tulu_none-safety_40",
@@ -381,7 +386,7 @@ domain_models = {
     # "coding_40": "/llama_2_7b-tulu_none-coding_40",
     # "coding_60": "/llama_2_7b-tulu_none-coding_60",
     # "coding_80": "/llama_2_7b-tulu_none-coding_80",
-    # "coding_100": "/llama_2_7b-tulu_none-coding_100",
+    "coding_100": "/llama_2_7b-tulu_none-coding_100",
 
     # "science_100": "/tulu_2_7b-tulu_none-science_100",
     # "science_200": "/tulu_2_7b-tulu_none-science_200",
@@ -410,17 +415,18 @@ domain_models = {
     # "science_500": "/tulu_2_7b-tulu_match-science_500",
     # "science_2500": "/tulu_2_7b-tulu_match-science_2500",
 
-    "coding_100": "/tulu_2_7b-tulu_match-coding_100",
-    "safety_100": "/tulu_2_7b-tulu_match-safety_100",
+    # "coding_100": "/tulu_2_7b-tulu_match-coding_100",
+    # "safety_100": "/tulu_2_7b-tulu_match-safety_100",
 }
 
 merge_methods = [
-    "linear_weighted",
+    # "linear_weighted",
     # "task_arithmetic",
-    # "dare_task_arithmetic",
-    # "dare_linear",
+    "dare_task_arithmetic",
+    "dare_linear",
     # "dare_ties",
-    # "ties",
+    "ties",
+    "ties_task_arithmetic"
     # "slerp",
 ]
 
@@ -433,7 +439,11 @@ def print_and_run(cmd):
 
 for model_tag in domain_models:
     for merge_method in merge_methods:
-        for (tuluWeight, domainWeight) in weights:
+        if "task_arithmetic" in merge_method:
+            extra_weights = [(1.0, 1.0)]
+        else:
+            extra_weights = []
+        for (tuluWeight, domainWeight) in weights + extra_weights:
 # for base_model, domain_model, merge_method in data_weighted_coefficients:
         # for (tuluWeight, domainWeight) in data_weighted_coefficients[(base_model, domain_model, merge_method)]:
             # Copy yaml
@@ -441,7 +451,7 @@ for model_tag in domain_models:
             with open(base_yaml, 'r') as f:
                 d1 = yaml.load(f.read(), Loader=yaml.FullLoader)
             d = copy.deepcopy(d1)
-            if merge_method == "task_arithmetic" or merge_method == "dare_task_arithmetic":
+            if merge_method == "task_arithmetic" or merge_method == "dare_task_arithmetic" or merge_method == "ties_task_arithmetic":
                 tuluWeight = 1.0
             if merge_method == "linear_weighted" or merge_method == "task_arithmetic":
                 # Set merge-specific parameters
@@ -450,7 +460,7 @@ for model_tag in domain_models:
                 d["models"][1]["model"] = domain_models[model_tag]
                 # d["models"][1]["model"] = domain_model
                 d["models"][1]["parameters"]["weight"] = domainWeight
-            elif merge_method in ["dare_linear", "dare_ties", "ties", "dare_task_arithmetic"]:
+            elif merge_method in ["dare_linear", "dare_ties", "ties", "dare_task_arithmetic", "ties_task_arithmetic"]:
                 # Set merge-specific parameters
                 d["models"][1]["model"] = tulu_file
                 d["models"][1]["parameters"]["weight"] = tuluWeight

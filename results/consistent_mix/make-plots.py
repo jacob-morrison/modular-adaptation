@@ -6,7 +6,7 @@ from pprint import pprint
 
 def calculate_average(row, columns):
     subset_values = row[columns]
-    return subset_values.mean()
+    return 100.0 * subset_values.mean()
 
 def create_model_combo(row):
     model_dict = {
@@ -145,6 +145,9 @@ def create_row_label(row):
         "Llama 2 Science 1000 - linear_weighted": "Llama 2 Linear Interpolation",
         "Llama 2 Science 2500 - linear_weighted": "Llama 2 Linear Interpolation",
 
+        "Tulu 2 7B Tulu Match Science 1000 - wise-ft": "Tulu 2 Task Arithmetic (Ep. Replay)",
+        "Tulu 2 7B Tulu Match Science 2500 - wise-ft": "Tulu 2 Task Arithmetic (Ep. Replay)",
+
         # Safety
         "Llama 2 Safety 20% - task_arithmetic": "Llama 2 Task Arithmetic",
         "Llama 2 Safety 40% - task_arithmetic": "Llama 2 Task Arithmetic",
@@ -226,10 +229,10 @@ def get_df():
     df['tydiqa_goldp_1shot'] = df.apply(lambda row: row["tydiqa_goldp_1shot"] / 100, axis=1)
 
     # calculate averages
-    df['Exaggerated Refusals'] = df.apply(lambda row: row["normalized_safe_average"], axis=1)
+    df['Exaggerated Refusals'] = df.apply(lambda row: 100 * row["normalized_safe_average"], axis=1)
     df['Tulu Average'] = df.apply(lambda row: calculate_average(row, tulu_columns_for_test_average), axis=1)
     df['Safety Average'] = df.apply(lambda row: calculate_average(row, safety_columns_for_average), axis=1)
-    df["Science Average"] = df.apply(lambda row: row["mean_null"], axis=1)
+    df["Science Average"] = df.apply(lambda row: 100 * row["mean_null"], axis=1)
     df['Coding Average'] = df.apply(lambda row: calculate_average(row, coding_columns_for_average), axis=1)
 
     df['Combo'] = df.apply(lambda row: create_model_combo(row), axis=1)
@@ -242,10 +245,13 @@ def make_plots():
     df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
+    # print(df["Combo"].to_string())
+    # quit()
 
     dataframes = {
         # baselines
         "llama_tulu_all": df[df["model_key"] == "llama_2_7b-tulu_all"],
+        "llama_tulu_all_with_coding": df[df["model_key"] == "llama_2_7b-tulu_all_with_coding"],
 
         # science baselines
         "llama_tulu_none_science_100": df[df["model_key"] == "llama_2_7b-tulu_none-science_100"],
@@ -322,6 +328,25 @@ def make_plots():
         "tulu_2_tulu_match_coding_80": df[df["model_key"] == "tulu_2_7b-tulu_match-coding_80"],
         "tulu_2_tulu_match_coding_100": df[df["model_key"] == "tulu_2_7b-tulu_match-coding_100"],
 
+        # coding with coding
+        "llama_tulu_all_with_coding_coding_20": df[df["model_key"] == "llama_2_7b-tulu_all_with_coding-coding_20"],
+        "llama_tulu_all_with_coding_coding_40": df[df["model_key"] == "llama_2_7b-tulu_all_with_coding-coding_40"],
+        "llama_tulu_all_with_coding_coding_60": df[df["model_key"] == "llama_2_7b-tulu_all_with_coding-coding_60"],
+        "llama_tulu_all_with_coding_coding_80": df[df["model_key"] == "llama_2_7b-tulu_all_with_coding-coding_80"],
+        "llama_tulu_all_with_coding_coding_100": df[df["model_key"] == "llama_2_7b-tulu_all_with_coding-coding_100"],
+
+        "tulu_2_with_coding_tulu_none_coding_20": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_none-coding_20"],
+        "tulu_2_with_coding_tulu_none_coding_40": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_none-coding_40"],
+        "tulu_2_with_coding_tulu_none_coding_60": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_none-coding_60"],
+        "tulu_2_with_coding_tulu_none_coding_80": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_none-coding_80"],
+        "tulu_2_with_coding_tulu_none_coding_100": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_none-coding_100"],
+
+        "tulu_2_with_coding_tulu_match_coding_20": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_match-coding_20"],
+        "tulu_2_with_coding_tulu_match_coding_40": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_match-coding_40"],
+        "tulu_2_with_coding_tulu_match_coding_60": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_match-coding_60"],
+        "tulu_2_with_coding_tulu_match_coding_80": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_match-coding_80"],
+        "tulu_2_with_coding_tulu_match_coding_100": df[df["model_key"] == "tulu_2_7b_with_coding-tulu_match-coding_100"],
+
         # Science
         "science_100_llama_ta": df[df["Combo"] == "Llama 2 Science 100 - task_arithmetic"],
         "science_200_llama_ta": df[df["Combo"] == "Llama 2 Science 200 - task_arithmetic"],
@@ -381,6 +406,26 @@ def make_plots():
         "coding_60_interp": df[(df["Combo"] == "Llama 2 Coding 60% - linear_weighted") & (~df["tulu_model"].str.contains("coding"))],
         "coding_80_interp": df[(df["Combo"] == "Llama 2 Coding 80% - linear_weighted") & (~df["tulu_model"].str.contains("coding"))],
         "coding_100_interp": df[(df["Combo"] == "Llama 2 Coding 100% - linear_weighted") & (~df["tulu_model"].str.contains("coding"))],
+
+        # Tulu w/ Coding
+        "tulu_w_coding_coding_20_llama_ta": df[(df["Combo"] == "Llama 2 Coding 20% - task_arithmetic") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_40_llama_ta": df[(df["Combo"] == "Llama 2 Coding 40% - task_arithmetic") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_60_llama_ta": df[(df["Combo"] == "Llama 2 Coding 60% - task_arithmetic") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_80_llama_ta": df[(df["Combo"] == "Llama 2 Coding 80% - task_arithmetic") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_100_llama_ta": df[(df["Combo"] == "Llama 2 Coding 100% - task_arithmetic") & (df["tulu_model"].str.contains("coding"))],
+
+        "tulu_w_coding_coding_20_tulu_ta": df[(df["Combo"] == "Tulu 2 7B w/ Coding Tulu None Coding 20% - wise-ft") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_40_tulu_ta": df[(df["Combo"] == "Tulu 2 7B w/ Coding Tulu None Coding 40% - wise-ft") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_60_tulu_ta": df[(df["Combo"] == "Tulu 2 7B w/ Coding Tulu None Coding 60% - wise-ft") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_80_tulu_ta": df[(df["Combo"] == "Tulu 2 7B w/ Coding Tulu None Coding 80% - wise-ft") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_100_tulu_ta": df[(df["Combo"] == "Tulu 2 7B w/ Coding Tulu None Coding 100% - wise-ft") & (df["tulu_model"].str.contains("coding"))],
+
+        "tulu_w_coding_coding_20_interp": df[(df["Combo"] == "Llama 2 Coding 20% - linear_weighted") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_40_interp": df[(df["Combo"] == "Llama 2 Coding 40% - linear_weighted") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_60_interp": df[(df["Combo"] == "Llama 2 Coding 60% - linear_weighted") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_80_interp": df[(df["Combo"] == "Llama 2 Coding 80% - linear_weighted") & (df["tulu_model"].str.contains("coding"))],
+        "tulu_w_coding_coding_100_interp": df[(df["Combo"] == "Llama 2 Coding 100% - linear_weighted") & (df["tulu_model"].str.contains("coding"))],
+
     }
 
     line_width = 3
@@ -656,11 +701,11 @@ def make_plots():
         plt.legend()
         plt.xlabel("Tulu Average",fontsize=20)
         plt.ylabel("Coding Average",fontsize=20)
-        plt.xticks([0.4, 0.45, 0.5, 0.55, 0.6], fontsize=16)
+        plt.xticks([40, 45, 50, 55, 60], fontsize=16)
         plt.yticks(fontsize=16)
         plt.legend(fontsize=11)
 
-        plt.xlim(0.4, 0.6)
+        plt.xlim(40, 60)
 
         plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
         # plt.show()
@@ -899,7 +944,7 @@ def make_plots():
             palette=[sns.color_palette("colorblind")[2]],
         )
         sns.lineplot(
-            data=dataframes["science_1000_tulu_match_ta"],
+            data=dataframes["science_2500_tulu_match_ta"],
             x="Tulu Average",
             y="Science Average",
             hue="Label",
@@ -909,17 +954,17 @@ def make_plots():
             markersize=markersize,
             palette=[sns.color_palette("colorblind")[3]],
         )
-        sns.lineplot(
-            data=dataframes["science_2500_tulu_match_ta"],
-            x="Tulu Average",
-            y="Science Average",
-            hue="Label",
-            sort=False,
-            # marker='X',
-            linewidth=line_width,
-            markersize=markersize,
-            palette=[sns.color_palette("colorblind")[4]],
-        )
+        # sns.lineplot(
+        #     data=dataframes["science_2500_tulu_match_ta"],
+        #     x="Tulu Average",
+        #     y="Science Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[4]],
+        # )
         plt.legend()
         plt.xlabel("Tulu Average",fontsize=20)
         plt.ylabel("Science Average",fontsize=20)
@@ -928,9 +973,103 @@ def make_plots():
         plt.legend(fontsize=11)
 
         plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        plt.show()
-        # plt.savefig(f'results/consistent_mix/plots/science_{amt}.png', dpi=300, bbox_inches='tight')
+        # plt.show()
+        plt.savefig(f'results/consistent_mix/plots/science_interference_curves.png', dpi=300, bbox_inches='tight')
         plt.clf()
+
+    def compare_coding_curves_tulu_with_coding(amt = "100"):
+        sns.lineplot(
+            data=dataframes[f"tulu_w_coding_coding_{amt}_interp"],
+            x="Tulu Average",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[0]],
+        )
+        sns.lineplot(
+            data=dataframes[f"tulu_w_coding_coding_{amt}_llama_ta"],
+            x="Tulu Average",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+        )
+        sns.lineplot(
+            data=dataframes[f"tulu_w_coding_coding_{amt}_tulu_ta"],
+            x="Tulu Average",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[2]],
+        )
+        sns.scatterplot(
+            data=dataframes[f"llama_tulu_none_coding_{amt}"],
+            x="Tulu Average",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+        )
+        sns.scatterplot(
+            data=dataframes[f"tulu_2_with_coding_tulu_none_coding_{amt}"],
+            x="Tulu Average",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[2]],
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all_with_coding"],
+            x="Tulu Average",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[3]],
+        )
+        # sns.scatterplot(
+        #     data=dataframes[f"llama_tulu_all_coding_{amt}"],
+        #     x="Tulu Average",
+        #     y="Coding Average",
+        #     hue="Label",
+        #     s=point_size,
+        #     marker=marker,
+        #     palette=[sns.color_palette("colorblind")[4]],
+        # )
+        # sns.scatterplot(
+        #     data=dataframes[f"tulu_2_tulu_match_coding_{amt}"],
+        #     x="Tulu Average",
+        #     y="Coding Average",
+        #     hue="Label",
+        #     s=point_size,
+        #     marker=marker,
+        #     palette=[sns.color_palette("colorblind")[6]],
+        # )
+        plt.legend()
+        plt.xlabel("Tulu Average",fontsize=20)
+        plt.ylabel("Coding Average",fontsize=20)
+        plt.xticks([40, 45, 50, 55, 60], fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.legend(fontsize=11)
+
+        plt.xlim(40, 60)
+
+        plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        # plt.show()
+        plt.savefig(f'results/consistent_mix/plots/tulu_w_coding_coding_{amt}.png', dpi=300, bbox_inches='tight')
+        plt.clf()
+
 
     compare_science_curves()
     for amt in [
@@ -942,8 +1081,9 @@ def make_plots():
     ]:
         compare_safety_curves(amt=amt)
     compare_coding_curves()
+    science_interference_curves()
+    compare_coding_curves_tulu_with_coding()
     linear_interpolation_100p_curves()
     science_coding_ta_curves()
-    science_interference_curves()
 
 make_plots()
