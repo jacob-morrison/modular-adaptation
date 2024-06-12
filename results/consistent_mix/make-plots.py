@@ -133,6 +133,9 @@ def create_row_label(row):
         "Llama 2 Science 1000 - task_arithmetic": "Adding Domain Vector",
         "Llama 2 Science 2500 - task_arithmetic": "Adding Domain Vector",
 
+        "Llama 2 Science 2500 - dare_task_arithmetic": "Adding Domain Vector (DARE)",
+        "Llama 2 Science 2500 - ties_task_arithmetic": "Adding Domain Vector (TIES)",
+
         "Tulu 2 Science 100 - wise-ft": "Continued Finetuning",
         "Tulu 2 Science 200 - wise-ft": "Continued Finetuning",
         "Tulu 2 Science 500 - wise-ft": "Continued Finetuning",
@@ -185,6 +188,9 @@ def create_row_label(row):
         "Llama 2 Coding 60% - task_arithmetic": "Adding Domain Vector",
         "Llama 2 Coding 80% - task_arithmetic": "Adding Domain Vector",
         "Llama 2 Coding 100% - task_arithmetic": "Adding Domain Vector",
+
+        "Llama 2 Coding 100% - dare_task_arithmetic": "Adding Domain Vector (DARE)",
+        "Llama 2 Coding 100% - ties_task_arithmetic": "Adding Domain Vector (TIES)",
 
         "Tulu 2 Coding 20% - wise-ft": "Continued Finetuning",
         "Tulu 2 Coding 40% - wise-ft": "Continued Finetuning",
@@ -390,6 +396,9 @@ def make_plots():
         "science_1000_tulu_match_ta": df[df["Combo"] == "Tulu 2 7B Tulu Match Science 1000 - wise-ft"],
         "science_2500_tulu_match_ta": df[df["Combo"] == "Tulu 2 7B Tulu Match Science 2500 - wise-ft"],
 
+        "science_2500_llama_ta_dare": df[df["Combo"] == "Llama 2 Science 2500 - dare_task_arithmetic"],
+        "science_2500_llama_ta_ties": df[df["Combo"] == "Llama 2 Science 2500 - ties_task_arithmetic"],
+
         # Safety
         "safety_20_llama_ta": df[df["Combo"] == "Llama 2 Safety 20% - task_arithmetic"],
         "safety_40_llama_ta": df[df["Combo"] == "Llama 2 Safety 40% - task_arithmetic"],
@@ -427,6 +436,9 @@ def make_plots():
         "coding_60_interp": df[(df["Combo"] == "Llama 2 Coding 60% - linear_weighted") & (~df["tulu_model"].str.contains("coding"))],
         "coding_80_interp": df[(df["Combo"] == "Llama 2 Coding 80% - linear_weighted") & (~df["tulu_model"].str.contains("coding"))],
         "coding_100_interp": df[(df["Combo"] == "Llama 2 Coding 100% - linear_weighted") & (~df["tulu_model"].str.contains("coding"))],
+
+        "coding_100_llama_ta_dare": df[df["Combo"] == "Llama 2 Cooding 100% - dare_task_arithmetic"],
+        "coding_100_llama_ta_ties": df[df["Combo"] == "Llama 2 Coding 100% - ties_task_arithmetic"],
 
         # Tulu w/ Coding
         "tulu_w_coding_coding_20_llama_ta": df[(df["Combo"] == "Llama 2 Coding 20% - task_arithmetic") & (df["tulu_model"].str.contains("coding"))],
@@ -1199,6 +1211,186 @@ def make_plots():
         plt.savefig(f'results/consistent_mix/plots/task_arithmetic_vs_baselines_all_3.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
+    def ta_curves_3_merging_methods():
+        ticksize=14
+
+        fig, axes = plt.subplots(
+            1, 
+            2, 
+            figsize=(12, 5)
+        )
+
+        # science
+        sns.lineplot(
+            data=dataframes[f"science_2500_llama_ta"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[0],
+        )
+        sns.lineplot(
+            data=dataframes[f"science_2500_llama_ta_dare"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[0],
+        )
+        sns.lineplot(
+            data=dataframes[f"science_2500_llama_ta_ties"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[4]],
+            ax=axes[0],
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[0]
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_none_science_2500"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[2]],
+            ax=axes[0]
+        )
+        # sns.lineplot(
+        #     data=dataframes["science_cft_match_ablations"],
+        #     x="General Capabilities",
+        #     y="Science Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[0],
+        # )
+
+        axes[0].set_title('Science', fontsize=20)
+        axes[0].set(xlabel=None, ylabel=None)
+        axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[0].legend(title='')
+        axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        # coding
+        sns.lineplot(
+            data=dataframes[f"coding_100_llama_ta"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[1],
+        )
+        sns.lineplot(
+            data=dataframes[f"coding_100_llama_ta_dare"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[1],
+        )
+        sns.lineplot(
+            data=dataframes[f"coding_100_llama_ta_ties"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[4]],
+            ax=axes[1],
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[1]
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_none_coding_100"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[2]],
+            ax=axes[1]
+        )
+        # sns.lineplot(
+        #     data=dataframes["coding_cft_match_ablations"],
+        #     x="General Capabilities",
+        #     y="Coding Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[1],
+        # )
+
+        axes[1].set_title('Coding', fontsize=20)
+        axes[1].set(xlabel=None, ylabel=None)
+        axes[1].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[1].legend().set_visible(False)
+        axes[1].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        # plt.xlabel("General Capabilities",fontsize=20)
+        # plt.ylabel("Domain Average",fontsize=20)
+
+        # plt.xticks(
+        #     # [0.4, 0.45, 0.5, 0.55, 0.6],
+        #     fontsize=16
+        # )
+        # plt.yticks(fontsize=16)
+        # plt.legend(fontsize=11)
+
+        fig.text(0.5, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
+        fig.text(0.075, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
+
+        # plt.tight_layout()
+        # plt.show()
+        plt.savefig(f'results/consistent_mix/plots/task_arithmetic_3_merging_methods.png', dpi=300, bbox_inches='tight')
+        plt.clf()
+
+
     def ta_curves_heuristics():
         ticksize=14
 
@@ -1695,5 +1887,6 @@ def make_plots():
     compare_3_weighting_strategies()
     ta_curves_vs_baselines_all_3()
     ta_curves_heuristics()
+    ta_curves_3_merging_methods()
 
 make_plots()
