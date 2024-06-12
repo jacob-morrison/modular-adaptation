@@ -38,6 +38,7 @@ def collect_metrics(model_path):
         "slerp",
         "task_arithmetic",
         "dare_task_arithmetic",
+        "ties_task_arithmetic",
     ]:
         merge_method = tokens[0]
         tokens = tokens[1:]

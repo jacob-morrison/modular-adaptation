@@ -71,55 +71,55 @@ def create_row_label(row):
         "llama_2_7b-tulu_all": "Tulu 2 7B",
 
         # science baselines:
-        "llama_2_7b-tulu_none-science_100": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-science_200": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-science_500": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-science_1000": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-science_2500": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_all-science_100": "Data Merging",
-        "llama_2_7b-tulu_all-science_200": "Data Merging",
-        "llama_2_7b-tulu_all-science_500": "Data Merging",
-        "llama_2_7b-tulu_all-science_1000": "Data Merging",
-        "llama_2_7b-tulu_all-science_2500": "Data Merging",
-        "tulu_2_7b-tulu_none-science_100": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-science_200": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-science_500": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-science_1000": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-science_2500": "Tulu 2 Task Vector",
+        "llama_2_7b-tulu_none-science_100": "Domain Vector",
+        "llama_2_7b-tulu_none-science_200": "Domain Vector",
+        "llama_2_7b-tulu_none-science_500": "Domain Vector",
+        "llama_2_7b-tulu_none-science_1000": "Domain Vector",
+        "llama_2_7b-tulu_none-science_2500": "Domain Vector",
+        "llama_2_7b-tulu_all-science_100": "Retrain With Domain",
+        "llama_2_7b-tulu_all-science_200": "Retrain With Domain",
+        "llama_2_7b-tulu_all-science_500": "Retrain With Domain",
+        "llama_2_7b-tulu_all-science_1000": "Retrain With Domain",
+        "llama_2_7b-tulu_all-science_2500": "Retrain With Domain",
+        "tulu_2_7b-tulu_none-science_100": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-science_200": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-science_500": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-science_1000": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-science_2500": "Continued Finetuning",
 
         # safety baselines:
-        "llama_2_7b-tulu_none-safety_20": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-safety_40": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-safety_60": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-safety_80": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-safety_100": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_all-safety_20": "Data Merging",
-        "llama_2_7b-tulu_all-safety_40": "Data Merging",
-        "llama_2_7b-tulu_all-safety_60": "Data Merging",
-        "llama_2_7b-tulu_all-safety_80": "Data Merging",
-        "llama_2_7b-tulu_all-safety_100": "Data Merging",
-        "tulu_2_7b-tulu_none-safety_20": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-safety_40": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-safety_60": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-safety_80": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-safety_100": "Tulu 2 Task Vector",
+        "llama_2_7b-tulu_none-safety_20": "Domain Vector",
+        "llama_2_7b-tulu_none-safety_40": "Domain Vector",
+        "llama_2_7b-tulu_none-safety_60": "Domain Vector",
+        "llama_2_7b-tulu_none-safety_80": "Domain Vector",
+        "llama_2_7b-tulu_none-safety_100": "Domain Vector",
+        "llama_2_7b-tulu_all-safety_20": "Retrain With Domain",
+        "llama_2_7b-tulu_all-safety_40": "Retrain With Domain",
+        "llama_2_7b-tulu_all-safety_60": "Retrain With Domain",
+        "llama_2_7b-tulu_all-safety_80": "Retrain With Domain",
+        "llama_2_7b-tulu_all-safety_100": "Retrain With Domain",
+        "tulu_2_7b-tulu_none-safety_20": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-safety_40": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-safety_60": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-safety_80": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-safety_100": "Continued Finetuning",
 
         # coding baselines:
-        "llama_2_7b-tulu_none-coding_20": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-coding_40": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-coding_60": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-coding_80": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_none-coding_100": "Llama 2 Task Vector",
-        "llama_2_7b-tulu_all-coding_20": "Data Merging",
-        "llama_2_7b-tulu_all-coding_40": "Data Merging",
-        "llama_2_7b-tulu_all-coding_60": "Data Merging",
-        "llama_2_7b-tulu_all-coding_80": "Data Merging",
-        "llama_2_7b-tulu_all-coding_100": "Data Merging",
-        "tulu_2_7b-tulu_none-coding_20": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-coding_40": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-coding_60": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-coding_80": "Tulu 2 Task Vector",
-        "tulu_2_7b-tulu_none-coding_100": "Tulu 2 Task Vector",
+        "llama_2_7b-tulu_none-coding_20": "Domain Vector",
+        "llama_2_7b-tulu_none-coding_40": "Domain Vector",
+        "llama_2_7b-tulu_none-coding_60": "Domain Vector",
+        "llama_2_7b-tulu_none-coding_80": "Domain Vector",
+        "llama_2_7b-tulu_none-coding_100": "Domain Vector",
+        "llama_2_7b-tulu_all-coding_20": "Retrain With Domain",
+        "llama_2_7b-tulu_all-coding_40": "Retrain With Domain",
+        "llama_2_7b-tulu_all-coding_60": "Retrain With Domain",
+        "llama_2_7b-tulu_all-coding_80": "Retrain With Domain",
+        "llama_2_7b-tulu_all-coding_100": "Retrain With Domain",
+        "tulu_2_7b-tulu_none-coding_20": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-coding_40": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-coding_60": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-coding_80": "Continued Finetuning",
+        "tulu_2_7b-tulu_none-coding_100": "Continued Finetuning",
     }
     
     if row["model_key"] in baseline_keys:
@@ -127,64 +127,82 @@ def create_row_label(row):
 
     combo_map = {
         # Science
-        "Llama 2 Science 100 - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Science 200 - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Science 500 - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Science 1000 - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Science 2500 - task_arithmetic": "Llama 2 Task Arithmetic",
+        "Llama 2 Science 100 - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Science 200 - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Science 500 - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Science 1000 - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Science 2500 - task_arithmetic": "Adding Domain Vector",
 
-        "Tulu 2 Science 100 - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Science 200 - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Science 500 - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Science 1000 - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Science 2500 - wise-ft": "Tulu 2 Task Arithmetic",
+        "Tulu 2 Science 100 - wise-ft": "Continued Finetuning",
+        "Tulu 2 Science 200 - wise-ft": "Continued Finetuning",
+        "Tulu 2 Science 500 - wise-ft": "Continued Finetuning",
+        "Tulu 2 Science 1000 - wise-ft": "Continued Finetuning",
+        "Tulu 2 Science 2500 - wise-ft": "Continued Finetuning",
 
-        "Llama 2 Science 100 - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Science 200 - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Science 500 - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Science 1000 - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Science 2500 - linear_weighted": "Llama 2 Linear Interpolation",
+        "Llama 2 Science 100 - linear_weighted": "Linear Interpolation",
+        "Llama 2 Science 200 - linear_weighted": "Linear Interpolation",
+        "Llama 2 Science 500 - linear_weighted": "Linear Interpolation",
+        "Llama 2 Science 1000 - linear_weighted": "Linear Interpolation",
+        "Llama 2 Science 2500 - linear_weighted": "Linear Interpolation",
 
-        "Tulu 2 7B Tulu Match Science 1000 - wise-ft": "Tulu 2 Task Arithmetic (Ep. Replay)",
-        "Tulu 2 7B Tulu Match Science 2500 - wise-ft": "Tulu 2 Task Arithmetic (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Science 100": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Science 200": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Science 500": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Science 1000": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Science 2500": "Tulu 2 Task Vector (Ep. Replay)",
+
+        "Tulu 2 7B Tulu Match Science 1000 - wise-ft": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B Tulu Match Science 2500 - wise-ft": "Tulu 2 Task Vector (Ep. Replay)",
 
         # Safety
-        "Llama 2 Safety 20% - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Safety 40% - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Safety 60% - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Safety 80% - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Safety 100% - task_arithmetic": "Llama 2 Task Arithmetic",
+        "Llama 2 Safety 20% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Safety 40% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Safety 60% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Safety 80% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Safety 100% - task_arithmetic": "Adding Domain Vector",
 
-        "Tulu 2 Safety 20% - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Safety 40% - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Safety 60% - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Safety 80% - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Safety 100% - wise-ft": "Tulu 2 Task Arithmetic",
+        "Tulu 2 Safety 20% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Safety 40% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Safety 60% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Safety 80% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Safety 100% - wise-ft": "Continued Finetuning",
 
-        "Llama 2 Safety 20% - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Safety 40% - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Safety 60% - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Safety 80% - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Safety 100% - linear_weighted": "Llama 2 Linear Interpolation",
+        "Llama 2 Safety 20% - linear_weighted": "Linear Interpolation",
+        "Llama 2 Safety 40% - linear_weighted": "Linear Interpolation",
+        "Llama 2 Safety 60% - linear_weighted": "Linear Interpolation",
+        "Llama 2 Safety 80% - linear_weighted": "Linear Interpolation",
+        "Llama 2 Safety 100% - linear_weighted": "Linear Interpolation",
+
+        "Tulu 2 7B ft. on Tulu Match & Safety 20%": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Safety 40%": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Safety 60%": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Safety 80%": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Safety 100%": "Tulu 2 Task Vector (Ep. Replay)",
 
         # Coding
-        "Llama 2 Coding 20% - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Coding 40% - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Coding 60% - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Coding 80% - task_arithmetic": "Llama 2 Task Arithmetic",
-        "Llama 2 Coding 100% - task_arithmetic": "Llama 2 Task Arithmetic",
+        "Llama 2 Coding 20% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Coding 40% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Coding 60% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Coding 80% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Coding 100% - task_arithmetic": "Adding Domain Vector",
 
-        "Tulu 2 Coding 20% - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Coding 40% - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Coding 60% - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Coding 80% - wise-ft": "Tulu 2 Task Arithmetic",
-        "Tulu 2 Coding 100% - wise-ft": "Tulu 2 Task Arithmetic",
+        "Tulu 2 Coding 20% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Coding 40% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Coding 60% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Coding 80% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Coding 100% - wise-ft": "Continued Finetuning",
 
-        "Llama 2 Coding 20% - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Coding 40% - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Coding 60% - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Coding 80% - linear_weighted": "Llama 2 Linear Interpolation",
-        "Llama 2 Coding 100% - linear_weighted": "Llama 2 Linear Interpolation",
+        "Llama 2 Coding 20% - linear_weighted": "Linear Interpolation",
+        "Llama 2 Coding 40% - linear_weighted": "Linear Interpolation",
+        "Llama 2 Coding 60% - linear_weighted": "Linear Interpolation",
+        "Llama 2 Coding 80% - linear_weighted": "Linear Interpolation",
+        "Llama 2 Coding 100% - linear_weighted": "Linear Interpolation",
+
+        "Tulu 2 7B ft. on Tulu Match & Coding 20%": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Coding 40%": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Coding 60%": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Coding 80%": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B ft. on Tulu Match & Coding 100%": "Tulu 2 Task Vector (Ep. Replay)",
 
         # Others (not used, but necessary)
         "Llama 2 7B ft. on Tulu None & Science 2500": "Llama 2 7B ft. on Tulu None & Science 100",
@@ -230,7 +248,7 @@ def get_df():
 
     # calculate averages
     df['Exaggerated Refusals'] = df.apply(lambda row: 100 * row["normalized_safe_average"], axis=1)
-    df['Tulu Average'] = df.apply(lambda row: calculate_average(row, tulu_columns_for_test_average), axis=1)
+    df['General Capabilities'] = df.apply(lambda row: calculate_average(row, tulu_columns_for_test_average), axis=1)
     df['Safety Average'] = df.apply(lambda row: calculate_average(row, safety_columns_for_average), axis=1)
     df["Science Average"] = df.apply(lambda row: 100 * row["mean_null"], axis=1)
     df['Coding Average'] = df.apply(lambda row: calculate_average(row, coding_columns_for_average), axis=1)
@@ -245,13 +263,16 @@ def make_plots():
     df["Order"] = df["domain_model_weight"]
     df.sort_values(by='Combo', inplace=True)
     df.sort_values(by='Order', inplace=True)
-    # print(df["Combo"].to_string())
-    # quit()
 
     dataframes = {
         # baselines
         "llama_tulu_all": df[df["model_key"] == "llama_2_7b-tulu_all"],
         "llama_tulu_all_with_coding": df[df["model_key"] == "llama_2_7b-tulu_all_with_coding"],
+
+        # heuristic points
+        "science_2500_heuristic": df[df["model_key"] == "task_arithmetic-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-science_2500_0.22"],
+        "safety_100_heuristic": df[df["model_key"] == "task_arithmetic-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-safety_100_0.24"],
+        "coding_100_heuristic": df[df["model_key"] == "task_arithmetic-llama_2_7b-tulu_all_1.0-llama_2_7b-tulu_none-coding_100_0.57"],
 
         # science baselines
         "llama_tulu_none_science_100": df[df["model_key"] == "llama_2_7b-tulu_none-science_100"],
@@ -428,14 +449,95 @@ def make_plots():
 
     }
 
+    # baseline curves - science
+    dataframes["science_retrain_ablations"] = pd.concat([
+        dataframes["llama_tulu_all_science_100"],
+        dataframes["llama_tulu_all_science_200"],
+        dataframes["llama_tulu_all_science_500"],
+        dataframes["llama_tulu_all_science_2500"],
+        dataframes["llama_tulu_all_science_2500"],
+    ])
+    dataframes["science_cft_ablations"] = pd.concat([
+        dataframes["tulu_2_tulu_none_science_100"],
+        dataframes["tulu_2_tulu_none_science_200"],
+        dataframes["tulu_2_tulu_none_science_500"],
+        dataframes["tulu_2_tulu_none_science_1000"],
+        dataframes["tulu_2_tulu_none_science_2500"],
+    ])
+    dataframes["science_cft_match_ablations"] = pd.concat([
+        dataframes["tulu_2_tulu_match_science_100"],
+        dataframes["tulu_2_tulu_match_science_200"],
+        dataframes["tulu_2_tulu_match_science_500"],
+        dataframes["tulu_2_tulu_match_science_1000"],
+        dataframes["tulu_2_tulu_match_science_2500"],
+    ])
+
+    # safety
+    dataframes["safety_retrain_ablations"] = pd.concat([
+        dataframes["llama_tulu_all_safety_20"],
+        dataframes["llama_tulu_all_safety_40"],
+        dataframes["llama_tulu_all_safety_60"],
+        dataframes["llama_tulu_all_safety_80"],
+        dataframes["llama_tulu_all_safety_100"],
+    ])
+    dataframes["safety_cft_ablations"] = pd.concat([
+        dataframes["tulu_2_tulu_none_safety_20"],
+        dataframes["tulu_2_tulu_none_safety_40"],
+        dataframes["tulu_2_tulu_none_safety_60"],
+        dataframes["tulu_2_tulu_none_safety_80"],
+        dataframes["tulu_2_tulu_none_safety_100"],
+    ])
+    dataframes["safety_cft_match_ablations"] = pd.concat([
+        dataframes["tulu_2_tulu_match_safety_20"],
+        dataframes["tulu_2_tulu_match_safety_40"],
+        dataframes["tulu_2_tulu_match_safety_60"],
+        dataframes["tulu_2_tulu_match_safety_80"],
+        dataframes["tulu_2_tulu_match_safety_100"],
+    ])
+
+    # coding
+    dataframes["coding_retrain_ablations"] = pd.concat([
+        dataframes["llama_tulu_all_coding_20"],
+        dataframes["llama_tulu_all_coding_40"],
+        dataframes["llama_tulu_all_coding_60"],
+        dataframes["llama_tulu_all_coding_80"],
+        dataframes["llama_tulu_all_coding_100"],
+    ])
+    dataframes["coding_cft_ablations"] = pd.concat([
+        dataframes["tulu_2_tulu_none_coding_20"],
+        dataframes["tulu_2_tulu_none_coding_40"],
+        dataframes["tulu_2_tulu_none_coding_60"],
+        dataframes["tulu_2_tulu_none_coding_80"],
+        dataframes["tulu_2_tulu_none_coding_100"],
+    ])
+    dataframes["coding_cft_match_ablations"] = pd.concat([
+        dataframes["tulu_2_tulu_match_coding_20"],
+        dataframes["tulu_2_tulu_match_coding_40"],
+        dataframes["tulu_2_tulu_match_coding_60"],
+        dataframes["tulu_2_tulu_match_coding_80"],
+        dataframes["tulu_2_tulu_match_coding_100"],
+    ])
+
+    # manually edit heuristics
+    # TODO: update indices if anything changes
+    dataframes["science_2500_heuristic"].at[548, "Label"] = "Data-Weighted Merge"
+    dataframes["safety_100_heuristic"].loc[533, "Label"] = "Data-Weighted Merge"
+    dataframes["coding_100_heuristic"].loc[521, "Label"] = "Data-Weighted Merge"
+
+    even_weights = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+
+    dataframes["science_2500_llama_ta_even"] = dataframes["science_2500_llama_ta"][dataframes["science_2500_llama_ta"]["Order"].isin(even_weights)]
+    dataframes["coding_100_llama_ta_even"] = dataframes["coding_100_llama_ta"][dataframes["coding_100_llama_ta"]["Order"].isin(even_weights)]
+    dataframes["safety_100_llama_ta_even"] = dataframes["safety_100_llama_ta"][dataframes["safety_100_llama_ta"]["Order"].isin(even_weights)]
+
     line_width = 3
     markersize = 20
     marker = "*"
-    point_size = 300
+    point_size = 500
     def compare_science_curves(amt = "2500"):
         sns.lineplot(
             data=dataframes[f"science_{amt}_interp"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -446,7 +548,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"science_{amt}_llama_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -457,7 +559,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"science_{amt}_tulu_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -468,7 +570,7 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes[f"llama_tulu_none_science_{amt}"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             s=point_size,
@@ -477,7 +579,7 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes[f"tulu_2_tulu_none_science_{amt}"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             s=point_size,
@@ -486,16 +588,16 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes["llama_tulu_all"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             s=point_size,
             marker=marker,
-            palette=[sns.color_palette("colorblind")[3]],
+            palette=[sns.color_palette("colorblind")[0]],
         )
         sns.scatterplot(
             data=dataframes[f"llama_tulu_all_science_{amt}"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             s=point_size,
@@ -504,7 +606,7 @@ def make_plots():
         )
         # sns.scatterplot(
         #     data=dataframes[f"tulu_2_tulu_match_science_{amt}"],
-        #     x="Tulu Average",
+        #     x="General Capabilities",
         #     y="Science Average",
         #     hue="Label",
         #     s=point_size,
@@ -512,7 +614,7 @@ def make_plots():
         #     palette=[sns.color_palette("colorblind")[6]],
         # )
         plt.legend()
-        plt.xlabel("Tulu Average",fontsize=20)
+        plt.xlabel("General Capabilities",fontsize=20)
         plt.ylabel("Science Average",fontsize=20)
         plt.xticks(fontsize=16)
         plt.yticks(fontsize=16)
@@ -523,25 +625,19 @@ def make_plots():
         plt.savefig(f'results/consistent_mix/plots/science_{amt}.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
-    def compare_safety_curves(amt = "100", x = "Tulu Average", y = "Safety Average"):
+    def compare_safety_curves(amt = "100", x = "General Capabilities", y = "Safety Average", heuristic=False):
+        if heuristic:
+            safety_llama_ta = f"safety_{amt}_llama_ta"
+        else:
+            safety_llama_ta = f"safety_{amt}_llama_ta_even"
+
         for x, y, label in [
-            ("Tulu Average", "Safety Average", "tulu_vs_safety"),
-            ("Tulu Average", "Exaggerated Refusals", "tulu_vs_exaggerated_refusals"),
+            ("General Capabilities", "Safety Average", "tulu_vs_safety"),
+            ("General Capabilities", "Exaggerated Refusals", "tulu_vs_exaggerated_refusals"),
             ("Exaggerated Refusals", "Safety Average", "exaggerated_refusals_vs_safety"),
         ]:
             sns.lineplot(
-                data=dataframes[f"safety_{amt}_interp"],
-                x=x,
-                y=y,
-                hue="Label",
-                sort=False,
-                # marker='X',
-                linewidth=line_width,
-                markersize=markersize,
-                palette=[sns.color_palette("colorblind")[0]],
-            )
-            sns.lineplot(
-                data=dataframes[f"safety_{amt}_llama_ta"],
+                data=dataframes[safety_llama_ta],
                 x=x,
                 y=y,
                 hue="Label",
@@ -551,28 +647,52 @@ def make_plots():
                 markersize=markersize,
                 palette=[sns.color_palette("colorblind")[1]],
             )
-            sns.lineplot(
-                data=dataframes[f"safety_{amt}_tulu_ta"],
-                x=x,
-                y=y,
-                hue="Label",
-                sort=False,
-                # marker='X',
-                linewidth=line_width,
-                markersize=markersize,
-                palette=[sns.color_palette("colorblind")[2]],
-            )
+            if not heuristic:
+                sns.lineplot(
+                    data=dataframes["safety_retrain_ablations"],
+                    x=x,
+                    y=y,
+                    hue="Label",
+                    sort=False,
+                    # marker='X',
+                    linewidth=line_width,
+                    markersize=markersize,
+                    palette=[sns.color_palette("colorblind")[3]],
+                )
+                sns.lineplot(
+                    data=dataframes["safety_cft_ablations"],
+                    x=x,
+                    y=y,
+                    hue="Label",
+                    sort=False,
+                    # marker='X',
+                    linewidth=line_width,
+                    markersize=markersize,
+                    palette=[sns.color_palette("colorblind")[4]],
+                )
+                # sns.lineplot(
+                #     data=dataframes["safety_cft_match_ablations"],
+                #     x=x,
+                #     y=y,
+                #     hue="Label",
+                #     sort=False,
+                #     # marker='X',
+                #     linewidth=line_width,
+                #     markersize=markersize,
+                #     palette=[sns.color_palette("colorblind")[2]],
+                # )
+            else:
+                sns.scatterplot(
+                    data=dataframes[f"safety_100_heuristic"],
+                    x=x,
+                    y=y,
+                    hue="Label",
+                    s=point_size,
+                    marker=marker,
+                    palette=[sns.color_palette("colorblind")[3]],
+                )
             sns.scatterplot(
-                data=dataframes[f"llama_tulu_none_safety_{amt}"],
-                x=x,
-                y=y,
-                hue="Label",
-                s=point_size,
-                marker=marker,
-                palette=[sns.color_palette("colorblind")[0]],
-            )
-            sns.scatterplot(
-                data=dataframes[f"tulu_2_tulu_none_safety_{amt}"],
+                data=dataframes["llama_tulu_none_safety_100"],
                 x=x,
                 y=y,
                 hue="Label",
@@ -587,26 +707,8 @@ def make_plots():
                 hue="Label",
                 s=point_size,
                 marker=marker,
-                palette=[sns.color_palette("colorblind")[3]],
+                palette=[sns.color_palette("colorblind")[0]],
             )
-            sns.scatterplot(
-                data=dataframes[f"llama_tulu_all_safety_{amt}"],
-                x=x,
-                y=y,
-                hue="Label",
-                s=point_size,
-                marker=marker,
-                palette=[sns.color_palette("colorblind")[4]],
-            )
-            # sns.scatterplot(
-            #     data=dataframes[f"tulu_2_tulu_match_safety_{amt}"],
-            #     x=x,
-            #     y=y,
-            #     hue="Label",
-            #     s=point_size,
-            #     marker=marker,
-            #     palette=[sns.color_palette("colorblind")[6]],
-            # )
             plt.legend()
             plt.xlabel(x,fontsize=20)
             plt.ylabel(y,fontsize=20)
@@ -616,13 +718,16 @@ def make_plots():
 
             plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
             # plt.show()
-            plt.savefig(f'results/consistent_mix/plots/safety_{amt}-{label}.png', dpi=300, bbox_inches='tight')
+            if heuristic:
+                plt.savefig(f'results/consistent_mix/plots/safety_{amt}-{label}-heuristic.png', dpi=300, bbox_inches='tight')
+            else:
+                plt.savefig(f'results/consistent_mix/plots/safety_{amt}-{label}.png', dpi=300, bbox_inches='tight')
             plt.clf()
 
     def compare_coding_curves(amt = "100"):
         sns.lineplot(
             data=dataframes[f"coding_{amt}_interp"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             sort=False,
@@ -633,7 +738,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"coding_{amt}_llama_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             sort=False,
@@ -644,7 +749,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"coding_{amt}_tulu_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             sort=False,
@@ -655,7 +760,7 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes[f"llama_tulu_none_coding_{amt}"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             s=point_size,
@@ -664,7 +769,7 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes[f"tulu_2_tulu_none_coding_{amt}"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             s=point_size,
@@ -673,16 +778,16 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes["llama_tulu_all"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             s=point_size,
             marker=marker,
-            palette=[sns.color_palette("colorblind")[3]],
+            palette=[sns.color_palette("colorblind")[0]],
         )
         sns.scatterplot(
             data=dataframes[f"llama_tulu_all_coding_{amt}"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             s=point_size,
@@ -691,7 +796,7 @@ def make_plots():
         )
         # sns.scatterplot(
         #     data=dataframes[f"tulu_2_tulu_match_coding_{amt}"],
-        #     x="Tulu Average",
+        #     x="General Capabilities",
         #     y="Coding Average",
         #     hue="Label",
         #     s=point_size,
@@ -699,7 +804,7 @@ def make_plots():
         #     palette=[sns.color_palette("colorblind")[6]],
         # )
         plt.legend()
-        plt.xlabel("Tulu Average",fontsize=20)
+        plt.xlabel("General Capabilities",fontsize=20)
         plt.ylabel("Coding Average",fontsize=20)
         plt.xticks([40, 45, 50, 55, 60], fontsize=16)
         plt.yticks(fontsize=16)
@@ -712,7 +817,7 @@ def make_plots():
         plt.savefig(f'results/consistent_mix/plots/coding_{amt}.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
-    def linear_interpolation_100p_curves():
+    def compare_3_weighting_strategies():
         ticksize=14
 
         fig, axes = plt.subplots(
@@ -723,7 +828,7 @@ def make_plots():
 
         sns.lineplot(
             data=dataframes["science_2500_interp"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -733,83 +838,9 @@ def make_plots():
             palette=[sns.color_palette("colorblind")[0]],
             ax=axes[0],
         )
-
-        axes[0].set_title('Science', fontsize=20)
-        axes[0].set(xlabel=None, ylabel=None)
-        axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[0].legend().set_visible(False)
-        axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
-
-
-        sns.lineplot(
-            data=dataframes["safety_100_interp"],
-            x="Tulu Average",
-            y="Safety Average",
-            hue="Label",
-            sort=False,
-            # marker='X',
-            linewidth=line_width,
-            markersize=markersize,
-            palette=[sns.color_palette("colorblind")[0]],
-            ax=axes[1],
-        )
-
-        axes[1].set_title('Safety', fontsize=20)
-        axes[1].set(xlabel=None, ylabel=None)
-        axes[1].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[1].legend().set_visible(False)
-        axes[1].tick_params(axis='both', which='major', labelsize=ticksize)
-
-        sns.lineplot(
-            data=dataframes["coding_100_interp"],
-            x="Tulu Average",
-            y="Coding Average",
-            hue="Label",
-            sort=False,
-            # marker='X',
-            linewidth=line_width,
-            markersize=markersize,
-            palette=[sns.color_palette("colorblind")[0]],
-            ax=axes[2],
-        )
-
-        axes[2].set_title('Coding', fontsize=20)
-        axes[2].set(xlabel=None, ylabel=None)
-        axes[2].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[2].legend().set_visible(False)
-        axes[2].tick_params(axis='both', which='major', labelsize=ticksize)
-
-        # plt.xlabel("Tulu Average",fontsize=20)
-        # plt.ylabel("Domain Average",fontsize=20)
-
-        # plt.xticks(
-        #     # [0.4, 0.45, 0.5, 0.55, 0.6],
-        #     fontsize=16
-        # )
-        # plt.yticks(fontsize=16)
-        # plt.legend(fontsize=11)
-
-        fig.text(0.5, 0.02, 'Tulu Average', ha='center', va='center', fontsize=18)
-        fig.text(0.075, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
-
-        # plt.tight_layout()
-        # plt.show()
-        plt.savefig(f'results/consistent_mix/plots/linear_interpolation_100p_all_3.png', dpi=300, bbox_inches='tight')
-        plt.clf()
-
-    def science_coding_ta_curves():
-        ticksize=14
-
-        fig, axes = plt.subplots(
-            1, 
-            3, 
-            figsize=(18, 5)
-        )
-
-        # science
         sns.lineplot(
             data=dataframes[f"science_2500_llama_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -821,7 +852,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"science_2500_tulu_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -838,10 +869,22 @@ def make_plots():
         axes[0].legend(title='')
         axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
 
-        # safety
+
+        sns.lineplot(
+            data=dataframes["safety_100_interp"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[1],
+        )
         sns.lineplot(
             data=dataframes[f"safety_100_llama_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Safety Average",
             hue="Label",
             sort=False,
@@ -853,7 +896,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"safety_100_tulu_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Safety Average",
             hue="Label",
             sort=False,
@@ -870,10 +913,21 @@ def make_plots():
         axes[1].legend().set_visible(False)
         axes[1].tick_params(axis='both', which='major', labelsize=ticksize)
 
-        # coding
+        sns.lineplot(
+            data=dataframes["coding_100_interp"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[2],
+        )
         sns.lineplot(
             data=dataframes[f"coding_100_llama_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             sort=False,
@@ -885,7 +939,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"coding_100_tulu_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             sort=False,
@@ -896,13 +950,13 @@ def make_plots():
             ax=axes[2],
         )
 
-        axes[2].set_title('Science', fontsize=20)
+        axes[2].set_title('Coding', fontsize=20)
         axes[2].set(xlabel=None, ylabel=None)
         axes[2].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
         axes[2].legend().set_visible(False)
         axes[2].tick_params(axis='both', which='major', labelsize=ticksize)
 
-        # plt.xlabel("Tulu Average",fontsize=20)
+        # plt.xlabel("General Capabilities",fontsize=20)
         # plt.ylabel("Domain Average",fontsize=20)
 
         # plt.xticks(
@@ -912,18 +966,420 @@ def make_plots():
         # plt.yticks(fontsize=16)
         # plt.legend(fontsize=11)
 
-        fig.text(0.5, 0.02, 'Tulu Average', ha='center', va='center', fontsize=18)
+        fig.text(0.5, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
         fig.text(0.075, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
 
         # plt.tight_layout()
         # plt.show()
-        plt.savefig(f'results/consistent_mix/plots/task_arithmetic_2_curves_100p_all_3.png', dpi=300, bbox_inches='tight')
+        plt.savefig(f'results/consistent_mix/plots/all_3_weighting_strategies.png', dpi=300, bbox_inches='tight')
+        plt.clf()
+
+    def ta_curves_vs_baselines_all_3():
+        ticksize=14
+
+        fig, axes = plt.subplots(
+            1, 
+            2, 
+            figsize=(12, 5)
+        )
+
+        # # science
+        # sns.lineplot(
+        #     data=dataframes[f"science_2500_llama_ta"],
+        #     x="General Capabilities",
+        #     y="Science Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[1]],
+        #     ax=axes[0],
+        # )
+        # sns.lineplot(
+        #     data=dataframes["science_retrain_ablations"],
+        #     x="General Capabilities",
+        #     y="Science Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[3]],
+        #     ax=axes[0],
+        # )
+        # sns.lineplot(
+        #     data=dataframes["science_cft_ablations"],
+        #     x="General Capabilities",
+        #     y="Science Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[4]],
+        #     ax=axes[0],
+        # )
+        # sns.scatterplot(
+        #     data=dataframes["llama_tulu_all"],
+        #     x="General Capabilities",
+        #     y="Science Average",
+        #     hue="Label",
+        #     s=point_size,
+        #     marker=marker,
+        #     palette=[sns.color_palette("colorblind")[0]],
+        #     ax=axes[0]
+        # )
+        # # sns.lineplot(
+        # #     data=dataframes["science_cft_match_ablations"],
+        # #     x="General Capabilities",
+        # #     y="Science Average",
+        # #     hue="Label",
+        # #     sort=False,
+        # #     # marker='X',
+        # #     linewidth=line_width,
+        # #     markersize=markersize,
+        # #     palette=[sns.color_palette("colorblind")[2]],
+        # #     ax=axes[0],
+        # # )
+
+        # axes[0].set_title('Science', fontsize=20)
+        # axes[0].set(xlabel=None, ylabel=None)
+        # axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        # axes[0].legend(title='')
+        # axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        # safety
+        sns.lineplot(
+            data=dataframes[f"safety_100_llama_ta_even"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[0],
+        )
+        sns.lineplot(
+            data=dataframes["safety_retrain_ablations"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[0],
+        )
+        sns.lineplot(
+            data=dataframes["safety_cft_ablations"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[4]],
+            ax=axes[0],
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[0]
+        )
+        # sns.lineplot(
+        #     data=dataframes["safety_cft_match_ablations"],
+        #     x="General Capabilities",
+        #     y="Safety Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[0],
+        # )
+
+        axes[0].set_title('Safety', fontsize=20)
+        axes[0].set(xlabel=None, ylabel=None)
+        axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[0].legend(title='')
+        axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        # coding
+        sns.lineplot(
+            data=dataframes[f"coding_100_llama_ta_even"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[1],
+        )
+        sns.lineplot(
+            data=dataframes["coding_retrain_ablations"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[1],
+        )
+        sns.lineplot(
+            data=dataframes["coding_cft_ablations"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[4]],
+            ax=axes[1],
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[1]
+        )
+        # sns.lineplot(
+        #     data=dataframes["coding_cft_match_ablations"],
+        #     x="General Capabilities",
+        #     y="Coding Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[1],
+        # )
+
+        axes[1].set_title('Coding', fontsize=20)
+        axes[1].set(xlabel=None, ylabel=None)
+        axes[1].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[1].legend().set_visible(False)
+        axes[1].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        # plt.xlabel("General Capabilities",fontsize=20)
+        # plt.ylabel("Domain Average",fontsize=20)
+
+        # plt.xticks(
+        #     # [0.4, 0.45, 0.5, 0.55, 0.6],
+        #     fontsize=16
+        # )
+        # plt.yticks(fontsize=16)
+        # plt.legend(fontsize=11)
+
+        fig.text(0.5, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
+        fig.text(0.075, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
+
+        # plt.tight_layout()
+        # plt.show()
+        plt.savefig(f'results/consistent_mix/plots/task_arithmetic_vs_baselines_all_3.png', dpi=300, bbox_inches='tight')
+        plt.clf()
+
+    def ta_curves_heuristics():
+        ticksize=14
+
+        fig, axes = plt.subplots(
+            1, 
+            3, 
+            figsize=(18, 5)
+        )
+
+        # science
+        sns.lineplot(
+            data=dataframes[f"science_2500_llama_ta"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[0],
+        )
+        sns.scatterplot(
+            data=dataframes[f"science_2500_heuristic"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[0]
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[0]
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_none_science_2500"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[2]],
+            ax=axes[0]
+        )
+
+        axes[0].set_title('Science', fontsize=20)
+        axes[0].set(xlabel=None, ylabel=None)
+        axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[0].legend(title='')
+        axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        # safety
+        sns.lineplot(
+            data=dataframes[f"safety_100_llama_ta"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[1],
+        )
+        sns.scatterplot(
+            data=dataframes[f"safety_100_heuristic"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[1]
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[1]
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_none_safety_100"],
+            x="General Capabilities",
+            y="Safety Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[2]],
+            ax=axes[1]
+        )
+
+        axes[1].set_title('Safety', fontsize=20)
+        axes[1].set(xlabel=None, ylabel=None)
+        axes[1].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[1].legend().set_visible(False)
+        axes[1].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        # coding
+        sns.lineplot(
+            data=dataframes[f"coding_100_llama_ta"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[2],
+        )
+        sns.scatterplot(
+            data=dataframes[f"coding_100_heuristic"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[2]
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[2]
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_none_coding_100"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[2]],
+            ax=axes[2]
+        )
+
+        axes[2].set_title('Coding', fontsize=20)
+        axes[2].set(xlabel=None, ylabel=None)
+        axes[2].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[2].legend().set_visible(False)
+        axes[2].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        # plt.xlabel("General Capabilities",fontsize=20)
+        # plt.ylabel("Domain Average",fontsize=20)
+
+        # plt.xticks(
+        #     # [0.4, 0.45, 0.5, 0.55, 0.6],
+        #     fontsize=16
+        # )
+        # plt.yticks(fontsize=16)
+        # plt.legend(fontsize=11)
+
+        fig.text(0.5, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
+        fig.text(0.075, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
+
+        # plt.tight_layout()
+        # plt.show()
+        plt.savefig(f'results/consistent_mix/plots/task_arithmetic_vs_heuristics_3.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
     def science_interference_curves():
         sns.lineplot(
             data=dataframes["science_2500_llama_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -934,7 +1390,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes["science_2500_tulu_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -945,7 +1401,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes["science_2500_tulu_match_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Science Average",
             hue="Label",
             sort=False,
@@ -956,7 +1412,7 @@ def make_plots():
         )
         # sns.lineplot(
         #     data=dataframes["science_2500_tulu_match_ta"],
-        #     x="Tulu Average",
+        #     x="General Capabilities",
         #     y="Science Average",
         #     hue="Label",
         #     sort=False,
@@ -966,7 +1422,7 @@ def make_plots():
         #     palette=[sns.color_palette("colorblind")[4]],
         # )
         plt.legend()
-        plt.xlabel("Tulu Average",fontsize=20)
+        plt.xlabel("General Capabilities",fontsize=20)
         plt.ylabel("Science Average",fontsize=20)
         plt.xticks(fontsize=16)
         plt.yticks(fontsize=16)
@@ -980,7 +1436,7 @@ def make_plots():
     def compare_coding_curves_tulu_with_coding(amt = "100"):
         sns.lineplot(
             data=dataframes[f"tulu_w_coding_coding_{amt}_interp"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             sort=False,
@@ -991,7 +1447,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"tulu_w_coding_coding_{amt}_llama_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             sort=False,
@@ -1002,7 +1458,7 @@ def make_plots():
         )
         sns.lineplot(
             data=dataframes[f"tulu_w_coding_coding_{amt}_tulu_ta"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             sort=False,
@@ -1013,7 +1469,7 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes[f"llama_tulu_none_coding_{amt}"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             s=point_size,
@@ -1022,7 +1478,7 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes[f"tulu_2_with_coding_tulu_none_coding_{amt}"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             s=point_size,
@@ -1031,7 +1487,7 @@ def make_plots():
         )
         sns.scatterplot(
             data=dataframes["llama_tulu_all_with_coding"],
-            x="Tulu Average",
+            x="General Capabilities",
             y="Coding Average",
             hue="Label",
             s=point_size,
@@ -1040,7 +1496,7 @@ def make_plots():
         )
         # sns.scatterplot(
         #     data=dataframes[f"llama_tulu_all_coding_{amt}"],
-        #     x="Tulu Average",
+        #     x="General Capabilities",
         #     y="Coding Average",
         #     hue="Label",
         #     s=point_size,
@@ -1049,7 +1505,7 @@ def make_plots():
         # )
         # sns.scatterplot(
         #     data=dataframes[f"tulu_2_tulu_match_coding_{amt}"],
-        #     x="Tulu Average",
+        #     x="General Capabilities",
         #     y="Coding Average",
         #     hue="Label",
         #     s=point_size,
@@ -1057,7 +1513,7 @@ def make_plots():
         #     palette=[sns.color_palette("colorblind")[6]],
         # )
         plt.legend()
-        plt.xlabel("Tulu Average",fontsize=20)
+        plt.xlabel("General Capabilities",fontsize=20)
         plt.ylabel("Coding Average",fontsize=20)
         plt.xticks([40, 45, 50, 55, 60], fontsize=16)
         plt.yticks(fontsize=16)
@@ -1070,6 +1526,156 @@ def make_plots():
         plt.savefig(f'results/consistent_mix/plots/tulu_w_coding_coding_{amt}.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
+    def compare_coding_amount_curves():
+        # sns.lineplot(
+        #     data=dataframes[f"coding_{amt}_interp"],
+        #     x="General Capabilities",
+        #     y="Coding Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[0]],
+        # )
+        sns.lineplot(
+            data=dataframes[f"coding_20_llama_ta"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[0]],
+        )
+        sns.lineplot(
+            data=dataframes[f"coding_40_llama_ta"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+        )
+        sns.lineplot(
+            data=dataframes[f"coding_60_llama_ta"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[2]],
+        )
+        sns.lineplot(
+            data=dataframes[f"coding_80_llama_ta"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[3]],
+        )
+        sns.lineplot(
+            data=dataframes[f"coding_100_llama_ta"],
+            x="General Capabilities",
+            y="Coding Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[4]],
+        )
+        plt.legend()
+        plt.xlabel("General Capabilities",fontsize=20)
+        plt.ylabel("Coding Average",fontsize=20)
+        plt.xticks([40, 45, 50, 55, 60], fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.legend(fontsize=11)
+
+        plt.xlim(40, 60)
+
+        plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        # plt.show()
+        plt.savefig(f'results/consistent_mix/plots/coding_llama_ta_all.png', dpi=300, bbox_inches='tight')
+        plt.clf()
+
+    def compare_science_amount_curves():
+        sns.lineplot(
+            data=dataframes[f"science_100_llama_ta"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[0]],
+        )
+        sns.lineplot(
+            data=dataframes[f"science_200_llama_ta"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+        )
+        sns.lineplot(
+            data=dataframes[f"science_500_llama_ta"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[2]],
+        )
+        sns.lineplot(
+            data=dataframes[f"science_1000_llama_ta"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[3]],
+        )
+        sns.lineplot(
+            data=dataframes[f"science_2500_llama_ta"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[4]],
+        )
+        plt.legend()
+        plt.xlabel("General Capabilities",fontsize=20)
+        plt.ylabel("Science Average",fontsize=20)
+        # plt.xticks([40, 45, 50, 55, 60], fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.legend(fontsize=11)
+
+        # plt.xlim(40, 60)
+
+        plt.grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        # plt.show()
+        plt.savefig(f'results/consistent_mix/plots/science_llama_ta_all.png', dpi=300, bbox_inches='tight')
+        plt.clf()
 
     compare_science_curves()
     for amt in [
@@ -1080,10 +1686,14 @@ def make_plots():
         "100",
     ]:
         compare_safety_curves(amt=amt)
+        compare_safety_curves(amt=amt, heuristic=True)
     compare_coding_curves()
+    compare_coding_amount_curves()
+    compare_science_amount_curves()
     science_interference_curves()
     compare_coding_curves_tulu_with_coding()
-    linear_interpolation_100p_curves()
-    science_coding_ta_curves()
+    compare_3_weighting_strategies()
+    ta_curves_vs_baselines_all_3()
+    ta_curves_heuristics()
 
 make_plots()
