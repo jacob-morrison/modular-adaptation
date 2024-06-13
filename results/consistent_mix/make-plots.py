@@ -437,7 +437,7 @@ def make_plots():
         "coding_80_interp": df[(df["Combo"] == "Llama 2 Coding 80% - linear_weighted") & (~df["tulu_model"].str.contains("coding"))],
         "coding_100_interp": df[(df["Combo"] == "Llama 2 Coding 100% - linear_weighted") & (~df["tulu_model"].str.contains("coding"))],
 
-        "coding_100_llama_ta_dare": df[df["Combo"] == "Llama 2 Cooding 100% - dare_task_arithmetic"],
+        "coding_100_llama_ta_dare": df[df["Combo"] == "Llama 2 Coding 100% - dare_task_arithmetic"],
         "coding_100_llama_ta_ties": df[df["Combo"] == "Llama 2 Coding 100% - ties_task_arithmetic"],
 
         # Tulu w/ Coding
@@ -703,15 +703,15 @@ def make_plots():
                     marker=marker,
                     palette=[sns.color_palette("colorblind")[3]],
                 )
-            sns.scatterplot(
-                data=dataframes["llama_tulu_none_safety_100"],
-                x=x,
-                y=y,
-                hue="Label",
-                s=point_size,
-                marker=marker,
-                palette=[sns.color_palette("colorblind")[2]],
-            )
+            # sns.scatterplot(
+            #     data=dataframes["llama_tulu_none_safety_100"],
+            #     x=x,
+            #     y=y,
+            #     hue="Label",
+            #     s=point_size,
+            #     marker=marker,
+            #     palette=[sns.color_palette("colorblind")[2]],
+            # )
             sns.scatterplot(
                 data=dataframes["llama_tulu_all"],
                 x=x,
@@ -991,13 +991,59 @@ def make_plots():
 
         fig, axes = plt.subplots(
             1, 
-            2, 
-            figsize=(12, 5)
+            3, 
+            figsize=(18, 5)
         )
 
-        # # science
+        # science
+        sns.lineplot(
+            data=dataframes[f"science_2500_llama_ta"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[0],
+        )
+        sns.lineplot(
+            data=dataframes["science_retrain_ablations"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[0],
+        )
+        sns.lineplot(
+            data=dataframes["science_cft_ablations"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[4]],
+            ax=axes[0],
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="General Capabilities",
+            y="Science Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[0]
+        )
         # sns.lineplot(
-        #     data=dataframes[f"science_2500_llama_ta"],
+        #     data=dataframes["science_cft_match_ablations"],
         #     x="General Capabilities",
         #     y="Science Average",
         #     hue="Label",
@@ -1005,61 +1051,15 @@ def make_plots():
         #     # marker='X',
         #     linewidth=line_width,
         #     markersize=markersize,
-        #     palette=[sns.color_palette("colorblind")[1]],
+        #     palette=[sns.color_palette("colorblind")[2]],
         #     ax=axes[0],
         # )
-        # sns.lineplot(
-        #     data=dataframes["science_retrain_ablations"],
-        #     x="General Capabilities",
-        #     y="Science Average",
-        #     hue="Label",
-        #     sort=False,
-        #     # marker='X',
-        #     linewidth=line_width,
-        #     markersize=markersize,
-        #     palette=[sns.color_palette("colorblind")[3]],
-        #     ax=axes[0],
-        # )
-        # sns.lineplot(
-        #     data=dataframes["science_cft_ablations"],
-        #     x="General Capabilities",
-        #     y="Science Average",
-        #     hue="Label",
-        #     sort=False,
-        #     # marker='X',
-        #     linewidth=line_width,
-        #     markersize=markersize,
-        #     palette=[sns.color_palette("colorblind")[4]],
-        #     ax=axes[0],
-        # )
-        # sns.scatterplot(
-        #     data=dataframes["llama_tulu_all"],
-        #     x="General Capabilities",
-        #     y="Science Average",
-        #     hue="Label",
-        #     s=point_size,
-        #     marker=marker,
-        #     palette=[sns.color_palette("colorblind")[0]],
-        #     ax=axes[0]
-        # )
-        # # sns.lineplot(
-        # #     data=dataframes["science_cft_match_ablations"],
-        # #     x="General Capabilities",
-        # #     y="Science Average",
-        # #     hue="Label",
-        # #     sort=False,
-        # #     # marker='X',
-        # #     linewidth=line_width,
-        # #     markersize=markersize,
-        # #     palette=[sns.color_palette("colorblind")[2]],
-        # #     ax=axes[0],
-        # # )
 
-        # axes[0].set_title('Science', fontsize=20)
-        # axes[0].set(xlabel=None, ylabel=None)
-        # axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        # axes[0].legend(title='')
-        # axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
+        axes[0].set_title('Science', fontsize=20)
+        axes[0].set(xlabel=None, ylabel=None)
+        axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[0].legend(title='')
+        axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
 
         # safety
         sns.lineplot(
@@ -1072,7 +1072,7 @@ def make_plots():
             linewidth=line_width,
             markersize=markersize,
             palette=[sns.color_palette("colorblind")[1]],
-            ax=axes[0],
+            ax=axes[1],
         )
         sns.lineplot(
             data=dataframes["safety_retrain_ablations"],
@@ -1084,7 +1084,7 @@ def make_plots():
             linewidth=line_width,
             markersize=markersize,
             palette=[sns.color_palette("colorblind")[3]],
-            ax=axes[0],
+            ax=axes[1],
         )
         sns.lineplot(
             data=dataframes["safety_cft_ablations"],
@@ -1096,7 +1096,7 @@ def make_plots():
             linewidth=line_width,
             markersize=markersize,
             palette=[sns.color_palette("colorblind")[4]],
-            ax=axes[0],
+            ax=axes[1],
         )
         sns.scatterplot(
             data=dataframes["llama_tulu_all"],
@@ -1106,7 +1106,7 @@ def make_plots():
             s=point_size,
             marker=marker,
             palette=[sns.color_palette("colorblind")[0]],
-            ax=axes[0]
+            ax=axes[1]
         )
         # sns.lineplot(
         #     data=dataframes["safety_cft_match_ablations"],
@@ -1121,11 +1121,11 @@ def make_plots():
         #     ax=axes[0],
         # )
 
-        axes[0].set_title('Safety', fontsize=20)
-        axes[0].set(xlabel=None, ylabel=None)
-        axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[0].legend(title='')
-        axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
+        axes[1].set_title('Safety', fontsize=20)
+        axes[1].set(xlabel=None, ylabel=None)
+        axes[1].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[1].legend().set_visible(False)
+        axes[1].tick_params(axis='both', which='major', labelsize=ticksize)
 
         # coding
         sns.lineplot(
@@ -1138,7 +1138,7 @@ def make_plots():
             linewidth=line_width,
             markersize=markersize,
             palette=[sns.color_palette("colorblind")[1]],
-            ax=axes[1],
+            ax=axes[2],
         )
         sns.lineplot(
             data=dataframes["coding_retrain_ablations"],
@@ -1150,7 +1150,7 @@ def make_plots():
             linewidth=line_width,
             markersize=markersize,
             palette=[sns.color_palette("colorblind")[3]],
-            ax=axes[1],
+            ax=axes[2],
         )
         sns.lineplot(
             data=dataframes["coding_cft_ablations"],
@@ -1162,7 +1162,7 @@ def make_plots():
             linewidth=line_width,
             markersize=markersize,
             palette=[sns.color_palette("colorblind")[4]],
-            ax=axes[1],
+            ax=axes[2],
         )
         sns.scatterplot(
             data=dataframes["llama_tulu_all"],
@@ -1172,7 +1172,7 @@ def make_plots():
             s=point_size,
             marker=marker,
             palette=[sns.color_palette("colorblind")[0]],
-            ax=axes[1]
+            ax=axes[2]
         )
         # sns.lineplot(
         #     data=dataframes["coding_cft_match_ablations"],
@@ -1187,11 +1187,11 @@ def make_plots():
         #     ax=axes[1],
         # )
 
-        axes[1].set_title('Coding', fontsize=20)
-        axes[1].set(xlabel=None, ylabel=None)
-        axes[1].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[1].legend().set_visible(False)
-        axes[1].tick_params(axis='both', which='major', labelsize=ticksize)
+        axes[2].set_title('Coding', fontsize=20)
+        axes[2].set(xlabel=None, ylabel=None)
+        axes[2].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[2].legend().set_visible(False)
+        axes[2].tick_params(axis='both', which='major', labelsize=ticksize)
 
         # plt.xlabel("General Capabilities",fontsize=20)
         # plt.ylabel("Domain Average",fontsize=20)
@@ -1433,16 +1433,16 @@ def make_plots():
             palette=[sns.color_palette("colorblind")[0]],
             ax=axes[0]
         )
-        sns.scatterplot(
-            data=dataframes["llama_tulu_none_science_2500"],
-            x="General Capabilities",
-            y="Science Average",
-            hue="Label",
-            s=point_size,
-            marker=marker,
-            palette=[sns.color_palette("colorblind")[2]],
-            ax=axes[0]
-        )
+        # sns.scatterplot(
+        #     data=dataframes["llama_tulu_none_science_2500"],
+        #     x="General Capabilities",
+        #     y="Science Average",
+        #     hue="Label",
+        #     s=point_size,
+        #     marker=marker,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[0]
+        # )
 
         axes[0].set_title('Science', fontsize=20)
         axes[0].set(xlabel=None, ylabel=None)
@@ -1483,16 +1483,16 @@ def make_plots():
             palette=[sns.color_palette("colorblind")[0]],
             ax=axes[1]
         )
-        sns.scatterplot(
-            data=dataframes["llama_tulu_none_safety_100"],
-            x="General Capabilities",
-            y="Safety Average",
-            hue="Label",
-            s=point_size,
-            marker=marker,
-            palette=[sns.color_palette("colorblind")[2]],
-            ax=axes[1]
-        )
+        # sns.scatterplot(
+        #     data=dataframes["llama_tulu_none_safety_100"],
+        #     x="General Capabilities",
+        #     y="Safety Average",
+        #     hue="Label",
+        #     s=point_size,
+        #     marker=marker,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[1]
+        # )
 
         axes[1].set_title('Safety', fontsize=20)
         axes[1].set(xlabel=None, ylabel=None)
@@ -1533,16 +1533,16 @@ def make_plots():
             palette=[sns.color_palette("colorblind")[0]],
             ax=axes[2]
         )
-        sns.scatterplot(
-            data=dataframes["llama_tulu_none_coding_100"],
-            x="General Capabilities",
-            y="Coding Average",
-            hue="Label",
-            s=point_size,
-            marker=marker,
-            palette=[sns.color_palette("colorblind")[2]],
-            ax=axes[2]
-        )
+        # sns.scatterplot(
+        #     data=dataframes["llama_tulu_none_coding_100"],
+        #     x="General Capabilities",
+        #     y="Coding Average",
+        #     hue="Label",
+        #     s=point_size,
+        #     marker=marker,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[2]
+        # )
 
         axes[2].set_title('Coding', fontsize=20)
         axes[2].set(xlabel=None, ylabel=None)
