@@ -71,55 +71,55 @@ def create_row_label(row):
         "llama_2_7b-tulu_all": "Tulu 2 7B",
 
         # science baselines:
-        "llama_2_7b-tulu_none-science_100": "Domain Vector",
-        "llama_2_7b-tulu_none-science_200": "Domain Vector",
-        "llama_2_7b-tulu_none-science_500": "Domain Vector",
-        "llama_2_7b-tulu_none-science_1000": "Domain Vector",
-        "llama_2_7b-tulu_none-science_2500": "Domain Vector",
-        "llama_2_7b-tulu_all-science_100": "Retrain With Domain",
-        "llama_2_7b-tulu_all-science_200": "Retrain With Domain",
-        "llama_2_7b-tulu_all-science_500": "Retrain With Domain",
-        "llama_2_7b-tulu_all-science_1000": "Retrain With Domain",
-        "llama_2_7b-tulu_all-science_2500": "Retrain With Domain",
-        "tulu_2_7b-tulu_none-science_100": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-science_200": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-science_500": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-science_1000": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-science_2500": "Continued Finetuning",
+        "llama_2_7b-tulu_none-science_100": "Task Vector",
+        "llama_2_7b-tulu_none-science_200": "Task Vector",
+        "llama_2_7b-tulu_none-science_500": "Task Vector",
+        "llama_2_7b-tulu_none-science_1000": "Task Vector",
+        "llama_2_7b-tulu_none-science_2500": "Task Vector",
+        "llama_2_7b-tulu_all-science_100": "RT",
+        "llama_2_7b-tulu_all-science_200": "RT",
+        "llama_2_7b-tulu_all-science_500": "RT",
+        "llama_2_7b-tulu_all-science_1000": "RT",
+        "llama_2_7b-tulu_all-science_2500": "RT",
+        "tulu_2_7b-tulu_none-science_100": "CFT",
+        "tulu_2_7b-tulu_none-science_200": "CFT",
+        "tulu_2_7b-tulu_none-science_500": "CFT",
+        "tulu_2_7b-tulu_none-science_1000": "CFT",
+        "tulu_2_7b-tulu_none-science_2500": "CFT",
 
         # safety baselines:
-        "llama_2_7b-tulu_none-safety_20": "Domain Vector",
-        "llama_2_7b-tulu_none-safety_40": "Domain Vector",
-        "llama_2_7b-tulu_none-safety_60": "Domain Vector",
-        "llama_2_7b-tulu_none-safety_80": "Domain Vector",
-        "llama_2_7b-tulu_none-safety_100": "Domain Vector",
-        "llama_2_7b-tulu_all-safety_20": "Retrain With Domain",
-        "llama_2_7b-tulu_all-safety_40": "Retrain With Domain",
-        "llama_2_7b-tulu_all-safety_60": "Retrain With Domain",
-        "llama_2_7b-tulu_all-safety_80": "Retrain With Domain",
-        "llama_2_7b-tulu_all-safety_100": "Retrain With Domain",
-        "tulu_2_7b-tulu_none-safety_20": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-safety_40": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-safety_60": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-safety_80": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-safety_100": "Continued Finetuning",
+        "llama_2_7b-tulu_none-safety_20": "Task Vector",
+        "llama_2_7b-tulu_none-safety_40": "Task Vector",
+        "llama_2_7b-tulu_none-safety_60": "Task Vector",
+        "llama_2_7b-tulu_none-safety_80": "Task Vector",
+        "llama_2_7b-tulu_none-safety_100": "Task Vector",
+        "llama_2_7b-tulu_all-safety_20": "RT",
+        "llama_2_7b-tulu_all-safety_40": "RT",
+        "llama_2_7b-tulu_all-safety_60": "RT",
+        "llama_2_7b-tulu_all-safety_80": "RT",
+        "llama_2_7b-tulu_all-safety_100": "RT",
+        "tulu_2_7b-tulu_none-safety_20": "CFT",
+        "tulu_2_7b-tulu_none-safety_40": "CFT",
+        "tulu_2_7b-tulu_none-safety_60": "CFT",
+        "tulu_2_7b-tulu_none-safety_80": "CFT",
+        "tulu_2_7b-tulu_none-safety_100": "CFT",
 
         # coding baselines:
-        "llama_2_7b-tulu_none-coding_20": "Domain Vector",
-        "llama_2_7b-tulu_none-coding_40": "Domain Vector",
-        "llama_2_7b-tulu_none-coding_60": "Domain Vector",
-        "llama_2_7b-tulu_none-coding_80": "Domain Vector",
-        "llama_2_7b-tulu_none-coding_100": "Domain Vector",
-        "llama_2_7b-tulu_all-coding_20": "Retrain With Domain",
-        "llama_2_7b-tulu_all-coding_40": "Retrain With Domain",
-        "llama_2_7b-tulu_all-coding_60": "Retrain With Domain",
-        "llama_2_7b-tulu_all-coding_80": "Retrain With Domain",
-        "llama_2_7b-tulu_all-coding_100": "Retrain With Domain",
-        "tulu_2_7b-tulu_none-coding_20": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-coding_40": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-coding_60": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-coding_80": "Continued Finetuning",
-        "tulu_2_7b-tulu_none-coding_100": "Continued Finetuning",
+        "llama_2_7b-tulu_none-coding_20": "Task Vector",
+        "llama_2_7b-tulu_none-coding_40": "Task Vector",
+        "llama_2_7b-tulu_none-coding_60": "Task Vector",
+        "llama_2_7b-tulu_none-coding_80": "Task Vector",
+        "llama_2_7b-tulu_none-coding_100": "Task Vector",
+        "llama_2_7b-tulu_all-coding_20": "RT",
+        "llama_2_7b-tulu_all-coding_40": "RT",
+        "llama_2_7b-tulu_all-coding_60": "RT",
+        "llama_2_7b-tulu_all-coding_80": "RT",
+        "llama_2_7b-tulu_all-coding_100": "RT",
+        "tulu_2_7b-tulu_none-coding_20": "CFT",
+        "tulu_2_7b-tulu_none-coding_40": "CFT",
+        "tulu_2_7b-tulu_none-coding_60": "CFT",
+        "tulu_2_7b-tulu_none-coding_80": "CFT",
+        "tulu_2_7b-tulu_none-coding_100": "CFT",
     }
     
     if row["model_key"] in baseline_keys:
@@ -127,20 +127,20 @@ def create_row_label(row):
 
     combo_map = {
         # Science
-        "Llama 2 Science 100 - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Science 200 - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Science 500 - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Science 1000 - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Science 2500 - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Science 100 - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Science 200 - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Science 500 - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Science 1000 - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Science 2500 - task_arithmetic": "Adding Task Vector",
 
-        "Llama 2 Science 2500 - dare_task_arithmetic": "Adding Domain Vector (DARE)",
-        "Llama 2 Science 2500 - ties_task_arithmetic": "Adding Domain Vector (TIES)",
+        "Llama 2 Science 2500 - dare_task_arithmetic": "Adding Task Vector (DARE)",
+        "Llama 2 Science 2500 - ties_task_arithmetic": "Adding Task Vector (TIES)",
 
-        "Tulu 2 Science 100 - wise-ft": "Continued Finetuning",
-        "Tulu 2 Science 200 - wise-ft": "Continued Finetuning",
-        "Tulu 2 Science 500 - wise-ft": "Continued Finetuning",
-        "Tulu 2 Science 1000 - wise-ft": "Continued Finetuning",
-        "Tulu 2 Science 2500 - wise-ft": "Continued Finetuning",
+        "Tulu 2 Science 100 - wise-ft": "CFT",
+        "Tulu 2 Science 200 - wise-ft": "CFT",
+        "Tulu 2 Science 500 - wise-ft": "CFT",
+        "Tulu 2 Science 1000 - wise-ft": "CFT",
+        "Tulu 2 Science 2500 - wise-ft": "CFT",
 
         "Llama 2 Science 100 - linear_weighted": "Linear Interpolation",
         "Llama 2 Science 200 - linear_weighted": "Linear Interpolation",
@@ -155,20 +155,20 @@ def create_row_label(row):
         "Tulu 2 7B ft. on Tulu Match & Science 2500": "Tulu 2 Task Vector (Ep. Replay)",
 
         "Tulu 2 7B Tulu Match Science 1000 - wise-ft": "Tulu 2 Task Vector (Ep. Replay)",
-        "Tulu 2 7B Tulu Match Science 2500 - wise-ft": "Tulu 2 Task Vector (Ep. Replay)",
+        "Tulu 2 7B Tulu Match Science 2500 - wise-ft": "Continued Finetuning (Ep. Replay)",
 
         # Safety
-        "Llama 2 Safety 20% - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Safety 40% - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Safety 60% - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Safety 80% - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Safety 100% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Safety 20% - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Safety 40% - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Safety 60% - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Safety 80% - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Safety 100% - task_arithmetic": "Adding Task Vector",
 
-        "Tulu 2 Safety 20% - wise-ft": "Continued Finetuning",
-        "Tulu 2 Safety 40% - wise-ft": "Continued Finetuning",
-        "Tulu 2 Safety 60% - wise-ft": "Continued Finetuning",
-        "Tulu 2 Safety 80% - wise-ft": "Continued Finetuning",
-        "Tulu 2 Safety 100% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Safety 20% - wise-ft": "CFT",
+        "Tulu 2 Safety 40% - wise-ft": "CFT",
+        "Tulu 2 Safety 60% - wise-ft": "CFT",
+        "Tulu 2 Safety 80% - wise-ft": "CFT",
+        "Tulu 2 Safety 100% - wise-ft": "CFT",
 
         "Llama 2 Safety 20% - linear_weighted": "Linear Interpolation",
         "Llama 2 Safety 40% - linear_weighted": "Linear Interpolation",
@@ -183,20 +183,20 @@ def create_row_label(row):
         "Tulu 2 7B ft. on Tulu Match & Safety 100%": "Tulu 2 Task Vector (Ep. Replay)",
 
         # Coding
-        "Llama 2 Coding 20% - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Coding 40% - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Coding 60% - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Coding 80% - task_arithmetic": "Adding Domain Vector",
-        "Llama 2 Coding 100% - task_arithmetic": "Adding Domain Vector",
+        "Llama 2 Coding 20% - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Coding 40% - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Coding 60% - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Coding 80% - task_arithmetic": "Adding Task Vector",
+        "Llama 2 Coding 100% - task_arithmetic": "Adding Task Vector",
 
-        "Llama 2 Coding 100% - dare_task_arithmetic": "Adding Domain Vector (DARE)",
-        "Llama 2 Coding 100% - ties_task_arithmetic": "Adding Domain Vector (TIES)",
+        "Llama 2 Coding 100% - dare_task_arithmetic": "Adding Task Vector (DARE)",
+        "Llama 2 Coding 100% - ties_task_arithmetic": "Adding Task Vector (TIES)",
 
-        "Tulu 2 Coding 20% - wise-ft": "Continued Finetuning",
-        "Tulu 2 Coding 40% - wise-ft": "Continued Finetuning",
-        "Tulu 2 Coding 60% - wise-ft": "Continued Finetuning",
-        "Tulu 2 Coding 80% - wise-ft": "Continued Finetuning",
-        "Tulu 2 Coding 100% - wise-ft": "Continued Finetuning",
+        "Tulu 2 Coding 20% - wise-ft": "CFT",
+        "Tulu 2 Coding 40% - wise-ft": "CFT",
+        "Tulu 2 Coding 60% - wise-ft": "CFT",
+        "Tulu 2 Coding 80% - wise-ft": "CFT",
+        "Tulu 2 Coding 100% - wise-ft": "CFT",
 
         "Llama 2 Coding 20% - linear_weighted": "Linear Interpolation",
         "Llama 2 Coding 40% - linear_weighted": "Linear Interpolation",
@@ -834,8 +834,8 @@ def make_plots():
 
         fig, axes = plt.subplots(
             1, 
-            3, 
-            figsize=(18, 5)
+            4, 
+            figsize=(24, 5)
         )
 
         sns.lineplot(
@@ -878,7 +878,7 @@ def make_plots():
         axes[0].set_title('Science', fontsize=20)
         axes[0].set(xlabel=None, ylabel=None)
         axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[0].legend(title='')
+        axes[0].legend(title='', fontsize=13)
         axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
 
 
@@ -968,22 +968,56 @@ def make_plots():
         axes[2].legend().set_visible(False)
         axes[2].tick_params(axis='both', which='major', labelsize=ticksize)
 
-        # plt.xlabel("General Capabilities",fontsize=20)
-        # plt.ylabel("Domain Average",fontsize=20)
+        sns.lineplot(
+            data=dataframes["safety_100_interp"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[3],
+        )
+        sns.lineplot(
+            data=dataframes["safety_100_llama_ta"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[3],
+        )
+        sns.lineplot(
+            data=dataframes["safety_100_tulu_ta"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[2]],
+            ax=axes[3],
+        )
 
-        # plt.xticks(
-        #     # [0.4, 0.45, 0.5, 0.55, 0.6],
-        #     fontsize=16
-        # )
-        # plt.yticks(fontsize=16)
-        # plt.legend(fontsize=11)
+        axes[3].set_title('Exaggerated Refusals', fontsize=20)
+        axes[3].set_xlabel("Exaggerated Refusals", fontsize=18)
+        axes[3].set_ylabel(None)
+        axes[3].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[3].legend().set_visible(False)
+        axes[3].tick_params(axis='both', which='major', labelsize=ticksize)
 
-        fig.text(0.5, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
-        fig.text(0.075, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
+        fig.text(0.415, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
+        fig.text(0.1, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
 
         # plt.tight_layout()
         # plt.show()
-        plt.savefig(f'results/consistent_mix/plots/all_3_weighting_strategies.png', dpi=300, bbox_inches='tight')
+        plt.savefig(f'results/consistent_mix/plots/all_3_weighting_strategies_4.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
     def ta_curves_vs_baselines_all_3():
@@ -991,8 +1025,8 @@ def make_plots():
 
         fig, axes = plt.subplots(
             1, 
-            3, 
-            figsize=(18, 5)
+            4, 
+            figsize=(24, 5)
         )
 
         # science
@@ -1058,7 +1092,7 @@ def make_plots():
         axes[0].set_title('Science', fontsize=20)
         axes[0].set(xlabel=None, ylabel=None)
         axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[0].legend(title='')
+        axes[0].legend(title='', fontsize=13)
         axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
 
         # safety
@@ -1193,22 +1227,66 @@ def make_plots():
         axes[2].legend().set_visible(False)
         axes[2].tick_params(axis='both', which='major', labelsize=ticksize)
 
-        # plt.xlabel("General Capabilities",fontsize=20)
-        # plt.ylabel("Domain Average",fontsize=20)
+        sns.lineplot(
+            data=dataframes["safety_100_llama_ta_even"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[1]],
+            ax=axes[3],
+        )
+        sns.lineplot(
+            data=dataframes["safety_retrain_ablations"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[3]],
+            ax=axes[3],
+        )
+        sns.lineplot(
+            data=dataframes["safety_cft_ablations"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            sort=False,
+            # marker='X',
+            linewidth=line_width,
+            markersize=markersize,
+            palette=[sns.color_palette("colorblind")[4]],
+            ax=axes[3],
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+            ax=axes[3],
+        )
 
-        # plt.xticks(
-        #     # [0.4, 0.45, 0.5, 0.55, 0.6],
-        #     fontsize=16
-        # )
-        # plt.yticks(fontsize=16)
-        # plt.legend(fontsize=11)
+        axes[3].set_title('Exaggerated Refusals', fontsize=20)
+        axes[3].set_xlabel("Exaggerated Refusals", fontsize=18)
+        axes[3].set_ylabel(None)
+        axes[3].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[3].legend().set_visible(False)
+        axes[3].tick_params(axis='both', which='major', labelsize=ticksize)
 
-        fig.text(0.5, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
-        fig.text(0.075, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
+        fig.text(0.415, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
+        fig.text(0.1, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
 
         # plt.tight_layout()
         # plt.show()
-        plt.savefig(f'results/consistent_mix/plots/task_arithmetic_vs_baselines_all_3.png', dpi=300, bbox_inches='tight')
+        plt.savefig(f'results/consistent_mix/plots/task_arithmetic_vs_baselines_all_4.png', dpi=300, bbox_inches='tight')
         plt.clf()
 
     def ta_curves_3_merging_methods():
@@ -1267,16 +1345,16 @@ def make_plots():
             palette=[sns.color_palette("colorblind")[0]],
             ax=axes[0]
         )
-        sns.scatterplot(
-            data=dataframes["llama_tulu_none_science_2500"],
-            x="General Capabilities",
-            y="Science Average",
-            hue="Label",
-            s=point_size,
-            marker=marker,
-            palette=[sns.color_palette("colorblind")[2]],
-            ax=axes[0]
-        )
+        # sns.scatterplot(
+        #     data=dataframes["llama_tulu_none_science_2500"],
+        #     x="General Capabilities",
+        #     y="Science Average",
+        #     hue="Label",
+        #     s=point_size,
+        #     marker=marker,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[0]
+        # )
         # sns.lineplot(
         #     data=dataframes["science_cft_match_ablations"],
         #     x="General Capabilities",
@@ -1343,16 +1421,16 @@ def make_plots():
             palette=[sns.color_palette("colorblind")[0]],
             ax=axes[1]
         )
-        sns.scatterplot(
-            data=dataframes["llama_tulu_none_coding_100"],
-            x="General Capabilities",
-            y="Coding Average",
-            hue="Label",
-            s=point_size,
-            marker=marker,
-            palette=[sns.color_palette("colorblind")[2]],
-            ax=axes[1]
-        )
+        # sns.scatterplot(
+        #     data=dataframes["llama_tulu_none_coding_100"],
+        #     x="General Capabilities",
+        #     y="Coding Average",
+        #     hue="Label",
+        #     s=point_size,
+        #     marker=marker,
+        #     palette=[sns.color_palette("colorblind")[2]],
+        #     ax=axes[1]
+        # )
         # sns.lineplot(
         #     data=dataframes["coding_cft_match_ablations"],
         #     x="General Capabilities",
@@ -1396,8 +1474,8 @@ def make_plots():
 
         fig, axes = plt.subplots(
             1, 
-            3, 
-            figsize=(18, 5)
+            4, 
+            figsize=(24, 5)
         )
 
         # science
@@ -1447,7 +1525,7 @@ def make_plots():
         axes[0].set_title('Science', fontsize=20)
         axes[0].set(xlabel=None, ylabel=None)
         axes[0].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[0].legend(title='')
+        axes[0].legend().set_visible(False)
         axes[0].tick_params(axis='both', which='major', labelsize=ticksize)
 
         # safety
@@ -1497,7 +1575,7 @@ def make_plots():
         axes[1].set_title('Safety', fontsize=20)
         axes[1].set(xlabel=None, ylabel=None)
         axes[1].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
-        axes[1].legend().set_visible(False)
+        axes[1].legend(title='', fontsize=14)
         axes[1].tick_params(axis='both', which='major', labelsize=ticksize)
 
         # coding
@@ -1560,19 +1638,10 @@ def make_plots():
         # plt.yticks(fontsize=16)
         # plt.legend(fontsize=11)
 
-        fig.text(0.5, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
-        fig.text(0.075, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
-
-        # plt.tight_layout()
-        # plt.show()
-        plt.savefig(f'results/consistent_mix/plots/task_arithmetic_vs_heuristics_3.png', dpi=300, bbox_inches='tight')
-        plt.clf()
-
-    def science_interference_curves():
         sns.lineplot(
-            data=dataframes["science_2500_llama_ta"],
-            x="General Capabilities",
-            y="Science Average",
+            data=dataframes["safety_100_llama_ta"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
             hue="Label",
             sort=False,
             # marker='X',
@@ -1580,6 +1649,52 @@ def make_plots():
             markersize=markersize,
             palette=[sns.color_palette("colorblind")[1]],
         )
+        sns.scatterplot(
+            data=dataframes[f"safety_100_heuristic"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[3]],
+        )
+        sns.scatterplot(
+            data=dataframes["llama_tulu_all"],
+            x="Exaggerated Refusals",
+            y="Safety Average",
+            hue="Label",
+            s=point_size,
+            marker=marker,
+            palette=[sns.color_palette("colorblind")[0]],
+        )
+
+        axes[3].set_title('Exaggerated Refusals', fontsize=20)
+        axes[3].set_xlabel("Exaggerated Refusals", fontsize=18)
+        axes[3].set_ylabel(None)
+        axes[3].grid(True, linestyle='--', linewidth=0.5, color='gray', alpha=0.5)
+        axes[3].legend().set_visible(False)
+        axes[3].tick_params(axis='both', which='major', labelsize=ticksize)
+
+        fig.text(0.415, 0.02, 'General Capabilities', ha='center', va='center', fontsize=18)
+        fig.text(0.1, 0.5, 'Domain Average', va='center', rotation='vertical', fontsize=18)
+
+        # plt.tight_layout()
+        # plt.show()
+        plt.savefig(f'results/consistent_mix/plots/task_arithmetic_vs_heuristics_4.png', dpi=300, bbox_inches='tight')
+        plt.clf()
+
+    def science_interference_curves():
+        # sns.lineplot(
+        #     data=dataframes["science_2500_llama_ta"],
+        #     x="General Capabilities",
+        #     y="Science Average",
+        #     hue="Label",
+        #     sort=False,
+        #     # marker='X',
+        #     linewidth=line_width,
+        #     markersize=markersize,
+        #     palette=[sns.color_palette("colorblind")[1]],
+        # )
         sns.lineplot(
             data=dataframes["science_2500_tulu_ta"],
             x="General Capabilities",
